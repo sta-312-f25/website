@@ -1,0 +1,50 @@
+project:
+  type: website
+  render:
+    - "index.qmd"
+    - "schedule.qmd"
+  resources:
+    - "img/"
+    - "www/"
+
+website:
+  page-navigation: true
+  title: "STA 312"
+  description: "STA 312 - Linear Models at Wake Forst University, Fall 2025."
+  site-url: "https://sta-312-f25.lucymcgowan.com"
+  open-graph: true
+  twitter-card:
+    creator: "@lucystats"
+    image: "images/twitter-card.png"
+    card-style: summary_large_image
+  navbar:
+    pinned: true
+    background: "#d5008f"
+    right:
+      - href: schedule.qmd
+        text: "Schedule"
+      - syllabus.qmd
+      - href: "https://rstudio.deac.wfu.edu"
+        text: "{{< fa cloud >}} RStudio Pro"
+  repo-url: https://github.com/sta-312-f25/sta-312/f25
+  repo-actions: [edit, issue]        
+  page-footer:
+    left: "&copy; 2025, Lucy D'Agostino McGowan"
+    right: "Made with {{< fa brands r-project >}} and [Quarto](https://quarto.org/)"
+    background: "#eec8e1"
+    
+format:
+  html:
+    theme:
+      light: [united, custom.scss]
+      dark: [united, custom.scss, dark.scss]
+    code-copy: true
+    code-link: true
+    code-overflow: wrap
+    highlight-style: monokai
+    linkcolor: "#d5008f" 
+    mainfont: "Fira Sans"
+    toc: true
+
+execute:
+  freeze: auto
