@@ -1,0 +1,293 @@
+---
+title: "Welcome to Linear Models"
+author: "Dr. Lucy D'Agostino McGowan"
+format:
+  revealjs: 
+    theme: [default, custom.scss] 
+    incremental: true
+footer: "[Dr. Lucy D'Agostino McGowan](https://lucymcgowan.com)"
+revealjs-plugins:
+ - imagemover
+---
+
+
+
+# 👋 Lucy D'Agostino McGowan
+
+Find me: [Manchester 342]{.hl}
+
+::: {#filename filename=01-slides.qmd}
+:::
+
+## {.transparent}
+
+::: {.column}
+[&ldquo;]{.fancy}truth … is much too complicated to allow anything but approximations["]{.fancy}
+
+[- John von Neumann]{.hl}
+:::
+
+::: {.column}
+
+![](https://farkasdilemma.files.wordpress.com/2013/01/vonneumann.png){.absolute width=490px height=282px left=542px top=72px}
+:::
+
+<br><br>
+
+::: caption
+John von Neumann, wearer of funny hats via 
+[https://farkasdilemma.wordpress.com/2013/01/04/john-von-neumannm-wearer-of-funny-hats/](farkasdilemma.wordpress.com)
+:::
+
+## {.transparent}
+
+::: column
+[&ldquo;]{.fancy}All models are wrong, but some are useful["]{.fancy}
+
+[- George Box]{.hl}
+:::
+
+::: column
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/GeorgeEPBox.jpg/256px-GeorgeEPBox.jpg){.absolute width=280px height=354px left=617px top=29px}
+:::
+
+<br> <br> <br> <br>
+
+::: caption
+DavidMCEddy at en.wikipedia <a href = "https://creativecommons.org/licenses/by-sa/3.0"> CC BY-SA 3.0 </a>, via Wikimedia Commons
+:::
+
+# What is a linear model?
+
+## Is this a linear model?
+
+```{r}
+#| fig-align: center
+
+library(ggplot2)
+set.seed(1)
+
+n <- 40
+x <- runif(n, -1, 10)
+y <- 2.5 + 2 * x + 0.5 * x^2 - 0.05 * x^3 + rnorm(n, sd = 2)
+
+df <- data.frame(x = x, y = y)
+
+fit_lm <- lm(y ~ x, data = df)
+ggplot(df, aes(x, y)) +
+  geom_point(size = 5, color = "#eec8e1") +
+  geom_smooth(method = "lm", 
+              formula = "y~x",
+              se = FALSE, 
+              color = "#d5008f",
+              linewidth = 2) +
+  theme_minimal(base_size = 25) +
+  labs(x = "Predictor (x)", y = "Response (y)")
+```
+
+## What is the equation?
+
+::: {.vcenter}
+
+$$y = \beta_0 + \beta_1 x + \varepsilon$$
+:::
+
+## Is this a linear model?
+
+```{r}
+#| fig-align: center
+ggplot(df, aes(x, y)) +
+  geom_point(size = 5, color = "#eec8e1") +
+  geom_smooth(method = "lm", 
+              formula = y~x,
+              se = FALSE, 
+              color = "#d5008f",
+              linewidth = 2) +
+  theme_minimal(base_size = 25) +
+  labs(x = "Predictor (x)", y = "Response (y)")
+```
+
+::: caption
+
+{{< fa question-circle >}} Where is $\beta_0$
+:::
+
+## Is this a linear model?
+
+```{r}
+#| fig-align: center
+ggplot(df, aes(x, y)) +
+  geom_point(size = 5, color = "#eec8e1") +
+  geom_smooth(method = "lm", 
+              formula = y~x,
+              se = FALSE, 
+              color = "#d5008f",
+              linewith = 2) +
+  theme_minimal(base_size = 25) +
+  labs(x = "Predictor (x)", y = "Response (y)") + 
+    annotate("segment", x = 2, y = 5.5, xend = 0.1, yend = 4.2,
+           arrow = arrow(length = unit(0.3, "cm")), 
+           color = "#d5008f", size = 1) +
+  annotate("text", x = 2.2, y = 5.2, label = "beta[0]", 
+           parse = TRUE, size = 8, color = "#d5008f") 
+```
+
+::: caption
+
+{{< fa question-circle >}} Where is $\beta_0$
+:::
+
+## Is this a linear model?
+
+```{r}
+#| fig-align: center
+ggplot(df, aes(x, y)) +
+  geom_point(size = 5, color = "#eec8e1") +
+  geom_smooth(method = "lm", 
+              formula = y~x,
+              se = FALSE, 
+              color = "#d5008f",
+              linewith = 2) +
+  theme_minimal(base_size = 25) +
+  labs(x = "Predictor (x)", y = "Response (y)") 
+```
+
+::: caption
+
+{{< fa question-circle >}} Where is $\beta_1$
+:::
+
+## Is this a linear model?
+
+```{r}
+#| fig-align: center
+ggplot(df, aes(x, y)) +
+  geom_point(size = 5, color = "#eec8e1") +
+  geom_smooth(method = "lm", 
+              formula = y~x,
+              se = FALSE, 
+              color = "#d5008f",
+              linewith = 2) +
+  theme_minimal(base_size = 25) +
+  labs(x = "Predictor (x)", y = "Response (y)") + 
+  annotate("segment", x = 1.5, y = 7.5, xend = 2.5, yend = 7.5,  
+           linetype = "dashed", color = "#d5008f", size = 1) +
+  annotate("segment", x = 2.5, y = 7.5, xend = 2.5, yend = 10,
+           linetype = "dashed", color = "#d5008f", size = 1) +
+  annotate("text", x = 3, y = 7, label = "beta[1]", 
+           parse = TRUE, size = 8, color = "#d5008f") 
+```
+
+::: caption
+
+{{< fa question-circle >}} Where is $\beta_1$
+:::
+
+## What is the equation?
+
+::: {.vcenter}
+
+$$y = \beta_0 + \beta_1 x + \varepsilon$$
+:::
+
+## What is the equation?
+
+::: {.vcenter}
+
+$$
+X = \begin{bmatrix}1 & x_1\\ 
+\vdots & \vdots \\ 1 & x_n\end{bmatrix},\quad
+\beta = \begin{bmatrix}\beta_0\\ \beta_1\end{bmatrix}
+$$
+:::
+
+## What does the "data" look like?
+
+<br>
+
+```{r}
+head(model.matrix(fit_lm))
+```
+
+
+## Is this a linear model?
+
+```{r}
+#| fig-align: center
+library(splines)
+fit_ns <- lm(y ~ ns(x, df = 3), data = df)
+basis_mat <- model.matrix(fit_ns)
+
+ggplot(df, aes(x, y)) +
+  geom_point(size = 5, color = "#eec8e1") +
+  geom_line(aes(y = predict(fit_ns)), color = "#d5008f", linewidth = 2) +
+  theme_minimal(base_size = 25)
+```
+## What is the equation?
+
+$$y = \beta_0 + \sum_{j=1}^{J} \beta_j B_j(x) + \varepsilon$$
+
+* where $B_j(x)$ are known [spline basis functions]{.hl}
+* the model is [linear]{.hl} in the $\beta_j$
+
+## What does the "data" look like?
+
+<br>
+
+```{r}
+head(basis_mat)
+```
+## Is this a linear model?
+
+```{r}
+#| fig-align: center
+library(rpart)
+library(partykit)
+set.seed(10)
+x2 <- runif(200, 0, 10)
+y2 <- ifelse(x2 < 3, 1 + 0.5 * x2,
+             ifelse(x2 < 7, 6 + 0.2 * x2, 9 - 0.4 * x2)) + rnorm(200, sd = 0.5)
+df2 <- data.frame(x = x2, y = y2)
+fit_tree <- rpart(y ~ x, data = df2, control = rpart.control(maxdepth = 3, cp = 0))
+rpart.plot::rpart.plot(fit_tree)
+```
+
+## Is this a linear model?
+
+```{r}
+#| fig-align: center
+party <- as.party(fit_tree)
+node_id <- predict(party, newdata = df2, type = "node")
+ind <- model.matrix(~ factor(node_id) - 1)
+lm_ind <- lm(y ~ ind - 1, data = data.frame(y = df2$y, ind))
+
+pred_tree <- predict(fit_tree, df2)
+pr <- data.frame(x = df2$x, tree_pred = pred_tree)
+pr_s <- pr[order(pr$x), ]
+ggplot(df2, aes(x, y)) +
+  geom_point(color = "#eec8e1", size = 5) +
+  geom_step(data = pr_s, aes(x = x, y = tree_pred), color = "#d5008f", linewidth = 2) +
+  theme_minimal(base_size = 25)
+```
+## What is the equation?
+
+$$y = \sum_{k=1}^{K} \beta_k \, \mathbf{1}\{x \in R_k\} + \varepsilon$$
+
+* where $R_1,\ldots,R_K$ are each of the regions 
+* this is linear in the parameters $\beta_k$
+
+## What does the "data" look like?
+
+<br>
+
+```{r}
+m <- model.matrix(lm_ind)
+colnames(m) <- glue::glue("ind{1:8}")
+head(m)
+```
+
+# Is ChatGPT based on a [linear]{.hl} model?
+
+# Are [[neural networks](https://lucy.shinyapps.io/neural-net-linear/)]{.hl} linear models?
+
+# Tech Setup
