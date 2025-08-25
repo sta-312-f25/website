@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>STA 312: Linear Models – STA 312</title>
+<title>Quarto Quick Reference Guide – STA 312</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -29,6 +64,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./troubleshooting.html" rel="next">
+<link href="./help-quarto.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -73,18 +110,47 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta property="og:title" content="STA 312: Linear Models – STA 312">
-<meta property="og:description" content="Linear models. Learn the theory behind linear models. Gain hands on experience with real data from a variety of disciplines. The course will focus on the statistical computing language R.">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="Quarto Quick Reference Guide – STA 312">
+<meta property="og:description" content="STA 312 - Linear Models at Wake Forst University, Fall 2025.">
 <meta property="og:site_name" content="STA 312">
-<meta name="twitter:title" content="STA 312: Linear Models – STA 312">
-<meta name="twitter:description" content="Linear models. Learn the theory behind linear models. Gain hands on experience with real data from a variety of disciplines. The course will focus on the statistical computing language R.">
+<meta name="twitter:title" content="Quarto Quick Reference Guide – STA 312">
+<meta name="twitter:description" content="STA 312 - Linear Models at Wake Forst University, Fall 2025.">
 <meta name="twitter:image" content="https://sta-312-f25.lucymcgowan.com/images/twitter-card.png">
 <meta name="twitter:creator" content="@lucystats">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
-<body class="nav-fixed fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-sidebar docked nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -285,20 +351,117 @@ ul.task-list li input[type="checkbox"] {
 </div>
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./rstudio-pro.html">Computing</a></li><li class="breadcrumb-item"><a href="./quarto-quick-guide.html">Quarto Quick Guide</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Computing</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./rstudio-pro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Using the RStudio Pro Server</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./help-project.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Creating an RStudio Project</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./help-quarto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Creating a Quarto Document</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./quarto-quick-guide.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Quarto Quick Guide</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./troubleshooting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Troubleshooting</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#document-structure" id="toc-document-structure" class="nav-link active" data-scroll-target="#document-structure">Document Structure</a></li>
+  <li><a href="#basic-markdown-syntax" id="toc-basic-markdown-syntax" class="nav-link" data-scroll-target="#basic-markdown-syntax">Basic Markdown Syntax</a>
+  <ul class="collapse">
+  <li><a href="#headers" id="toc-headers" class="nav-link" data-scroll-target="#headers">Headers</a></li>
+  <li><a href="#text-formatting" id="toc-text-formatting" class="nav-link" data-scroll-target="#text-formatting">Text Formatting</a></li>
+  <li><a href="#lists" id="toc-lists" class="nav-link" data-scroll-target="#lists">Lists</a></li>
+  </ul></li>
+  <li><a href="#r-code-chunks" id="toc-r-code-chunks" class="nav-link" data-scroll-target="#r-code-chunks">R Code Chunks</a>
+  <ul class="collapse">
+  <li><a href="#basic-code-chunk" id="toc-basic-code-chunk" class="nav-link" data-scroll-target="#basic-code-chunk">Basic Code Chunk</a></li>
+  <li><a href="#code-chunk-options" id="toc-code-chunk-options" class="nav-link" data-scroll-target="#code-chunk-options">Code Chunk Options</a></li>
+  <li><a href="#common-chunk-options" id="toc-common-chunk-options" class="nav-link" data-scroll-target="#common-chunk-options">Common Chunk Options</a></li>
+  </ul></li>
+  <li><a href="#inline-r-code" id="toc-inline-r-code" class="nav-link" data-scroll-target="#inline-r-code">Inline R Code</a></li>
+  <li><a href="#mathematical-expressions" id="toc-mathematical-expressions" class="nav-link" data-scroll-target="#mathematical-expressions">Mathematical Expressions</a>
+  <ul class="collapse">
+  <li><a href="#inline-math" id="toc-inline-math" class="nav-link" data-scroll-target="#inline-math">Inline Math</a></li>
+  <li><a href="#display-math" id="toc-display-math" class="nav-link" data-scroll-target="#display-math">Display Math</a></li>
+  <li><a href="#common-statistical-notation" id="toc-common-statistical-notation" class="nav-link" data-scroll-target="#common-statistical-notation">Common Statistical Notation</a></li>
+  </ul></li>
+  <li><a href="#tables" id="toc-tables" class="nav-link" data-scroll-target="#tables">Tables</a>
+  <ul class="collapse">
+  <li><a href="#simple-tables" id="toc-simple-tables" class="nav-link" data-scroll-target="#simple-tables">Simple Tables</a></li>
+  <li><a href="#tables-from-r-code" id="toc-tables-from-r-code" class="nav-link" data-scroll-target="#tables-from-r-code">Tables from R Code</a></li>
+  </ul></li>
+  <li><a href="#figures" id="toc-figures" class="nav-link" data-scroll-target="#figures">Figures</a>
+  <ul class="collapse">
+  <li><a href="#plots-with-captions" id="toc-plots-with-captions" class="nav-link" data-scroll-target="#plots-with-captions">Plots with Captions</a></li>
+  </ul></li>
+  <li><a href="#cross-references" id="toc-cross-references" class="nav-link" data-scroll-target="#cross-references">Cross-References</a></li>
+  <li><a href="#callout-blocks" id="toc-callout-blocks" class="nav-link" data-scroll-target="#callout-blocks">Callout Blocks</a></li>
+  <li><a href="#rendering-your-document" id="toc-rendering-your-document" class="nav-link" data-scroll-target="#rendering-your-document">Rendering Your Document</a></li>
+  <li><a href="#tips-for-statistical-writing" id="toc-tips-for-statistical-writing" class="nav-link" data-scroll-target="#tips-for-statistical-writing">Tips for Statistical Writing</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/sta-312-f25/sta-312/f25/edit/main/quarto-quick-guide.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sta-312-f25/sta-312/f25/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./rstudio-pro.html">Computing</a></li><li class="breadcrumb-item"><a href="./quarto-quick-guide.html">Quarto Quick Guide</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">STA 312: Linear Models</h1>
-<p class="subtitle lead">Linear models. Learn the theory behind linear models. Gain hands on experience with real data from a variety of disciplines. The course will focus on the statistical computing language R.</p>
+<h1 class="title">Quarto Quick Reference Guide</h1>
 </div>
 
 
@@ -315,32 +478,265 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="quarto-title-meta" style="display:none">
+<p>Quarto is the next-generation version of R Markdown that combines code, results, and narrative text into dynamic documents. This guide covers the essentials you’ll need for STA 312.</p>
+<section id="document-structure" class="level2">
+<h2 class="anchored" data-anchor-id="document-structure">Document Structure</h2>
+<p>Every Quarto document starts with a <strong>YAML header</strong> (between <code>---</code> lines) that contains metadata:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"My Statistical Analysis"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">"Your Name"</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> today</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> html</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">execute</span><span class="kw">:</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">echo</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">warning</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="basic-markdown-syntax" class="level2">
+<h2 class="anchored" data-anchor-id="basic-markdown-syntax">Basic Markdown Syntax</h2>
+<section id="headers" class="level3">
+<h3 class="anchored" data-anchor-id="headers">Headers</h3>
+<pre><code># Header 1 (largest)
+## Header 2
+### Header 3
+#### Header 4</code></pre>
+</section>
+<section id="text-formatting" class="level3">
+<h3 class="anchored" data-anchor-id="text-formatting">Text Formatting</h3>
+<ul>
+<li><strong>Bold text</strong>: <code>**bold text**</code> or <code>__bold text__</code></li>
+<li><em>Italic text</em>: <code>*italic text*</code> or <code>_italic text_</code></li>
+<li><code>Code text</code>: <code>`code text`</code></li>
+<li><a href="https://example.com">Links</a>: <code>[link text](URL)</code></li>
+</ul>
+</section>
+<section id="lists" class="level3">
+<h3 class="anchored" data-anchor-id="lists">Lists</h3>
+<p><strong>Unordered lists:</strong></p>
+<pre><code>- Item 1
+- Item 2
+  - Sub-item
+  - Sub-item</code></pre>
+<p><strong>Ordered lists:</strong></p>
+<pre><code>1. First item
+2. Second item
+3. Third item</code></pre>
+</section>
+</section>
+<section id="r-code-chunks" class="level2">
+<h2 class="anchored" data-anchor-id="r-code-chunks">R Code Chunks</h2>
+<p>The power of Quarto comes from embedding R code directly in your document.</p>
+<section id="basic-code-chunk" class="level3">
+<h3 class="anchored" data-anchor-id="basic-code-chunk">Basic Code Chunk</h3>
+<p>Code chucks start with <code>{r}</code>.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Your R code here</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="code-chunk-options" class="level3">
+<h3 class="anchored" data-anchor-id="code-chunk-options">Code Chunk Options</h3>
+<p>Your code chunks can have options that are written in YAML style starting with a <code>#|</code> at the beginning of the line.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: data-setup</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Load libraries and data</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="common-chunk-options" class="level3">
+<h3 class="anchored" data-anchor-id="common-chunk-options">Common Chunk Options</h3>
+<ul>
+<li><code>#| echo: false</code>: Hide code, show output<br>
+</li>
+<li><code>#| eval: false</code>: Show code, don’t run it<br>
+</li>
+<li><code>#| include: false</code>: Run code, hide everything<br>
+</li>
+<li><code>#| message: false</code>: Hide messages<br>
+</li>
+<li><code>#| warning: false</code>: Hide warnings<br>
+</li>
+<li><code>#| fig-width: 8</code> and <code>#| fig-height: 6</code>: Control plot dimensions</li>
+</ul>
+</section>
+</section>
+<section id="inline-r-code" class="level2">
+<h2 class="anchored" data-anchor-id="inline-r-code">Inline R Code</h2>
+<p>You can include R results directly in text using <code>`r`</code>:</p>
+<pre><code>The mean of our data is `r round(mean(x), 2)`.</code></pre>
+</section>
+<section id="mathematical-expressions" class="level2">
+<h2 class="anchored" data-anchor-id="mathematical-expressions">Mathematical Expressions</h2>
+<p>Quarto uses LaTeX syntax for mathematical notation:</p>
+<section id="inline-math" class="level3">
+<h3 class="anchored" data-anchor-id="inline-math">Inline Math</h3>
+<p>Use single dollar signs for inline math: <code>$x^2 + y^2 = z^2$</code></p>
+</section>
+<section id="display-math" class="level3">
+<h3 class="anchored" data-anchor-id="display-math">Display Math</h3>
+<p>Use double dollar signs for centered display math:</p>
+<pre><code>$$\bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i$$</code></pre>
+</section>
+<section id="common-statistical-notation" class="level3">
+<h3 class="anchored" data-anchor-id="common-statistical-notation">Common Statistical Notation</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 32%">
+<col style="width: 27%">
+<col style="width: 39%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Concept</th>
+<th>LaTeX Code</th>
+<th>Rendered Output</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td><code>$\bar{x}$</code></td>
+<td><span class="math inline">\(\bar{x}\)</span></td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td><code>$\sigma$</code></td>
+<td><span class="math inline">\(\sigma\)</span></td>
+</tr>
+<tr class="odd">
+<td>Regression equation</td>
+<td><code>$y = \beta_0 + \beta_1 x + \epsilon$</code></td>
+<td><span class="math inline">\(y = \beta_0 + \beta_1 x + \epsilon\)</span></td>
+</tr>
+<tr class="even">
+<td>Sums</td>
+<td><code>$\sum_{i=1}^{n} x_i$</code></td>
+<td><span class="math inline">\(\sum_{i=1}^{n} x_i\)</span></td>
+</tr>
+<tr class="odd">
+<td>Square root</td>
+<td><code>$\sqrt{n}$</code></td>
+<td><span class="math inline">\(\sqrt{n}\)</span></td>
+</tr>
+<tr class="even">
+<td>Fractions</td>
+<td><code>$\frac{a}{b}$</code></td>
+<td><span class="math inline">\(\frac{a}{b}\)</span></td>
+</tr>
+<tr class="odd">
+<td>Subscripts</td>
+<td><code>$x_i$</code></td>
+<td><span class="math inline">\(x_i\)</span></td>
+</tr>
+<tr class="even">
+<td>Superscripts</td>
+<td><code>$x^2$</code></td>
+<td><span class="math inline">\(x^2\)</span></td>
+</tr>
+<tr class="odd">
+<td>Matrices</td>
+<td><code>$\begin{bmatrix} 1 &amp; 2 &amp; 3 \\ 4 &amp; 5 &amp; 6 \end{bmatrix}$</code></td>
+<td><span class="math inline">\(\begin{bmatrix} 1 &amp; 2 &amp; 3 \\ 4 &amp; 5 &amp; 6 \end{bmatrix}\)</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="tables" class="level2">
+<h2 class="anchored" data-anchor-id="tables">Tables</h2>
+<section id="simple-tables" class="level3">
+<h3 class="anchored" data-anchor-id="simple-tables">Simple Tables</h3>
+<pre><code>| Variable | Mean | SD   |
+|----------|------|------|
+| Height   | 68.2 | 3.1  |
+| Weight   | 155  | 22.5 |</code></pre>
+</section>
+<section id="tables-from-r-code" class="level3">
+<h3 class="anchored" data-anchor-id="tables-from-r-code">Tables from R Code</h3>
+<div class="sourceCode" id="cb10"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: summary-table</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "Summary Statistics"</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>summary_stats <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">Variable =</span> <span class="fu">c</span>(<span class="st">"Height"</span>, <span class="st">"Weight"</span>),</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">Mean =</span> <span class="fu">c</span>(<span class="fl">68.2</span>, <span class="fl">155.0</span>),</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">SD =</span> <span class="fu">c</span>(<span class="fl">3.1</span>, <span class="fl">22.5</span>)</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(summary_stats)</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="figures" class="level2">
+<h2 class="anchored" data-anchor-id="figures">Figures</h2>
+<section id="plots-with-captions" class="level3">
+<h3 class="anchored" data-anchor-id="plots-with-captions">Plots with Captions</h3>
+<div class="sourceCode" id="cb11"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-scatter</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Relationship between height and weight"</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 6</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 4</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> height, <span class="at">y =</span> weight)) <span class="sc">+</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Height (inches)"</span>, <span class="at">y =</span> <span class="st">"Weight (lbs)"</span>)</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="cross-references" class="level2">
+<h2 class="anchored" data-anchor-id="cross-references">Cross-References</h2>
+<p>You can reference figures, tables, and equations:</p>
+<ul>
+<li>Reference a figure: <code>@fig-scatter</code><br>
+</li>
+<li>Reference a table: <code>@tbl-summary</code><br>
+</li>
+<li>Reference an equation: <code>@eq-regression</code></li>
+</ul>
+<p>For equations with labels:</p>
+<pre><code>$$y = \beta_0 + \beta_1 x + \epsilon$$ {#eq-regression}</code></pre>
+</section>
+<section id="callout-blocks" class="level2">
+<h2 class="anchored" data-anchor-id="callout-blocks">Callout Blocks</h2>
+<p>Quarto provides special callout blocks for important information:</p>
+<pre><code>::: {.callout-note}
+This is a note callout.
+:::
 
-</div>
-<div class="grid">
-<section id="course-info" class="level3 g-col-12 g-col-sm-6 g-col-md-6">
-<h3 class="anchored" data-anchor-id="course-info"><i class="fa-solid fa-university" aria-label="university"></i> Course Info</h3>
-<p><strong>Location:</strong> Carswell 208<br>
-<strong>Time:</strong> W/F 9:30a-10:45a</p>
+::: {.callout-warning}
+This is a warning callout.
+:::
+
+::: {.callout-important}
+This is an important callout.
+:::</code></pre>
 </section>
-<section id="office-hours" class="level3 g-col-12 g-col-sm-6 g-col-md-6">
-<h3 class="anchored" data-anchor-id="office-hours"><i class="fa-solid fa-users" aria-label="users"></i> Office Hours</h3>
-<p><strong>Instructor:</strong> <a href="https://www.lucymcgowan.com">Dr.&nbsp;Lucy D’Agostino McGowan</a><br>
-<strong>Email:</strong> mcgowald@wfu.edu<br>
-<strong>Hours:</strong> <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3Ph3xXz-71yrt5GiV82TmGeFbnWLUxV-2yiGF9EqelwZZ1u1mwOeO9QQH7-e9m9AM72Xj4VRJ2">Bookable</a><br>
-<strong>Office:</strong> Manchester 342</p>
-<p><strong>Math &amp; Stats Center:</strong> <a href="mailto:mathandstatscenter@wfu.edu">mathandstatscenter@wfu.edu</a><br>
-<strong>Location:</strong> <a href="https://mathandstatscenter.wfu.edu/">Math &amp; Stats Center</a></p>
+<section id="rendering-your-document" class="level2">
+<h2 class="anchored" data-anchor-id="rendering-your-document">Rendering Your Document</h2>
+<p>To render your Quarto document:</p>
+<ul>
+<li><strong>In RStudio</strong>: Click the “Render” button<br>
+</li>
+<li><strong>Command line</strong>: Run <code>quarto render filename.qmd</code><br>
+</li>
+<li><strong>Preview</strong>: Use <code>quarto preview filename.qmd</code> for live preview</li>
+</ul>
 </section>
-</div>
-<section id="texts" class="level3">
-<h3 class="anchored" data-anchor-id="texts"><i class="fa-solid fa-book" aria-label="book"></i> Texts</h3>
-<p>The main text book is: Linear Models with R by Julian Faraway</p>
-</section>
-<section id="materials" class="level3">
-<h3 class="anchored" data-anchor-id="materials"><i class="fa-solid fa-laptop" aria-label="laptop"></i> Materials</h3>
-<p>This class is very hands on; be sure to bring a fully charged laptop to every class.</p>
+<section id="tips-for-statistical-writing" class="level2">
+<h2 class="anchored" data-anchor-id="tips-for-statistical-writing">Tips for Statistical Writing</h2>
+<ol type="1">
+<li><strong>Always explain your code</strong>: Use comments (<code>#</code>) and narrative text</li>
+<li><strong>Round numbers appropriately</strong>: Use <code>round()</code> function for inline code</li>
+<li><strong>Label your chunks</strong>: Makes debugging easier</li>
+<li><strong>Include figure captions</strong>: Helps with interpretation</li>
+</ol>
 
 
 </section>
@@ -758,6 +1154,18 @@ ul.task-list li input[type="checkbox"] {
     }
   });
   </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./help-quarto.html" class="pagination-link" aria-label="Creating a Quarto Document">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Creating a Quarto Document</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./troubleshooting.html" class="pagination-link" aria-label="Troubleshooting">
+        <span class="nav-page-text">Troubleshooting</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -766,7 +1174,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/sta-312-f25/sta-312/f25/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sta-312-f25/sta-312/f25/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/sta-312-f25/sta-312/f25/edit/main/quarto-quick-guide.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sta-312-f25/sta-312/f25/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Made with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <a href="https://quarto.org/">Quarto</a></p>
 </div>

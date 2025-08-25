@@ -1,16 +1,306 @@
 [
   {
+    "objectID": "troubleshooting.html",
+    "href": "troubleshooting.html",
+    "title": "Troubleshooting",
+    "section": "",
+    "text": "Problem: I cannot log in.\n\nDouble-check that you are using your school email and the correct password.\n\nProblem: My session is stuck in “Queued”.\n\nRefresh your page\n\nWait a few minutes; this can happen when servers are busy.\n\nIf it does not start after 2 minutes, try logging out and back in.\n\nProblem: RStudio crashes or disconnects.\n\nTry reducing the number of hours when launching your session.\n\nMake sure you have a stable internet connection.\n\nProblem: Quarto is not rendering.\n\nCheck that you saved your file with the .qmd extension.\n\nVerify that Quarto is installed by running quarto --version in the RStudio terminal.",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Computing",
+      "Troubleshooting"
+    ]
+  },
+  {
     "objectID": "schedule.html",
     "href": "schedule.html",
     "title": "\n Schedule",
     "section": "",
-    "text": "Note: The timeline of topics and assignments might be updated throughout the semester.\n\n\n\n\nweek\n\n\ndate\n\n\ntopic\n\n\nprepare\n\n\nslides\n\n\nexercises\n\n\nassignments\n\n\n\n\n\n1\n\n\n27 August\n\n\nWelcome to Linear Models\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nR and Reproducible Workflows\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n1\n\n\n29 August\n\n\nMatrix Refresher\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n2\n\n\n3 September\n\n\nMatrix Workshop\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n2\n\n\n5 September\n\n\nBefore You Fit a Model\n\n\nFaraway Sections 1.3 - 1.4\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSimple Linear Regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n3\n\n\n10 September\n\n\nSimple Linear Regression (Workshop)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n3\n\n\n12 September\n\n\nMultiple Linear Regression\n\n\nFaraway Sections 2.1-2.6\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDeriving the Hat Matrix\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n4\n\n\n17 September\n\n\nNo Class\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n4\n\n\n19 September\n\n\nProperties of Random Matrices\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLaw of Iterated Expectation\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n5\n\n\n24 September\n\n\nLaw of Iterated Expectation (Workshop)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n5\n\n\n26 September\n\n\nGauss Markov Theorem\n\n\nFaraway Section 2.8\n\n\n\n\n\n\n\n\n\n\n\n\n\n6\n\n\n1 October\n\n\nGauss Markov Theorem (Workshop)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n6\n\n\n3 October\n\n\nResidual Sum of Squares\n\n\nFaraway Sections 2.9, 3.1\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nGoodness of Fit\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHypothesis Testing\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n7\n\n\n8 October\n\n\nProject 01 (Out of Class)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n7\n\n\n10 October\n\n\nProject 01 (Out of Class)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n8\n\n\n15 October\n\n\nProject Recap\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n8\n\n\n17 October\n\n\nConfidence Intervals\n\n\nFaraway Sections 3.4-3.6\n\n\n\n\n\n\n\n\n\n\n\n\n\n9\n\n\n22 October\n\n\nConfidence Intervals (Workshop)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n9\n\n\n24 October\n\n\nDiagnostics\n\n\nFaraway Chapter 6\n\n\n\n\n\n\n\n\n\n\n\n\n\n10\n\n\n29 October\n\n\nDiagnostics (Workshop)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n10\n\n\n31 October\n\n\nTransformations\n\n\nFaraway Chapter 9\n\n\n\n\n\n\n\n\n\n\n\n\n\n11\n\n\n5 November\n\n\nTransformations (Workshop)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n11\n\n\n7 November\n\n\nPrediction & Prediction Intervals\n\n\nFaraway Chapter 4\n\n\n\n\n\n\n\n\n\n\n\n\n\n12\n\n\n12 November\n\n\nPrediction (Workshop)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n12\n\n\n14 November\n\n\nExplanation\n\n\nFaraway Chapter 5\n\n\n\n\n\n\n\n\n\n\n\n\n\n13\n\n\n19 November\n\n\nCausal Inference (Workshop)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n13\n\n\n21 November\n\n\nProject 02\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n14\n\n\n26 November\n\n\nThanksgiving\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n14\n\n\n28 November\n\n\nThanksgiving\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n15\n\n\n3 December\n\n\nFinal Presentation (Out of Class)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n15\n\n\n5 December\n\n\nFinal Presentation (Out of Class)"
+    "text": "Note: The timeline of topics and assignments might be updated throughout the semester.\n\n\n\n\nweek\n\n\ndate\n\n\ntopic\n\n\nprepare\n\n\nslides\n\n\nexercises\n\n\n\n\n\n1\n\n\n27 August\n\n\nWelcome to Linear Models\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nR and Reproducible Workflows\n\n\n\n\n\n\n\n\n\n\n\n\n1\n\n\n29 August\n\n\nMatrix Refresher\n\n\n\n\n\n\n\n\n\n\n\n\n2\n\n\n3 September\n\n\nMatrix Workshop\n\n\n\n\n\n\n\n\n\n\n\n\n2\n\n\n5 September\n\n\nBefore You Fit a Model\n\n\nFaraway Sections 1.3 - 1.4\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSimple Linear Regression\n\n\n\n\n\n\n\n\n\n\n\n\n3\n\n\n10 September\n\n\nSimple Linear Regression (Workshop)\n\n\n\n\n\n\n\n\n\n\n\n\n3\n\n\n12 September\n\n\nMultiple Linear Regression\n\n\nFaraway Sections 2.1-2.6\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDeriving the Hat Matrix\n\n\n\n\n\n\n\n\n\n\n\n\n4\n\n\n17 September\n\n\nNo Class\n\n\n\n\n\n\n\n\n\n\n\n\n4\n\n\n19 September\n\n\nProperties of Random Vectors\n\n\nFaraway Section 2.8\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nGauss Markov Theorem\n\n\n\n\n\n\n\n\n\n\n\n\n5\n\n\n24 September\n\n\nGauss Markov Theorem (Workshop)\n\n\n\n\n\n\n\n\n\n\n\n\n5\n\n\n26 September\n\n\nResidual Sum of Squares\n\n\nFaraway Sections 2.9, 3.1\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nGoodness of Fit\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHypothesis Testing\n\n\n\n\n\n\n\n\n\n\n\n\n6\n\n\n1 October\n\n\nPractical Workshop\n\n\n\n\n\n\n\n\n\n\n\n\n6\n\n\n3 October\n\n\nProject 01\n\n\nFaraway Sections 2.9, 3.1\n\n\n\n\n\n\n\n\n\n\n7\n\n\n8 October\n\n\nProject 01 (Out of Class)\n\n\n\n\n\n\n\n\n\n\n\n\n7\n\n\n10 October\n\n\nProject 01 (Out of Class)\n\n\n\n\n\n\n\n\n\n\n\n\n8\n\n\n15 October\n\n\nProject Recap\n\n\n\n\n\n\n\n\n\n\n\n\n8\n\n\n17 October\n\n\nConfidence Intervals\n\n\nFaraway Sections 3.4-3.6\n\n\n\n\n\n\n\n\n\n\n9\n\n\n22 October\n\n\nConfidence Intervals (Workshop)\n\n\n\n\n\n\n\n\n\n\n\n\n9\n\n\n24 October\n\n\nDiagnostics\n\n\nFaraway Chapter 6\n\n\n\n\n\n\n\n\n\n\n10\n\n\n29 October\n\n\nDiagnostics (Workshop)\n\n\n\n\n\n\n\n\n\n\n\n\n10\n\n\n31 October\n\n\nTransformations\n\n\nFaraway Chapter 9\n\n\n\n\n\n\n\n\n\n\n11\n\n\n5 November\n\n\nTransformations (Workshop)\n\n\n\n\n\n\n\n\n\n\n\n\n11\n\n\n7 November\n\n\nPrediction & Prediction Intervals\n\n\nFaraway Chapter 4\n\n\n\n\n\n\n\n\n\n\n12\n\n\n12 November\n\n\nPrediction (Workshop)\n\n\n\n\n\n\n\n\n\n\n\n\n12\n\n\n14 November\n\n\nExplanation\n\n\nFaraway Chapter 5\n\n\n\n\n\n\n\n\n\n\n13\n\n\n19 November\n\n\nCausal Inference (Workshop)\n\n\n\n\n\n\n\n\n\n\n\n\n13\n\n\n21 November\n\n\nProject 02\n\n\n\n\n\n\n\n\n\n\n\n\n14\n\n\n26 November\n\n\nThanksgiving\n\n\n\n\n\n\n\n\n\n\n\n\n14\n\n\n28 November\n\n\nThanksgiving\n\n\n\n\n\n\n\n\n\n\n\n\n15\n\n\n3 December\n\n\nFinal Presentation (Out of Class)\n\n\n\n\n\n\n\n\n\n\n\n\n15\n\n\n5 December\n\n\nFinal Presentation (Out of Class)"
+  },
+  {
+    "objectID": "quarto-quick-guide.html",
+    "href": "quarto-quick-guide.html",
+    "title": "Quarto Quick Reference Guide",
+    "section": "",
+    "text": "Quarto is the next-generation version of R Markdown that combines code, results, and narrative text into dynamic documents. This guide covers the essentials you’ll need for STA 312.",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Computing",
+      "Quarto Quick Guide"
+    ]
+  },
+  {
+    "objectID": "quarto-quick-guide.html#document-structure",
+    "href": "quarto-quick-guide.html#document-structure",
+    "title": "Quarto Quick Reference Guide",
+    "section": "Document Structure",
+    "text": "Document Structure\nEvery Quarto document starts with a YAML header (between --- lines) that contains metadata:\n---\ntitle: \"My Statistical Analysis\"\nauthor: \"Your Name\"\ndate: today\nformat: html\nexecute:\n  echo: true\n  warning: false\n---",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Computing",
+      "Quarto Quick Guide"
+    ]
+  },
+  {
+    "objectID": "quarto-quick-guide.html#basic-markdown-syntax",
+    "href": "quarto-quick-guide.html#basic-markdown-syntax",
+    "title": "Quarto Quick Reference Guide",
+    "section": "Basic Markdown Syntax",
+    "text": "Basic Markdown Syntax\n\nHeaders\n# Header 1 (largest)\n## Header 2\n### Header 3\n#### Header 4\n\n\nText Formatting\n\nBold text: **bold text** or __bold text__\nItalic text: *italic text* or _italic text_\nCode text: `code text`\nLinks: [link text](URL)\n\n\n\nLists\nUnordered lists:\n- Item 1\n- Item 2\n  - Sub-item\n  - Sub-item\nOrdered lists:\n1. First item\n2. Second item\n3. Third item",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Computing",
+      "Quarto Quick Guide"
+    ]
+  },
+  {
+    "objectID": "quarto-quick-guide.html#r-code-chunks",
+    "href": "quarto-quick-guide.html#r-code-chunks",
+    "title": "Quarto Quick Reference Guide",
+    "section": "R Code Chunks",
+    "text": "R Code Chunks\nThe power of Quarto comes from embedding R code directly in your document.\n\nBasic Code Chunk\nCode chucks start with {r}.\n```{r}\n# Your R code here\nx &lt;- c(1, 2, 3, 4, 5)\nmean(x)\n```\n\n\nCode Chunk Options\nYour code chunks can have options that are written in YAML style starting with a #| at the beginning of the line.\n```{r}\n#| label: data-setup\n#| echo: false\n#| message: false\n#| warning: false\n\n# Load libraries and data\nlibrary(tidyverse)\nlibrary(ggplot2)\n```\n\n\nCommon Chunk Options\n\n#| echo: false: Hide code, show output\n\n#| eval: false: Show code, don’t run it\n\n#| include: false: Run code, hide everything\n\n#| message: false: Hide messages\n\n#| warning: false: Hide warnings\n\n#| fig-width: 8 and #| fig-height: 6: Control plot dimensions",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Computing",
+      "Quarto Quick Guide"
+    ]
+  },
+  {
+    "objectID": "quarto-quick-guide.html#inline-r-code",
+    "href": "quarto-quick-guide.html#inline-r-code",
+    "title": "Quarto Quick Reference Guide",
+    "section": "Inline R Code",
+    "text": "Inline R Code\nYou can include R results directly in text using `r`:\nThe mean of our data is `r round(mean(x), 2)`.",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Computing",
+      "Quarto Quick Guide"
+    ]
+  },
+  {
+    "objectID": "quarto-quick-guide.html#mathematical-expressions",
+    "href": "quarto-quick-guide.html#mathematical-expressions",
+    "title": "Quarto Quick Reference Guide",
+    "section": "Mathematical Expressions",
+    "text": "Mathematical Expressions\nQuarto uses LaTeX syntax for mathematical notation:\n\nInline Math\nUse single dollar signs for inline math: $x^2 + y^2 = z^2$\n\n\nDisplay Math\nUse double dollar signs for centered display math:\n$$\\bar{x} = \\frac{1}{n}\\sum_{i=1}^{n} x_i$$\n\n\nCommon Statistical Notation\n\n\n\n\n\n\n\n\nConcept\nLaTeX Code\nRendered Output\n\n\n\n\nMean\n$\\bar{x}$\n\\(\\bar{x}\\)\n\n\nStandard deviation\n$\\sigma$\n\\(\\sigma\\)\n\n\nRegression equation\n$y = \\beta_0 + \\beta_1 x + \\epsilon$\n\\(y = \\beta_0 + \\beta_1 x + \\epsilon\\)\n\n\nSums\n$\\sum_{i=1}^{n} x_i$\n\\(\\sum_{i=1}^{n} x_i\\)\n\n\nSquare root\n$\\sqrt{n}$\n\\(\\sqrt{n}\\)\n\n\nFractions\n$\\frac{a}{b}$\n\\(\\frac{a}{b}\\)\n\n\nSubscripts\n$x_i$\n\\(x_i\\)\n\n\nSuperscripts\n$x^2$\n\\(x^2\\)\n\n\nMatrices\n$\\begin{bmatrix} 1 & 2 & 3 \\\\ 4 & 5 & 6 \\end{bmatrix}$\n\\(\\begin{bmatrix} 1 & 2 & 3 \\\\ 4 & 5 & 6 \\end{bmatrix}\\)",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Computing",
+      "Quarto Quick Guide"
+    ]
+  },
+  {
+    "objectID": "quarto-quick-guide.html#tables",
+    "href": "quarto-quick-guide.html#tables",
+    "title": "Quarto Quick Reference Guide",
+    "section": "Tables",
+    "text": "Tables\n\nSimple Tables\n| Variable | Mean | SD   |\n|----------|------|------|\n| Height   | 68.2 | 3.1  |\n| Weight   | 155  | 22.5 |\n\n\nTables from R Code\n```{r}\n#| label: summary-table\n#| tbl-cap: \"Summary Statistics\"\n\nlibrary(knitr)\nsummary_stats &lt;- data.frame(\n  Variable = c(\"Height\", \"Weight\"),\n  Mean = c(68.2, 155.0),\n  SD = c(3.1, 22.5)\n)\nkable(summary_stats)\n```",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Computing",
+      "Quarto Quick Guide"
+    ]
+  },
+  {
+    "objectID": "quarto-quick-guide.html#figures",
+    "href": "quarto-quick-guide.html#figures",
+    "title": "Quarto Quick Reference Guide",
+    "section": "Figures",
+    "text": "Figures\n\nPlots with Captions\n```{r}\n#| label: fig-scatter\n#| fig-cap: \"Relationship between height and weight\"\n#| fig-width: 6\n#| fig-height: 4\n\nggplot(data, aes(x = height, y = weight)) +\n  geom_point() +\n  geom_smooth(method = \"lm\") +\n  labs(x = \"Height (inches)\", y = \"Weight (lbs)\")\n```",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Computing",
+      "Quarto Quick Guide"
+    ]
+  },
+  {
+    "objectID": "quarto-quick-guide.html#cross-references",
+    "href": "quarto-quick-guide.html#cross-references",
+    "title": "Quarto Quick Reference Guide",
+    "section": "Cross-References",
+    "text": "Cross-References\nYou can reference figures, tables, and equations:\n\nReference a figure: @fig-scatter\n\nReference a table: @tbl-summary\n\nReference an equation: @eq-regression\n\nFor equations with labels:\n$$y = \\beta_0 + \\beta_1 x + \\epsilon$$ {#eq-regression}",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Computing",
+      "Quarto Quick Guide"
+    ]
+  },
+  {
+    "objectID": "quarto-quick-guide.html#callout-blocks",
+    "href": "quarto-quick-guide.html#callout-blocks",
+    "title": "Quarto Quick Reference Guide",
+    "section": "Callout Blocks",
+    "text": "Callout Blocks\nQuarto provides special callout blocks for important information:\n::: {.callout-note}\nThis is a note callout.\n:::\n\n::: {.callout-warning}\nThis is a warning callout.\n:::\n\n::: {.callout-important}\nThis is an important callout.\n:::",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Computing",
+      "Quarto Quick Guide"
+    ]
+  },
+  {
+    "objectID": "quarto-quick-guide.html#rendering-your-document",
+    "href": "quarto-quick-guide.html#rendering-your-document",
+    "title": "Quarto Quick Reference Guide",
+    "section": "Rendering Your Document",
+    "text": "Rendering Your Document\nTo render your Quarto document:\n\nIn RStudio: Click the “Render” button\n\nCommand line: Run quarto render filename.qmd\n\nPreview: Use quarto preview filename.qmd for live preview",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Computing",
+      "Quarto Quick Guide"
+    ]
+  },
+  {
+    "objectID": "quarto-quick-guide.html#tips-for-statistical-writing",
+    "href": "quarto-quick-guide.html#tips-for-statistical-writing",
+    "title": "Quarto Quick Reference Guide",
+    "section": "Tips for Statistical Writing",
+    "text": "Tips for Statistical Writing\n\nAlways explain your code: Use comments (#) and narrative text\nRound numbers appropriately: Use round() function for inline code\nLabel your chunks: Makes debugging easier\nInclude figure captions: Helps with interpretation",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Computing",
+      "Quarto Quick Guide"
+    ]
+  },
+  {
+    "objectID": "help.html",
+    "href": "help.html",
+    "title": "Help",
+    "section": "",
+    "text": "Welcome to the help section! This page contains resources to help you succeed in the course, from technical setup to troubleshooting common issues. Click through the sidebar on the left."
+  },
+  {
+    "objectID": "help.html#getting-started-with-rstudio-and-quarto",
+    "href": "help.html#getting-started-with-rstudio-and-quarto",
+    "title": "Help",
+    "section": "Getting Started with RStudio and Quarto",
+    "text": "Getting Started with RStudio and Quarto\nIf you’re new to using RStudio Pro or working with Quarto documents, check out our getting started guides.\nGetting Started Guide with RStudio Pro →\nGetting Started Guide with Quarto →"
+  },
+  {
+    "objectID": "help.html#quick-links",
+    "href": "help.html#quick-links",
+    "title": "Help",
+    "section": "Quick Links",
+    "text": "Quick Links\n\nRStudio Pro Server: Access your computing environment at login.deac.wfu.edu\nCourse Schedule: Check the schedule for upcoming assignments and due dates"
+  },
+  {
+    "objectID": "help.html#need-additional-help",
+    "href": "help.html#need-additional-help",
+    "title": "Help",
+    "section": "Need Additional Help?",
+    "text": "Need Additional Help?\nIf you can’t find what you’re looking for in our guides, don’t hesitate to reach out."
+  },
+  {
+    "objectID": "help-project.html",
+    "href": "help-project.html",
+    "title": "Creating or Opening a Project",
+    "section": "",
+    "text": "Before starting an assignment or exercise, always create or open a project:\n\nTo create a new project:\n\nIn RStudio, go to File &gt; New Project.\nChoose whether to create a project in a new directory or within an existing directory.\nNavigate to the folder where you want your project\nClick Create Project.\n\nTo open an existing project:\n\nIn RStudio, go to File &gt; Open Project.\nBrowse to the .Rproj file of the project you want to open.\nSelect it and click Open.\n\n\nThis ensures all your files and settings are organized within the correct project environment.",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Computing",
+      "Creating an RStudio Project"
+    ]
+  },
+  {
+    "objectID": "help-quarto.html",
+    "href": "help-quarto.html",
+    "title": "Creating a New Quarto Document in RStudio",
+    "section": "",
+    "text": "To create a new Quarto document:\n\nBe sure that you are in the correct project for the exercise or assignment. If you need help creating a new project here are some tips.\nIn RStudio, go to the menu bar and select File &gt; New File &gt; Quarto Document.\nEnter a title for your document and select the output format (e.g., HTML, PDF, Word).\nClick Create. A new Quarto file (.qmd) will open.\nSave the file to your project directory\nUse the toolbar or the Render button to build your document.",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Computing",
+      "Creating a Quarto Document"
+    ]
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "STA 312: Linear Models",
     "section": "",
-    "text": "Course Info\nLocation: Carswell 208\nTime: W/F 2:00p-3:15p\n\n\n Office Hours\nInstructor: Dr. Lucy D’Agostino McGowan\nEmail: mcgowald@wfu.edu\nHours: Bookable\nOffice: Manchester 342\nMath & Stats Center: mathandstatscenter@wfu.edu\nLocation: Math & Stats Center\n\n\n\n Texts\nThe main text book is:\n\n\n Materials\nThis class is very hands on; be sure to bring a fully charged laptop to every class."
+    "text": "Course Info\nLocation: Carswell 208\nTime: W/F 9:30a-10:45a\n\n\n Office Hours\nInstructor: Dr. Lucy D’Agostino McGowan\nEmail: mcgowald@wfu.edu\nHours: Bookable\nOffice: Manchester 342\nMath & Stats Center: mathandstatscenter@wfu.edu\nLocation: Math & Stats Center\n\n\n\n Texts\nThe main text book is: Linear Models with R by Julian Faraway\n\n\n Materials\nThis class is very hands on; be sure to bring a fully charged laptop to every class."
+  },
+  {
+    "objectID": "rstudio-pro.html",
+    "href": "rstudio-pro.html",
+    "title": "Logging into RStudio Pro",
+    "section": "",
+    "text": "Follow these steps to access RStudio Pro:\n\nMake sure you are connected to the WFU Network. This means you must be on the eduroam wireless network, or connected through the VPN if you are off-campus.\n\nIf you are off-campus, go through the VPN first: WFU VPN Instructions.\n\nGo to login.deac.wfu.edu and sign in with your school email and password.\nOnce logged in, click the RStudio icon.\nSet your working directory to sta/sta312.\nSet the number of hours to how long you plan to work on the project (I usually enter 4).\nClick Launch.\nThe session will show as Queued for a moment. Once it is ready, the status will turn green and say Ready.\nClick the Connect to RStudio Server button. You should now be in RStudio Pro.\n\n\nNote: You are not required to use this setup (i.e., you can download RStudio and all the necessary packages locally). However, the focus of this class is not on technical setup, so we will not be able to spend time troubleshooting issues if you are not using the official setup described here.",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Computing",
+      "Using the RStudio Pro Server"
+    ]
+  },
+  {
+    "objectID": "syllabus.html",
+    "href": "syllabus.html",
+    "title": " Policies",
+    "section": "",
+    "text": "This class is meant to be hands on. Therefore, you are responsible for reading pertinent material prior to each class."
+  },
+  {
+    "objectID": "syllabus.html#class",
+    "href": "syllabus.html#class",
+    "title": " Policies",
+    "section": "",
+    "text": "This class is meant to be hands on. Therefore, you are responsible for reading pertinent material prior to each class."
+  },
+  {
+    "objectID": "syllabus.html#attendance",
+    "href": "syllabus.html#attendance",
+    "title": " Policies",
+    "section": "Attendance",
+    "text": "Attendance\nIf you feel unwell please do not come to class. All class material will be posted after class and I would be happy to meet outside of our class time to help you catch up if needbe."
+  },
+  {
+    "objectID": "syllabus.html#diversity-inclusiveness",
+    "href": "syllabus.html#diversity-inclusiveness",
+    "title": " Policies",
+    "section": "Diversity & Inclusiveness",
+    "text": "Diversity & Inclusiveness\nIt is my intent that students from all diverse backgrounds and perspectives be well-served by this course, that students’ learning needs be addressed both in and out of class, and that the diversity that the students bring to this class be viewed as a resource, strength and benefit. It is my intent to present materials and activities that are respectful of diversity: gender identity, sexuality, disability, age, socioeconomic status, ethnicity, race, nationality, religion, and culture. Your suggestions are encouraged and appreciated. Please let me know ways to improve the effectiveness of the course for you personally, or for other students or student groups.\nFurthermore, I would like to create a learning environment for my students that supports a diversity of thoughts, perspectives and experiences, and honors your identities (including gender identity, sexuality, disability, age, socioeconomic status, ethnicity, race, nationality, religion, and culture.) To help accomplish this:\n\nIf you have a name and/or set of pronouns that differ from those that appear in your official Wake Forest records, please let me know!\nIf any of our class meetings conflict with your religious events, please let me know so that we can make arrangements for you.\nIf you feel like your performance in the class is being impacted by your experiences outside of class, please don’t hesitate to come and talk with me. I want to be a resource for you. If you prefer to speak with someone outside of the course, your academic dean is an excellent resource.\nI (like many people) am still in the process of learning about diverse perspectives and identities. If something was said in class (by anyone) that made you feel uncomfortable, please talk to me about it."
+  },
+  {
+    "objectID": "syllabus.html#disability-policy",
+    "href": "syllabus.html#disability-policy",
+    "title": " Policies",
+    "section": "Disability Policy",
+    "text": "Disability Policy\nStudents with disabilities who believe that they may need accommodations in the class are encouraged to contact CLASS as soon as possible to better ensure that such accommodations are implemented in a timely fashion."
+  },
+  {
+    "objectID": "syllabus.html#how-to-get-help",
+    "href": "syllabus.html#how-to-get-help",
+    "title": " Policies",
+    "section": "How to get help",
+    "text": "How to get help\n\nDiscussion:\nAll course discussion will be on Canvas.\nThis is a place to post your course-related questions. I encourage you to try to answer each other’s questions. At the end of the semester, I will tally up the total number of questions answered and you can get up to 1 point extra credit on your final grade.\n\n\nMath & Stats Center:\n\nMake an appointment: https://mathandstatscenter.wfu.edu/"
+  },
+  {
+    "objectID": "syllabus.html#honor-code",
+    "href": "syllabus.html#honor-code",
+    "title": " Policies",
+    "section": "Honor code",
+    "text": "Honor code\nAcademic dishonesty will not be tolerated. For other information on these matters, please consult the Code of Conduct. For Academic issues please see the College Judicial System.\n\nSharing code & responses\n\nYou may use online resources (e.g., StackOverflow, ChatGPT) for help. For projects, you must explicitly cite any borrowed or adapted code. This includes both directly copied code and code you modified for your own work. Uncited reuse of code will be treated as plagiarism.\n\nFor exercises and in-class worked problems, you are welcome to use resources freely, but copying without understanding is strongly discouraged.\n\nRather than relying on someone else’s work, ask for help — you are not alone in this course."
+  },
+  {
+    "objectID": "syllabus.html#course-components",
+    "href": "syllabus.html#course-components",
+    "title": " Policies",
+    "section": "Course components",
+    "text": "Course components\n\nExercises\nPractice problems designed to reinforce concepts. These are graded for completion.\n\n\nIn-class worked problems\nOn most Wednesdays, class time will be devoted to group work on the assigned exercise problems. Participation will be graded as follows:\n\n0 – did not participate\n\n1 – present and engaged\n\n2 – provided an especially clear or helpful explanation\n\nMost students will average a score of 1, with occasional 2s. It is expected and built in that you may miss a class or two throughout the semester.\n\n\nMidterm\nWe will have one in-class midterm.\n\n\nFinal Project\nA cumulative project worth 35% of the final grade, integrating skills and knowledge from across the course."
+  },
+  {
+    "objectID": "syllabus.html#grading",
+    "href": "syllabus.html#grading",
+    "title": " Policies",
+    "section": "Grading",
+    "text": "Grading\nYour final grade will be determined as follows:\n\n\n\nComponent\nWeight\n\n\n\n\nExercises\n20%\n\n\nIn-class worked problems\n30%\n\n\nMidterm\n20%\n\n\nFinal Project\n30%\n\n\nTotal\n100%\n\n\n\nGrades conversion:\n\n\n\nLetter\nNumeric\n\n\n\n\nA\n&gt; 94\n\n\nA-\n90 - 94\n\n\nB+\n87 - 89\n\n\nB\n83 - 86\n\n\nB-\n80 - 82\n\n\nC+\n77 - 79\n\n\nC\n73 - 76\n\n\nC-\n70 - 72\n\n\nD+\n67 - 69\n\n\nD\n65 - 66\n\n\nF\nBelow 65"
+  },
+  {
+    "objectID": "syllabus.html#late-missed-work",
+    "href": "syllabus.html#late-missed-work",
+    "title": " Policies",
+    "section": "Late / missed work",
+    "text": "Late / missed work\n\nLate work policy for labs:\n\nlate, but within 24 hours of due date/time: -50%\nany later: no credit\n\nNo make-up assessments will be given.\nAll regrade requests must be discussed with the professor within one week of receiving your grade. There will be no grade changes after the final class."
   }
 ]

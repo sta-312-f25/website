@@ -1,11 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://sta-312-f25.lucymcgowan.com/troubleshooting.html</loc>
+    <lastmod>2025-08-25T14:00:31.008Z</lastmod>
+  </url>
+  <url>
     <loc>https://sta-312-f25.lucymcgowan.com/schedule.html</loc>
-    <lastmod>2025-08-17T22:55:06.268Z</lastmod>
+    <lastmod>2025-08-25T15:18:25.121Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta-312-f25.lucymcgowan.com/quarto-quick-guide.html</loc>
+    <lastmod>2025-08-25T15:01:56.199Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta-312-f25.lucymcgowan.com/help.html</loc>
+    <lastmod>2025-08-25T14:29:37.164Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta-312-f25.lucymcgowan.com/help-project.html</loc>
+    <lastmod>2025-08-25T14:31:36.772Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta-312-f25.lucymcgowan.com/help-quarto.html</loc>
+    <lastmod>2025-08-25T14:33:13.576Z</lastmod>
   </url>
   <url>
     <loc>https://sta-312-f25.lucymcgowan.com/index.html</loc>
-    <lastmod>2025-08-17T22:13:56.790Z</lastmod>
+    <lastmod>2025-08-25T14:20:17.589Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta-312-f25.lucymcgowan.com/rstudio-pro.html</loc>
+    <lastmod>2025-08-25T13:56:59.168Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta-312-f25.lucymcgowan.com/syllabus.html</loc>
+    <lastmod>2025-08-25T17:15:34.714Z</lastmod>
   </url>
 </urlset>
