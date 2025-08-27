@@ -1,0 +1,33 @@
+---
+title: "{{< var course.title >}}"
+toc: false
+subtitle: "{{< var course.subtitle >}}"
+---
+
+::: {.quarto-title-meta style="display:none"}
+:::
+
+::: {.grid}
+::: {.g-col-12 .g-col-sm-6 .g-col-md-6}
+### {{< fa university >}} Course Info
+**Location:** {{< var course.location >}}  
+**Time:** {{< var course.time >}}
+:::
+
+::: {.g-col-12 .g-col-sm-6 .g-col-md-6}
+### {{< fa users >}} Office Hours
+**Instructor:** [{{< var instructor.name >}}]({{< var instructor.url >}})  
+**Email:** {{< var instructor.email >}}  
+**Hours:** [{{< var instructor.officehrs >}}]({{< var instructor.appointment_url >}})  
+**Office:** Manchester 342
+
+**Math & Stats Center:** [mathandstatscenter@wfu.edu](mailto:mathandstatscenter@wfu.edu)  
+**Location:** [Math & Stats Center](https://mathandstatscenter.wfu.edu/)
+:::
+:::
+
+### {{< fa book >}} Texts
+{{< var course.text >}}
+
+### {{< fa laptop >}} Materials
+This class is very hands on; be sure to bring a fully charged laptop to every class.
