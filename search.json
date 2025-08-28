@@ -411,6 +411,111 @@
     "text": "You Try: Special Matrices\n\nProblem: Identify the type of each matrix \\(\\mathbf{A} = \\begin{bmatrix} 2 & 0 & 0 \\\\ 0 & -1 & 0 \\\\ 0 & 0 & 3 \\end{bmatrix}, \\quad \\mathbf{B} = \\begin{bmatrix} 1 & 4 \\\\ 4 & 2 \\end{bmatrix}, \\quad \\mathbf{C} = \\begin{bmatrix} 1 & 2 \\\\ 3 & 4 \\end{bmatrix}\\)\n\n\nSolutions: - Matrix A: Diagonal matrix (non-zero elements only on main diagonal) - Matrix B: Symmetric matrix (\\(\\mathbf{B} = \\mathbf{B}^T\\) since \\(b_{12} = b_{21} = 4\\)) - Matrix C: General matrix (no special properties)\n\n\n\n\n−+\n02:00"
   },
   {
+    "objectID": "slides/02-slides.html#vector-derivatives-introduction",
+    "href": "slides/02-slides.html#vector-derivatives-introduction",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "Vector Derivatives: Introduction",
+    "text": "Vector Derivatives: Introduction\n\nWhy do we need derivatives of vectors? - Essential for optimization in statistics and machine learning - Key to deriving least squares solutions - Foundation for understanding the hat matrix"
+  },
+  {
+    "objectID": "slides/02-slides.html#vector-derivatives-notation",
+    "href": "slides/02-slides.html#vector-derivatives-notation",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "Vector Derivatives: Notation",
+    "text": "Vector Derivatives: Notation\n\nLet \\(\\mathbf{a} = \\begin{bmatrix} a_1 \\\\ a_2 \\\\ \\vdots \\\\ a_n \\end{bmatrix}\\) and \\(\\mathbf{b} = \\begin{bmatrix} b_1 \\\\ b_2 \\\\ \\vdots \\\\ b_n \\end{bmatrix}\\) be column vectors\n\n\nInner product: \\(\\mathbf{a}'\\mathbf{b} = a_1b_1 + a_2b_2 + \\cdots + a_nb_n\\) (scalar)"
+  },
+  {
+    "objectID": "slides/02-slides.html#derivative-rule-1-linear-form",
+    "href": "slides/02-slides.html#derivative-rule-1-linear-form",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "Derivative Rule 1: Linear Form",
+    "text": "Derivative Rule 1: Linear Form\n\nRule: \\(\\frac{\\partial}{\\partial \\mathbf{x}}(\\mathbf{a}'\\mathbf{x}) = \\mathbf{a}\\)\n\n\nIn words: The derivative of a linear form \\(\\mathbf{a}'\\mathbf{x}\\) with respect to \\(\\mathbf{x}\\) is simply \\(\\mathbf{a}\\)"
+  },
+  {
+    "objectID": "slides/02-slides.html#derivative-rule-1-example",
+    "href": "slides/02-slides.html#derivative-rule-1-example",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "Derivative Rule 1: Example",
+    "text": "Derivative Rule 1: Example\n\nLet \\(\\mathbf{a} = \\begin{bmatrix} 2 \\\\ 3 \\\\ 1 \\end{bmatrix}\\) and \\(\\mathbf{x} = \\begin{bmatrix} x_1 \\\\ x_2 \\\\ x_3 \\end{bmatrix}\\)\n\n\nThen \\(\\mathbf{a}'\\mathbf{x} = 2x_1 + 3x_2 + x_3\\)\n\n\nDerivative: \\(\\frac{\\partial}{\\partial \\mathbf{x}}(2x_1 + 3x_2 + x_3) = \\begin{bmatrix} 2 \\\\ 3 \\\\ 1 \\end{bmatrix} = \\mathbf{a}\\)"
+  },
+  {
+    "objectID": "slides/02-slides.html#you-try-vector-derivatives",
+    "href": "slides/02-slides.html#you-try-vector-derivatives",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "You Try: Vector Derivatives",
+    "text": "You Try: Vector Derivatives\n\nProblem: Find \\(\\frac{\\partial}{\\partial \\mathbf{x}}(\\mathbf{c}'\\mathbf{x})\\) where \\(\\mathbf{c} = \\begin{bmatrix} 5 \\\\ -2 \\\\ 4 \\end{bmatrix}\\)\n\n\nSolution: \\(\\frac{\\partial}{\\partial \\mathbf{x}}(\\mathbf{c}'\\mathbf{x}) = \\mathbf{c} = \\begin{bmatrix} 5 \\\\ -2 \\\\ 4 \\end{bmatrix}\\)\n\n\n\n\n−+\n03:00"
+  },
+  {
+    "objectID": "slides/02-slides.html#matrix-derivatives-quadratic-forms",
+    "href": "slides/02-slides.html#matrix-derivatives-quadratic-forms",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "Matrix Derivatives: Quadratic Forms",
+    "text": "Matrix Derivatives: Quadratic Forms\n\nQuadratic form: \\(\\mathbf{x}'\\mathbf{A}\\mathbf{x}\\) where \\(\\mathbf{A}\\) is an \\(n \\times n\\) matrix\n\n\nExample: \\(\\mathbf{x}'\\mathbf{A}\\mathbf{x} = \\begin{bmatrix} x_1 & x_2 \\end{bmatrix} \\begin{bmatrix} a_{11} & a_{12} \\\\ a_{21} & a_{22} \\end{bmatrix} \\begin{bmatrix} x_1 \\\\ x_2 \\end{bmatrix}\\)"
+  },
+  {
+    "objectID": "slides/02-slides.html#matrix-derivatives-quadratic-forms-1",
+    "href": "slides/02-slides.html#matrix-derivatives-quadratic-forms-1",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "Matrix Derivatives: Quadratic Forms",
+    "text": "Matrix Derivatives: Quadratic Forms\n\nExpanding the 2×2 case: \\[\\mathbf{x}'\\mathbf{A}\\mathbf{x} = a_{11}x_1^2 + (a_{12} + a_{21})x_1x_2 + a_{22}x_2^2\\]"
+  },
+  {
+    "objectID": "slides/02-slides.html#derivative-rule-3-quadratic-forms",
+    "href": "slides/02-slides.html#derivative-rule-3-quadratic-forms",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "Derivative Rule 3: Quadratic Forms",
+    "text": "Derivative Rule 3: Quadratic Forms\n\nRule: \\(\\frac{\\partial}{\\partial \\mathbf{x}}(\\mathbf{x}'\\mathbf{A}\\mathbf{x}) = (\\mathbf{A} + \\mathbf{A}')\\mathbf{x}\\)\n\n\nSpecial case: If \\(\\mathbf{A}\\) is symmetric (\\(\\mathbf{A} = \\mathbf{A}'\\)), then: \\[\\frac{\\partial}{\\partial \\mathbf{x}}(\\mathbf{x}'\\mathbf{A}\\mathbf{x}) = 2\\mathbf{A}\\mathbf{x}\\]"
+  },
+  {
+    "objectID": "slides/02-slides.html#derivative-rule-3-example",
+    "href": "slides/02-slides.html#derivative-rule-3-example",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "Derivative Rule 3: Example",
+    "text": "Derivative Rule 3: Example\n\nLet \\(\\mathbf{A} = \\begin{bmatrix} 2 & 1 \\\\ 3 & 4 \\end{bmatrix}\\) and \\(\\mathbf{x} = \\begin{bmatrix} x_1 \\\\ x_2 \\end{bmatrix}\\)\n\n\nStep 1: Find \\(\\mathbf{A} + \\mathbf{A}'\\) \\[\\mathbf{A}' = \\begin{bmatrix} 2 & 3 \\\\ 1 & 4 \\end{bmatrix}\\] \\[\\mathbf{A} + \\mathbf{A}' = \\begin{bmatrix} 4 & 4 \\\\ 4 & 8 \\end{bmatrix}\\]"
+  },
+  {
+    "objectID": "slides/02-slides.html#derivative-rule-3-example-cont.",
+    "href": "slides/02-slides.html#derivative-rule-3-example-cont.",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "Derivative Rule 3: Example (cont.)",
+    "text": "Derivative Rule 3: Example (cont.)\nLet \\(\\mathbf{A} = \\begin{bmatrix} 2 & 1 \\\\ 3 & 4 \\end{bmatrix}\\) and \\(\\mathbf{x} = \\begin{bmatrix} x_1 \\\\ x_2 \\end{bmatrix}\\)\n\nStep 2: Apply the rule \\[\\frac{\\partial}{\\partial \\mathbf{x}}(\\mathbf{x}'\\mathbf{A}\\mathbf{x}) = (\\mathbf{A} + \\mathbf{A}')\\mathbf{x} = \\begin{bmatrix} 4 & 4 \\\\ 4 & 8 \\end{bmatrix} \\begin{bmatrix} x_1 \\\\ x_2 \\end{bmatrix} = \\begin{bmatrix} 4x_1 + 4x_2 \\\\ 4x_1 + 8x_2 \\end{bmatrix}\\]"
+  },
+  {
+    "objectID": "slides/02-slides.html#symmetric-matrix-case",
+    "href": "slides/02-slides.html#symmetric-matrix-case",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "Symmetric Matrix Case",
+    "text": "Symmetric Matrix Case\n\nExample: Let \\(\\mathbf{S} = \\begin{bmatrix} 3 & 2 \\\\ 2 & 5 \\end{bmatrix}\\) (symmetric)\n\n\nDerivative: \\(\\frac{\\partial}{\\partial \\mathbf{x}}(\\mathbf{x}'\\mathbf{S}\\mathbf{x}) = 2\\mathbf{S}\\mathbf{x} = 2\\begin{bmatrix} 3 & 2 \\\\ 2 & 5 \\end{bmatrix} \\begin{bmatrix} x_1 \\\\ x_2 \\end{bmatrix} = \\begin{bmatrix} 6x_1 + 4x_2 \\\\ 4x_1 + 10x_2 \\end{bmatrix}\\)"
+  },
+  {
+    "objectID": "slides/02-slides.html#general-form-mathbfbmathbfamathbfx",
+    "href": "slides/02-slides.html#general-form-mathbfbmathbfamathbfx",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "General Form: \\(\\mathbf{b}'\\mathbf{A}\\mathbf{x}\\)",
+    "text": "General Form: \\(\\mathbf{b}'\\mathbf{A}\\mathbf{x}\\)\n\nRule: \\(\\frac{\\partial}{\\partial \\mathbf{x}}(\\mathbf{b}'\\mathbf{A}\\mathbf{x}) = \\mathbf{A}'\\mathbf{b}\\)\n\n\nNote: \\(\\mathbf{b}'\\mathbf{A}\\mathbf{x}\\) is a scalar, and \\(\\mathbf{b}\\) is treated as a constant vector"
+  },
+  {
+    "objectID": "slides/02-slides.html#you-try-matrix-derivatives",
+    "href": "slides/02-slides.html#you-try-matrix-derivatives",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "You Try: Matrix Derivatives",
+    "text": "You Try: Matrix Derivatives\n\nProblem: Find \\(\\frac{\\partial}{\\partial \\mathbf{x}}(\\mathbf{x}'\\mathbf{B}\\mathbf{x})\\) where \\(\\mathbf{B} = \\begin{bmatrix} 1 & 0 \\\\ 2 & 3 \\end{bmatrix}\\)\n\n\nSolution: \\[\\mathbf{B}' = \\begin{bmatrix} 1 & 2 \\\\ 0 & 3 \\end{bmatrix}, \\quad \\mathbf{B} + \\mathbf{B}' = \\begin{bmatrix} 2 & 2 \\\\ 2 & 6 \\end{bmatrix}\\] \\[\\frac{\\partial}{\\partial \\mathbf{x}}(\\mathbf{x}'\\mathbf{B}\\mathbf{x}) = \\begin{bmatrix} 2 & 2 \\\\ 2 & 6 \\end{bmatrix} \\mathbf{x} = \\begin{bmatrix} 2x_1 + 2x_2 \\\\ 2x_1 + 6x_2 \\end{bmatrix}\\]\n\n\n\n\n−+\n04:00"
+  },
+  {
+    "objectID": "slides/02-slides.html#summary-key-rules",
+    "href": "slides/02-slides.html#summary-key-rules",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "Summary: Key Rules",
+    "text": "Summary: Key Rules\n\n\nLinear forms: \\(\\frac{\\partial}{\\partial \\mathbf{x}}(\\mathbf{a}'\\mathbf{x}) = \\mathbf{a}\\)\n\n\n\n\nQuadratic forms: \\(\\frac{\\partial}{\\partial \\mathbf{x}}(\\mathbf{x}'\\mathbf{A}\\mathbf{x}) = (\\mathbf{A} + \\mathbf{A}')\\mathbf{x}\\)\n\n\n\n\nSymmetric case: \\(\\frac{\\partial}{\\partial \\mathbf{x}}(\\mathbf{x}'\\mathbf{A}\\mathbf{x}) = 2\\mathbf{A}\\mathbf{x}\\) when \\(\\mathbf{A} = \\mathbf{A}'\\)"
+  },
+  {
+    "objectID": "slides/02-slides.html#connection-to-hat-matrix",
+    "href": "slides/02-slides.html#connection-to-hat-matrix",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "Connection to Hat Matrix",
+    "text": "Connection to Hat Matrix\n\nThese rules are essential for deriving:\n\nNormal equations: \\(\\mathbf{X}'\\mathbf{X}\\hat{\\boldsymbol{\\beta}} = \\mathbf{X}'\\mathbf{y}\\)\nHat matrix: \\(\\mathbf{H} = \\mathbf{X}(\\mathbf{X}'\\mathbf{X})^{-1}\\mathbf{X}'\\)\nLeast squares solution: \\(\\hat{\\boldsymbol{\\beta}} = (\\mathbf{X}'\\mathbf{X})^{-1}\\mathbf{X}'\\mathbf{y}\\)\n\n\n\nWe’ll use these derivatives to minimize the sum of squared errors!"
+  },
+  {
     "objectID": "schedule.html",
     "href": "schedule.html",
     "title": "\n Schedule",
