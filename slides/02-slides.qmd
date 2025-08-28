@@ -1,0 +1,673 @@
+---
+title: "Matrix Algebra Fundamentals"
+---
+
+## What is a Matrix?
+
+- A **matrix** is a rectangular array of numbers arranged in rows and columns
+- Written using square brackets or parentheses
+- Each number in the matrix is called an **element** or **entry**
+
+## What is a Matrix?
+
+$$\mathbf{A} = \begin{bmatrix} 
+a_{11} & a_{12} & a_{13} \\
+a_{21} & a_{22} & a_{23} \\
+a_{31} & a_{32} & a_{33}
+\end{bmatrix}$$
+
+
+## Matrix Dimensions
+
+::: {.fragment}
+**Rows** are horizontal ↔
+:::
+
+::: {.fragment}
+**Columns** are vertical ↕
+:::
+
+::: {.fragment}
+$$
+\mathbf{A} = \begin{bmatrix} 
+\require{color}\colorbox{#eec8e1}{$a_{11}$} & \colorbox{#eec8e1}{$a_{12}$} & \colorbox{#eec8e1}{$a_{13}$} \\
+a_{21} & a_{22} & a_{23} \\
+a_{31} & a_{32} & a_{33}
+\end{bmatrix} \leftarrow \text{Row 1}
+$$
+:::
+
+
+## Matrix Dimensions
+
+**Rows** are horizontal ↔
+
+**Columns** are vertical ↕
+
+$$
+\mathbf{A} = \begin{bmatrix} 
+\require{color}a_{11} & a_{12} & a_{13} \\
+\colorbox{#eec8e1}{$a_{21}$} & \colorbox{#eec8e1}{$a_{22}$} & \colorbox{#eec8e1}{$a_{23}$} \\
+a_{31} & a_{32} & a_{33}
+\end{bmatrix} \leftarrow \text{Row 2}
+$$
+
+## Matrix Dimensions
+
+**Rows** are horizontal ↔
+
+**Columns** are vertical ↕
+
+$$
+\mathbf{A} = \begin{bmatrix} 
+\require{color}a_{11} & a_{12} & a_{13} \\
+a_{21} & a_{22} & a_{23} \\
+\colorbox{#eec8e1}{$a_{31}$} & \colorbox{#eec8e1}{$a_{32}$} & \colorbox{#eec8e1}{$a_{33}$}
+\end{bmatrix} \leftarrow \text{Row 3}
+$$
+
+## Matrix Dimensions
+
+**Rows** are horizontal ↔
+
+**Columns** are vertical ↕
+
+
+$$
+\mathbf{A} = \begin{bmatrix} 
+\colorbox{#eec8e1}{$a_{11}$} & a_{12} & a_{13} \\
+\colorbox{#eec8e1}{$a_{21}$} & a_{22} & a_{23} \\
+\colorbox{#eec8e1}{$a_{31}$} & a_{32} & a_{33}
+\end{bmatrix} \leftarrow \text{Column 1}
+$$
+
+
+
+## Matrix Size: n × p
+
+::: {.fragment}
+A matrix with **n rows** and **p columns** is called an **n × p matrix**
+:::
+
+::: {.fragment}
+$$\mathbf{A}_{3 \times 3} = \begin{bmatrix} 
+a_{11} & a_{12} & a_{13} \\
+a_{21} & a_{22} & a_{23} \\
+a_{31} & a_{32} & a_{33}
+\end{bmatrix}$$
+
+This is a **3 × 3** matrix (3 rows, 3 columns)
+:::
+
+## Matrix Size: n × p
+
+A matrix with **n rows** and **p columns** is called an **n × p matrix**
+
+
+$$\mathbf{B}_{2 \times 4} = \begin{bmatrix} 
+b_{11} & b_{12} & b_{13} & b_{14} \\
+b_{21} & b_{22} & b_{23} & b_{24}
+\end{bmatrix}$$
+
+This is a **2 × 4** matrix (2 rows, 4 columns)
+
+
+
+## Examples of Different Matrix Sizes
+
+::: {.column}
+::: {.fragment}
+**Row vector** (1 × p):
+$$\mathbf{r} = \begin{bmatrix} 1 & 3 & 5 & 7 \end{bmatrix}$$
+:::
+
+:::
+
+::: {.column}
+::: {.fragment}
+**Column vector** (n × 1):
+$$\mathbf{c} = \begin{bmatrix} 2 \\ 4 \\ 6 \end{bmatrix}$$
+:::
+
+:::
+
+## Examples of Different Matrix Sizes
+
+
+**Square matrix** (n × n):
+$$\mathbf{S} = \begin{bmatrix} 
+1 & 2 \\
+3 & 4
+\end{bmatrix}$$
+
+
+
+
+## Matrix Addition
+
+::: {.fragment}
+Matrices can be added **only if they have the same dimensions**
+:::
+
+::: {.fragment}
+Add corresponding elements:
+$$\mathbf{A} + \mathbf{B} = \begin{bmatrix} a_{11} + b_{11} & a_{12} + b_{12} \\ a_{21} + b_{21} & a_{22} + b_{22} \end{bmatrix}$$
+:::
+
+## Matrix Addition
+
+::: {.fragment}
+**Example:**
+$$\begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix} + \begin{bmatrix} 5 & 6 \\ 7 & 8 \end{bmatrix}$$
+:::
+
+::: {.fragment}
+$$= \begin{bmatrix} \color{red}{1+5} & \color{blue}{2+6} \\ \color{green}{3+7} & \color{purple}{4+8} \end{bmatrix} = \begin{bmatrix} \color{red}{6} & \color{blue}{8} \\ \color{green}{10} & \color{purple}{12} \end{bmatrix}$$
+:::
+
+---
+
+## You Try: Matrix Addition
+
+::: {.fragment}
+**Problem:** Add these matrices
+$\mathbf{A} = \begin{bmatrix} 3 & -1 & 2 \\ 0 & 4 & -3 \end{bmatrix}, \quad \mathbf{B} = \begin{bmatrix} 1 & 2 & -1 \\ 5 & -2 & 1 \end{bmatrix}$
+:::
+
+::: {.fragment}
+**You Try:** 
+$\mathbf{A} + \mathbf{B} = ?$
+:::
+
+::: {.fragment}
+**Solution:** 
+$\mathbf{A} + \mathbf{B} = \begin{bmatrix} 3+1 & -1+2 & 2+(-1) \\ 0+5 & 4+(-2) & -3+1 \end{bmatrix} = \begin{bmatrix} 4 & 1 & 1 \\ 5 & 2 & -2 \end{bmatrix}$
+:::
+
+```{r}
+#| echo: false
+countdown::countdown(4)
+```
+
+
+
+
+## Matrix Addition: Dimension Requirements
+
+::: {.column width=60%}
+::: {.fragment}
+
+**This works** ✓
+
+::: small
+$$\colorbox{#eec8e1}{$\mathbf{A}_{2 \times 3} + \mathbf{B}_{2 \times 3} = \mathbf{C}_{2 \times 3}$}$$
+:::
+:::
+:::
+
+::: {.column width=40%}
+::: {.fragment}
+**This doesn't work** ✗
+
+::: small
+$$\colorbox{#eec8e1}{$\mathbf{A}_{2 \times 3} + \mathbf{B}_{3 \times 2} = \text{?}$}$$
+:::
+:::
+:::
+
+::: {.fragment}
+The matrices must have **exactly the same dimensions** to be added!
+:::
+
+---
+
+## Matrix Multiplication: The Basics 
+
+* Matrix multiplication is **NOT** element-wise multiplication
+* For $\mathbf{A} \times \mathbf{B}$ to be defined the number of **columns in A** must equal number of **rows in B** ([inner dimensions]{.hl} must match!)
+* If $\mathbf{A}$ is $m \times n$ and $\mathbf{B}$ is $n \times p$, then:
+$$\mathbf{A}_{m \times n} \times \mathbf{B}_{n \times p} = \mathbf{C}_{m \times p}$$
+
+
+
+## You Try: Matrix Dimensions
+
+::: {.fragment}
+**Problem:** Can these matrices be multiplied? If yes, what's the resulting dimension?
+
+$\mathbf{A}_{3 \times 2} \times \mathbf{B}_{2 \times 4} = ?$
+
+$\mathbf{C}_{2 \times 5} \times \mathbf{D}_{3 \times 2} = ?$
+:::
+
+
+::: {.fragment}
+**Solutions:**
+
+1. $\mathbf{A}_{3 \times 2} \times \mathbf{B}_{2 \times 4} = \mathbf{Result}_{3 \times 4}$ ✓ (inner dimensions match: 2 = 2)
+
+2. $\mathbf{C}_{2 \times 5} \times \mathbf{D}_{3 \times 2}$ = undefined ✗ (inner dimensions don't match: 5 ≠ 3)
+:::
+
+```{r}
+#| echo: false
+countdown::countdown(2)
+```
+
+
+
+## Matrix Multiplication: Step by Step
+
+
+$$
+\begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix} \times \begin{bmatrix} 5 & 6 \\ 7 & 8 \end{bmatrix}=\begin{bmatrix}&\\&\end{bmatrix}
+$$
+
+## Matrix Multiplication: Step by Step
+
+
+$$
+\begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix} \times \begin{bmatrix} 5 & 6 \\ 7 & 8 \end{bmatrix}=\begin{bmatrix}\colorbox{#eec8e1}{}&\\&\end{bmatrix}
+$$
+
+## Matrix Multiplication: Step by Step
+
+
+$$\begin{bmatrix} \colorbox{#eec8e1}{1} & 2 \\ 3 & 4 \end{bmatrix} \times \begin{bmatrix} \colorbox{#eec8e1}{5} & 6 \\ 7 & 8 \end{bmatrix}=\begin{bmatrix}\colorbox{#eec8e1}{(1)(5)}&\\&\end{bmatrix}$$
+
+## Matrix Multiplication: Step by Step
+
+
+$$\begin{bmatrix} \colorbox{#eec8e1}{1} & \colorbox{#eec8e1}2 \\ 3 & 4 \end{bmatrix} \times \begin{bmatrix} \colorbox{#eec8e1}{5} & 6 \\ \colorbox{#eec8e1}7 & 8 \end{bmatrix}=\begin{bmatrix}\colorbox{#eec8e1}{(1)(5) + (2)(7)}&\\&\end{bmatrix}$$
+
+## Matrix Multiplication: Step by Step
+
+
+$$\begin{bmatrix} \colorbox{#eec8e1}{1} & \colorbox{#eec8e1}2 \\ 3 & 4 \end{bmatrix} \times \begin{bmatrix} \colorbox{#eec8e1}{5} & 6 \\ \colorbox{#eec8e1}7 & 8 \end{bmatrix}=\begin{bmatrix}\colorbox{#eec8e1}{19}&\\&\end{bmatrix}$$
+
+## Matrix Multiplication: Step by Step
+
+
+$$
+\begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix} \times \begin{bmatrix} 5 & 6 \\ 7 & 8 \end{bmatrix}=\begin{bmatrix}19&\colorbox{#eec8e1}{ }\\&\end{bmatrix}
+$$
+
+## Matrix Multiplication: Step by Step
+
+
+$$
+\begin{bmatrix} \colorbox{#eec8e1}1 & 2 \\ 3 & 4 \end{bmatrix} \times \begin{bmatrix} 5 & \colorbox{#eec8e1}6 \\ 7 & 8 \end{bmatrix}=\begin{bmatrix}19&\colorbox{#eec8e1}{(1)(6)}\\&\end{bmatrix}
+$$
+
+## Matrix Multiplication: Step by Step
+
+
+$$
+\begin{bmatrix} \colorbox{#eec8e1}1 & \colorbox{#eec8e1}2 \\ 3 & 4 \end{bmatrix} \times \begin{bmatrix} 5 & \colorbox{#eec8e1}6 \\ 7 & \colorbox{#eec8e1}8 \end{bmatrix}=\begin{bmatrix}19&\colorbox{#eec8e1}{(1)(6)+(2)(8)}\\&\end{bmatrix}
+$$
+
+## Matrix Multiplication: Step by Step
+
+
+$$
+\begin{bmatrix} \colorbox{#eec8e1}1 & \colorbox{#eec8e1}2 \\ 3 & 4 \end{bmatrix} \times \begin{bmatrix} 5 & \colorbox{#eec8e1}6 \\ 7 & \colorbox{#eec8e1}8 \end{bmatrix}=\begin{bmatrix}19&\colorbox{#eec8e1}{22}\\&\end{bmatrix}
+$$
+
+
+## Matrix Multiplication: Step by Step
+
+
+$$
+\begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix} \times \begin{bmatrix} 5 & 6 \\ 7 & 8 \end{bmatrix}=\begin{bmatrix}19&22{}\\\colorbox{#eec8e1}{ }&\end{bmatrix}
+$$
+
+## Matrix Multiplication: Step by Step
+
+
+$$
+\begin{bmatrix} 1 & 2 \\ \colorbox{#eec8e1}3 & 4 \end{bmatrix} \times \begin{bmatrix} \colorbox{#eec8e1}5 & 6 \\ 7 & 8 \end{bmatrix}=\begin{bmatrix}19&22{}\\\colorbox{#eec8e1}{(3)(5) }&\end{bmatrix}
+$$
+
+## Matrix Multiplication: Step by Step
+
+
+$$
+\begin{bmatrix} 1 & 2 \\ \colorbox{#eec8e1}3 & \colorbox{#eec8e1}4 \end{bmatrix} \times \begin{bmatrix} \colorbox{#eec8e1}5 & 6 \\ \colorbox{#eec8e1}7 & 8 \end{bmatrix}=\begin{bmatrix}19&22{}\\\colorbox{#eec8e1}{(3)(5) +(4)(7)}&\end{bmatrix}
+$$
+
+## Matrix Multiplication: Step by Step
+
+
+$$
+\begin{bmatrix} 1 & 2 \\ \colorbox{#eec8e1}3 & \colorbox{#eec8e1}4 \end{bmatrix} \times \begin{bmatrix} \colorbox{#eec8e1}5 & 6 \\ \colorbox{#eec8e1}7 & 8 \end{bmatrix}=\begin{bmatrix}19&22{}\\\colorbox{#eec8e1}{43}&\end{bmatrix}
+$$
+
+## Matrix Multiplication: Step by Step
+
+
+$$
+\begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix} \times \begin{bmatrix} 5 & 6 \\ 7 & 8 \end{bmatrix}=\begin{bmatrix}19&22{}\\43&\colorbox{#eec8e1}{ }\end{bmatrix}
+$$
+
+## Matrix Multiplication: Step by Step
+
+
+$$
+\begin{bmatrix} 1 & 2 \\ \colorbox{#eec8e1}3 & 4 \end{bmatrix} \times \begin{bmatrix} 5 & \colorbox{#eec8e1}6 \\ 7 & 8 \end{bmatrix}=\begin{bmatrix}19&22{}\\43&\colorbox{#eec8e1}{(3)(6) }\end{bmatrix}
+$$
+
+## Matrix Multiplication: Step by Step
+
+
+$$
+\begin{bmatrix} 1 & 2 \\ \colorbox{#eec8e1}3 & \colorbox{#eec8e1}4 \end{bmatrix} \times \begin{bmatrix} 5 & \colorbox{#eec8e1}6 \\ 7 & \colorbox{#eec8e1}8 \end{bmatrix}=\begin{bmatrix}19&22{}\\43&\colorbox{#eec8e1}{(3)(6)+(4)(8) }\end{bmatrix}
+$$
+
+## Matrix Multiplication: Step by Step
+
+
+$$
+\begin{bmatrix} 1 & 2 \\ \colorbox{#eec8e1}3 & \colorbox{#eec8e1}4 \end{bmatrix} \times \begin{bmatrix} 5 & \colorbox{#eec8e1}6 \\ 7 & \colorbox{#eec8e1}8 \end{bmatrix}=\begin{bmatrix}19&22{}\\43&\colorbox{#eec8e1}{52}\end{bmatrix}
+$$
+
+
+## You Try: Matrix Multiplication
+
+::: {.fragment}
+**Problem:** Multiply these matrices
+$\mathbf{A} = \begin{bmatrix} 2 & 3 \\ 1 & 4 \end{bmatrix}, \quad \mathbf{B} = \begin{bmatrix} 1 & 0 \\ 2 & 1 \end{bmatrix}$
+:::
+
+::: {.fragment}
+**You Try:** 
+$\mathbf{A} \times \mathbf{B} = ?$
+:::
+
+::: {.fragment}
+**Solution:** 
+
+$\mathbf{A} \times \mathbf{B} = \begin{bmatrix} 8 & 3 \\ 9 & 4 \end{bmatrix}$
+:::
+
+```{r}
+#| echo: false
+countdown::countdown(5)
+```
+
+
+
+## Matrix Multiplication: Dimension Examples
+
+::: column
+::: {.fragment}
+**Valid multiplications:**
+
+- $\mathbf{A}_{2 \times 3} \times \mathbf{B}_{3 \times 4} = \mathbf{C}_{2 \times 4}$ ✓
+
+- $\mathbf{A}_{5 \times 2} \times \mathbf{B}_{2 \times 1} = \mathbf{C}_{5 \times 1}$ ✓
+
+:::
+:::
+
+::: column
+::: {.fragment}
+**Invalid multiplications:**
+
+- $\mathbf{A}_{2 \times 3} \times \mathbf{B}_{4 \times 2}$ ✗ (3 ≠ 4)
+
+- $\mathbf{A}_{3 \times 5} \times \mathbf{B}_{2 \times 3}$ ✗ (5 ≠ 2)
+:::
+:::
+
+::: {.fragment}
+**Remember:** Inner dimensions must match!
+:::
+
+
+
+## Matrix Transpose
+
+::: {.fragment}
+The **transpose** of matrix $\mathbf{A}$ is denoted $\mathbf{A}^T$ or $\mathbf{A}'$
+:::
+
+::: {.fragment}
+
+Flip rows and columns
+
+- Row 1 becomes Column 1
+- Row 2 becomes Column 2, etc.
+:::
+
+## Matrix Transpose 
+
+::: small
+::: column
+::: {.fragment}
+
+$$\mathbf{A} = \begin{bmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \end{bmatrix}_{2 \times 3}$$
+:::
+:::
+
+::: column
+::: {.fragment}
+$$\mathbf{A}^T = \begin{bmatrix} 1 & 4 \\ 2 & 5 \\ 3 & 6 \end{bmatrix}_{3 \times 2}$$
+:::
+:::
+:::
+
+## You Try: Matrix Transpose
+
+::: {.fragment}
+Find the transpose of this matrix
+$\mathbf{A} = \begin{bmatrix} 1 & 4 & 7 \\ 2 & 5 & 8 \end{bmatrix}$   $A^T= ?$
+:::
+
+
+::: {.fragment}
+**Solution:** 
+$\mathbf{A}^T = \begin{bmatrix} 1 & 2 \\ 4 & 5 \\ 7 & 8 \end{bmatrix}$
+:::
+
+```{r}
+#| echo: false
+countdown::countdown(3)
+```
+
+
+
+
+## Transpose Properties
+
+
+If $\mathbf{A}$ is $m \times n$, then $\mathbf{A}^T$ is $n \times m$
+
+## Transpose Properties
+
+1. $(\mathbf{A}^T)^T = \mathbf{A}$
+
+2. $(\mathbf{A} + \mathbf{B})^T = \mathbf{A}^T + \mathbf{B}^T$
+
+3. $(\mathbf{AB})^T = \mathbf{B}^T\mathbf{A}^T$ (order reverses!)
+4. **Symmetric Matrix:** $\mathbf{A} = \mathbf{A}^T$
+
+## Symmetric Matrix
+
+$\mathbf{A} = \mathbf{A}^T$
+
+
+$$\mathbf{S} = \begin{bmatrix} 1 & 2 & 3 \\ 2 & 4 & 5 \\ 3 & 5 & 6 \end{bmatrix}$$
+
+
+
+## The Identity Matrix
+
+::: {.fragment}
+The **identity matrix** $\mathbf{I}$ is the matrix equivalent of the number 1
+:::
+
+::: {.fragment}
+
+- Square matrix with 1's on the diagonal and 0's elsewhere
+
+- Acts as the multiplicative identity: $\mathbf{AI} = \mathbf{IA} = \mathbf{A}$
+:::
+
+## The Identity Matrix
+
+$$\mathbf{I}_2 = \begin{bmatrix} \color{red}{1} & 0 \\ 0 & \color{red}{1} \end{bmatrix}, \quad \mathbf{I}_3 = \begin{bmatrix} \color{red}{1} & 0 & 0 \\ 0 & \color{red}{1} & 0 \\ 0 & 0 & \color{red}{1} \end{bmatrix}$$
+
+## The Identity Matrix
+
+**Example:**
+$$\begin{bmatrix} 2 & 3 \\ 4 & 5 \end{bmatrix} \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix} = \begin{bmatrix} 2 & 3 \\ 4 & 5 \end{bmatrix}$$
+
+
+
+## You Try: Identity Matrix
+
+::: {.fragment}
+**Problem:** Verify that this multiplication gives the identity property
+$\begin{bmatrix} 3 & -1 \\ 2 & 4 \end{bmatrix} \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix} = ?$
+:::
+
+
+::: {.fragment}
+**Solution:** 
+$= \begin{bmatrix} 3 & -1 \\ 2 & 4 \end{bmatrix}$ ✓ (Original matrix unchanged!)
+:::
+
+```{r}
+#| echo: false
+countdown::countdown(3)
+```
+
+
+## Matrix Inverse
+
+::: {.fragment}
+The **inverse** of matrix $\mathbf{A}$ is denoted $\mathbf{A}^{-1}$
+:::
+
+::: {.fragment}
+**Definition:** $\mathbf{AA}^{-1} = \mathbf{A}^{-1}\mathbf{A} = \mathbf{I}$
+:::
+
+## Matrix Inverse
+
+::: {.fragment}
+**Requirements for inverse to exist:**  
+- Matrix must be **square** (n × n)  
+- Matrix must be **non-singular** (determinant ≠ 0)
+:::
+
+## Matrix Inverse
+
+::: {.fragment}
+**2 × 2 Formula:**
+For $\mathbf{A} = \begin{bmatrix} a & b \\ c & d \end{bmatrix}$
+
+$$\mathbf{A}^{-1} = \frac{1}{ad - bc} \begin{bmatrix} d & -b \\ -c & a \end{bmatrix}$$
+:::
+
+
+## Matrix Inverse: Example
+
+::: {.fragment}
+$$\mathbf{A} = \begin{bmatrix} 2 & 1 \\ 3 & 2 \end{bmatrix}$$
+:::
+
+::: {.fragment}
+**Step 1:** Calculate determinant
+$$\text{det}(\mathbf{A}) = (2)(2) - (1)(3) = 4 - 3 = 1$$
+:::
+
+## Matrix Inverse: Example
+
+$$\mathbf{A} = \begin{bmatrix} 2 & 1 \\ 3 & 2 \end{bmatrix}$$
+
+::: {.fragment}
+**Step 2:** Apply formula
+$$\mathbf{A}^{-1} = \frac{1}{1} \begin{bmatrix} 2 & -1 \\ -3 & 2 \end{bmatrix} = \begin{bmatrix} 2 & -1 \\ -3 & 2 \end{bmatrix}$$
+:::
+
+## Matrix Inverse: Example
+
+$$\mathbf{A} = \begin{bmatrix} 2 & 1 \\ 3 & 2 \end{bmatrix}$$
+
+::: {.fragment}
+**Verify:**
+$$\mathbf{AA}^{-1} = \begin{bmatrix} 2 & 1 \\ 3 & 2 \end{bmatrix} \begin{bmatrix} 2 & -1 \\ -3 & 2 \end{bmatrix} = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix} = \mathbf{I}$$
+:::
+
+
+## You Try: Matrix Inverse
+
+::: {.fragment}
+**Problem:** Find the inverse of this matrix
+$\mathbf{A} = \begin{bmatrix} 1 & 2 \\ 1 & 3 \end{bmatrix}$
+:::
+
+::: {.fragment}
+**Solution:** 
+1. $\text{det}(\mathbf{A}) = (1)(3) - (2)(1) = 3 - 2 = 1$  
+2. $\mathbf{A}^{-1} = \frac{1}{1} \begin{bmatrix} 3 & -2 \\ -1 & 1 \end{bmatrix} = \begin{bmatrix} 3 & -2 \\ -1 & 1 \end{bmatrix}$
+
+**Check:** $\mathbf{AA}^{-1} = \begin{bmatrix} 1 & 2 \\ 1 & 3 \end{bmatrix} \begin{bmatrix} 3 & -2 \\ -1 & 1 \end{bmatrix} = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}$ ✓
+:::
+
+```{r}
+#| echo: false
+countdown::countdown(6)
+```
+
+
+
+
+## Special Matrix Types
+
+::: {.fragment}
+**Diagonal Matrix:** Non-zero elements only on the main diagonal
+
+$$\mathbf{D} = \begin{bmatrix} d_1 & 0 & 0 \\ 0 & d_2 & 0 \\ 0 & 0 & d_3 \end{bmatrix}$$
+:::
+
+## Special Matrix Types
+
+::: {.fragment}
+**Orthogonal Matrix:** $\mathbf{Q}^T\mathbf{Q} = \mathbf{I}$ (columns are orthonormal)
+:::
+
+## Special Matrix Types
+
+::: {.fragment}
+**Positive Definite:** $\mathbf{x}^T\mathbf{A}\mathbf{x} > 0$ for all $\mathbf{x} \neq \mathbf{0}$
+:::
+
+## Special Matrix Types
+
+::: {.fragment}
+**Symmetric Matrix:** $\mathbf{A} = \mathbf{A}^T$
+
+:::
+
+## You Try: Special Matrices
+
+::: {.fragment}
+**Problem:** Identify the type of each matrix
+$\mathbf{A} = \begin{bmatrix} 2 & 0 & 0 \\ 0 & -1 & 0 \\ 0 & 0 & 3 \end{bmatrix}, \quad \mathbf{B} = \begin{bmatrix} 1 & 4 \\ 4 & 2 \end{bmatrix}, \quad \mathbf{C} = \begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix}$
+:::
+
+
+::: {.fragment}
+**Solutions:**
+- Matrix A: **Diagonal matrix** (non-zero elements only on main diagonal)
+- Matrix B: **Symmetric matrix** ($\mathbf{B} = \mathbf{B}^T$ since $b_{12} = b_{21} = 4$)
+- Matrix C: **General matrix** (no special properties)
+:::
+
+```{r}
+#| echo: false
+countdown::countdown(2)
+```
+
