@@ -12,6 +12,405 @@
     ]
   },
   {
+    "objectID": "slides/02-slides.html#what-is-a-matrix",
+    "href": "slides/02-slides.html#what-is-a-matrix",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "What is a Matrix?",
+    "text": "What is a Matrix?\n\nA matrix is a rectangular array of numbers arranged in rows and columns\nWritten using square brackets or parentheses\nEach number in the matrix is called an element or entry"
+  },
+  {
+    "objectID": "slides/02-slides.html#what-is-a-matrix-1",
+    "href": "slides/02-slides.html#what-is-a-matrix-1",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "What is a Matrix?",
+    "text": "What is a Matrix?\n\\[\\mathbf{A} = \\begin{bmatrix}\na_{11} & a_{12} & a_{13} \\\\\na_{21} & a_{22} & a_{23} \\\\\na_{31} & a_{32} & a_{33}\n\\end{bmatrix}\\]"
+  },
+  {
+    "objectID": "slides/02-slides.html#matrix-dimensions",
+    "href": "slides/02-slides.html#matrix-dimensions",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "Matrix Dimensions",
+    "text": "Matrix Dimensions\n\nRows are horizontal ↔︎\n\n\nColumns are vertical ↕\n\n\n\\[\n\\mathbf{A} = \\begin{bmatrix}\n\\require{color}\\colorbox{#eec8e1}{$a_{11}$} & \\colorbox{#eec8e1}{$a_{12}$} & \\colorbox{#eec8e1}{$a_{13}$} \\\\\na_{21} & a_{22} & a_{23} \\\\\na_{31} & a_{32} & a_{33}\n\\end{bmatrix} \\leftarrow \\text{Row 1}\n\\]"
+  },
+  {
+    "objectID": "slides/02-slides.html#matrix-dimensions-1",
+    "href": "slides/02-slides.html#matrix-dimensions-1",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "Matrix Dimensions",
+    "text": "Matrix Dimensions\nRows are horizontal ↔︎\nColumns are vertical ↕\n\\[\n\\mathbf{A} = \\begin{bmatrix}\n\\require{color}a_{11} & a_{12} & a_{13} \\\\\n\\colorbox{#eec8e1}{$a_{21}$} & \\colorbox{#eec8e1}{$a_{22}$} & \\colorbox{#eec8e1}{$a_{23}$} \\\\\na_{31} & a_{32} & a_{33}\n\\end{bmatrix} \\leftarrow \\text{Row 2}\n\\]"
+  },
+  {
+    "objectID": "slides/02-slides.html#matrix-dimensions-2",
+    "href": "slides/02-slides.html#matrix-dimensions-2",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "Matrix Dimensions",
+    "text": "Matrix Dimensions\nRows are horizontal ↔︎\nColumns are vertical ↕\n\\[\n\\mathbf{A} = \\begin{bmatrix}\n\\require{color}a_{11} & a_{12} & a_{13} \\\\\na_{21} & a_{22} & a_{23} \\\\\n\\colorbox{#eec8e1}{$a_{31}$} & \\colorbox{#eec8e1}{$a_{32}$} & \\colorbox{#eec8e1}{$a_{33}$}\n\\end{bmatrix} \\leftarrow \\text{Row 3}\n\\]"
+  },
+  {
+    "objectID": "slides/02-slides.html#matrix-dimensions-3",
+    "href": "slides/02-slides.html#matrix-dimensions-3",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "Matrix Dimensions",
+    "text": "Matrix Dimensions\nRows are horizontal ↔︎\nColumns are vertical ↕\n\\[\n\\mathbf{A} = \\begin{bmatrix}\n\\colorbox{#eec8e1}{$a_{11}$} & a_{12} & a_{13} \\\\\n\\colorbox{#eec8e1}{$a_{21}$} & a_{22} & a_{23} \\\\\n\\colorbox{#eec8e1}{$a_{31}$} & a_{32} & a_{33}\n\\end{bmatrix} \\leftarrow \\text{Column 1}\n\\]"
+  },
+  {
+    "objectID": "slides/02-slides.html#matrix-size-n-p",
+    "href": "slides/02-slides.html#matrix-size-n-p",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "Matrix Size: n × p",
+    "text": "Matrix Size: n × p\n\nA matrix with n rows and p columns is called an n × p matrix\n\n\n\\[\\mathbf{A}_{3 \\times 3} = \\begin{bmatrix}\na_{11} & a_{12} & a_{13} \\\\\na_{21} & a_{22} & a_{23} \\\\\na_{31} & a_{32} & a_{33}\n\\end{bmatrix}\\]\nThis is a 3 × 3 matrix (3 rows, 3 columns)"
+  },
+  {
+    "objectID": "slides/02-slides.html#matrix-size-n-p-1",
+    "href": "slides/02-slides.html#matrix-size-n-p-1",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "Matrix Size: n × p",
+    "text": "Matrix Size: n × p\nA matrix with n rows and p columns is called an n × p matrix\n\\[\\mathbf{B}_{2 \\times 4} = \\begin{bmatrix}\nb_{11} & b_{12} & b_{13} & b_{14} \\\\\nb_{21} & b_{22} & b_{23} & b_{24}\n\\end{bmatrix}\\]\nThis is a 2 × 4 matrix (2 rows, 4 columns)"
+  },
+  {
+    "objectID": "slides/02-slides.html#examples-of-different-matrix-sizes",
+    "href": "slides/02-slides.html#examples-of-different-matrix-sizes",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "Examples of Different Matrix Sizes",
+    "text": "Examples of Different Matrix Sizes\n\n\nRow vector (1 × p): \\[\\mathbf{r} = \\begin{bmatrix} 1 & 3 & 5 & 7 \\end{bmatrix}\\]\n\n\n\nColumn vector (n × 1): \\[\\mathbf{c} = \\begin{bmatrix} 2 \\\\ 4 \\\\ 6 \\end{bmatrix}\\]"
+  },
+  {
+    "objectID": "slides/02-slides.html#examples-of-different-matrix-sizes-1",
+    "href": "slides/02-slides.html#examples-of-different-matrix-sizes-1",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "Examples of Different Matrix Sizes",
+    "text": "Examples of Different Matrix Sizes\nSquare matrix (n × n): \\[\\mathbf{S} = \\begin{bmatrix}\n1 & 2 \\\\\n3 & 4\n\\end{bmatrix}\\]"
+  },
+  {
+    "objectID": "slides/02-slides.html#matrix-addition",
+    "href": "slides/02-slides.html#matrix-addition",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "Matrix Addition",
+    "text": "Matrix Addition\n\nMatrices can be added only if they have the same dimensions\n\n\nAdd corresponding elements: \\[\\mathbf{A} + \\mathbf{B} = \\begin{bmatrix} a_{11} + b_{11} & a_{12} + b_{12} \\\\ a_{21} + b_{21} & a_{22} + b_{22} \\end{bmatrix}\\]"
+  },
+  {
+    "objectID": "slides/02-slides.html#matrix-addition-1",
+    "href": "slides/02-slides.html#matrix-addition-1",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "Matrix Addition",
+    "text": "Matrix Addition\n\nExample: \\[\\begin{bmatrix} 1 & 2 \\\\ 3 & 4 \\end{bmatrix} + \\begin{bmatrix} 5 & 6 \\\\ 7 & 8 \\end{bmatrix}\\]\n\n\n\\[= \\begin{bmatrix} \\color{red}{1+5} & \\color{blue}{2+6} \\\\ \\color{green}{3+7} & \\color{purple}{4+8} \\end{bmatrix} = \\begin{bmatrix} \\color{red}{6} & \\color{blue}{8} \\\\ \\color{green}{10} & \\color{purple}{12} \\end{bmatrix}\\]"
+  },
+  {
+    "objectID": "slides/02-slides.html#you-try-matrix-addition",
+    "href": "slides/02-slides.html#you-try-matrix-addition",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "You Try: Matrix Addition",
+    "text": "You Try: Matrix Addition\n\nProblem: Add these matrices \\(\\mathbf{A} = \\begin{bmatrix} 3 & -1 & 2 \\\\ 0 & 4 & -3 \\end{bmatrix}, \\quad \\mathbf{B} = \\begin{bmatrix} 1 & 2 & -1 \\\\ 5 & -2 & 1 \\end{bmatrix}\\)\n\n\nYou Try: \\(\\mathbf{A} + \\mathbf{B} = ?\\)\n\n\nSolution: \\(\\mathbf{A} + \\mathbf{B} = \\begin{bmatrix} 3+1 & -1+2 & 2+(-1) \\\\ 0+5 & 4+(-2) & -3+1 \\end{bmatrix} = \\begin{bmatrix} 4 & 1 & 1 \\\\ 5 & 2 & -2 \\end{bmatrix}\\)\n\n\n\n\n−+\n04:00"
+  },
+  {
+    "objectID": "slides/02-slides.html#matrix-addition-dimension-requirements",
+    "href": "slides/02-slides.html#matrix-addition-dimension-requirements",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "Matrix Addition: Dimension Requirements",
+    "text": "Matrix Addition: Dimension Requirements\n\n\nThis works ✓\n\n\\[\\colorbox{#eec8e1}{$\\mathbf{A}_{2 \\times 3} + \\mathbf{B}_{2 \\times 3} = \\mathbf{C}_{2 \\times 3}$}\\]\n\n\n\n\nThis doesn’t work ✗\n\n\\[\\colorbox{#eec8e1}{$\\mathbf{A}_{2 \\times 3} + \\mathbf{B}_{3 \\times 2} = \\text{?}$}\\]\n\n\n\nThe matrices must have exactly the same dimensions to be added!"
+  },
+  {
+    "objectID": "slides/02-slides.html#matrix-multiplication-the-basics",
+    "href": "slides/02-slides.html#matrix-multiplication-the-basics",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "Matrix Multiplication: The Basics",
+    "text": "Matrix Multiplication: The Basics\n\nMatrix multiplication is NOT element-wise multiplication\nFor \\(\\mathbf{A} \\times \\mathbf{B}\\) to be defined the number of columns in A must equal number of rows in B (inner dimensions must match!)\nIf \\(\\mathbf{A}\\) is \\(m \\times n\\) and \\(\\mathbf{B}\\) is \\(n \\times p\\), then: \\[\\mathbf{A}_{m \\times n} \\times \\mathbf{B}_{n \\times p} = \\mathbf{C}_{m \\times p}\\]"
+  },
+  {
+    "objectID": "slides/02-slides.html#you-try-matrix-dimensions",
+    "href": "slides/02-slides.html#you-try-matrix-dimensions",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "You Try: Matrix Dimensions",
+    "text": "You Try: Matrix Dimensions\n\nProblem: Can these matrices be multiplied? If yes, what’s the resulting dimension?\n\\(\\mathbf{A}_{3 \\times 2} \\times \\mathbf{B}_{2 \\times 4} = ?\\)\n\\(\\mathbf{C}_{2 \\times 5} \\times \\mathbf{D}_{3 \\times 2} = ?\\)\n\n\nSolutions:\n\n\\(\\mathbf{A}_{3 \\times 2} \\times \\mathbf{B}_{2 \\times 4} = \\mathbf{Result}_{3 \\times 4}\\) ✓ (inner dimensions match: 2 = 2)\n\\(\\mathbf{C}_{2 \\times 5} \\times \\mathbf{D}_{3 \\times 2}\\) = undefined ✗ (inner dimensions don’t match: 5 ≠ 3)\n\n\n\n\n\n−+\n02:00"
+  },
+  {
+    "objectID": "slides/02-slides.html#matrix-multiplication-step-by-step",
+    "href": "slides/02-slides.html#matrix-multiplication-step-by-step",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "Matrix Multiplication: Step by Step",
+    "text": "Matrix Multiplication: Step by Step\n\\[\n\\begin{bmatrix} 1 & 2 \\\\ 3 & 4 \\end{bmatrix} \\times \\begin{bmatrix} 5 & 6 \\\\ 7 & 8 \\end{bmatrix}=\\begin{bmatrix}&\\\\&\\end{bmatrix}\n\\]"
+  },
+  {
+    "objectID": "slides/02-slides.html#matrix-multiplication-step-by-step-1",
+    "href": "slides/02-slides.html#matrix-multiplication-step-by-step-1",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "Matrix Multiplication: Step by Step",
+    "text": "Matrix Multiplication: Step by Step\n\\[\n\\begin{bmatrix} 1 & 2 \\\\ 3 & 4 \\end{bmatrix} \\times \\begin{bmatrix} 5 & 6 \\\\ 7 & 8 \\end{bmatrix}=\\begin{bmatrix}\\colorbox{#eec8e1}{}&\\\\&\\end{bmatrix}\n\\]"
+  },
+  {
+    "objectID": "slides/02-slides.html#matrix-multiplication-step-by-step-2",
+    "href": "slides/02-slides.html#matrix-multiplication-step-by-step-2",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "Matrix Multiplication: Step by Step",
+    "text": "Matrix Multiplication: Step by Step\n\\[\\begin{bmatrix} \\colorbox{#eec8e1}{1} & 2 \\\\ 3 & 4 \\end{bmatrix} \\times \\begin{bmatrix} \\colorbox{#eec8e1}{5} & 6 \\\\ 7 & 8 \\end{bmatrix}=\\begin{bmatrix}\\colorbox{#eec8e1}{(1)(5)}&\\\\&\\end{bmatrix}\\]"
+  },
+  {
+    "objectID": "slides/02-slides.html#matrix-multiplication-step-by-step-3",
+    "href": "slides/02-slides.html#matrix-multiplication-step-by-step-3",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "Matrix Multiplication: Step by Step",
+    "text": "Matrix Multiplication: Step by Step\n\\[\\begin{bmatrix} \\colorbox{#eec8e1}{1} & \\colorbox{#eec8e1}2 \\\\ 3 & 4 \\end{bmatrix} \\times \\begin{bmatrix} \\colorbox{#eec8e1}{5} & 6 \\\\ \\colorbox{#eec8e1}7 & 8 \\end{bmatrix}=\\begin{bmatrix}\\colorbox{#eec8e1}{(1)(5) + (2)(7)}&\\\\&\\end{bmatrix}\\]"
+  },
+  {
+    "objectID": "slides/02-slides.html#matrix-multiplication-step-by-step-4",
+    "href": "slides/02-slides.html#matrix-multiplication-step-by-step-4",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "Matrix Multiplication: Step by Step",
+    "text": "Matrix Multiplication: Step by Step\n\\[\\begin{bmatrix} \\colorbox{#eec8e1}{1} & \\colorbox{#eec8e1}2 \\\\ 3 & 4 \\end{bmatrix} \\times \\begin{bmatrix} \\colorbox{#eec8e1}{5} & 6 \\\\ \\colorbox{#eec8e1}7 & 8 \\end{bmatrix}=\\begin{bmatrix}\\colorbox{#eec8e1}{19}&\\\\&\\end{bmatrix}\\]"
+  },
+  {
+    "objectID": "slides/02-slides.html#matrix-multiplication-step-by-step-5",
+    "href": "slides/02-slides.html#matrix-multiplication-step-by-step-5",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "Matrix Multiplication: Step by Step",
+    "text": "Matrix Multiplication: Step by Step\n\\[\n\\begin{bmatrix} 1 & 2 \\\\ 3 & 4 \\end{bmatrix} \\times \\begin{bmatrix} 5 & 6 \\\\ 7 & 8 \\end{bmatrix}=\\begin{bmatrix}19&\\colorbox{#eec8e1}{ }\\\\&\\end{bmatrix}\n\\]"
+  },
+  {
+    "objectID": "slides/02-slides.html#matrix-multiplication-step-by-step-6",
+    "href": "slides/02-slides.html#matrix-multiplication-step-by-step-6",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "Matrix Multiplication: Step by Step",
+    "text": "Matrix Multiplication: Step by Step\n\\[\n\\begin{bmatrix} \\colorbox{#eec8e1}1 & 2 \\\\ 3 & 4 \\end{bmatrix} \\times \\begin{bmatrix} 5 & \\colorbox{#eec8e1}6 \\\\ 7 & 8 \\end{bmatrix}=\\begin{bmatrix}19&\\colorbox{#eec8e1}{(1)(6)}\\\\&\\end{bmatrix}\n\\]"
+  },
+  {
+    "objectID": "slides/02-slides.html#matrix-multiplication-step-by-step-7",
+    "href": "slides/02-slides.html#matrix-multiplication-step-by-step-7",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "Matrix Multiplication: Step by Step",
+    "text": "Matrix Multiplication: Step by Step\n\\[\n\\begin{bmatrix} \\colorbox{#eec8e1}1 & \\colorbox{#eec8e1}2 \\\\ 3 & 4 \\end{bmatrix} \\times \\begin{bmatrix} 5 & \\colorbox{#eec8e1}6 \\\\ 7 & \\colorbox{#eec8e1}8 \\end{bmatrix}=\\begin{bmatrix}19&\\colorbox{#eec8e1}{(1)(6)+(2)(8)}\\\\&\\end{bmatrix}\n\\]"
+  },
+  {
+    "objectID": "slides/02-slides.html#matrix-multiplication-step-by-step-8",
+    "href": "slides/02-slides.html#matrix-multiplication-step-by-step-8",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "Matrix Multiplication: Step by Step",
+    "text": "Matrix Multiplication: Step by Step\n\\[\n\\begin{bmatrix} \\colorbox{#eec8e1}1 & \\colorbox{#eec8e1}2 \\\\ 3 & 4 \\end{bmatrix} \\times \\begin{bmatrix} 5 & \\colorbox{#eec8e1}6 \\\\ 7 & \\colorbox{#eec8e1}8 \\end{bmatrix}=\\begin{bmatrix}19&\\colorbox{#eec8e1}{22}\\\\&\\end{bmatrix}\n\\]"
+  },
+  {
+    "objectID": "slides/02-slides.html#matrix-multiplication-step-by-step-9",
+    "href": "slides/02-slides.html#matrix-multiplication-step-by-step-9",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "Matrix Multiplication: Step by Step",
+    "text": "Matrix Multiplication: Step by Step\n\\[\n\\begin{bmatrix} 1 & 2 \\\\ 3 & 4 \\end{bmatrix} \\times \\begin{bmatrix} 5 & 6 \\\\ 7 & 8 \\end{bmatrix}=\\begin{bmatrix}19&22{}\\\\\\colorbox{#eec8e1}{ }&\\end{bmatrix}\n\\]"
+  },
+  {
+    "objectID": "slides/02-slides.html#matrix-multiplication-step-by-step-10",
+    "href": "slides/02-slides.html#matrix-multiplication-step-by-step-10",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "Matrix Multiplication: Step by Step",
+    "text": "Matrix Multiplication: Step by Step\n\\[\n\\begin{bmatrix} 1 & 2 \\\\ \\colorbox{#eec8e1}3 & 4 \\end{bmatrix} \\times \\begin{bmatrix} \\colorbox{#eec8e1}5 & 6 \\\\ 7 & 8 \\end{bmatrix}=\\begin{bmatrix}19&22{}\\\\\\colorbox{#eec8e1}{(3)(5) }&\\end{bmatrix}\n\\]"
+  },
+  {
+    "objectID": "slides/02-slides.html#matrix-multiplication-step-by-step-11",
+    "href": "slides/02-slides.html#matrix-multiplication-step-by-step-11",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "Matrix Multiplication: Step by Step",
+    "text": "Matrix Multiplication: Step by Step\n\\[\n\\begin{bmatrix} 1 & 2 \\\\ \\colorbox{#eec8e1}3 & \\colorbox{#eec8e1}4 \\end{bmatrix} \\times \\begin{bmatrix} \\colorbox{#eec8e1}5 & 6 \\\\ \\colorbox{#eec8e1}7 & 8 \\end{bmatrix}=\\begin{bmatrix}19&22{}\\\\\\colorbox{#eec8e1}{(3)(5) +(4)(7)}&\\end{bmatrix}\n\\]"
+  },
+  {
+    "objectID": "slides/02-slides.html#matrix-multiplication-step-by-step-12",
+    "href": "slides/02-slides.html#matrix-multiplication-step-by-step-12",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "Matrix Multiplication: Step by Step",
+    "text": "Matrix Multiplication: Step by Step\n\\[\n\\begin{bmatrix} 1 & 2 \\\\ \\colorbox{#eec8e1}3 & \\colorbox{#eec8e1}4 \\end{bmatrix} \\times \\begin{bmatrix} \\colorbox{#eec8e1}5 & 6 \\\\ \\colorbox{#eec8e1}7 & 8 \\end{bmatrix}=\\begin{bmatrix}19&22{}\\\\\\colorbox{#eec8e1}{43}&\\end{bmatrix}\n\\]"
+  },
+  {
+    "objectID": "slides/02-slides.html#matrix-multiplication-step-by-step-13",
+    "href": "slides/02-slides.html#matrix-multiplication-step-by-step-13",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "Matrix Multiplication: Step by Step",
+    "text": "Matrix Multiplication: Step by Step\n\\[\n\\begin{bmatrix} 1 & 2 \\\\ 3 & 4 \\end{bmatrix} \\times \\begin{bmatrix} 5 & 6 \\\\ 7 & 8 \\end{bmatrix}=\\begin{bmatrix}19&22{}\\\\43&\\colorbox{#eec8e1}{ }\\end{bmatrix}\n\\]"
+  },
+  {
+    "objectID": "slides/02-slides.html#matrix-multiplication-step-by-step-14",
+    "href": "slides/02-slides.html#matrix-multiplication-step-by-step-14",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "Matrix Multiplication: Step by Step",
+    "text": "Matrix Multiplication: Step by Step\n\\[\n\\begin{bmatrix} 1 & 2 \\\\ \\colorbox{#eec8e1}3 & 4 \\end{bmatrix} \\times \\begin{bmatrix} 5 & \\colorbox{#eec8e1}6 \\\\ 7 & 8 \\end{bmatrix}=\\begin{bmatrix}19&22{}\\\\43&\\colorbox{#eec8e1}{(3)(6) }\\end{bmatrix}\n\\]"
+  },
+  {
+    "objectID": "slides/02-slides.html#matrix-multiplication-step-by-step-15",
+    "href": "slides/02-slides.html#matrix-multiplication-step-by-step-15",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "Matrix Multiplication: Step by Step",
+    "text": "Matrix Multiplication: Step by Step\n\\[\n\\begin{bmatrix} 1 & 2 \\\\ \\colorbox{#eec8e1}3 & \\colorbox{#eec8e1}4 \\end{bmatrix} \\times \\begin{bmatrix} 5 & \\colorbox{#eec8e1}6 \\\\ 7 & \\colorbox{#eec8e1}8 \\end{bmatrix}=\\begin{bmatrix}19&22{}\\\\43&\\colorbox{#eec8e1}{(3)(6)+(4)(8) }\\end{bmatrix}\n\\]"
+  },
+  {
+    "objectID": "slides/02-slides.html#matrix-multiplication-step-by-step-16",
+    "href": "slides/02-slides.html#matrix-multiplication-step-by-step-16",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "Matrix Multiplication: Step by Step",
+    "text": "Matrix Multiplication: Step by Step\n\\[\n\\begin{bmatrix} 1 & 2 \\\\ \\colorbox{#eec8e1}3 & \\colorbox{#eec8e1}4 \\end{bmatrix} \\times \\begin{bmatrix} 5 & \\colorbox{#eec8e1}6 \\\\ 7 & \\colorbox{#eec8e1}8 \\end{bmatrix}=\\begin{bmatrix}19&22{}\\\\43&\\colorbox{#eec8e1}{52}\\end{bmatrix}\n\\]"
+  },
+  {
+    "objectID": "slides/02-slides.html#you-try-matrix-multiplication",
+    "href": "slides/02-slides.html#you-try-matrix-multiplication",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "You Try: Matrix Multiplication",
+    "text": "You Try: Matrix Multiplication\n\nProblem: Multiply these matrices \\(\\mathbf{A} = \\begin{bmatrix} 2 & 3 \\\\ 1 & 4 \\end{bmatrix}, \\quad \\mathbf{B} = \\begin{bmatrix} 1 & 0 \\\\ 2 & 1 \\end{bmatrix}\\)\n\n\nYou Try: \\(\\mathbf{A} \\times \\mathbf{B} = ?\\)\n\n\nSolution:\n\\(\\mathbf{A} \\times \\mathbf{B} = \\begin{bmatrix} 8 & 3 \\\\ 9 & 4 \\end{bmatrix}\\)\n\n\n\n\n−+\n05:00"
+  },
+  {
+    "objectID": "slides/02-slides.html#matrix-multiplication-dimension-examples",
+    "href": "slides/02-slides.html#matrix-multiplication-dimension-examples",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "Matrix Multiplication: Dimension Examples",
+    "text": "Matrix Multiplication: Dimension Examples\n\n\nValid multiplications:\n\n\\(\\mathbf{A}_{2 \\times 3} \\times \\mathbf{B}_{3 \\times 4} = \\mathbf{C}_{2 \\times 4}\\) ✓\n\\(\\mathbf{A}_{5 \\times 2} \\times \\mathbf{B}_{2 \\times 1} = \\mathbf{C}_{5 \\times 1}\\) ✓\n\n\n\n\nInvalid multiplications:\n\n\\(\\mathbf{A}_{2 \\times 3} \\times \\mathbf{B}_{4 \\times 2}\\) ✗ (3 ≠ 4)\n\\(\\mathbf{A}_{3 \\times 5} \\times \\mathbf{B}_{2 \\times 3}\\) ✗ (5 ≠ 2)\n\n\n\nRemember: Inner dimensions must match!"
+  },
+  {
+    "objectID": "slides/02-slides.html#matrix-transpose",
+    "href": "slides/02-slides.html#matrix-transpose",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "Matrix Transpose",
+    "text": "Matrix Transpose\n\nThe transpose of matrix \\(\\mathbf{A}\\) is denoted \\(\\mathbf{A}^T\\) or \\(\\mathbf{A}'\\)\n\n\nFlip rows and columns\n\nRow 1 becomes Column 1\nRow 2 becomes Column 2, etc."
+  },
+  {
+    "objectID": "slides/02-slides.html#matrix-transpose-1",
+    "href": "slides/02-slides.html#matrix-transpose-1",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "Matrix Transpose",
+    "text": "Matrix Transpose\n\n\n\n\\[\\mathbf{A} = \\begin{bmatrix} 1 & 2 & 3 \\\\ 4 & 5 & 6 \\end{bmatrix}_{2 \\times 3}\\]\n\n\n\n\\[\\mathbf{A}^T = \\begin{bmatrix} 1 & 4 \\\\ 2 & 5 \\\\ 3 & 6 \\end{bmatrix}_{3 \\times 2}\\]"
+  },
+  {
+    "objectID": "slides/02-slides.html#you-try-matrix-transpose",
+    "href": "slides/02-slides.html#you-try-matrix-transpose",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "You Try: Matrix Transpose",
+    "text": "You Try: Matrix Transpose\n\nFind the transpose of this matrix \\(\\mathbf{A} = \\begin{bmatrix} 1 & 4 & 7 \\\\ 2 & 5 & 8 \\end{bmatrix}\\) \\(A^T= ?\\)\n\n\nSolution: \\(\\mathbf{A}^T = \\begin{bmatrix} 1 & 2 \\\\ 4 & 5 \\\\ 7 & 8 \\end{bmatrix}\\)\n\n\n\n\n−+\n03:00"
+  },
+  {
+    "objectID": "slides/02-slides.html#transpose-properties",
+    "href": "slides/02-slides.html#transpose-properties",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "Transpose Properties",
+    "text": "Transpose Properties\nIf \\(\\mathbf{A}\\) is \\(m \\times n\\), then \\(\\mathbf{A}^T\\) is \\(n \\times m\\)"
+  },
+  {
+    "objectID": "slides/02-slides.html#transpose-properties-1",
+    "href": "slides/02-slides.html#transpose-properties-1",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "Transpose Properties",
+    "text": "Transpose Properties\n\n\\((\\mathbf{A}^T)^T = \\mathbf{A}\\)\n\\((\\mathbf{A} + \\mathbf{B})^T = \\mathbf{A}^T + \\mathbf{B}^T\\)\n\\((\\mathbf{AB})^T = \\mathbf{B}^T\\mathbf{A}^T\\) (order reverses!)\nSymmetric Matrix: \\(\\mathbf{A} = \\mathbf{A}^T\\)"
+  },
+  {
+    "objectID": "slides/02-slides.html#symmetric-matrix",
+    "href": "slides/02-slides.html#symmetric-matrix",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "Symmetric Matrix",
+    "text": "Symmetric Matrix\n\\(\\mathbf{A} = \\mathbf{A}^T\\)\n\\[\\mathbf{S} = \\begin{bmatrix} 1 & 2 & 3 \\\\ 2 & 4 & 5 \\\\ 3 & 5 & 6 \\end{bmatrix}\\]"
+  },
+  {
+    "objectID": "slides/02-slides.html#the-identity-matrix",
+    "href": "slides/02-slides.html#the-identity-matrix",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "The Identity Matrix",
+    "text": "The Identity Matrix\n\nThe identity matrix \\(\\mathbf{I}\\) is the matrix equivalent of the number 1\n\n\n\nSquare matrix with 1’s on the diagonal and 0’s elsewhere\nActs as the multiplicative identity: \\(\\mathbf{AI} = \\mathbf{IA} = \\mathbf{A}\\)"
+  },
+  {
+    "objectID": "slides/02-slides.html#the-identity-matrix-1",
+    "href": "slides/02-slides.html#the-identity-matrix-1",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "The Identity Matrix",
+    "text": "The Identity Matrix\n\\[\\mathbf{I}_2 = \\begin{bmatrix} \\color{red}{1} & 0 \\\\ 0 & \\color{red}{1} \\end{bmatrix}, \\quad \\mathbf{I}_3 = \\begin{bmatrix} \\color{red}{1} & 0 & 0 \\\\ 0 & \\color{red}{1} & 0 \\\\ 0 & 0 & \\color{red}{1} \\end{bmatrix}\\]"
+  },
+  {
+    "objectID": "slides/02-slides.html#the-identity-matrix-2",
+    "href": "slides/02-slides.html#the-identity-matrix-2",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "The Identity Matrix",
+    "text": "The Identity Matrix\nExample: \\[\\begin{bmatrix} 2 & 3 \\\\ 4 & 5 \\end{bmatrix} \\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\end{bmatrix} = \\begin{bmatrix} 2 & 3 \\\\ 4 & 5 \\end{bmatrix}\\]"
+  },
+  {
+    "objectID": "slides/02-slides.html#you-try-identity-matrix",
+    "href": "slides/02-slides.html#you-try-identity-matrix",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "You Try: Identity Matrix",
+    "text": "You Try: Identity Matrix\n\nProblem: Verify that this multiplication gives the identity property \\(\\begin{bmatrix} 3 & -1 \\\\ 2 & 4 \\end{bmatrix} \\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\end{bmatrix} = ?\\)\n\n\nSolution: \\(= \\begin{bmatrix} 3 & -1 \\\\ 2 & 4 \\end{bmatrix}\\) ✓ (Original matrix unchanged!)\n\n\n\n\n−+\n03:00"
+  },
+  {
+    "objectID": "slides/02-slides.html#matrix-inverse",
+    "href": "slides/02-slides.html#matrix-inverse",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "Matrix Inverse",
+    "text": "Matrix Inverse\n\nThe inverse of matrix \\(\\mathbf{A}\\) is denoted \\(\\mathbf{A}^{-1}\\)\n\n\nDefinition: \\(\\mathbf{AA}^{-1} = \\mathbf{A}^{-1}\\mathbf{A} = \\mathbf{I}\\)"
+  },
+  {
+    "objectID": "slides/02-slides.html#matrix-inverse-1",
+    "href": "slides/02-slides.html#matrix-inverse-1",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "Matrix Inverse",
+    "text": "Matrix Inverse\n\nRequirements for inverse to exist:\n- Matrix must be square (n × n)\n- Matrix must be non-singular (determinant ≠ 0)"
+  },
+  {
+    "objectID": "slides/02-slides.html#matrix-inverse-2",
+    "href": "slides/02-slides.html#matrix-inverse-2",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "Matrix Inverse",
+    "text": "Matrix Inverse\n\n2 × 2 Formula: For \\(\\mathbf{A} = \\begin{bmatrix} a & b \\\\ c & d \\end{bmatrix}\\)\n\\[\\mathbf{A}^{-1} = \\frac{1}{ad - bc} \\begin{bmatrix} d & -b \\\\ -c & a \\end{bmatrix}\\]"
+  },
+  {
+    "objectID": "slides/02-slides.html#matrix-inverse-example",
+    "href": "slides/02-slides.html#matrix-inverse-example",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "Matrix Inverse: Example",
+    "text": "Matrix Inverse: Example\n\n\\[\\mathbf{A} = \\begin{bmatrix} 2 & 1 \\\\ 3 & 2 \\end{bmatrix}\\]\n\n\nStep 1: Calculate determinant \\[\\text{det}(\\mathbf{A}) = (2)(2) - (1)(3) = 4 - 3 = 1\\]"
+  },
+  {
+    "objectID": "slides/02-slides.html#matrix-inverse-example-1",
+    "href": "slides/02-slides.html#matrix-inverse-example-1",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "Matrix Inverse: Example",
+    "text": "Matrix Inverse: Example\n\\[\\mathbf{A} = \\begin{bmatrix} 2 & 1 \\\\ 3 & 2 \\end{bmatrix}\\]\n\nStep 2: Apply formula \\[\\mathbf{A}^{-1} = \\frac{1}{1} \\begin{bmatrix} 2 & -1 \\\\ -3 & 2 \\end{bmatrix} = \\begin{bmatrix} 2 & -1 \\\\ -3 & 2 \\end{bmatrix}\\]"
+  },
+  {
+    "objectID": "slides/02-slides.html#matrix-inverse-example-2",
+    "href": "slides/02-slides.html#matrix-inverse-example-2",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "Matrix Inverse: Example",
+    "text": "Matrix Inverse: Example\n\\[\\mathbf{A} = \\begin{bmatrix} 2 & 1 \\\\ 3 & 2 \\end{bmatrix}\\]\n\nVerify: \\[\\mathbf{AA}^{-1} = \\begin{bmatrix} 2 & 1 \\\\ 3 & 2 \\end{bmatrix} \\begin{bmatrix} 2 & -1 \\\\ -3 & 2 \\end{bmatrix} = \\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\end{bmatrix} = \\mathbf{I}\\]"
+  },
+  {
+    "objectID": "slides/02-slides.html#you-try-matrix-inverse",
+    "href": "slides/02-slides.html#you-try-matrix-inverse",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "You Try: Matrix Inverse",
+    "text": "You Try: Matrix Inverse\n\nProblem: Find the inverse of this matrix \\(\\mathbf{A} = \\begin{bmatrix} 1 & 2 \\\\ 1 & 3 \\end{bmatrix}\\)\n\n\nSolution: 1. \\(\\text{det}(\\mathbf{A}) = (1)(3) - (2)(1) = 3 - 2 = 1\\)\n2. \\(\\mathbf{A}^{-1} = \\frac{1}{1} \\begin{bmatrix} 3 & -2 \\\\ -1 & 1 \\end{bmatrix} = \\begin{bmatrix} 3 & -2 \\\\ -1 & 1 \\end{bmatrix}\\)\nCheck: \\(\\mathbf{AA}^{-1} = \\begin{bmatrix} 1 & 2 \\\\ 1 & 3 \\end{bmatrix} \\begin{bmatrix} 3 & -2 \\\\ -1 & 1 \\end{bmatrix} = \\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\end{bmatrix}\\) ✓\n\n\n\n\n−+\n06:00"
+  },
+  {
+    "objectID": "slides/02-slides.html#special-matrix-types",
+    "href": "slides/02-slides.html#special-matrix-types",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "Special Matrix Types",
+    "text": "Special Matrix Types\n\nDiagonal Matrix: Non-zero elements only on the main diagonal\n\\[\\mathbf{D} = \\begin{bmatrix} d_1 & 0 & 0 \\\\ 0 & d_2 & 0 \\\\ 0 & 0 & d_3 \\end{bmatrix}\\]"
+  },
+  {
+    "objectID": "slides/02-slides.html#special-matrix-types-1",
+    "href": "slides/02-slides.html#special-matrix-types-1",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "Special Matrix Types",
+    "text": "Special Matrix Types\n\nOrthogonal Matrix: \\(\\mathbf{Q}^T\\mathbf{Q} = \\mathbf{I}\\) (columns are orthonormal)"
+  },
+  {
+    "objectID": "slides/02-slides.html#special-matrix-types-2",
+    "href": "slides/02-slides.html#special-matrix-types-2",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "Special Matrix Types",
+    "text": "Special Matrix Types\n\nPositive Definite: \\(\\mathbf{x}^T\\mathbf{A}\\mathbf{x} &gt; 0\\) for all \\(\\mathbf{x} \\neq \\mathbf{0}\\)"
+  },
+  {
+    "objectID": "slides/02-slides.html#special-matrix-types-3",
+    "href": "slides/02-slides.html#special-matrix-types-3",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "Special Matrix Types",
+    "text": "Special Matrix Types\n\nSymmetric Matrix: \\(\\mathbf{A} = \\mathbf{A}^T\\)"
+  },
+  {
+    "objectID": "slides/02-slides.html#you-try-special-matrices",
+    "href": "slides/02-slides.html#you-try-special-matrices",
+    "title": "Matrix Algebra Fundamentals",
+    "section": "You Try: Special Matrices",
+    "text": "You Try: Special Matrices\n\nProblem: Identify the type of each matrix \\(\\mathbf{A} = \\begin{bmatrix} 2 & 0 & 0 \\\\ 0 & -1 & 0 \\\\ 0 & 0 & 3 \\end{bmatrix}, \\quad \\mathbf{B} = \\begin{bmatrix} 1 & 4 \\\\ 4 & 2 \\end{bmatrix}, \\quad \\mathbf{C} = \\begin{bmatrix} 1 & 2 \\\\ 3 & 4 \\end{bmatrix}\\)\n\n\nSolutions: - Matrix A: Diagonal matrix (non-zero elements only on main diagonal) - Matrix B: Symmetric matrix (\\(\\mathbf{B} = \\mathbf{B}^T\\) since \\(b_{12} = b_{21} = 4\\)) - Matrix C: General matrix (no special properties)\n\n\n\n\n−+\n02:00"
+  },
+  {
     "objectID": "schedule.html",
     "href": "schedule.html",
     "title": "\n Schedule",
@@ -249,6 +648,132 @@
       "Computing",
       "Using the RStudio Pro Server"
     ]
+  },
+  {
+    "objectID": "slides/01-slides.html#section",
+    "href": "slides/01-slides.html#section",
+    "title": "Welcome to Linear Models",
+    "section": "",
+    "text": "“truth … is much too complicated to allow anything but approximations”\n- John von Neumann\n\n\n\n\nJohn von Neumann, wearer of funny hats via https://farkasdilemma.wordpress.com/2013/01/04/john-von-neumannm-wearer-of-funny-hats/"
+  },
+  {
+    "objectID": "slides/01-slides.html#section-1",
+    "href": "slides/01-slides.html#section-1",
+    "title": "Welcome to Linear Models",
+    "section": "",
+    "text": "“All models are wrong, but some are useful”\n- George Box\n\n\n   \n\nDavidMCEddy at en.wikipedia  CC BY-SA 3.0 , via Wikimedia Commons"
+  },
+  {
+    "objectID": "slides/01-slides.html#is-this-a-linear-model",
+    "href": "slides/01-slides.html#is-this-a-linear-model",
+    "title": "Welcome to Linear Models",
+    "section": "Is this a linear model?",
+    "text": "Is this a linear model?"
+  },
+  {
+    "objectID": "slides/01-slides.html#what-is-the-equation",
+    "href": "slides/01-slides.html#what-is-the-equation",
+    "title": "Welcome to Linear Models",
+    "section": "What is the equation?",
+    "text": "What is the equation?\n\n\\[y = \\beta_0 + \\beta_1 x + \\varepsilon\\]"
+  },
+  {
+    "objectID": "slides/01-slides.html#is-this-a-linear-model-1",
+    "href": "slides/01-slides.html#is-this-a-linear-model-1",
+    "title": "Welcome to Linear Models",
+    "section": "Is this a linear model?",
+    "text": "Is this a linear model?\n\n\n Where is \\(\\beta_0\\)"
+  },
+  {
+    "objectID": "slides/01-slides.html#is-this-a-linear-model-2",
+    "href": "slides/01-slides.html#is-this-a-linear-model-2",
+    "title": "Welcome to Linear Models",
+    "section": "Is this a linear model?",
+    "text": "Is this a linear model?\n\n\n Where is \\(\\beta_0\\)"
+  },
+  {
+    "objectID": "slides/01-slides.html#is-this-a-linear-model-3",
+    "href": "slides/01-slides.html#is-this-a-linear-model-3",
+    "title": "Welcome to Linear Models",
+    "section": "Is this a linear model?",
+    "text": "Is this a linear model?\n\n\n Where is \\(\\beta_1\\)"
+  },
+  {
+    "objectID": "slides/01-slides.html#is-this-a-linear-model-4",
+    "href": "slides/01-slides.html#is-this-a-linear-model-4",
+    "title": "Welcome to Linear Models",
+    "section": "Is this a linear model?",
+    "text": "Is this a linear model?\n\n\n Where is \\(\\beta_1\\)"
+  },
+  {
+    "objectID": "slides/01-slides.html#what-is-the-equation-1",
+    "href": "slides/01-slides.html#what-is-the-equation-1",
+    "title": "Welcome to Linear Models",
+    "section": "What is the equation?",
+    "text": "What is the equation?\n\n\\[y = \\beta_0 + \\beta_1 x + \\varepsilon\\]"
+  },
+  {
+    "objectID": "slides/01-slides.html#what-is-the-equation-2",
+    "href": "slides/01-slides.html#what-is-the-equation-2",
+    "title": "Welcome to Linear Models",
+    "section": "What is the equation?",
+    "text": "What is the equation?\n\n\\[\nX = \\begin{bmatrix}1 & x_1\\\\\n\\vdots & \\vdots \\\\ 1 & x_n\\end{bmatrix},\\quad\n\\beta = \\begin{bmatrix}\\beta_0\\\\ \\beta_1\\end{bmatrix}\n\\]"
+  },
+  {
+    "objectID": "slides/01-slides.html#what-does-the-data-look-like",
+    "href": "slides/01-slides.html#what-does-the-data-look-like",
+    "title": "Welcome to Linear Models",
+    "section": "What does the “data” look like?",
+    "text": "What does the “data” look like?\n\n\n\n  (Intercept)        x\n1           1 1.920595\n2           1 3.093363\n3           1 5.301387\n4           1 8.990286\n5           1 1.218501\n6           1 8.882287"
+  },
+  {
+    "objectID": "slides/01-slides.html#is-this-a-linear-model-5",
+    "href": "slides/01-slides.html#is-this-a-linear-model-5",
+    "title": "Welcome to Linear Models",
+    "section": "Is this a linear model?",
+    "text": "Is this a linear model?"
+  },
+  {
+    "objectID": "slides/01-slides.html#what-is-the-equation-3",
+    "href": "slides/01-slides.html#what-is-the-equation-3",
+    "title": "Welcome to Linear Models",
+    "section": "What is the equation?",
+    "text": "What is the equation?\n\\[y = \\beta_0 + \\sum_{j=1}^{J} \\beta_j B_j(x) + \\varepsilon\\]\n\nwhere \\(B_j(x)\\) are known spline basis functions\nthe model is linear in the \\(\\beta_j\\)"
+  },
+  {
+    "objectID": "slides/01-slides.html#what-does-the-data-look-like-1",
+    "href": "slides/01-slides.html#what-does-the-data-look-like-1",
+    "title": "Welcome to Linear Models",
+    "section": "What does the “data” look like?",
+    "text": "What does the “data” look like?\n\n\n\n  (Intercept) ns(x, df = 3)1 ns(x, df = 3)2 ns(x, df = 3)3\n1           1   -0.095842465      0.4743374     -0.3103069\n2           1    0.006273703      0.5498909     -0.3597333\n3           1    0.444366108      0.4236598     -0.2337245\n4           1    0.133806217      0.3714757      0.4916902\n5           1   -0.103895176      0.3825795     -0.2502798\n6           1    0.164715184      0.3660870      0.4649746"
+  },
+  {
+    "objectID": "slides/01-slides.html#is-this-a-linear-model-6",
+    "href": "slides/01-slides.html#is-this-a-linear-model-6",
+    "title": "Welcome to Linear Models",
+    "section": "Is this a linear model?",
+    "text": "Is this a linear model?"
+  },
+  {
+    "objectID": "slides/01-slides.html#is-this-a-linear-model-7",
+    "href": "slides/01-slides.html#is-this-a-linear-model-7",
+    "title": "Welcome to Linear Models",
+    "section": "Is this a linear model?",
+    "text": "Is this a linear model?"
+  },
+  {
+    "objectID": "slides/01-slides.html#what-is-the-equation-4",
+    "href": "slides/01-slides.html#what-is-the-equation-4",
+    "title": "Welcome to Linear Models",
+    "section": "What is the equation?",
+    "text": "What is the equation?\n\\[y = \\sum_{k=1}^{K} \\beta_k \\, \\mathbf{1}\\{x \\in R_k\\} + \\varepsilon\\]\n\nwhere \\(R_1,\\ldots,R_K\\) are each of the regions\nthis is linear in the parameters \\(\\beta_k\\)"
+  },
+  {
+    "objectID": "slides/01-slides.html#what-does-the-data-look-like-2",
+    "href": "slides/01-slides.html#what-does-the-data-look-like-2",
+    "title": "Welcome to Linear Models",
+    "section": "What does the “data” look like?",
+    "text": "What does the “data” look like?\n\n\n\n  ind1 ind2 ind3 ind4 ind5 ind6 ind7 ind8\n1    0    0    0    0    0    0    0    1\n2    0    0    0    0    0    0    1    0\n3    0    0    0    0    0    0    1    0\n4    0    0    0    0    0    0    0    1\n5    0    1    0    0    0    0    0    0\n6    0    0    1    0    0    0    0    0"
   },
   {
     "objectID": "syllabus.html",
