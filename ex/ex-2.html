@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.7.29">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<meta name="dcterms.date" content="2025-08-28">
-<title>Exercise 1 – STA 312</title>
+
+
+<title>Matrix Problem Set – STA 312</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -18,42 +20,8 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
+
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
@@ -61,8 +29,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../ex/ex-2.html" rel="next">
-<link href="../troubleshooting.html" rel="prev">
+<link href="../ex/ex-1.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -78,7 +45,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/bootstrap/bootstrap-dark-9dd73ef0fac4bb670ac33ce005cbdd27.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/bootstrap/bootstrap-a7e6113796b8c3db958f69260a338b6c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
-<link href="../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
+<link href="../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -105,18 +73,47 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<meta property="og:title" content="Exercise 1 – STA 312">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="Matrix Problem Set – STA 312">
 <meta property="og:description" content="STA 312 - Linear Models at Wake Forst University, Fall 2025.">
-<meta property="og:image" content="https://sta-312-f25.github.io/website/ex/ex-1_files/figure-html/unnamed-chunk-5-1.png">
 <meta property="og:site_name" content="STA 312">
-<meta property="og:image:height" content="960">
-<meta property="og:image:width" content="1344">
-<meta name="twitter:title" content="Exercise 1 – STA 312">
+<meta name="twitter:title" content="Matrix Problem Set – STA 312">
 <meta name="twitter:description" content="STA 312 - Linear Models at Wake Forst University, Fall 2025.">
 <meta name="twitter:image" content="https://sta-312-f25.github.io/website/ex/images/twitter-card.png">
 <meta name="twitter:creator" content="@lucystats">
 <meta name="twitter:card" content="summary_large_image">
 </head>
+
 <body class="nav-sidebar docked nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
@@ -281,7 +278,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">STA 312</span>
@@ -293,7 +292,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
-<li class="nav-item">
+  <li class="nav-item">
     <a class="nav-link active" href="../schedule.html" aria-current="page"> 
 <span class="menu-text"><i class="fa-solid fa-calendar" aria-label="calendar"></i> Schedule</span></a>
   </li>  
@@ -310,24 +309,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text"><i class="fa-solid fa-cloud" aria-label="cloud"></i> RStudio Pro</span></a>
   </li>  
 </ul>
-</div> <!-- /navcollapse -->
+          </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
-    </nav><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../ex/ex-1.html">Exercises</a></li><li class="breadcrumb-item"><a href="../ex/ex-1.html">Exercise 1</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../ex/ex-1.html">Exercises</a></li><li class="breadcrumb-item"><a href="../ex/ex-2.html">Exercise 2: Matrices</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
-  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="sidebar-menu-container"> 
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-<li class="sidebar-item sidebar-item-section">
+        <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
  <span class="menu-text">Course Details</span></a>
@@ -335,8 +340,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../schedule.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Schedule</span></a>
@@ -349,7 +354,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
@@ -358,8 +363,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../rstudio-pro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Using the RStudio Pro Server</span></a>
@@ -390,7 +395,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
@@ -399,40 +404,50 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../ex/ex-1.html" class="sidebar-item-text sidebar-link active">
+  <a href="../ex/ex-1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exercise 1</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../ex/ex-2.html" class="sidebar-item-text sidebar-link">
+  <a href="../ex/ex-2.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Exercise 2: Matrices</span></a>
   </div>
 </li>
       </ul>
-</li>
+  </li>
     </ul>
-</div>
-</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
    
   <ul>
-<li><a href="#exercise-1-login-to-rstudio-pro" id="toc-exercise-1-login-to-rstudio-pro" class="nav-link active" data-scroll-target="#exercise-1-login-to-rstudio-pro">Exercise 1: Login to RStudio Pro</a></li>
-  <li><a href="#exercise-2-create-rstudio-project" id="toc-exercise-2-create-rstudio-project" class="nav-link" data-scroll-target="#exercise-2-create-rstudio-project">Exercise 2: Create RStudio Project</a></li>
-  <li><a href="#exercise-3-create-quarto-document" id="toc-exercise-3-create-quarto-document" class="nav-link" data-scroll-target="#exercise-3-create-quarto-document">Exercise 3: Create Quarto Document</a></li>
-  <li><a href="#exercise-4-install-faraway-package-and-load-data" id="toc-exercise-4-install-faraway-package-and-load-data" class="nav-link" data-scroll-target="#exercise-4-install-faraway-package-and-load-data">Exercise 4: Install faraway Package and Load Data</a></li>
-  <li><a href="#exercise-5-linear-model-and-plot" id="toc-exercise-5-linear-model-and-plot" class="nav-link" data-scroll-target="#exercise-5-linear-model-and-plot">Exercise 5: Linear Model and Plot</a></li>
-  <li><a href="#finish" id="toc-finish" class="nav-link" data-scroll-target="#finish">Finish</a></li>
-  </ul><div class="toc-actions"><ul><li><a href="https://github.com/sta-312-f25/website/edit/main/ex/ex-1.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sta-312-f25/website/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a></li>
+  <li><a href="#problem-1" id="toc-problem-1" class="nav-link" data-scroll-target="#problem-1">Problem 1:</a></li>
+  <li><a href="#problem-2" id="toc-problem-2" class="nav-link" data-scroll-target="#problem-2">Problem 2:</a></li>
+  <li><a href="#problem-3" id="toc-problem-3" class="nav-link" data-scroll-target="#problem-3">Problem 3:</a></li>
+  <li><a href="#problem-4" id="toc-problem-4" class="nav-link" data-scroll-target="#problem-4">Problem 4</a></li>
+  <li><a href="#problem-5" id="toc-problem-5" class="nav-link" data-scroll-target="#problem-5">Problem 5</a></li>
+  <li><a href="#problem-6" id="toc-problem-6" class="nav-link" data-scroll-target="#problem-6">Problem 6</a></li>
+  <li><a href="#problem-7" id="toc-problem-7" class="nav-link" data-scroll-target="#problem-7">Problem 7</a></li>
+  <li><a href="#bonus-challenge" id="toc-bonus-challenge" class="nav-link" data-scroll-target="#bonus-challenge">Bonus Challenge</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/sta-312-f25/website/edit/main/ex/ex-2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sta-312-f25/website/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../ex/ex-1.html">Exercises</a></li><li class="breadcrumb-item"><a href="../ex/ex-1.html">Exercise 1</a></li></ol></nav><div class="quarto-title">
-<h1 class="title">Exercise 1</h1>
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../ex/ex-1.html">Exercises</a></li><li class="breadcrumb-item"><a href="../ex/ex-2.html">Exercise 2: Matrices</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Matrix Problem Set</h1>
 </div>
 
 
@@ -440,122 +455,84 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="quarto-title-meta">
 
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">August 28, 2025</p>
-    </div>
-  </div>
   
     
   </div>
   
 
 
-</header><section id="exercise-1-login-to-rstudio-pro" class="level1"><h1>Exercise 1: Login to RStudio Pro</h1>
-<ol type="1">
-<li>Go to course website → Computing → Using the RStudio Server</li>
-<li>Follow login instructions</li>
-<li>Log in with your credentials</li>
-</ol>
-<p><strong>Check:</strong> You should see the RStudio interface with 4 panes.</p>
-<hr></section><section id="exercise-2-create-rstudio-project" class="level1"><h1>Exercise 2: Create RStudio Project</h1>
-<ol type="1">
-<li>File → New Project → New Directory → New Project</li>
-<li>Name: <code>ex-1</code>
-</li>
-<li>Click Create Project</li>
-</ol>
-<p><strong>Check:</strong> Project name appears in top-right corner.</p>
-<hr></section><section id="exercise-3-create-quarto-document" class="level1"><h1>Exercise 3: Create Quarto Document</h1>
-<ol type="1">
-<li>File → New File → Quarto Document</li>
-<li>Title: “My First Analysis”</li>
-<li>Save as <code>analysis.qmd</code>
-</li>
-</ol>
-<p><strong>Check:</strong> New .qmd file is open and saved.</p>
-<hr></section><section id="exercise-4-install-faraway-package-and-load-data" class="level1"><h1>Exercise 4: Install faraway Package and Load Data</h1>
-<p>Run this code in the console ONCE:</p>
-<div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"faraway"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Then run this:</p>
-<div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/julianfaraway/faraway">faraway</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Test it works</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">teengamb</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">teengamb</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  sex status income verbal gamble
-1   1     51   2.00      8    0.0
-2   1     28   2.50      8    0.0
-3   1     37   2.00      6    0.0
-4   1     28   7.00      4    7.3
-5   1     65   2.00      8   19.6
-6   1     61   3.47      6    0.1</code></pre>
-</div>
-</div>
-<p><strong>Check:</strong> You see the teengamb dataset.</p>
-<p>Now run this in the console:</p>
-<div class="cell">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="op">?</span><span class="va">teengamb</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>Question:</strong> What is in this dataset?</p>
-<p><strong>Action</strong>: Add the code below to your <code>.qmd</code> file along with a short description of the data.</p>
-<div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/julianfaraway/faraway">faraway</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">teengamb</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<hr></section><section id="exercise-5-linear-model-and-plot" class="level1"><h1>Exercise 5: Linear Model and Plot</h1>
-<p>Add the following code to your <code>.qmd</code> file. Try running it.</p>
-<div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Fit linear model</span></span>
-<span><span class="va">model1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">gamble</span> <span class="op">~</span> <span class="va">income</span>, data <span class="op">=</span> <span class="va">teengamb</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">model1</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Call:
-lm(formula = gamble ~ income, data = teengamb)
-
-Residuals:
-    Min      1Q  Median      3Q     Max 
--46.020 -11.874  -3.757  11.934 107.120 
-
-Coefficients:
-            Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)   -6.325      6.030  -1.049      0.3    
-income         5.520      1.036   5.330 3.05e-06 ***
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 24.95 on 45 degrees of freedom
-Multiple R-squared:  0.387, Adjusted R-squared:  0.3734 
-F-statistic: 28.41 on 1 and 45 DF,  p-value: 3.045e-06</code></pre>
-</div>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Create plot</span></span>
-<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">teengamb</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">income</span>, y <span class="op">=</span> <span class="va">gamble</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, formula <span class="op">=</span> <span class="st">"y ~ x"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Income vs Gambling"</span>,</span>
-<span>       x <span class="op">=</span> <span class="st">"Income"</span>, </span>
-<span>       y <span class="op">=</span> <span class="st">"Gambling"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="ex-1_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p><strong>Check:</strong> You have model output and a scatter plot with trend line.</p>
-<hr></section><section id="finish" class="level1"><h1>Finish</h1>
-<p>Click “Render” to create your HTML report. Upload your .html file in Canvas under <code>Exercise 1</code></p>
+</header>
 
 
-</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+<section id="instructions" class="level2">
+<h2 class="anchored" data-anchor-id="instructions">Instructions</h2>
+<p>Complete all problems showing your work. For matrix calculations, show each step clearly. You may use R to verify your answers, but show the mathematical steps first.</p>
+</section>
+<section id="problem-1" class="level2">
+<h2 class="anchored" data-anchor-id="problem-1">Problem 1:</h2>
+<p>Given the following matrices:</p>
+<p><span class="math display">\[\mathbf{A} = \begin{bmatrix} 1 &amp; 3 &amp; -2 \\ 4 &amp; 0 &amp; 5 \end{bmatrix}, \quad \mathbf{B} = \begin{bmatrix} 2 &amp; 1 \\ -1 &amp; 3 \\ 0 &amp; 4 \end{bmatrix}, \quad \mathbf{C} = \begin{bmatrix} 3 &amp; -1 \\ 2 &amp; 6 \end{bmatrix}\]</span></p>
+<p><strong>a)</strong> What are the dimensions of each matrix?</p>
+<p><strong>b)</strong> Which of the following operations are possible? If possible, state the dimensions of the result:</p>
+<ul>
+<li><p><span class="math inline">\(\mathbf{A} + \mathbf{B}\)</span></p></li>
+<li><p><span class="math inline">\(\mathbf{A} \times \mathbf{B}\)</span></p></li>
+<li><p><span class="math inline">\(\mathbf{B} \times \mathbf{C}\)</span></p></li>
+<li><p><span class="math inline">\(\mathbf{C} \times \mathbf{B}\)</span></p></li>
+</ul>
+<p><strong>c)</strong> Calculate <span class="math inline">\(\mathbf{A} \times \mathbf{B}\)</span> (show all steps).</p>
+</section>
+<section id="problem-2" class="level2">
+<h2 class="anchored" data-anchor-id="problem-2">Problem 2:</h2>
+<p>Given <span class="math inline">\(\mathbf{P} = \begin{bmatrix} 2 &amp; -1 &amp; 4 \\ 3 &amp; 0 &amp; 1 \end{bmatrix}\)</span> and <span class="math inline">\(\mathbf{Q} = \begin{bmatrix} 1 &amp; 2 \\ -1 &amp; 3 \\ 0 &amp; 1 \end{bmatrix}\)</span></p>
+<p><strong>a)</strong> Find <span class="math inline">\(\mathbf{P}^T\)</span> and <span class="math inline">\(\mathbf{Q}^T\)</span>.</p>
+<p><strong>b)</strong> Calculate <span class="math inline">\(\mathbf{P} \times \mathbf{Q}\)</span>.</p>
+<p><strong>c)</strong> Calculate <span class="math inline">\((\mathbf{P} \times \mathbf{Q})^T\)</span>.</p>
+<p><strong>d)</strong> Calculate <span class="math inline">\(\mathbf{Q}^T \times \mathbf{P}^T\)</span> and verify that <span class="math inline">\((\mathbf{P} \times \mathbf{Q})^T = \mathbf{Q}^T \times \mathbf{P}^T\)</span>.</p>
+</section>
+<section id="problem-3" class="level2">
+<h2 class="anchored" data-anchor-id="problem-3">Problem 3:</h2>
+<p><strong>a)</strong> Find the inverse of <span class="math inline">\(\mathbf{R} = \begin{bmatrix} 3 &amp; 1 \\ 2 &amp; 1 \end{bmatrix}\)</span>.</p>
+<p><strong>b)</strong> Verify your answer by showing that <span class="math inline">\(\mathbf{R} \times \mathbf{R}^{-1} = \mathbf{I}\)</span>.</p>
+<p><strong>c)</strong> Explain why the matrix <span class="math inline">\(\mathbf{S} = \begin{bmatrix} 2 &amp; 4 \\ 1 &amp; 2 \end{bmatrix}\)</span> does not have an inverse.</p>
+</section>
+<section id="problem-4" class="level2">
+<h2 class="anchored" data-anchor-id="problem-4">Problem 4</h2>
+<p><strong>a)</strong> Find <span class="math inline">\(\frac{\partial}{\partial \mathbf{x}}(\mathbf{a}^T\mathbf{x})\)</span> where <span class="math inline">\(\mathbf{a} = \begin{bmatrix} 3 \\ -2 \\ 1 \\ 4 \end{bmatrix}\)</span> and <span class="math inline">\(\mathbf{x} = \begin{bmatrix} x_1 \\ x_2 \\ x_3 \\ x_4 \end{bmatrix}\)</span>.</p>
+<p><strong>b)</strong> If <span class="math inline">\(f(\mathbf{x}) = 2x_1 - 5x_2 + 3x_3\)</span>, write this in the form <span class="math inline">\(\mathbf{c}^T\mathbf{x}\)</span> and find <span class="math inline">\(\frac{\partial f}{\partial \mathbf{x}}\)</span>.</p>
+</section>
+<section id="problem-5" class="level2">
+<h2 class="anchored" data-anchor-id="problem-5">Problem 5</h2>
+<p>Consider the quadratic form <span class="math inline">\(\mathbf{x}^T\mathbf{A}\mathbf{x}\)</span> where <span class="math inline">\(\mathbf{A} = \begin{bmatrix} 2 &amp; 3 \\ 1 &amp; 4 \end{bmatrix}\)</span> and <span class="math inline">\(\mathbf{x} = \begin{bmatrix} x_1 \\ x_2 \end{bmatrix}\)</span>.</p>
+<p><strong>a)</strong> Expand <span class="math inline">\(\mathbf{x}^T\mathbf{A}\mathbf{x}\)</span> into scalar form.</p>
+<p><strong>b)</strong> Find <span class="math inline">\(\mathbf{A}^T\)</span> and calculate <span class="math inline">\(\mathbf{A} + \mathbf{A}^T\)</span>.</p>
+<p><strong>c)</strong> Use the derivative rule to find <span class="math inline">\(\frac{\partial}{\partial \mathbf{x}}(\mathbf{x}^T\mathbf{A}\mathbf{x})\)</span>.</p>
+</section>
+<section id="problem-6" class="level2">
+<h2 class="anchored" data-anchor-id="problem-6">Problem 6</h2>
+<p>Let <span class="math inline">\(\mathbf{B} = \begin{bmatrix} 4 &amp; -1 &amp; 2 \\ -1 &amp; 3 &amp; 0 \\ 2 &amp; 0 &amp; 5 \end{bmatrix}\)</span> and <span class="math inline">\(\mathbf{x} = \begin{bmatrix} x_1 \\ x_2 \\ x_3 \end{bmatrix}\)</span>.</p>
+<p><strong>a)</strong> Verify that <span class="math inline">\(\mathbf{B}\)</span> is symmetric.</p>
+<p><strong>b)</strong> Find <span class="math inline">\(\frac{\partial}{\partial \mathbf{x}}(\mathbf{x}^T\mathbf{B}\mathbf{x})\)</span> using the symmetric matrix rule.</p>
+<p><strong>c)</strong> What would be the result if we used the general rule <span class="math inline">\((\mathbf{A} + \mathbf{A}^T)\mathbf{x}\)</span> instead? Show that both methods give the same answer.</p>
+</section>
+<section id="problem-7" class="level2">
+<h2 class="anchored" data-anchor-id="problem-7">Problem 7</h2>
+<p>Consider the expression <span class="math inline">\(g(\mathbf{x}) = \mathbf{b}^T\mathbf{A}\mathbf{x}\)</span> where: <span class="math display">\[\mathbf{b} = \begin{bmatrix} 2 \\ -1 \\ 3 \end{bmatrix}, \quad \mathbf{A} = \begin{bmatrix} 1 &amp; 0 &amp; 2 \\ 3 &amp; -1 &amp; 1 \\ 0 &amp; 2 &amp; 4 \end{bmatrix}, \quad \mathbf{x} = \begin{bmatrix} x_1 \\ x_2 \\ x_3 \end{bmatrix}\]</span></p>
+<p><strong>a)</strong> What is the dimension of <span class="math inline">\(g(\mathbf{x})\)</span>? (Is it a scalar, vector, or matrix?)</p>
+<p><strong>b)</strong> Use the rule <span class="math inline">\(\frac{\partial}{\partial \mathbf{x}}(\mathbf{b}^T\mathbf{A}\mathbf{x}) = \mathbf{A}^T\mathbf{b}\)</span> to find <span class="math inline">\(\frac{\partial g}{\partial \mathbf{x}}\)</span>.</p>
+<p><strong>c)</strong> Calculate <span class="math inline">\(\mathbf{A}\mathbf{x}\)</span> first, then compute <span class="math inline">\(\mathbf{b}^T(\mathbf{A}\mathbf{x})\)</span> to expand <span class="math inline">\(g(\mathbf{x})\)</span> into scalar form.</p>
+<p><strong>d)</strong> Verify your answer from part (b) by taking partial derivatives of the scalar form from part (c).</p>
+</section>
+<section id="bonus-challenge" class="level2">
+<h2 class="anchored" data-anchor-id="bonus-challenge">Bonus Challenge</h2>
+<p><strong>Hat Matrix Connection</strong>: In linear regression, we minimize the sum of squared errors: <span class="math display">\[SSE = (\mathbf{y} - \mathbf{X}\boldsymbol{\beta})^T(\mathbf{y} - \mathbf{X}\boldsymbol{\beta})\]</span></p>
+<p>Expand this expression and identify which derivative rules from this problem set you would need to find <span class="math inline">\(\frac{\partial SSE}{\partial \boldsymbol{\beta}}\)</span>. You don’t need to solve it completely, just identify the relevant derivative rules and explain how they would be applied.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
     if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -966,30 +943,32 @@ F-statistic: 28.41 on 1 and 45 DF,  p-value: 3.045e-06</code></pre>
       }
     }
   });
-  </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="../troubleshooting.html" class="pagination-link" aria-label="Troubleshooting">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Troubleshooting</span>
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../ex/ex-1.html" class="pagination-link" aria-label="Exercise 1">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Exercise 1</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../ex/ex-2.html" class="pagination-link" aria-label="Exercise 2: Matrices">
-        <span class="nav-page-text">Exercise 2: Matrices</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
-<footer class="footer"><div class="nav-footer">
+<footer class="footer">
+  <div class="nav-footer">
     <div class="nav-footer-left">
 <p>© 2025, Lucy D’Agostino McGowan</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/sta-312-f25/website/edit/main/ex/ex-1.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sta-312-f25/website/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/sta-312-f25/website/edit/main/ex/ex-2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sta-312-f25/website/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Made with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <a href="https://quarto.org/">Quarto</a></p>
 </div>
   </div>
 </footer>
+
+
 
 
 </body></html>
