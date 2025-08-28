@@ -422,21 +422,21 @@
     "href": "slides/02-slides.html#vector-derivatives-notation",
     "title": "Matrix Algebra Fundamentals",
     "section": "Vector Derivatives: Notation",
-    "text": "Vector Derivatives: Notation\n\nLet \\(\\mathbf{a} = \\begin{bmatrix} a_1 \\\\ a_2 \\\\ \\vdots \\\\ a_n \\end{bmatrix}\\) and \\(\\mathbf{b} = \\begin{bmatrix} b_1 \\\\ b_2 \\\\ \\vdots \\\\ b_n \\end{bmatrix}\\) be column vectors\n\n\nInner product: \\(\\mathbf{a}'\\mathbf{b} = a_1b_1 + a_2b_2 + \\cdots + a_nb_n\\) (scalar)"
+    "text": "Vector Derivatives: Notation\n\nLet \\(\\mathbf{a} = \\begin{bmatrix} a_1 \\\\ a_2 \\\\ \\vdots \\\\ a_n \\end{bmatrix}\\) and \\(\\mathbf{b} = \\begin{bmatrix} b_1 \\\\ b_2 \\\\ \\vdots \\\\ b_n \\end{bmatrix}\\) be column vectors"
   },
   {
-    "objectID": "slides/02-slides.html#derivative-rule-1-linear-form",
-    "href": "slides/02-slides.html#derivative-rule-1-linear-form",
+    "objectID": "slides/02-slides.html#derivative-rule-linear-form",
+    "href": "slides/02-slides.html#derivative-rule-linear-form",
     "title": "Matrix Algebra Fundamentals",
-    "section": "Derivative Rule 1: Linear Form",
-    "text": "Derivative Rule 1: Linear Form\n\nRule: \\(\\frac{\\partial}{\\partial \\mathbf{x}}(\\mathbf{a}'\\mathbf{x}) = \\mathbf{a}\\)\n\n\nIn words: The derivative of a linear form \\(\\mathbf{a}'\\mathbf{x}\\) with respect to \\(\\mathbf{x}\\) is simply \\(\\mathbf{a}\\)"
+    "section": "Derivative Rule: Linear Form",
+    "text": "Derivative Rule: Linear Form\n\nRule: \\(\\frac{\\partial}{\\partial \\mathbf{x}}(\\mathbf{a}'\\mathbf{x}) = \\mathbf{a}\\)\n\n\nIn words: The derivative of a linear form \\(\\mathbf{a}'\\mathbf{x}\\) with respect to \\(\\mathbf{x}\\) is simply \\(\\mathbf{a}\\)"
   },
   {
-    "objectID": "slides/02-slides.html#derivative-rule-1-example",
-    "href": "slides/02-slides.html#derivative-rule-1-example",
+    "objectID": "slides/02-slides.html#derivative-rule-example",
+    "href": "slides/02-slides.html#derivative-rule-example",
     "title": "Matrix Algebra Fundamentals",
-    "section": "Derivative Rule 1: Example",
-    "text": "Derivative Rule 1: Example\n\nLet \\(\\mathbf{a} = \\begin{bmatrix} 2 \\\\ 3 \\\\ 1 \\end{bmatrix}\\) and \\(\\mathbf{x} = \\begin{bmatrix} x_1 \\\\ x_2 \\\\ x_3 \\end{bmatrix}\\)\n\n\nThen \\(\\mathbf{a}'\\mathbf{x} = 2x_1 + 3x_2 + x_3\\)\n\n\nDerivative: \\(\\frac{\\partial}{\\partial \\mathbf{x}}(2x_1 + 3x_2 + x_3) = \\begin{bmatrix} 2 \\\\ 3 \\\\ 1 \\end{bmatrix} = \\mathbf{a}\\)"
+    "section": "Derivative Rule: Example",
+    "text": "Derivative Rule: Example\n\nLet \\(\\mathbf{a} = \\begin{bmatrix} 2 \\\\ 3 \\\\ 1 \\end{bmatrix}\\) and \\(\\mathbf{x} = \\begin{bmatrix} x_1 \\\\ x_2 \\\\ x_3 \\end{bmatrix}\\)\n\n\nThen \\(\\mathbf{a}'\\mathbf{x} = 2x_1 + 3x_2 + x_3\\)\n\n\nDerivative: \\(\\frac{\\partial}{\\partial \\mathbf{x}}(2x_1 + 3x_2 + x_3) = \\begin{bmatrix} 2 \\\\ 3 \\\\ 1 \\end{bmatrix} = \\mathbf{a}\\)"
   },
   {
     "objectID": "slides/02-slides.html#you-try-vector-derivatives",
@@ -471,7 +471,7 @@
     "href": "slides/02-slides.html#derivative-rule-3-example",
     "title": "Matrix Algebra Fundamentals",
     "section": "Derivative Rule 3: Example",
-    "text": "Derivative Rule 3: Example\n\nLet \\(\\mathbf{A} = \\begin{bmatrix} 2 & 1 \\\\ 3 & 4 \\end{bmatrix}\\) and \\(\\mathbf{x} = \\begin{bmatrix} x_1 \\\\ x_2 \\end{bmatrix}\\)\n\n\nStep 1: Find \\(\\mathbf{A} + \\mathbf{A}'\\) \\[\\mathbf{A}' = \\begin{bmatrix} 2 & 3 \\\\ 1 & 4 \\end{bmatrix}\\] \\[\\mathbf{A} + \\mathbf{A}' = \\begin{bmatrix} 4 & 4 \\\\ 4 & 8 \\end{bmatrix}\\]"
+    "text": "Derivative Rule 3: Example\n\nLet \\(\\mathbf{A} = \\begin{bmatrix} 2 & 1 \\\\ 3 & 4 \\end{bmatrix}\\) and \\(\\mathbf{x} = \\begin{bmatrix} x_1 \\\\ x_2 \\end{bmatrix}\\)\n\n\nStep 1: Find \\(\\mathbf{A} + \\mathbf{A}'\\) \\[\\mathbf{A}' = \\begin{bmatrix} 2 & 3 \\\\ 1 & 4 \\end{bmatrix} \\mathbf{A} + \\mathbf{A}' = \\begin{bmatrix} 4 & 4 \\\\ 4 & 8 \\end{bmatrix}\\]"
   },
   {
     "objectID": "slides/02-slides.html#derivative-rule-3-example-cont.",
