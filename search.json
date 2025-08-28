@@ -793,8 +793,8 @@
     "objectID": "ex/ex-2.html#problem-1",
     "href": "ex/ex-2.html#problem-1",
     "title": "Matrix Problem Set",
-    "section": "Problem 1:",
-    "text": "Problem 1:\nGiven the following matrices:\n\\[\\mathbf{A} = \\begin{bmatrix} 1 & 3 & -2 \\\\ 4 & 0 & 5 \\end{bmatrix}, \\quad \\mathbf{B} = \\begin{bmatrix} 2 & 1 \\\\ -1 & 3 \\\\ 0 & 4 \\end{bmatrix}, \\quad \\mathbf{C} = \\begin{bmatrix} 3 & -1 \\\\ 2 & 6 \\end{bmatrix}\\]\na) What are the dimensions of each matrix?\nb) Which of the following operations are possible? If possible, state the dimensions of the result:\n\n\\(\\mathbf{A} + \\mathbf{B}\\)\n\\(\\mathbf{A} \\times \\mathbf{B}\\)\n\\(\\mathbf{B} \\times \\mathbf{C}\\)\n\\(\\mathbf{C} \\times \\mathbf{B}\\)\n\nc) Calculate \\(\\mathbf{A} \\times \\mathbf{B}\\) (show all steps).",
+    "section": "Problem 1",
+    "text": "Problem 1\nGiven the following matrices:\n\\[\\mathbf{A} = \\begin{bmatrix} 1 & 3 & -2 \\\\ 4 & 0 & 5 \\end{bmatrix}, \\quad \\mathbf{B} = \\begin{bmatrix} 2 & 1 \\\\ -1 & 3 \\\\ 0 & 4 \\end{bmatrix}, \\quad \\mathbf{C} = \\begin{bmatrix} 3 & -1 \\\\ 2 & 6 \\end{bmatrix}\\]\na) What are the dimensions of each matrix?\nb) Which of the following operations are possible? If possible, state the dimensions of the result:\n\n\\(\\mathbf{A} + \\mathbf{B}\\)\n\\(\\mathbf{A} \\times \\mathbf{B}\\)\n\\(\\mathbf{B} \\times \\mathbf{C}\\)\n\\(\\mathbf{C} \\times \\mathbf{B}\\)\n\nc) Calculate \\(\\mathbf{A} \\times \\mathbf{B}\\) (show all steps).",
     "crumbs": [
       "{{< fa calendar >}} Schedule",
       "Exercises",
@@ -805,8 +805,8 @@
     "objectID": "ex/ex-2.html#problem-2",
     "href": "ex/ex-2.html#problem-2",
     "title": "Matrix Problem Set",
-    "section": "Problem 2:",
-    "text": "Problem 2:\nGiven \\(\\mathbf{P} = \\begin{bmatrix} 2 & -1 & 4 \\\\ 3 & 0 & 1 \\end{bmatrix}\\) and \\(\\mathbf{Q} = \\begin{bmatrix} 1 & 2 \\\\ -1 & 3 \\\\ 0 & 1 \\end{bmatrix}\\)\na) Find \\(\\mathbf{P}^T\\) and \\(\\mathbf{Q}^T\\).\nb) Calculate \\(\\mathbf{P} \\times \\mathbf{Q}\\).\nc) Calculate \\((\\mathbf{P} \\times \\mathbf{Q})^T\\).\nd) Calculate \\(\\mathbf{Q}^T \\times \\mathbf{P}^T\\) and verify that \\((\\mathbf{P} \\times \\mathbf{Q})^T = \\mathbf{Q}^T \\times \\mathbf{P}^T\\).",
+    "section": "Problem 2",
+    "text": "Problem 2\nGiven \\(\\mathbf{P} = \\begin{bmatrix} 2 & -1 & 4 \\\\ 3 & 0 & 1 \\end{bmatrix}\\) and \\(\\mathbf{Q} = \\begin{bmatrix} 1 & 2 \\\\ -1 & 3 \\\\ 0 & 1 \\end{bmatrix}\\)\na) Find \\(\\mathbf{P}^T\\) and \\(\\mathbf{Q}^T\\).\nb) Calculate \\(\\mathbf{P} \\times \\mathbf{Q}\\).\nc) Calculate \\((\\mathbf{P} \\times \\mathbf{Q})^T\\).\nd) Calculate \\(\\mathbf{Q}^T \\times \\mathbf{P}^T\\) and verify that \\((\\mathbf{P} \\times \\mathbf{Q})^T = \\mathbf{Q}^T \\times \\mathbf{P}^T\\).",
     "crumbs": [
       "{{< fa calendar >}} Schedule",
       "Exercises",
@@ -817,8 +817,8 @@
     "objectID": "ex/ex-2.html#problem-3",
     "href": "ex/ex-2.html#problem-3",
     "title": "Matrix Problem Set",
-    "section": "Problem 3:",
-    "text": "Problem 3:\na) Find the inverse of \\(\\mathbf{R} = \\begin{bmatrix} 3 & 1 \\\\ 2 & 1 \\end{bmatrix}\\).\nb) Verify your answer by showing that \\(\\mathbf{R} \\times \\mathbf{R}^{-1} = \\mathbf{I}\\).\nc) Explain why the matrix \\(\\mathbf{S} = \\begin{bmatrix} 2 & 4 \\\\ 1 & 2 \\end{bmatrix}\\) does not have an inverse.",
+    "section": "Problem 3",
+    "text": "Problem 3\na) Find the inverse of \\(\\mathbf{R} = \\begin{bmatrix} 3 & 1 \\\\ 2 & 1 \\end{bmatrix}\\).\nb) Verify your answer by showing that \\(\\mathbf{R} \\times \\mathbf{R}^{-1} = \\mathbf{I}\\).\nc) Explain why the matrix \\(\\mathbf{S} = \\begin{bmatrix} 2 & 4 \\\\ 1 & 2 \\end{bmatrix}\\) does not have an inverse.",
     "crumbs": [
       "{{< fa calendar >}} Schedule",
       "Exercises",
