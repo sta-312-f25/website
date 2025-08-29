@@ -387,14 +387,14 @@
     "href": "slides/02-slides.html#matrix-inverse-example-1",
     "title": "Matrix Algebra Fundamentals",
     "section": "Matrix Inverse: Example",
-    "text": "Matrix Inverse: Example\n\\[\\mathbf{A} = \\begin{bmatrix} 2 & 1 \\\\ 6 & 2 \\end{bmatrix}\\]\n\nStep 2: Apply formula \\[\\mathbf{A}^{-1} = \\frac{1}{2} \\begin{bmatrix} 2 & -1 \\\\ -6 & 2 \\end{bmatrix} = \\begin{bmatrix} 1 & -0.5 \\\\ -3 & 1 \\end{bmatrix}\\]"
+    "text": "Matrix Inverse: Example\n\\[\\mathbf{A} = \\begin{bmatrix} 2 & 1 \\\\ 6 & 2 \\end{bmatrix}\\]\n\nStep 2: Apply formula \\[\\mathbf{A}^{-1} = \\frac{1}{-2} \\begin{bmatrix} 2 & -1 \\\\ -6 & 2 \\end{bmatrix} = \\begin{bmatrix} -1 & 0.5 \\\\ 3 & -1 \\end{bmatrix}\\]"
   },
   {
     "objectID": "slides/02-slides.html#matrix-inverse-example-2",
     "href": "slides/02-slides.html#matrix-inverse-example-2",
     "title": "Matrix Algebra Fundamentals",
     "section": "Matrix Inverse: Example",
-    "text": "Matrix Inverse: Example\n\\[\\mathbf{A} = \\begin{bmatrix} 2 & 1 \\\\ 6 & 2 \\end{bmatrix}\\]\n\nVerify: \\[\\mathbf{AA}^{-1} = \\begin{bmatrix} 2 & 1 \\\\ 6 & 2 \\end{bmatrix} \\begin{bmatrix} 1 & -0.5 \\\\ -3 & 1 \\end{bmatrix} = \\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\end{bmatrix} = \\mathbf{I}\\]"
+    "text": "Matrix Inverse: Example\n\\[\\mathbf{A} = \\begin{bmatrix} 2 & 1 \\\\ 6 & 2 \\end{bmatrix}\\]\n\nVerify: \\[\\mathbf{AA}^{-1} = \\begin{bmatrix} 2 & 1 \\\\ 6 & 2 \\end{bmatrix} \\begin{bmatrix} -1 & 0.5 \\\\ 3 & -1 \\end{bmatrix} = \\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\end{bmatrix} = \\mathbf{I}\\]"
   },
   {
     "objectID": "slides/02-slides.html#you-try-matrix-inverse",
