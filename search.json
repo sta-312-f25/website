@@ -457,7 +457,7 @@
     "href": "slides/02-slides.html#vector-derivatives-introduction",
     "title": "Matrix Algebra Fundamentals",
     "section": "Vector Derivatives: Introduction",
-    "text": "Vector Derivatives: Introduction\n\nWhy do we need derivatives of vectors? - Essential for optimization in statistics and machine learning - Key to deriving least squares solutions - Foundation for understanding the hat matrix"
+    "text": "Vector Derivatives: Introduction\n\nWhy do we need derivatives of vectors?\n\nEssential for optimization in statistics and machine learning\nKey to deriving least squares solutions\nFoundation for understanding the hat matrix"
   },
   {
     "objectID": "slides/02-slides.html#vector-derivatives-notation",
