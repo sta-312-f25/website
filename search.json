@@ -509,56 +509,96 @@
     "href": "ex/ex-3.html",
     "title": "Linear Regression Fundamentals Problem Set",
     "section": "",
-    "text": "This problem set covers the fundamental concepts of linear regression, including matrix formulations, geometric interpretations, and computational methods. Show all work and provide clear explanations for your reasoning."
+    "text": "This problem set covers the fundamental concepts of linear regression, including matrix formulations, geometric interpretations, and computational methods. Show all work and provide clear explanations for your reasoning.",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 3: Linear Regression Fundamentals"
+    ]
   },
   {
     "objectID": "ex/ex-3.html#instructions",
     "href": "ex/ex-3.html#instructions",
     "title": "Linear Regression Fundamentals Problem Set",
     "section": "",
-    "text": "This problem set covers the fundamental concepts of linear regression, including matrix formulations, geometric interpretations, and computational methods. Show all work and provide clear explanations for your reasoning."
+    "text": "This problem set covers the fundamental concepts of linear regression, including matrix formulations, geometric interpretations, and computational methods. Show all work and provide clear explanations for your reasoning.",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 3: Linear Regression Fundamentals"
+    ]
   },
   {
     "objectID": "ex/ex-3.html#problem-1",
     "href": "ex/ex-3.html#problem-1",
     "title": "Linear Regression Fundamentals Problem Set",
     "section": "Problem 1",
-    "text": "Problem 1\nConsider the following dataset with two predictors:\n\n\nObservation\nx1\nx2\ny\n\n\n\n1\n2\n1\n5.2\n\n\n2\n3\n4\n8.1\n\n\n3\n1\n2\n4.8\n\n\n4\n4\n3\n9.5\n\n\n\na) Write out the design matrix X for the multiple regression model with intercept term.\nb) Calculate \\(\\mathbf{X}^T\\mathbf{X}\\) and \\(\\mathbf{X}^T\\mathbf{y}\\) by hand. Show your matrix multiplication steps.\nc) Using your results from Part B, set up the normal equations \\(\\mathbf{X}^T\\mathbf{X}\\hat\\beta=\\mathbf{X}^T\\mathbf{y}\\) and solve for the coefficient vector \\(\\hat\\beta\\).\nd) Verify your answer using R’s built-in functions."
+    "text": "Problem 1\nConsider the following dataset with two predictors:\n\n\nObservation\nx1\nx2\ny\n\n\n\n1\n2\n1\n5.2\n\n\n2\n3\n4\n8.1\n\n\n3\n1\n2\n4.8\n\n\n4\n4\n3\n9.5\n\n\n\na) Write out the design matrix X for the multiple regression model with intercept term.\nb) Calculate \\(\\mathbf{X}^T\\mathbf{X}\\) and \\(\\mathbf{X}^T\\mathbf{y}\\) by hand. Show your matrix multiplication steps.\nc) Using your results from Part B, set up the normal equations \\(\\mathbf{X}^T\\mathbf{X}\\hat\\beta=\\mathbf{X}^T\\mathbf{y}\\) and solve for the coefficient vector \\(\\hat\\beta\\).\nd) Verify your answer using R’s built-in functions.",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 3: Linear Regression Fundamentals"
+    ]
   },
   {
     "objectID": "ex/ex-3.html#problem-2",
     "href": "ex/ex-3.html#problem-2",
     "title": "Linear Regression Fundamentals Problem Set",
     "section": "Problem 2",
-    "text": "Problem 2\nUsing the data from Problem 1 and your estimated coefficients:\na) Calculate the predicted values \\(\\hat{y}_i\\) for each observation by hand.\nb) Calculate the residuals \\(\\hat\\varepsilon=y_i-\\hat{y}_i\\) for each observation.\nc) Compute the sum of squared errors (SSE) using both formulations:\n\nIndividual terms: SSE \\(= \\sum(y_i - \\hat{y}_i)^2\\)\n\nMatrix form: SSE \\(=  (\\mathbf{y}-\\mathbf{X}\\hat\\beta)^T(\\mathbf{y}-\\mathbf{X}\\hat\\beta)\\)\n\n\nd) Verify that your residuals sum to approximately zero and explain why this should be true geometrically."
+    "text": "Problem 2\nUsing the data from Problem 1 and your estimated coefficients:\na) Calculate the predicted values \\(\\hat{y}_i\\) for each observation by hand.\nb) Calculate the residuals \\(\\hat\\varepsilon=y_i-\\hat{y}_i\\) for each observation.\nc) Compute the sum of squared errors (SSE) using both formulations:\n\nIndividual terms: SSE \\(= \\sum(y_i - \\hat{y}_i)^2\\)\n\nMatrix form: SSE \\(=  (\\mathbf{y}-\\mathbf{X}\\hat\\beta)^T(\\mathbf{y}-\\mathbf{X}\\hat\\beta)\\)\n\n\nd) Verify that your residuals sum to approximately zero and explain why this should be true geometrically.",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 3: Linear Regression Fundamentals"
+    ]
   },
   {
     "objectID": "ex/ex-3.html#problem-3",
     "href": "ex/ex-3.html#problem-3",
     "title": "Linear Regression Fundamentals Problem Set",
     "section": "Problem 3",
-    "text": "Problem 3\na) For simple linear regression with n = 3 observations and design matrix:\n\\[\\mathbf{X} = \\begin{bmatrix}1 & 2\\\\1 & 4\\\\1&6\\end{bmatrix}\\]\nCalculate the hat matrix (\\(\\mathbf{H}\\)) by hand.\nb) Verify that \\(\\mathbf{H}\\) is idempotent.\nc) Show that \\(\\mathbf{H}\\) is symmetric and interpret what this property means geometrically."
+    "text": "Problem 3\na) For simple linear regression with n = 3 observations and design matrix:\n\\[\\mathbf{X} = \\begin{bmatrix}1 & 2\\\\1 & 4\\\\1&6\\end{bmatrix}\\]\nCalculate the hat matrix (\\(\\mathbf{H}\\)) by hand.\nb) Verify that \\(\\mathbf{H}\\) is idempotent.\nc) Show that \\(\\mathbf{H}\\) is symmetric and interpret what this property means geometrically.",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 3: Linear Regression Fundamentals"
+    ]
   },
   {
     "objectID": "ex/ex-3.html#problem-4",
     "href": "ex/ex-3.html#problem-4",
     "title": "Linear Regression Fundamentals Problem Set",
     "section": "Problem 4",
-    "text": "Problem 4\nConsider the simple linear regression case with the design matrix from Problem 3.\na) Write out two specific vectors that lie in the column space of \\(\\mathbf{X}\\). Explain what these vectors represent in terms of the regression model.\nb) If the observed response vector is \\(\\mathbf{y} = \\begin{bmatrix}3\\\\7\\\\12\\end{bmatrix}\\), explain why this vector likely does NOT lie exactly in the column space of \\(\\mathbf{X}\\). What does this mean practically?\nc) Calculate the projection of \\(\\mathbf{y}\\) onto the column space (i.e., \\(\\mathbf{\\hat{y}} = \\mathbf{Hy}\\)) and show that the residual vector is orthogonal to the column space by verifying \\(\\mathbf{X}^T\\hat\\varepsilon=0\\)."
+    "text": "Problem 4\nConsider the simple linear regression case with the design matrix from Problem 3.\na) Write out two specific vectors that lie in the column space of \\(\\mathbf{X}\\). Explain what these vectors represent in terms of the regression model.\nb) If the observed response vector is \\(\\mathbf{y} = \\begin{bmatrix}3\\\\7\\\\12\\end{bmatrix}\\), explain why this vector likely does NOT lie exactly in the column space of \\(\\mathbf{X}\\). What does this mean practically?\nc) Calculate the projection of \\(\\mathbf{y}\\) onto the column space (i.e., \\(\\mathbf{\\hat{y}} = \\mathbf{Hy}\\)) and show that the residual vector is orthogonal to the column space by verifying \\(\\mathbf{X}^T\\hat\\varepsilon=0\\).",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 3: Linear Regression Fundamentals"
+    ]
   },
   {
     "objectID": "ex/ex-3.html#problem-5",
     "href": "ex/ex-3.html#problem-5",
     "title": "Linear Regression Fundamentals Problem Set",
     "section": "Problem 5:",
-    "text": "Problem 5:\na) Starting from the geometric principle that residuals must be orthogonal to the column space of \\(\\mathbf{X}\\), derive the normal equations step by step. Begin with the condition \\(\\mathbf{X}^T\\hat\\varepsilon = 0\\) and show all algebraic steps to arrive at \\(\\mathbf{X}^T\\mathbf{X}\\hat\\beta=\\mathbf{X}^T\\mathbf{y}\\).\nb) Explain why we multiply both sides by \\((\\mathbf{X}^T\\mathbf{X})^{-1}\\) to solve for \\(\\hat\\beta\\), and under what conditions this inverse might not exist.\nc) Show that the least squares estimator \\(\\hat\\beta = (\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\mathbf{y}\\) minimizes the sum of squared errors by demonstrating that this solution satisfies the orthogonality condition."
+    "text": "Problem 5:\na) Starting from the geometric principle that residuals must be orthogonal to the column space of \\(\\mathbf{X}\\), derive the normal equations step by step. Begin with the condition \\(\\mathbf{X}^T\\hat\\varepsilon = 0\\) and show all algebraic steps to arrive at \\(\\mathbf{X}^T\\mathbf{X}\\hat\\beta=\\mathbf{X}^T\\mathbf{y}\\).\nb) Explain why we multiply both sides by \\((\\mathbf{X}^T\\mathbf{X})^{-1}\\) to solve for \\(\\hat\\beta\\), and under what conditions this inverse might not exist.\nc) Show that the least squares estimator \\(\\hat\\beta = (\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\mathbf{y}\\) minimizes the sum of squared errors by demonstrating that this solution satisfies the orthogonality condition.",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 3: Linear Regression Fundamentals"
+    ]
   },
   {
     "objectID": "ex/ex-3.html#problem-6",
     "href": "ex/ex-3.html#problem-6",
     "title": "Linear Regression Fundamentals Problem Set",
     "section": "Problem 6",
-    "text": "Problem 6\nYou are given the following dataset with 10 observations:\n\n\nx\ny\n\n\n\n1\n4.8\n\n\n2\n6.2\n\n\n3\n8.1\n\n\n4\n9.9\n\n\n5\n11.5\n\n\n6\n13.8\n\n\n7\n15.2\n\n\n8\n17.1\n\n\n9\n18.9\n\n\n10\n21.3\n\n\n\na) Implement the least squares solution in R using matrix operations. Calculate \\(\\hat\\beta\\) without using lm().\nb) Compare your results with R’s lm() function and verify they match.\nc) Using the grid below, hand-draw the following elements:\n\nPlot the 10 data points from the table above\n\nDraw the true regression line: y = 3.5 + 1.8x (shown as a dashed line)\nDraw your fitted regression line from Part A (shown as a solid line)\nLabel both lines clearly in your plot\n\n\n\n\n\n\n\n\n\n(You don’t have to upload this drawing on Canvas, but make sure you do it and understand it, we will do it during the board work portion in class.)\nd) Based on your plot, comment on how well the fitted line approximates the true relationship. What does this tell you about the effectiveness of least squares estimation?"
+    "text": "Problem 6\nYou are given the following dataset with 10 observations:\n\n\nx\ny\n\n\n\n1\n4.8\n\n\n2\n6.2\n\n\n3\n8.1\n\n\n4\n9.9\n\n\n5\n11.5\n\n\n6\n13.8\n\n\n7\n15.2\n\n\n8\n17.1\n\n\n9\n18.9\n\n\n10\n21.3\n\n\n\na) Implement the least squares solution in R using matrix operations. Calculate \\(\\hat\\beta\\) without using lm().\nb) Compare your results with R’s lm() function and verify they match.\nc) Using the grid below, hand-draw the following elements:\n\nPlot the 10 data points from the table above\n\nDraw the true regression line: y = 3.5 + 1.8x (shown as a dashed line)\nDraw your fitted regression line from Part A (shown as a solid line)\nLabel both lines clearly in your plot\n\n\n\n\n\n\n\n\n\n(You don’t have to upload this drawing on Canvas, but make sure you do it and understand it, we will do it during the board work portion in class.)\nd) Based on your plot, comment on how well the fitted line approximates the true relationship. What does this tell you about the effectiveness of least squares estimation?",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 3: Linear Regression Fundamentals"
+    ]
   },
   {
     "objectID": "ex/ex-1.html",
