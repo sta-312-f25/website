@@ -40,6 +40,62 @@
     "text": "Is a Linear Model Appropriate?\n\nOutcome variable, \\(y\\) is continuous\nExplanatory variable(s), \\(X = \\{X_1, ..., X_p\\}\\) can take any form\nObservations are independent\nThe residuals are homoscedastic (Equal variance)\nThe residuals are normally distributed\nThe relationship between \\(X\\) and \\(y\\) is linear"
   },
   {
+    "objectID": "slides/03-slides.html#calculating-a-sample-average",
+    "href": "slides/03-slides.html#calculating-a-sample-average",
+    "title": "Linear Regression Fundamentals",
+    "section": "Calculating a sample average",
+    "text": "Calculating a sample average\n\\[\\bar{Y}=\\frac{1}{N}\\sum_{i=1}^NY_i\\]\n\nHow could we write this using matrices?"
+  },
+  {
+    "objectID": "slides/03-slides.html#calculating-a-sample-average-1",
+    "href": "slides/03-slides.html#calculating-a-sample-average-1",
+    "title": "Linear Regression Fundamentals",
+    "section": "Calculating a sample average",
+    "text": "Calculating a sample average\n\\[\\mathbf{A} = \\begin{bmatrix}1 \\\\ 1 \\\\ \\vdots \\\\ 1\\end{bmatrix}\\]"
+  },
+  {
+    "objectID": "slides/03-slides.html#calculating-a-sample-average-2",
+    "href": "slides/03-slides.html#calculating-a-sample-average-2",
+    "title": "Linear Regression Fundamentals",
+    "section": "Calculating a sample average",
+    "text": "Calculating a sample average\n\\[\\frac{1}{N}\\mathbf{A}^TY = \\frac{1}{N}\\begin{bmatrix}1 & 1 & ... & 1\\end{bmatrix}\\begin{bmatrix}Y_1\\\\Y_2\\\\\\vdots\\\\Y_n\\end{bmatrix}=\\bar{Y}\\]"
+  },
+  {
+    "objectID": "slides/03-slides.html#in-r",
+    "href": "slides/03-slides.html#in-r",
+    "title": "Linear Regression Fundamentals",
+    "section": " In R",
+    "text": "In R\n\nset.seed(1)\n\ny &lt;- rnorm(100)\nN &lt;- length(y)\nY &lt;- matrix(y, nrow = N)\nA &lt;- matrix(1, nrow = N)\nt(A) %*% Y / N\n\n          [,1]\n[1,] 0.1088874\n\nmean(Y)\n\n[1] 0.1088874"
+  },
+  {
+    "objectID": "slides/03-slides.html#calculating-a-variance",
+    "href": "slides/03-slides.html#calculating-a-variance",
+    "title": "Linear Regression Fundamentals",
+    "section": "Calculating a Variance",
+    "text": "Calculating a Variance\n\\[\\frac{1}{N}\\sum_{i=1}^N(Y_i-\\bar{Y})^2\\]\n\nHow could we write this using matrices"
+  },
+  {
+    "objectID": "slides/03-slides.html#calculating-a-variance-1",
+    "href": "slides/03-slides.html#calculating-a-variance-1",
+    "title": "Linear Regression Fundamentals",
+    "section": "Calculating a Variance",
+    "text": "Calculating a Variance\n\\[\\mathbf{e} = \\begin{bmatrix}Y_1 - \\bar{Y}\\\\\\vdots \\\\Y_N-\\bar{Y}\\end{bmatrix}, \\frac{1}{N}\\mathbf{e}^T\\mathbf{e} = \\frac{1}{N}\\sum_{i=1}^N(Y_i-\\bar{Y})^2\\]"
+  },
+  {
+    "objectID": "slides/03-slides.html#in-r-1",
+    "href": "slides/03-slides.html#in-r-1",
+    "title": "Linear Regression Fundamentals",
+    "section": " In R",
+    "text": "In R\n\nMultiplying a transpose of a matrix with another matrix is very common\n\nBecause R was made by and for statisticians, there is a function for this: crossprod\n\n\ncrossprod(A, Y) / N\n\n          [,1]\n[1,] 0.1088874"
+  },
+  {
+    "objectID": "slides/03-slides.html#in-r-2",
+    "href": "slides/03-slides.html#in-r-2",
+    "title": "Linear Regression Fundamentals",
+    "section": " In R",
+    "text": "In R\n\nYou can just put one matrix if you want the transpose of a matrix multiplied by itself\n\n\nY_bar &lt;- crossprod(A, Y) / N\ne &lt;- y - c(Y_bar)\ncrossprod(e) / N\n\n          [,1]\n[1,] 0.7986945"
+  },
+  {
     "objectID": "slides/03-slides.html#the-linear-model",
     "href": "slides/03-slides.html#the-linear-model",
     "title": "Linear Regression Fundamentals",
@@ -289,14 +345,7 @@
     "href": "slides/03-slides.html#you-try-1",
     "title": "Linear Regression Fundamentals",
     "section": " You Try",
-    "text": "You Try\n\nTry this in R:\n1. x &lt;- 1:10; y &lt;- 2*x + rnorm(10)\n2. X &lt;- cbind(1, x) # Design matrix\n3. H &lt;- X %*% solve(t(X) %*% X) %*% t(X) # Hat matrix\n4. Check: all.equal(H %*% H, H) # Verify idempotent\n5. e &lt;- y - H %*% y # Residuals\n6. Check: t(X) %*% e # Should be approximately zero\n\n\n\n\n−+\n04:00"
-  },
-  {
-    "objectID": "slides/03-slides.html#the-big-picture",
-    "href": "slides/03-slides.html#the-big-picture",
-    "title": "Linear Regression Fundamentals",
-    "section": "The Big Picture",
-    "text": "The Big Picture\n\nLeast squares isn’t just algebra - it’s geometry\n\n\nWe’re finding the best approximation to our data within our model’s constraints\n\n\nThe mathematical formulas follow naturally from geometric principles"
+    "text": "You Try\n\nTry this in R:\n1. x &lt;- 1:10; y &lt;- 2*x + rnorm(10)\n2. X &lt;- cbind(1, x) # Design matrix\n3. H &lt;- X %*% solve(crossprod(X)) %*% t(X) # Hat matrix\n4. Check: all.equal(H %*% H, H) # Verify idempotent\n5. e &lt;- y - H %*% y # Residuals\n6. Check: t(X) %*% e # Should be approximately zero\n\n\n\n\n−+\n04:00"
   },
   {
     "objectID": "slides/01-slides.html#section",
