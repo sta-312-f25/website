@@ -557,7 +557,7 @@
     "href": "ex/ex-3.html#problem-3",
     "title": "Linear Regression Fundamentals Problem Set",
     "section": "Problem 3",
-    "text": "Problem 3\na) For simple linear regression with n = 3 observations and design matrix:\n\\[\\mathbf{X} = \\begin{bmatrix}1 & 2\\\\1 & 4\\\\1&6\\end{bmatrix}\\]\nCalculate the hat matrix (\\(\\mathbf{H}\\)) by hand.\nb) Verify that \\(\\mathbf{H}\\) is idempotent.\nc) Show that \\(\\mathbf{H}\\) is symmetric and interpret what this property means geometrically.",
+    "text": "Problem 3\na) For simple linear regression with n = 3 observations and design matrix:\n\\[\\mathbf{X} = \\begin{bmatrix}1 & 2\\\\1 & 4\\\\1&6\\end{bmatrix}\\]\nCalculate the hat matrix (\\(\\mathbf{H}\\)) by hand (you can use R if you need to take an inverse).\nb) Verify that \\(\\mathbf{H}\\) is idempotent.\nc) Show that \\(\\mathbf{H}\\) is symmetric and interpret what this property means geometrically.",
     "crumbs": [
       "{{< fa calendar >}} Schedule",
       "Exercises",
