@@ -533,7 +533,7 @@
     "href": "ex/ex-3.html#problem-1",
     "title": "Linear Regression Fundamentals Problem Set",
     "section": "Problem 1",
-    "text": "Problem 1\nConsider the following dataset with two predictors:\n\n\nObservation\nx1\nx2\ny\n\n\n\n1\n2\n1\n5.2\n\n\n2\n3\n4\n8.1\n\n\n3\n1\n2\n4.8\n\n\n4\n4\n3\n9.5\n\n\n\na) Write out the design matrix X for the multiple regression model with intercept term.\nb) Calculate \\(\\mathbf{X}^T\\mathbf{X}\\) and \\(\\mathbf{X}^T\\mathbf{y}\\) by hand. Show your matrix multiplication steps.\nc) Using your results from Part B, set up the normal equations \\(\\mathbf{X}^T\\mathbf{X}\\hat\\beta=\\mathbf{X}^T\\mathbf{y}\\) and solve for the coefficient vector \\(\\hat\\beta\\).\nd) Verify your answer using R’s built-in functions.",
+    "text": "Problem 1\nConsider the following dataset with two predictors:\n\n\nObservation\nx1\nx2\ny\n\n\n\n1\n2\n1\n5.2\n\n\n2\n3\n4\n8.1\n\n\n3\n1\n2\n4.8\n\n\n4\n4\n3\n9.5\n\n\n\na) Write out the design matrix X for the multiple regression model with intercept term.\nb) Calculate \\(\\mathbf{X}^T\\mathbf{X}\\) and \\(\\mathbf{X}^T\\mathbf{y}\\) by hand. Show your matrix multiplication steps.\nc) Using your results from Part B, set up the normal equations \\(\\mathbf{X}^T\\mathbf{X}\\hat\\beta=\\mathbf{X}^T\\mathbf{y}\\) and solve for the coefficient vector \\(\\hat\\beta\\). (You can use R if you need to take an inverse).\nd) Verify your answer using R’s built-in functions.",
     "crumbs": [
       "{{< fa calendar >}} Schedule",
       "Exercises",
