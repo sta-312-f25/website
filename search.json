@@ -580,8 +580,8 @@
     "objectID": "ex/ex-3.html#problem-5",
     "href": "ex/ex-3.html#problem-5",
     "title": "Linear Regression Fundamentals Problem Set",
-    "section": "Problem 5:",
-    "text": "Problem 5:\na) Starting from the geometric principle that residuals must be orthogonal to the column space of \\(\\mathbf{X}\\), derive the normal equations step by step. Begin with the condition \\(\\mathbf{X}^T\\hat\\varepsilon = 0\\) and show all algebraic steps to arrive at \\(\\mathbf{X}^T\\mathbf{X}\\hat\\beta=\\mathbf{X}^T\\mathbf{y}\\).\nb) Explain why we multiply both sides by \\((\\mathbf{X}^T\\mathbf{X})^{-1}\\) to solve for \\(\\hat\\beta\\), and under what conditions this inverse might not exist.\nc) Show that the least squares estimator \\(\\hat\\beta = (\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\mathbf{y}\\) minimizes the sum of squared errors by demonstrating that this solution satisfies the orthogonality condition.",
+    "section": "Problem 5",
+    "text": "Problem 5\na) Starting from the geometric principle that residuals must be orthogonal to the column space of \\(\\mathbf{X}\\), derive the normal equations step by step. Begin with the condition \\(\\mathbf{X}^T\\hat\\varepsilon = 0\\) and show all algebraic steps to arrive at \\(\\mathbf{X}^T\\mathbf{X}\\hat\\beta=\\mathbf{X}^T\\mathbf{y}\\).\nb) Explain why we multiply both sides by \\((\\mathbf{X}^T\\mathbf{X})^{-1}\\) to solve for \\(\\hat\\beta\\), and under what conditions this inverse might not exist.\nc) Show that the least squares estimator \\(\\hat\\beta = (\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\mathbf{y}\\) minimizes the sum of squared errors by demonstrating that this solution satisfies the orthogonality condition.",
     "crumbs": [
       "{{< fa calendar >}} Schedule",
       "Exercises",
