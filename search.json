@@ -613,6 +613,54 @@
     ]
   },
   {
+    "objectID": "demo/hat-matrix-symmetry.html",
+    "href": "demo/hat-matrix-symmetry.html",
+    "title": "Hat Matrix Symmetry Visualization",
+    "section": "",
+    "text": "Point 1 X:  1.0\n\n\nPoint 2 X:  2.0\n\n\nPoint 3 X:  -1.0\n\n\nRandomize Points",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Demos",
+      "Hat Matrix Symmetry"
+    ]
+  },
+  {
+    "objectID": "demo/hat-matrix-symmetry.html#interactive-linear-regression-example",
+    "href": "demo/hat-matrix-symmetry.html#interactive-linear-regression-example",
+    "title": "Hat Matrix Symmetry Visualization",
+    "section": "",
+    "text": "Point 1 X:  1.0\n\n\nPoint 2 X:  2.0\n\n\nPoint 3 X:  -1.0\n\n\nRandomize Points",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Demos",
+      "Hat Matrix Symmetry"
+    ]
+  },
+  {
+    "objectID": "demo/hat-matrix-symmetry.html#hat-matrix-h",
+    "href": "demo/hat-matrix-symmetry.html#hat-matrix-h",
+    "title": "Hat Matrix Symmetry Visualization",
+    "section": "Hat Matrix H",
+    "text": "Hat Matrix H\n\n\n\n\n\n\n\n\n\n\n\nWhat Symmetry Means:\nHij = Hji means:\n\nHow much point i influences point j’s fitted value = How much point j influences point i’s fitted value\n\nThis reciprocal relationship holds for ALL pairs of points",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Demos",
+      "Hat Matrix Symmetry"
+    ]
+  },
+  {
+    "objectID": "demo/hat-matrix-symmetry.html#key-observations",
+    "href": "demo/hat-matrix-symmetry.html#key-observations",
+    "title": "Hat Matrix Symmetry Visualization",
+    "section": "Key Observations",
+    "text": "Key Observations",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Demos",
+      "Hat Matrix Symmetry"
+    ]
+  },
+  {
     "objectID": "ex/ex-2.html",
     "href": "ex/ex-2.html",
     "title": "Matrix Problem Set",
