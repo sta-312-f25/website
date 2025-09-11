@@ -653,7 +653,7 @@
     "href": "demo/hat-matrix-symmetry.html#what-symmetry-means",
     "title": "Hat Matrix Symmetry Visualization",
     "section": "What Symmetry Means:",
-    "text": "What Symmetry Means:\nHij = Hji means:\n\nHow much point i influences point j’s fitted value = How much point j influences point i’s fitted value\n\nThis reciprocal relationship holds for ALL pairs of points",
+    "text": "What Symmetry Means:\nHij = Hji means:\n\nHow much point i influences point j’s fitted value = How much point j influences point i’s fitted value\n\nThis reciprocal relationship holds for ALL pairs of points\nReciprocal influence is a geometric consequence of orthogonal projection",
     "crumbs": [
       "{{< fa calendar >}} Schedule",
       "Demos",
