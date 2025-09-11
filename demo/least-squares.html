@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Logging into RStudio Pro – STA 312</title>
+<title>Interactive Least Squares Visualization – STA 312</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,30 +23,30 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./help-project.html" rel="next">
-<link href="./syllabus.html" rel="prev">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-0815c480559380816a4d1ea211a47e91.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-748b535e376f14d4692bf2b2e5fd6380.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-0815c480559380816a4d1ea211a47e91.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-a7e6113796b8c3db958f69260a338b6c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-9dd73ef0fac4bb670ac33ce005cbdd27.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-a7e6113796b8c3db958f69260a338b6c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
-<link href="site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../demo/hat-matrix-symmetry.html" rel="next">
+<link href="../ex/ex-3.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-0815c480559380816a4d1ea211a47e91.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-748b535e376f14d4692bf2b2e5fd6380.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-0815c480559380816a4d1ea211a47e91.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-a7e6113796b8c3db958f69260a338b6c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-9dd73ef0fac4bb670ac33ce005cbdd27.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-a7e6113796b8c3db958f69260a338b6c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -75,13 +75,42 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta property="og:title" content="Logging into RStudio Pro – STA 312">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="Interactive Least Squares Visualization – STA 312">
 <meta property="og:description" content="STA 312 - Linear Models at Wake Forst University, Fall 2025.">
 <meta property="og:site_name" content="STA 312">
-<meta name="twitter:title" content="Logging into RStudio Pro – STA 312">
+<meta name="twitter:title" content="Interactive Least Squares Visualization – STA 312">
 <meta name="twitter:description" content="STA 312 - Linear Models at Wake Forst University, Fall 2025.">
-<meta name="twitter:image" content="https://sta-312-f25.github.io/website/images/twitter-card.png">
+<meta name="twitter:image" content="https://sta-312-f25.github.io/website/demo/images/twitter-card.png">
 <meta name="twitter:creator" content="@lucystats">
 <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -254,7 +283,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">STA 312</span>
     </a>
   </div>
@@ -265,15 +294,15 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./schedule.html" aria-current="page"> 
+    <a class="nav-link active" href="../schedule.html" aria-current="page"> 
 <span class="menu-text"><i class="fa-solid fa-calendar" aria-label="calendar"></i> Schedule</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./syllabus.html"> 
+    <a class="nav-link" href="../syllabus.html"> 
 <span class="menu-text"><i class="fa-solid fa-gavel" aria-label="gavel"></i> Policies</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./help.html"> 
+    <a class="nav-link" href="../help.html"> 
 <span class="menu-text"><i class="fa-solid fa-question-circle" aria-label="question-circle"></i> Help</span></a>
   </li>  
   <li class="nav-item">
@@ -292,7 +321,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./rstudio-pro.html">Computing</a></li><li class="breadcrumb-item"><a href="./rstudio-pro.html">Using the RStudio Pro Server</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../demo/least-squares.html">Demos</a></li><li class="breadcrumb-item"><a href="../demo/least-squares.html">Least Squares Solution</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -315,13 +344,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./schedule.html" class="sidebar-item-text sidebar-link">
+  <a href="../schedule.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Schedule</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./syllabus.html" class="sidebar-item-text sidebar-link">
+  <a href="../syllabus.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Course Policies</span></a>
   </div>
 </li>
@@ -329,40 +358,40 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
  <span class="menu-text">Computing</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./rstudio-pro.html" class="sidebar-item-text sidebar-link active">
+  <a href="../rstudio-pro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Using the RStudio Pro Server</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./help-project.html" class="sidebar-item-text sidebar-link">
+  <a href="../help-project.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Creating an RStudio Project</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./help-quarto.html" class="sidebar-item-text sidebar-link">
+  <a href="../help-quarto.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Creating a Quarto Document</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./quarto-quick-guide.html" class="sidebar-item-text sidebar-link">
+  <a href="../quarto-quick-guide.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Quarto Quick Guide</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./troubleshooting.html" class="sidebar-item-text sidebar-link">
+  <a href="../troubleshooting.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Troubleshooting</span></a>
   </div>
 </li>
@@ -379,19 +408,19 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ex/ex-1.html" class="sidebar-item-text sidebar-link">
+  <a href="../ex/ex-1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exercise 1</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ex/ex-2.html" class="sidebar-item-text sidebar-link">
+  <a href="../ex/ex-2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exercise 2: Matrices</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ex/ex-3.html" class="sidebar-item-text sidebar-link">
+  <a href="../ex/ex-3.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exercise 3: Linear Regression Fundamentals</span></a>
   </div>
 </li>
@@ -399,22 +428,22 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
  <span class="menu-text">Demos</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./demo/least-squares.html" class="sidebar-item-text sidebar-link">
+  <a href="../demo/least-squares.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Least Squares Solution</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./demo/hat-matrix-symmetry.html" class="sidebar-item-text sidebar-link">
+  <a href="../demo/hat-matrix-symmetry.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Hat Matrix Symmetry</span></a>
   </div>
 </li>
@@ -425,16 +454,23 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#interactive-least-squares-learning-tool" id="toc-interactive-least-squares-learning-tool" class="nav-link active" data-scroll-target="#interactive-least-squares-learning-tool">Interactive Least Squares Learning Tool</a></li>
+  <li><a href="#key-concepts" id="toc-key-concepts" class="nav-link" data-scroll-target="#key-concepts">Key Concepts</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/sta-312-f25/website/edit/main/demo/least-squares.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sta-312-f25/website/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./rstudio-pro.html">Computing</a></li><li class="breadcrumb-item"><a href="./rstudio-pro.html">Using the RStudio Pro Server</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../demo/least-squares.html">Demos</a></li><li class="breadcrumb-item"><a href="../demo/least-squares.html">Least Squares Solution</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Logging into RStudio Pro</h1>
+<h1 class="title">Interactive Least Squares Visualization</h1>
 </div>
 
 
@@ -451,25 +487,414 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Follow these steps to access RStudio Pro:</p>
-<ol type="1">
-<li>Make sure you are connected to the <strong>WFU Network</strong>. This means you must be on the <code>eduroam</code> wireless network, or connected through the VPN if you are off-campus.
+<style>
+    .controls {
+        display: flex;
+        gap: 30px;
+        align-items: center;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .control-group {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        align-items: center;
+    }
+    
+    label {
+        font-weight: bold;
+        color: #2c3e50;
+        font-size: 14px;
+    }
+    
+    input[type="range"] {
+        width: 200px;
+        height: 6px;
+        background: #ddd;
+        outline: none;
+        border-radius: 3px;
+    }
+    
+    input[type="range"]::-webkit-slider-thumb {
+        appearance: none;
+        width: 20px;
+        height: 20px;
+        background: #3498db;
+        cursor: pointer;
+        border-radius: 50%;
+    }
+    
+    input[type="range"]::-moz-range-thumb {
+        width: 20px;
+        height: 20px;
+        background: #3498db;
+        cursor: pointer;
+        border-radius: 50%;
+        border: none;
+    }
+    
+    .slider-value {
+        font-weight: bold;
+        color: #3498db;
+        font-size: 16px;
+        min-width: 60px;
+        text-align: center;
+    }
+    
+    .stats-display {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin: 20px 0;
+    }
+    
+    .stat-box {
+        color: #595959;
+        padding: 15px;
+        border-radius: 8px;
+        border: 2px solid #d5008f;
+        text-align: center;
+    }
+    
+    .stat-value {
+        font-size: 20px;
+        font-weight: bold;
+        color: #d5008f;
+    }
+    
+    #plot-container {
+        width: 100%;
+        height: 500px;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        margin: 20px 0;
+    }
+    
+    canvas {
+        border-radius: 6px;
+    }
+</style>
+<section id="interactive-least-squares-learning-tool" class="level2">
+<h2 class="anchored" data-anchor-id="interactive-least-squares-learning-tool">Interactive Least Squares Learning Tool</h2>
+<p><strong>Adjust the red line</strong> using the sliders below to try to minimize the sum of squared errors. The blue squares show the squared residuals!</p>
+<div class="controls">
+<div class="control-group">
+<p><span class="label" for="intercept-slider">Intercept <span class="math inline">\(\hat\beta_0\)</span></span></p>
+<input type="range" id="intercept-slider" min="-2" max="5" step="0.1" value="1.5">
+<span class="slider-value" id="intercept-value">1.5</span>
+</div>
+<div class="control-group">
+<p><span class="label" for="slope-slider">Slope <span class="math inline">\(\hat\beta_1\)</span></span></p>
+<input type="range" id="slope-slider" min="-1" max="2" step="0.1" value="1.0">
+<span class="slider-value" id="slope-value">1</span>
+</div>
+<div class="control-group">
+<p><span id="optimal-button" class="btn" onclick="showOptimal()">Show Optimal</span></p>
+</div>
+</div>
+<canvas id="plot-container">
+</canvas>
+<div class="stats-display">
+<div class="stat-box">
+<p>Your Line<br>
+<span id="user-equation" class="stat-value">y = 1.50 + 1.00x</span></p>
+</div>
+<div class="stat-box">
+<p>Optimal Least Squares<br>
+<span id="optimal-equation" class="stat-value">y = 1.50 + 1.00x</span></p>
+</div>
+</div>
+<div class="stats-display">
+<div class="stat-box">
+<p>Your SSE<br>
+<span id="user-sse" class="stat-value">0.00</span></p>
+</div>
+<div class="stat-box">
+<p>Optimal SSE<br>
+<span id="optimal-sse" class="stat-value">0.00</span></p>
+</div>
+</div>
+</section>
+<section id="key-concepts" class="level2">
+<h2 class="anchored" data-anchor-id="key-concepts">Key Concepts</h2>
+<p><strong>Goal:</strong> Find the line <span class="math inline">\(\hat{y} = \hat\beta_0 + \hat\beta_1x\)</span> that minimizes the Sum of Squared Errors (SSE)</p>
+<p><strong>The blue squares</strong> show the squared residuals - their total area equals the SSE!</p>
+<p><strong>What to Try:</strong></p>
 <ul>
-<li>If you are off-campus, go through the VPN first: <a href="https://is.wfu.edu/vpn/">WFU VPN Instructions</a>.</li>
-</ul></li>
-<li>Go to <a href="https://login.deac.wfu.edu">login.deac.wfu.edu</a> and sign in with your school email and password.</li>
-<li>Once logged in, click the <strong>RStudio</strong> icon.</li>
-<li>Set your working directory to <code>/deac/sta/classes/sta312/YOUR-USERNAME</code> where <code>YOUR-USERNAME</code> is replaced by the first part of your email address, i.e., mine is <code>mcgowald</code> because my email is <code>mcgowald@wfu.edu</code></li>
-<li>Set the number of hours to how long you plan to work on the project (I usually enter <code>4</code>).</li>
-<li>Click <strong>Launch</strong>.</li>
-<li>The session will show as <em>Queued</em> for a moment. Once it is ready, the status will turn green and say <em>Ready</em>.</li>
-<li>Click the <strong>Connect to RStudio Server</strong> button. You should now be in RStudio Pro.</li>
-</ol>
-<blockquote class="blockquote">
-<p><strong>Note:</strong> You are not required to use this setup (i.e., you can download RStudio and all the necessary packages locally). However, the focus of this class is not on technical setup, so we will not be able to spend time troubleshooting issues if you are not using the official setup described here.</p>
-</blockquote>
+<li>Adjust the sliders to minimize the total area of blue squares<br>
+</li>
+<li>Try to match the optimal (green) line<br>
+</li>
+<li>Notice how the squares get smaller as you approach the optimal solution</li>
+</ul>
+<script>
+    let points = [
+        {x: 1, y: 3.2},
+        {x: 2, y: 0.3},
+        {x: 3, y: 4.1},
+        {x: 4, y: 5.2},
+        {x: 5, y: 8.2},
+        {x: 6, y: 5.8}
+    ];
+    
+    let canvas, ctx;
+    let showOptimalLine = false;
+    
+    function initCanvas() {
+        canvas = document.getElementById('plot-container');
+        ctx = canvas.getContext('2d');
+        
+        const rect = canvas.getBoundingClientRect();
+        canvas.width = rect.width;
+        canvas.height = rect.height;
+        
+        window.addEventListener('resize', function() {
+            const rect = canvas.getBoundingClientRect();
+            canvas.width = rect.width;
+            canvas.height = rect.height;
+            drawPlot();
+        });
+    }
+    
+    function calculateOptimalLine() {
+        const n = points.length;
+        if (n < 2) return {slope: 0, intercept: 0};
+        
+        const xMean = points.reduce((sum, p) => sum + p.x, 0) / n;
+        const yMean = points.reduce((sum, p) => sum + p.y, 0) / n;
+        
+        let numerator = 0;
+        let denominator = 0;
+        
+        for (let i = 0; i < n; i++) {
+            numerator += (points[i].x - xMean) * (points[i].y - yMean);
+            denominator += (points[i].x - xMean) * (points[i].x - xMean);
+        }
+        
+        const slope = denominator === 0 ? 0 : numerator / denominator;
+        const intercept = yMean - slope * xMean;
+        
+        return {slope, intercept};
+    }
+    
+    function calculateSSE(intercept, slope) {
+        let sse = 0;
+        for (let i = 0; i < points.length; i++) {
+            const predicted = intercept + slope * points[i].x;
+            sse += Math.pow(points[i].y - predicted, 2);
+        }
+        return sse;
+    }
+    
+    function transformCoords(x, y) {
+        const margin = 40;
+        const plotWidth = canvas.width - 2 * margin;
+        const plotHeight = canvas.height - 2 * margin;
+        
+        const xMin = 0, xMax = 8;
+        const yMin = 0, yMax = 8;
+        
+        const canvasX = margin + ((x - xMin) / (xMax - xMin)) * plotWidth;
+        const canvasY = margin + ((yMax - y) / (yMax - yMin)) * plotHeight;
+        
+        return {x: canvasX, y: canvasY};
+    }
+    
+    function transformDistance(distance) {
+        const margin = 40;
+        const plotWidth = canvas.width - 2 * margin;
+        const plotHeight = canvas.height - 2 * margin;
+        
+        const xRange = 8;
+        const yRange = 8;
+        
+        // Use the smaller of the two scales to maintain square aspect ratio
+        const scale = Math.min(plotWidth / xRange, plotHeight / yRange);
+        return Math.abs(distance) * scale;
+    }
+    
+    function drawPlot() {
+        if (!ctx) return;
+        
+        // Clear canvas
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#f8f9fa';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+        const margin = 40;
+        const plotWidth = canvas.width - 2 * margin;
+        const plotHeight = canvas.height - 2 * margin;
+        
+        // Draw axes
+        ctx.strokeStyle = '#2c3e50';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(margin, margin);
+        ctx.lineTo(margin, margin + plotHeight);
+        ctx.lineTo(margin + plotWidth, margin + plotHeight);
+        ctx.stroke();
+        
+        // Draw grid
+        ctx.strokeStyle = '#ecf0f1';
+        ctx.lineWidth = 1;
+        for (let i = 1; i <= 7; i++) {
+            const pos = transformCoords(i, 0);
+            ctx.beginPath();
+            ctx.moveTo(pos.x, margin);
+            ctx.lineTo(pos.x, margin + plotHeight);
+            ctx.stroke();
+        }
+        for (let i = 1; i <= 7; i++) {
+            const pos = transformCoords(0, i);
+            ctx.beginPath();
+            ctx.moveTo(margin, pos.y);
+            ctx.lineTo(margin + plotWidth, pos.y);
+            ctx.stroke();
+        }
+        
+        // Draw axis labels
+        ctx.fillStyle = '#2c3e50';
+        ctx.font = '14px Arial';
+        ctx.textAlign = 'center';
+        for (let i = 1; i <= 7; i++) {
+            const pos = transformCoords(i, 0);
+            ctx.fillText(i.toString(), pos.x, margin + plotHeight + 20);
+        }
+        ctx.textAlign = 'right';
+        for (let i = 1; i <= 7; i++) {
+            const pos = transformCoords(0, i);
+            ctx.fillText(i.toString(), margin - 10, pos.y + 4);
+        }
+        
+        const userIntercept = parseFloat(document.getElementById('intercept-slider').value);
+        const userSlope = parseFloat(document.getElementById('slope-slider').value);
+        
+        // Draw squared residuals as blue squares
+        ctx.fillStyle = 'rgba(52, 152, 219, 0.3)';
+        ctx.strokeStyle = 'rgba(52, 152, 219, 0.6)';
+        ctx.lineWidth = 1;
+        
+        for (let point of points) {
+            const predicted = userIntercept + userSlope * point.x;
+            const residual = point.y - predicted;
+            const residualSize = Math.abs(residual);
+            
+            if (residualSize > 0.01) { // Only draw if residual is meaningful
+                const pointPos = transformCoords(point.x, point.y);
+                const predPos = transformCoords(point.x, predicted);
+                const squareSize = transformDistance(residualSize);
+                
+                // Position square so it's adjacent to the point
+                let squareX, squareY;
+                if (residual > 0) {
+                    // Point is above line, square goes to the right
+                    squareX = pointPos.x;
+                    squareY = predPos.y - squareSize;
+                } else {
+                    // Point is below line, square goes to the right  
+                    squareX = pointPos.x;
+                    squareY = predPos.y;
+                }
+                
+                ctx.fillRect(squareX, squareY, squareSize, squareSize);
+                ctx.strokeRect(squareX, squareY, squareSize, squareSize);
+            }
+        }
+        
+        // Draw user line (pink)
+        ctx.strokeStyle = '#d5008f';
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        const start = transformCoords(0.5, userIntercept + userSlope * 0.5);
+        const end = transformCoords(7.5, userIntercept + userSlope * 7.5);
+        ctx.moveTo(start.x, start.y);
+        ctx.lineTo(end.x, end.y);
+        ctx.stroke();
+        
+        // Draw optimal line (green) if shown
+        if (showOptimalLine) {
+            const optimal = calculateOptimalLine();
+            ctx.strokeStyle = '#27ae60';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            const optStart = transformCoords(0.5, optimal.intercept + optimal.slope * 0.5);
+            const optEnd = transformCoords(7.5, optimal.intercept + optimal.slope * 7.5);
+            ctx.moveTo(optStart.x, optStart.y);
+            ctx.lineTo(optEnd.x, optEnd.y);
+            ctx.stroke();
+        }
+        
+        // Draw data points (on top)
+        ctx.fillStyle = '#eec8e1';
+        ctx.strokeStyle = '#d5008f';
+        ctx.lineWidth = 2;
+        for (let point of points) {
+            const pos = transformCoords(point.x, point.y);
+            ctx.beginPath();
+            ctx.arc(pos.x, pos.y, 8, 0, 2 * Math.PI);
+            ctx.fill();
+            ctx.stroke();
+        }
+    }
+    
+    function updateDisplay() {
+        const userIntercept = parseFloat(document.getElementById('intercept-slider').value);
+        const userSlope = parseFloat(document.getElementById('slope-slider').value);
+        const optimal = calculateOptimalLine();
+        
+        // Update slider values
+        document.getElementById('intercept-value').textContent = userIntercept.toFixed(2);
+        document.getElementById('slope-value').textContent = userSlope.toFixed(2);
+        
+        // Update equations
+        const userSign = userSlope >= 0 ? ' + ' : ' ';
+        const optSign = optimal.slope >= 0 ? ' + ' : ' ';
+        
+        document.getElementById('user-equation').textContent = 
+            `y = ${userIntercept.toFixed(2)}${userSign}${userSlope.toFixed(2)}x`;
+        document.getElementById('optimal-equation').textContent = 
+            `y = ${optimal.intercept.toFixed(2)}${optSign}${optimal.slope.toFixed(2)}x`;
+        
+        // Update statistics
+        const userSSE = calculateSSE(userIntercept, userSlope);
+        const optimalSSE = calculateSSE(optimal.intercept, optimal.slope);
+        
+        document.getElementById('user-sse').textContent = userSSE.toFixed(2);
+        document.getElementById('optimal-sse').textContent = optimalSSE.toFixed(2);
+        
+        drawPlot();
+    }
+    
+    function showOptimal() {
+        showOptimalLine = !showOptimalLine;
+        const button = document.getElementById('optimal-button');
+        button.textContent = showOptimalLine ? 'Hide Optimal' : 'Show Optimal';
+        updateDisplay();
+    }
+    
+    function setupEventListeners() {
+        document.getElementById('intercept-slider').addEventListener('input', updateDisplay);
+        document.getElementById('slope-slider').addEventListener('input', updateDisplay);
+    }
+    
+    function initialize() {
+        initCanvas();
+        setupEventListeners();
+        updateDisplay();
+    }
+    
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initialize);
+    } else {
+        initialize();
+    }
+</script>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -886,13 +1311,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./syllabus.html" class="pagination-link" aria-label="Course Policies">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Course Policies</span>
+      <a href="../ex/ex-3.html" class="pagination-link" aria-label="Exercise 3: Linear Regression Fundamentals">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Exercise 3: Linear Regression Fundamentals</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./help-project.html" class="pagination-link" aria-label="Creating an RStudio Project">
-        <span class="nav-page-text">Creating an RStudio Project</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../demo/hat-matrix-symmetry.html" class="pagination-link" aria-label="Hat Matrix Symmetry">
+        <span class="nav-page-text">Hat Matrix Symmetry</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -904,7 +1329,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/sta-312-f25/website/edit/main/rstudio-pro.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sta-312-f25/website/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/sta-312-f25/website/edit/main/demo/least-squares.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sta-312-f25/website/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Made with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <a href="https://quarto.org/">Quarto</a></p>
 </div>

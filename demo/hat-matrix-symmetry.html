@@ -29,7 +29,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../ex/ex-3.html" rel="prev">
+<link href="../demo/least-squares.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -76,8 +76,10 @@ ul.task-list li input[type="checkbox"] {
 
 
 <meta property="og:title" content="Hat Matrix Symmetry Visualization – STA 312">
+<meta property="og:description" content="STA 312 - Linear Models at Wake Forst University, Fall 2025.">
 <meta property="og:site_name" content="STA 312">
 <meta name="twitter:title" content="Hat Matrix Symmetry Visualization – STA 312">
+<meta name="twitter:description" content="STA 312 - Linear Models at Wake Forst University, Fall 2025.">
 <meta name="twitter:image" content="https://sta-312-f25.github.io/website/demo/images/twitter-card.png">
 <meta name="twitter:creator" content="@lucystats">
 <meta name="twitter:card" content="summary_large_image">
@@ -289,7 +291,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../demo/hat-matrix-symmetry.html">Demos</a></li><li class="breadcrumb-item"><a href="../demo/hat-matrix-symmetry.html">Hat Matrix Symmetry</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../demo/least-squares.html">Demos</a></li><li class="breadcrumb-item"><a href="../demo/hat-matrix-symmetry.html">Hat Matrix Symmetry</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -405,6 +407,12 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../demo/least-squares.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Least Squares Solution</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../demo/hat-matrix-symmetry.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Hat Matrix Symmetry</span></a>
   </div>
@@ -422,10 +430,8 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#interactive-linear-regression-example" id="toc-interactive-linear-regression-example" class="nav-link active" data-scroll-target="#interactive-linear-regression-example">Interactive Linear Regression Example</a></li>
-  <li><a href="#hat-matrix-h" id="toc-hat-matrix-h" class="nav-link" data-scroll-target="#hat-matrix-h">Hat Matrix H</a>
-  <ul class="collapse">
+  <li><a href="#hat-matrix-h" id="toc-hat-matrix-h" class="nav-link" data-scroll-target="#hat-matrix-h">Hat Matrix H</a></li>
   <li><a href="#what-symmetry-means" id="toc-what-symmetry-means" class="nav-link" data-scroll-target="#what-symmetry-means">What Symmetry Means:</a></li>
-  </ul></li>
   <li><a href="#key-observations" id="toc-key-observations" class="nav-link" data-scroll-target="#key-observations">Key Observations</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/sta-312-f25/website/edit/main/demo/hat-matrix-symmetry.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sta-312-f25/website/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -434,7 +440,7 @@ ul.task-list li input[type="checkbox"] {
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../demo/hat-matrix-symmetry.html">Demos</a></li><li class="breadcrumb-item"><a href="../demo/hat-matrix-symmetry.html">Hat Matrix Symmetry</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../demo/least-squares.html">Demos</a></li><li class="breadcrumb-item"><a href="../demo/hat-matrix-symmetry.html">Hat Matrix Symmetry</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Hat Matrix Symmetry Visualization</h1>
 </div>
@@ -534,15 +540,15 @@ Randomize Points
 
 </div>
 </section>
-<section id="what-symmetry-means" class="level3">
-<h3 class="anchored" data-anchor-id="what-symmetry-means">What Symmetry Means:</h3>
+</section>
+<section id="what-symmetry-means" class="level2">
+<h2 class="anchored" data-anchor-id="what-symmetry-means">What Symmetry Means:</h2>
 <p><strong>H<sub>ij</sub> = H<sub>ji</sub></strong> means:</p>
 <ul>
 <li>How much point i influences point j’s fitted value = How much point j influences point i’s fitted value<br>
 </li>
 <li>This reciprocal relationship holds for ALL pairs of points</li>
 </ul>
-</section>
 </section>
 <section id="key-observations" class="level2">
 <h2 class="anchored" data-anchor-id="key-observations">Key Observations</h2>
@@ -687,7 +693,7 @@ Randomize Points
             name: 'Actual Data',
             marker: {
                 size: 12,
-                color: '#e74c3c'
+                color: '#eec8e1'
             }
         };
         
@@ -699,7 +705,7 @@ Randomize Points
             name: 'Fitted Values',
             marker: {
                 size: 12,
-                color: '#3498db',
+                color: '#d5008f',
                 symbol: 'square'
             }
         };
@@ -721,7 +727,8 @@ Randomize Points
             xaxis: { title: 'X' },
             yaxis: { title: 'Y' },
             showlegend: true,
-            plot_bgcolor: '#f8f9fa'
+            plot_bgcolor: '#f2f2f1',
+            paper_bgcolor: '#f2f2f1'
         };
         
         Plotly.newPlot('regression-plot', [trace1, trace2, trace3], layout);
@@ -732,18 +739,18 @@ Randomize Points
             z: H,
             type: 'heatmap',
             colorscale: [
-                [0, '#3498db'],
-                [0.5, '#f1c40f'], 
-                [1, '#e74c3c']
+                [0, '#fff'],
+                [1, '#d5008f']
             ],
             showscale: true,
             text: H.map(row => row.map(val => val.toFixed(3))),
             texttemplate: "%{text}",
-            textfont: { size: 16, color: 'white', family: 'Arial Black' }
+            textfont: { size: 16, color: '#595959', family: 'Arial Black' }
         };
         
         const layout = {
-            title: 'Hat Matrix H (Symmetric)',
+            plot_bgcolor: '#f2f2f1',
+            paper_bgcolor: '#f2f2f1',
             xaxis: { 
                 title: 'Point j',
                 tickvals: [0, 1, 2],
@@ -1232,8 +1239,8 @@ Randomize Points
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../ex/ex-3.html" class="pagination-link" aria-label="Exercise 3: Linear Regression Fundamentals">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Exercise 3: Linear Regression Fundamentals</span>
+      <a href="../demo/least-squares.html" class="pagination-link" aria-label="Least Squares Solution">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Least Squares Solution</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

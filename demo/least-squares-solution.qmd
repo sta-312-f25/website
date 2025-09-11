@@ -1,0 +1,363 @@
+---
+title: "Interactive Least Squares Visualization"
+---
+
+```{=html}
+<style>
+    .controls {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+    }
+    
+    .control-group {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    label {
+        font-weight: bold;
+        color: #2c3e50;
+    }
+    
+    input[type="range"] {
+        width: 150px;
+    }
+    
+    .equation-display {
+        font-family: 'Times New Roman', serif;
+        background: #2c3e50;
+        color: #ecf0f1;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        margin: 15px 0;
+        font-size: 24px;
+    }
+    
+    .stats-display {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin: 15px 0;
+    }
+    
+    .stat-box {
+        background: #34495e;
+        color: #ecf0f1;
+        padding: 15px;
+        border-radius: 8px;
+        text-align: center;
+    }
+    
+    .stat-value {
+        font-size: 20px;
+        font-weight: bold;
+        color: #3498db;
+    }
+    
+    button {
+        background: #3498db;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    
+    button:hover {
+        background: #2980b9;
+    }
+</style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.18.2/plotly.min.js"></script>
+```
+
+## Interactive Least Squares Demonstration
+
+**Drag the data points** to see how the least squares regression line changes in real-time!
+
+::: {.section}
+
+::: {.controls}
+<button onclick="addRandomNoise()">Add Noise to Points</button>
+<button onclick="resetPoints()">Reset Points</button>
+<button onclick="addPoint()">Add Point</button>
+<button onclick="removePoint()">Remove Point</button>
+:::
+
+::: {.plot-container}
+<div id="main-plot"></div>
+:::
+
+::: {.equation-display}
+<div id="equation-display"></div>
+:::
+
+::: {.stats-display}
+<div class="stat-box">
+    <div>Sum of Squared Errors (SSE)</div>
+    <div class="stat-value" id="sse-value">0.00</div>
+</div>
+<div class="stat-box">
+    <div>R-squared (R²)</div>
+    <div class="stat-value" id="r2-value">0.00</div>
+</div>
+:::
+
+:::
+
+## Key Concepts
+
+**Least Squares Method:** Finds the line that minimizes the sum of squared vertical distances (residuals) between data points and the line.
+
+**The Algorithm:**
+- For line y = a + bx, we minimize: Σ(yᵢ - a - bxᵢ)²
+- Solution: b = Σ(xᵢ-x̄)(yᵢ-ȳ) / Σ(xᵢ-x̄)², a = ȳ - bx̄
+
+**What to Try:**
+- Drag points to see how outliers affect the line
+- Notice how the line tries to balance all points
+- Watch SSE and R² change as you move points
+- Add noise to see realistic data scenarios
+
+```{=html}
+<script>
+    let points = [
+        {x: 1, y: 2.5, id: 0},
+        {x: 2, y: 3.8, id: 1},
+        {x: 3, y: 4.2, id: 2},
+        {x: 4, y: 5.1, id: 3},
+        {x: 5, y: 6.3, id: 4}
+    ];
+    
+    let nextId = 5;
+    let draggedPointId = null;
+    
+    function randomNormal(mean = 0, stdDev = 1) {
+        let u = 0, v = 0;
+        while(u === 0) u = Math.random();
+        while(v === 0) v = Math.random();
+        
+        const z = Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v);
+        return z * stdDev + mean;
+    }
+    
+    function calculateLeastSquares() {
+        const n = points.length;
+        if (n < 2) return {slope: 0, intercept: 0, r2: 0, sse: 0};
+        
+        // Calculate means
+        const xMean = points.reduce((sum, p) => sum + p.x, 0) / n;
+        const yMean = points.reduce((sum, p) => sum + p.y, 0) / n;
+        
+        // Calculate slope and intercept
+        let numerator = 0;
+        let denominator = 0;
+        
+        for (let i = 0; i < n; i++) {
+            numerator += (points[i].x - xMean) * (points[i].y - yMean);
+            denominator += (points[i].x - xMean) * (points[i].x - xMean);
+        }
+        
+        const slope = denominator === 0 ? 0 : numerator / denominator;
+        const intercept = yMean - slope * xMean;
+        
+        // Calculate R-squared and SSE
+        let ssRes = 0; // Sum of squares of residuals
+        let ssTot = 0; // Total sum of squares
+        
+        for (let i = 0; i < n; i++) {
+            const predicted = intercept + slope * points[i].x;
+            ssRes += Math.pow(points[i].y - predicted, 2);
+            ssTot += Math.pow(points[i].y - yMean, 2);
+        }
+        
+        const r2 = ssTot === 0 ? 1 : 1 - (ssRes / ssTot);
+        
+        return {slope, intercept, r2, sse: ssRes};
+    }
+    
+    function updateVisualization() {
+        const stats = calculateLeastSquares();
+        
+        // Update equation display
+        const sign = stats.slope >= 0 ? '+' : '';
+        document.getElementById('equation-display').innerHTML = 
+            `y = ${stats.intercept.toFixed(2)} ${sign} ${stats.slope.toFixed(2)}x`;
+        
+        // Update statistics
+        document.getElementById('sse-value').textContent = stats.sse.toFixed(2);
+        document.getElementById('r2-value').textContent = stats.r2.toFixed(3);
+        
+        // Create regression line points
+        const xMin = Math.min(...points.map(p => p.x)) - 1;
+        const xMax = Math.max(...points.map(p => p.x)) + 1;
+        const lineX = [];
+        const lineY = [];
+        
+        for (let x = xMin; x <= xMax; x += 0.1) {
+            lineX.push(x);
+            lineY.push(stats.intercept + stats.slope * x);
+        }
+        
+        // Calculate fitted values and residuals
+        const fittedY = points.map(p => stats.intercept + stats.slope * p.x);
+        
+        // Create traces
+        const dataTrace = {
+            x: points.map(p => p.x),
+            y: points.map(p => p.y),
+            mode: 'markers',
+            type: 'scatter',
+            name: 'Data Points',
+            marker: {
+                size: 12,
+                color: '#e74c3c'
+            }
+        };
+        
+        const lineTrace = {
+            x: lineX,
+            y: lineY,
+            mode: 'lines',
+            type: 'scatter',
+            name: 'Least Squares Line',
+            line: {
+                color: '#2c3e50',
+                width: 3
+            }
+        };
+        
+        // Residual lines (vertical lines from points to fitted line)
+        const residualLines = {
+            x: [],
+            y: [],
+            mode: 'lines',
+            type: 'scatter',
+            name: 'Residuals',
+            line: {
+                color: '#3498db',
+                width: 1,
+                dash: 'dot'
+            },
+            showlegend: false
+        };
+        
+        for (let i = 0; i < points.length; i++) {
+            residualLines.x.push(points[i].x, points[i].x, null);
+            residualLines.y.push(points[i].y, fittedY[i], null);
+        }
+        
+        const layout = {
+            xaxis: { title: 'X' },
+            yaxis: { title: 'Y' },
+            showlegend: true,
+            plot_bgcolor: '#f8f9fa',
+            paper_bgcolor: '#f8f9fa',
+            dragmode: 'pan'
+        };
+        
+        const config = {
+            displayModeBar: false,
+            staticPlot: false
+        };
+        
+        Plotly.newPlot('main-plot', [dataTrace, lineTrace, residualLines], layout, config);
+        
+        // Add drag functionality
+        const plotElement = document.getElementById('main-plot');
+        
+        plotElement.on('plotly_hover', function(data) {
+            plotElement.style.cursor = 'pointer';
+        });
+        
+        plotElement.on('plotly_unhover', function(data) {
+            if (draggedPointId === null) {
+                plotElement.style.cursor = 'default';
+            }
+        });
+        
+        plotElement.on('plotly_click', function(data) {
+            if (data.points.length > 0 && data.points[0].curveNumber === 0) {
+                draggedPointId = data.points[0].pointIndex;
+                plotElement.style.cursor = 'grabbing';
+            }
+        });
+        
+        // Mouse move handler for dragging
+        plotElement.addEventListener('mousemove', function(event) {
+            if (draggedPointId !== null) {
+                const rect = plotElement.getBoundingClientRect();
+                const x = event.clientX - rect.left;
+                const y = event.clientY - rect.top;
+                
+                // Convert pixel coordinates to data coordinates
+                const plotData = plotElement._fullLayout;
+                const xaxis = plotData.xaxis;
+                const yaxis = plotData.yaxis;
+                
+                if (xaxis && yaxis) {
+                    const dataX = xaxis.p2d(x);
+                    const dataY = yaxis.p2d(y);
+                    
+                    // Update point position
+                    points[draggedPointId].x = dataX;
+                    points[draggedPointId].y = dataY;
+                    
+                    // Update visualization
+                    updateVisualization();
+                }
+            }
+        });
+        
+        // Mouse up handler to stop dragging
+        document.addEventListener('mouseup', function() {
+            if (draggedPointId !== null) {
+                draggedPointId = null;
+                plotElement.style.cursor = 'default';
+            }
+        });
+    }
+    
+    function addRandomNoise() {
+        points.forEach(point => {
+            point.y += randomNormal(0, 0.3);
+        });
+        updateVisualization();
+    }
+    
+    function resetPoints() {
+        points = [
+            {x: 1, y: 2.5, id: 0},
+            {x: 2, y: 3.8, id: 1},
+            {x: 3, y: 4.2, id: 2},
+            {x: 4, y: 5.1, id: 3},
+            {x: 5, y: 6.3, id: 4}
+        ];
+        nextId = 5;
+        updateVisualization();
+    }
+    
+    function addPoint() {
+        const newX = Math.random() * 6 + 1;
+        const newY = Math.random() * 6 + 1;
+        points.push({x: newX, y: newY, id: nextId++});
+        updateVisualization();
+    }
+    
+    function removePoint() {
+        if (points.length > 2) {
+            points.pop();
+            updateVisualization();
+        }
+    }
+    
+    // Initialize the visualization
+    updateVisualization();
+</script>
+```

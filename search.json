@@ -641,7 +641,19 @@
     "href": "demo/hat-matrix-symmetry.html#hat-matrix-h",
     "title": "Hat Matrix Symmetry Visualization",
     "section": "Hat Matrix H",
-    "text": "Hat Matrix H\n\n\n\n\n\n\n\n\n\n\n\nWhat Symmetry Means:\nHij = Hji means:\n\nHow much point i influences point j’s fitted value = How much point j influences point i’s fitted value\n\nThis reciprocal relationship holds for ALL pairs of points",
+    "text": "Hat Matrix H",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Demos",
+      "Hat Matrix Symmetry"
+    ]
+  },
+  {
+    "objectID": "demo/hat-matrix-symmetry.html#what-symmetry-means",
+    "href": "demo/hat-matrix-symmetry.html#what-symmetry-means",
+    "title": "Hat Matrix Symmetry Visualization",
+    "section": "What Symmetry Means:",
+    "text": "What Symmetry Means:\nHij = Hji means:\n\nHow much point i influences point j’s fitted value = How much point j influences point i’s fitted value\n\nThis reciprocal relationship holds for ALL pairs of points",
     "crumbs": [
       "{{< fa calendar >}} Schedule",
       "Demos",
@@ -658,6 +670,42 @@
       "{{< fa calendar >}} Schedule",
       "Demos",
       "Hat Matrix Symmetry"
+    ]
+  },
+  {
+    "objectID": "demo/least-squares.html",
+    "href": "demo/least-squares.html",
+    "title": "Interactive Least Squares Visualization",
+    "section": "",
+    "text": "Adjust the red line using the sliders below to try to minimize the sum of squared errors. The blue squares show the squared residuals!\n\n\nIntercept \\(\\hat\\beta_0\\)\n\n1.5\n\n\nSlope \\(\\hat\\beta_1\\)\n\n1\n\n\nShow Optimal\n\n\n\n\n\n\nYour Line\ny = 1.50 + 1.00x\n\n\nOptimal Least Squares\ny = 1.50 + 1.00x\n\n\n\n\nYour SSE\n0.00\n\n\nOptimal SSE\n0.00",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Demos",
+      "Least Squares Solution"
+    ]
+  },
+  {
+    "objectID": "demo/least-squares.html#interactive-least-squares-learning-tool",
+    "href": "demo/least-squares.html#interactive-least-squares-learning-tool",
+    "title": "Interactive Least Squares Visualization",
+    "section": "",
+    "text": "Adjust the red line using the sliders below to try to minimize the sum of squared errors. The blue squares show the squared residuals!\n\n\nIntercept \\(\\hat\\beta_0\\)\n\n1.5\n\n\nSlope \\(\\hat\\beta_1\\)\n\n1\n\n\nShow Optimal\n\n\n\n\n\n\nYour Line\ny = 1.50 + 1.00x\n\n\nOptimal Least Squares\ny = 1.50 + 1.00x\n\n\n\n\nYour SSE\n0.00\n\n\nOptimal SSE\n0.00",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Demos",
+      "Least Squares Solution"
+    ]
+  },
+  {
+    "objectID": "demo/least-squares.html#key-concepts",
+    "href": "demo/least-squares.html#key-concepts",
+    "title": "Interactive Least Squares Visualization",
+    "section": "Key Concepts",
+    "text": "Key Concepts\nGoal: Find the line \\(\\hat{y} = \\hat\\beta_0 + \\hat\\beta_1x\\) that minimizes the Sum of Squared Errors (SSE)\nThe blue squares show the squared residuals - their total area equals the SSE!\nWhat to Try:\n\nAdjust the sliders to minimize the total area of blue squares\n\nTry to match the optimal (green) line\n\nNotice how the squares get smaller as you approach the optimal solution",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Demos",
+      "Least Squares Solution"
     ]
   },
   {
