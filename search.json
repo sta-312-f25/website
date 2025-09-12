@@ -12,235 +12,1097 @@
     ]
   },
   {
-    "objectID": "slides/04-slides.html#the-sum-of-squared-errors",
-    "href": "slides/04-slides.html#the-sum-of-squared-errors",
-    "title": "Deriving the Hat Matrix and QR Decomposition",
-    "section": "The Sum of Squared Errors",
-    "text": "The Sum of Squared Errors\n\nRecall our objective: \\[\\text{SSE} = (\\mathbf{y} - \\mathbf{X}\\boldsymbol{\\beta})^T(\\mathbf{y} - \\mathbf{X}\\boldsymbol{\\beta})\\]\n\n\nGoal: Find \\(\\hat{\\boldsymbol{\\beta}}\\) that minimizes SSE\n\n\nMethod: Take the derivative with respect to \\(\\boldsymbol{\\beta}\\) and set equal to zero"
-  },
-  {
-    "objectID": "slides/04-slides.html#expanding-the-sse-expression",
-    "href": "slides/04-slides.html#expanding-the-sse-expression",
-    "title": "Deriving the Hat Matrix and QR Decomposition",
-    "section": "Expanding the SSE Expression",
-    "text": "Expanding the SSE Expression\n\nStart with: \\[\\text{SSE} = (\\mathbf{y} - \\mathbf{X}\\boldsymbol{\\beta})^T(\\mathbf{y} - \\mathbf{X}\\boldsymbol{\\beta})\\]\n\n\nExpand: \\[\\text{SSE} = \\mathbf{y}^T\\mathbf{y} - \\mathbf{y}^T\\mathbf{X}\\boldsymbol{\\beta} - \\boldsymbol{\\beta}^T\\mathbf{X}^T\\mathbf{y} + \\boldsymbol{\\beta}^T\\mathbf{X}^T\\mathbf{X}\\boldsymbol{\\beta}\\]"
-  },
-  {
-    "objectID": "slides/04-slides.html#expanding-the-sse-expression-1",
-    "href": "slides/04-slides.html#expanding-the-sse-expression-1",
-    "title": "Deriving the Hat Matrix and QR Decomposition",
-    "section": "Expanding the SSE Expression",
-    "text": "Expanding the SSE Expression\n\nSince \\(\\mathbf{y}^T\\mathbf{X}\\boldsymbol{\\beta} = \\boldsymbol{\\beta}^T\\mathbf{X}^T\\mathbf{y}\\) (both are scalars): \\[\\text{SSE} = \\mathbf{y}^T\\mathbf{y} - 2\\boldsymbol{\\beta}^T\\mathbf{X}^T\\mathbf{y} + \\boldsymbol{\\beta}^T\\mathbf{X}^T\\mathbf{X}\\boldsymbol{\\beta}\\]"
-  },
-  {
-    "objectID": "slides/04-slides.html#taking-the-derivative",
-    "href": "slides/04-slides.html#taking-the-derivative",
-    "title": "Deriving the Hat Matrix and QR Decomposition",
-    "section": "Taking the Derivative",
-    "text": "Taking the Derivative\n\nMatrix calculus rules we need:\n\n\\(\\frac{\\partial}{\\partial \\boldsymbol{\\beta}}(\\mathbf{a}^T\\boldsymbol{\\beta}) = \\mathbf{a}\\)\n\n\\(\\frac{\\partial}{\\partial \\boldsymbol{\\beta}}(\\boldsymbol{\\beta}^T\\mathbf{A}\\boldsymbol{\\beta}) = 2\\mathbf{A}\\boldsymbol{\\beta}\\) (when \\(\\mathbf{A}\\) is symmetric)\n\n\n\nTaking the derivative: \\[\\frac{\\partial \\text{SSE}}{\\partial \\boldsymbol{\\beta}} = -2\\mathbf{X}^T\\mathbf{y} + 2\\mathbf{X}^T\\mathbf{X}\\boldsymbol{\\beta}\\]"
-  },
-  {
-    "objectID": "slides/04-slides.html#setting-equal-to-zero",
-    "href": "slides/04-slides.html#setting-equal-to-zero",
-    "title": "Deriving the Hat Matrix and QR Decomposition",
-    "section": "Setting Equal to Zero",
-    "text": "Setting Equal to Zero\n\nSet the derivative equal to zero: \\[-2\\mathbf{X}^T\\mathbf{y} + 2\\mathbf{X}^T\\mathbf{X}\\boldsymbol{\\beta} = \\mathbf{0}\\]\n\n\nDivide by 2: \\[-\\mathbf{X}^T\\mathbf{y} + \\mathbf{X}^T\\mathbf{X}\\boldsymbol{\\beta} = \\mathbf{0}\\]"
-  },
-  {
-    "objectID": "slides/04-slides.html#setting-equal-to-zero-1",
-    "href": "slides/04-slides.html#setting-equal-to-zero-1",
-    "title": "Deriving the Hat Matrix and QR Decomposition",
-    "section": "Setting Equal to Zero",
-    "text": "Setting Equal to Zero\nRearrange: \\[\\mathbf{X}^T\\mathbf{X}\\boldsymbol{\\beta} = \\mathbf{X}^T\\mathbf{y}\\]"
-  },
-  {
-    "objectID": "slides/04-slides.html#the-least-squares-solution",
-    "href": "slides/04-slides.html#the-least-squares-solution",
-    "title": "Deriving the Hat Matrix and QR Decomposition",
-    "section": "The Least Squares Solution",
-    "text": "The Least Squares Solution\n\nSolve for \\(\\hat{\\boldsymbol{\\beta}}\\): \\[\\hat{\\boldsymbol{\\beta}} = (\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\mathbf{y}\\]"
-  },
-  {
-    "objectID": "slides/04-slides.html#verification-in-r",
-    "href": "slides/04-slides.html#verification-in-r",
-    "title": "Deriving the Hat Matrix and QR Decomposition",
-    "section": " Verification in R",
-    "text": "Verification in R\n\nset.seed(1)\nx &lt;- 1:10\ny &lt;- 2 + 3 * x + rnorm(10, 0, 2)\n\nX &lt;- cbind(1, x)\n\nbeta_hat &lt;- solve(t(X) %*% X) %*% t(X) %*% y\n\nmodel &lt;- lm(y ~ x)\ncbind(beta_hat, coef(model))\n\n      [,1]     [,2]\n  1.662353 1.662353\nx 3.109464 3.109464"
-  },
-  {
-    "objectID": "slides/04-slides.html#what-is-qr-decomposition",
-    "href": "slides/04-slides.html#what-is-qr-decomposition",
-    "title": "Deriving the Hat Matrix and QR Decomposition",
-    "section": "What is QR Decomposition?",
-    "text": "What is QR Decomposition?\n\nAny matrix \\(\\mathbf{X}\\) can be decomposed as: \\[\\mathbf{X} = \\mathbf{Q}\\mathbf{R}\\]\n\n\nWhere:\n\n\\(\\mathbf{Q}\\) is orthogonal: \\(\\mathbf{Q}^T\\mathbf{Q} = \\mathbf{I}\\)\n\n\\(\\mathbf{R}\\) is upper triangular"
-  },
-  {
-    "objectID": "slides/04-slides.html#what-is-qr-decomposition-1",
-    "href": "slides/04-slides.html#what-is-qr-decomposition-1",
-    "title": "Deriving the Hat Matrix and QR Decomposition",
-    "section": "What is QR Decomposition?",
-    "text": "What is QR Decomposition?\nAny matrix \\(\\mathbf{X}\\) can be decomposed as: \\[\\mathbf{X} = \\mathbf{Q}\\mathbf{R}\\]\nIn words: Break down \\(\\mathbf{X}\\) into perpendicular directions (\\(\\mathbf{Q}\\)) and scaling/rotation (\\(\\mathbf{R}\\))"
-  },
-  {
-    "objectID": "slides/04-slides.html#why-use-qr-for-regression",
-    "href": "slides/04-slides.html#why-use-qr-for-regression",
-    "title": "Deriving the Hat Matrix and QR Decomposition",
-    "section": "Why Use QR for Regression?",
-    "text": "Why Use QR for Regression?\n\nTraditional approach requires: \\[\\hat{\\boldsymbol{\\beta}} = (\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\mathbf{y}\\]"
-  },
-  {
-    "objectID": "slides/04-slides.html#why-use-qr-for-regression-1",
-    "href": "slides/04-slides.html#why-use-qr-for-regression-1",
-    "title": "Deriving the Hat Matrix and QR Decomposition",
-    "section": "Why Use QR for Regression?",
-    "text": "Why Use QR for Regression?\nProblems with \\((\\mathbf{X}^T\\mathbf{X})^{-1}\\):\n\nComputing \\(\\mathbf{X}^T\\mathbf{X}\\) can be numerically unstable\n\nMatrix inversion is computationally expensive\n\nCondition number gets squared: \\(\\kappa(\\mathbf{X}^T\\mathbf{X}) = \\kappa(\\mathbf{X})^2\\)"
-  },
-  {
-    "objectID": "slides/04-slides.html#demo",
-    "href": "slides/04-slides.html#demo",
-    "title": "Deriving the Hat Matrix and QR Decomposition",
-    "section": " Demo",
-    "text": "Demo\nWhat do I mean by “unstable”\n\nx &lt;- seq(1, 500, len = 30)\nX &lt;- cbind(1, x, x^2, x^3)\nbeta &lt;- matrix(c(1, 1, 1, 1), 4, 1)\n\nset.seed(1)\ny &lt;- X%*%beta + rnorm(30)\n\n\nsolve(crossprod(X))\n\n\n\nError in solve.default(crossprod(X)) : system is computationally singular: reciprocal condition number = 3.11914e-17\n\n\n\nlog10(crossprod(X))\n\n                   x                    \n  1.477121  3.875929  6.406189  8.987506\nx 3.875929  6.406189  8.987506 11.596810\n  6.406189  8.987506 11.596810 14.223800\n  8.987506 11.596810 14.223800 16.862984"
-  },
-  {
-    "objectID": "slides/04-slides.html#qr-solution",
-    "href": "slides/04-slides.html#qr-solution",
-    "title": "Deriving the Hat Matrix and QR Decomposition",
-    "section": "QR Solution",
-    "text": "QR Solution\n\nIf \\(\\mathbf{X} = \\mathbf{Q}\\mathbf{R}\\), then: \\[\\mathbf{X}^T\\mathbf{X} = (\\mathbf{Q}\\mathbf{R})^T(\\mathbf{Q}\\mathbf{R}) = \\mathbf{R}^T\\mathbf{Q}^T\\mathbf{Q}\\mathbf{R} = \\mathbf{R}^T\\mathbf{R}\\]"
-  },
-  {
-    "objectID": "slides/04-slides.html#qr-solution-1",
-    "href": "slides/04-slides.html#qr-solution-1",
-    "title": "Deriving the Hat Matrix and QR Decomposition",
-    "section": "QR Solution",
-    "text": "QR Solution\nSo: \\[\n\\begin{align}\n\\hat{\\boldsymbol{\\beta}} &= (\\mathbf{R}^T\\mathbf{R})^{-1}\\mathbf{R}^T\\mathbf{Q}^T\\mathbf{y} \\\\&= \\mathbf{R}^{-1}(\\mathbf{R}^T)^{-1}\\mathbf{R}^T\\mathbf{Q}^T\\mathbf{y}\\\\& = \\mathbf{R}^{-1}\\mathbf{Q}^T\\mathbf{y}\n\\end{align}\n\\]"
-  },
-  {
-    "objectID": "slides/04-slides.html#qr-advantages",
-    "href": "slides/04-slides.html#qr-advantages",
-    "title": "Deriving the Hat Matrix and QR Decomposition",
-    "section": "QR Advantages",
-    "text": "QR Advantages\n\nOnly need to solve \\(\\mathbf{R}\\hat{\\boldsymbol{\\beta}} = \\mathbf{Q}^T\\mathbf{y}\\) (back substitution)\n\nMore numerically stable\n\nAvoids explicit matrix inversion"
-  },
-  {
-    "objectID": "slides/04-slides.html#you-try-qr-properties",
-    "href": "slides/04-slides.html#you-try-qr-properties",
-    "title": "Deriving the Hat Matrix and QR Decomposition",
-    "section": "You Try: QR Properties",
-    "text": "You Try: QR Properties\n\nGiven \\(\\mathbf{X} = \\mathbf{Q}\\mathbf{R}\\), verify that:\n\n\\(\\mathbf{X}^T\\mathbf{X} = \\mathbf{R}^T\\mathbf{R}\\)\nThe hat matrix becomes \\(\\mathbf{H} = \\mathbf{Q}\\mathbf{Q}^T\\)\n\nHint: Use the fact that \\(\\mathbf{Q}^T\\mathbf{Q} = \\mathbf{I}\\)\n\n\n\n\n−+\n05:00"
-  },
-  {
-    "objectID": "slides/04-slides.html#backsolve-example",
-    "href": "slides/04-slides.html#backsolve-example",
-    "title": "Deriving the Hat Matrix and QR Decomposition",
-    "section": "Backsolve Example",
-    "text": "Backsolve Example\nGiven: \\[\\mathbf{R} = \\begin{bmatrix} 2 & 1 & 3 \\\\ 0 & 4 & 2 \\\\ 0 & 0 & 5 \\end{bmatrix}, \\quad \\mathbf{Q}^T\\mathbf{y} = \\begin{bmatrix} 8 \\\\ 12 \\\\ 15 \\end{bmatrix}\\]\nSolve: \\(\\mathbf{R}\\hat{\\boldsymbol{\\beta}} = \\mathbf{Q}^T\\mathbf{y}\\)"
-  },
-  {
-    "objectID": "slides/04-slides.html#step-by-step-backsolve",
-    "href": "slides/04-slides.html#step-by-step-backsolve",
-    "title": "Deriving the Hat Matrix and QR Decomposition",
-    "section": "Step-by-Step Backsolve",
-    "text": "Step-by-Step Backsolve\n\n\\[\\begin{bmatrix} 2 & 1 & 3 \\\\ 0 & 4 & 2 \\\\ 0 & 0 & 5 \\end{bmatrix} \\begin{bmatrix} \\hat\\beta_1 \\\\ \\hat\\beta_2 \\\\ \\hat\\beta_3 \\end{bmatrix} = \\begin{bmatrix} 8 \\\\ 12 \\\\ 15 \\end{bmatrix}\\]\n\n\nStep 1: Solve bottom row first \\[5\\hat\\beta_3 = 15 \\implies \\hat\\beta_3 = 3\\]"
-  },
-  {
-    "objectID": "slides/04-slides.html#step-by-step-backsolve-1",
-    "href": "slides/04-slides.html#step-by-step-backsolve-1",
-    "title": "Deriving the Hat Matrix and QR Decomposition",
-    "section": "Step-by-Step Backsolve",
-    "text": "Step-by-Step Backsolve\n\n\\[\\begin{bmatrix} 2 & 1 & 3 \\\\ 0 & 4 & 2 \\\\ 0 & 0 & 5 \\end{bmatrix} \\begin{bmatrix} \\hat\\beta_1 \\\\ \\hat\\beta_2 \\\\ \\hat\\beta_3 \\end{bmatrix} = \\begin{bmatrix} 8 \\\\ 12 \\\\ 15 \\end{bmatrix}\\]\n\nStep 2: Substitute into second row \\[4\\beta_2 + 2(3) = 12 \\implies 4\\beta_2 = 6 \\implies \\beta_2 = 1.5\\]"
-  },
-  {
-    "objectID": "slides/04-slides.html#step-by-step-backsolve-2",
-    "href": "slides/04-slides.html#step-by-step-backsolve-2",
-    "title": "Deriving the Hat Matrix and QR Decomposition",
-    "section": "Step-by-Step Backsolve",
-    "text": "Step-by-Step Backsolve\n\n\\[\\begin{bmatrix} 2 & 1 & 3 \\\\ 0 & 4 & 2 \\\\ 0 & 0 & 5 \\end{bmatrix} \\begin{bmatrix} \\hat\\beta_1 \\\\ \\hat\\beta_2 \\\\ \\hat\\beta_3 \\end{bmatrix} = \\begin{bmatrix} 8 \\\\ 12 \\\\ 15 \\end{bmatrix}\\]\n\nStep 3: Substitute into first row \\[2\\beta_1 + 1(1.5) + 3(3) = 8 \\implies 2\\beta_1 = -2.5 \\implies \\beta_1 = -1.25\\]"
-  },
-  {
-    "objectID": "slides/04-slides.html#backsolve-solution",
-    "href": "slides/04-slides.html#backsolve-solution",
-    "title": "Deriving the Hat Matrix and QR Decomposition",
-    "section": "Backsolve Solution",
-    "text": "Backsolve Solution\n\\[\\hat{\\boldsymbol{\\beta}} = \\begin{bmatrix} -1.25 \\\\ 1.5 \\\\ 3 \\end{bmatrix}\\]\nKey insight: Work backwards through the triangular matrix, using previously solved values to eliminate unknowns in each step."
-  },
-  {
-    "objectID": "slides/04-slides.html#qr-in-r",
-    "href": "slides/04-slides.html#qr-in-r",
-    "title": "Deriving the Hat Matrix and QR Decomposition",
-    "section": " QR in R",
-    "text": "QR in R\n\n# Using our previous data\n\n# QR decomposition\nqr_decomp &lt;- qr(X)\nQ &lt;- qr.Q(qr_decomp)\nR &lt;- qr.R(qr_decomp)\n\n# Solve using QR\nbeta_qr &lt;- backsolve(R, t(Q) %*% y)\nbeta_qr"
-  },
-  {
-    "objectID": "slides/04-slides.html#why-qr-matters",
-    "href": "slides/04-slides.html#why-qr-matters",
-    "title": "Deriving the Hat Matrix and QR Decomposition",
-    "section": " Why QR Matters",
-    "text": "Why QR Matters\nCondition number comparison:\n\n# Compare condition numbers\nkappa(X)               # Condition of X\n\n[1] 158915720\n\nkappa(t(X) %*% X)      # Condition of X'X (much worse!)\n\n[1] 3.165203e+16"
-  },
-  {
-    "objectID": "slides/04-slides.html#you-try-qr-properties-1",
-    "href": "slides/04-slides.html#you-try-qr-properties-1",
-    "title": "Deriving the Hat Matrix and QR Decomposition",
-    "section": "You Try: QR Properties",
-    "text": "You Try: QR Properties\nGiven \\(\\mathbf{H} = \\mathbf{Q}\\mathbf{Q}^T\\) calculate \\(\\hat{y}\\) using the QR elements.\n\n\n\n−+\n05:00"
-  },
-  {
-    "objectID": "slides/04-slides.html#what-does-sse-tell-us",
-    "href": "slides/04-slides.html#what-does-sse-tell-us",
-    "title": "Deriving the Hat Matrix and QR Decomposition",
+    "objectID": "slides/partial-interp-slides.html#what-does-sse-tell-us",
+    "href": "slides/partial-interp-slides.html#what-does-sse-tell-us",
+    "title": "Untitled",
     "section": "What Does SSE Tell Us?",
     "text": "What Does SSE Tell Us?\n\nMeasures total unexplained variation\n\nSmaller SSE = better fit\n\nUnits are (units of y)²"
   },
   {
-    "objectID": "slides/04-slides.html#sse-alone-isnt-enough",
-    "href": "slides/04-slides.html#sse-alone-isnt-enough",
-    "title": "Deriving the Hat Matrix and QR Decomposition",
+    "objectID": "slides/partial-interp-slides.html#sse-alone-isnt-enough",
+    "href": "slides/partial-interp-slides.html#sse-alone-isnt-enough",
+    "title": "Untitled",
     "section": "SSE alone isn’t enough",
     "text": "SSE alone isn’t enough\n\nDepends on sample size and scale of y\n\nNeed context for interpretation"
   },
   {
-    "objectID": "slides/04-slides.html#from-sse-to-more-useful-metrics",
-    "href": "slides/04-slides.html#from-sse-to-more-useful-metrics",
-    "title": "Deriving the Hat Matrix and QR Decomposition",
+    "objectID": "slides/partial-interp-slides.html#from-sse-to-more-useful-metrics",
+    "href": "slides/partial-interp-slides.html#from-sse-to-more-useful-metrics",
+    "title": "Untitled",
     "section": "From SSE to More Useful Metrics",
     "text": "From SSE to More Useful Metrics\n\nMean Squared Error (MSE): \\[\\text{MSE} = \\frac{\\text{SSE}}{n-p} = \\frac{\\sum_{i=1}^n (y_i - \\hat{y}_i)^2}{n-p}\\]"
   },
   {
-    "objectID": "slides/04-slides.html#why-n-p-instead-of-n",
-    "href": "slides/04-slides.html#why-n-p-instead-of-n",
-    "title": "Deriving the Hat Matrix and QR Decomposition",
+    "objectID": "slides/partial-interp-slides.html#why-n-p-instead-of-n",
+    "href": "slides/partial-interp-slides.html#why-n-p-instead-of-n",
+    "title": "Untitled",
     "section": "Why \\((n-p)\\) instead of \\(n\\)?",
     "text": "Why \\((n-p)\\) instead of \\(n\\)?\n\n\\(p\\) = number of parameters estimated\n\nCorrects for degrees of freedom used (provides unbiased estimate of error variance)"
   },
   {
-    "objectID": "slides/04-slides.html#interpreting-coefficients",
-    "href": "slides/04-slides.html#interpreting-coefficients",
-    "title": "Deriving the Hat Matrix and QR Decomposition",
+    "objectID": "slides/partial-interp-slides.html#interpreting-coefficients",
+    "href": "slides/partial-interp-slides.html#interpreting-coefficients",
+    "title": "Untitled",
     "section": "Interpreting Coefficients",
     "text": "Interpreting Coefficients\n\nSimple Linear Regression: \\(y = \\beta_0 + \\beta_1 x + \\varepsilon\\)\n\n\\(\\beta_0\\) (intercept): Expected value of \\(y\\) when \\(x = 0\\)\n\\(\\beta_1\\) (slope): Expected change in \\(y\\) for a 1-unit increase in \\(x\\)"
   },
   {
-    "objectID": "slides/04-slides.html#interpreting-coefficients-1",
-    "href": "slides/04-slides.html#interpreting-coefficients-1",
-    "title": "Deriving the Hat Matrix and QR Decomposition",
+    "objectID": "slides/partial-interp-slides.html#interpreting-coefficients-1",
+    "href": "slides/partial-interp-slides.html#interpreting-coefficients-1",
+    "title": "Untitled",
     "section": "Interpreting Coefficients",
     "text": "Interpreting Coefficients\nMultiple Regression: \\(y = \\beta_0 + \\beta_1 x_1 + \\beta_2 x_2 + \\varepsilon\\)\n\n\\(\\beta_1\\): Expected change in \\(y\\) for a 1-unit increase in \\(x_1\\), holding \\(x_2\\) constant\n\\(\\beta_2\\): Expected change in \\(y\\) for a 1-unit increase in \\(x_2\\), holding \\(x_1\\) constant"
   },
   {
-    "objectID": "slides/04-slides.html#you-try-coefficient-interpretation",
-    "href": "slides/04-slides.html#you-try-coefficient-interpretation",
-    "title": "Deriving the Hat Matrix and QR Decomposition",
+    "objectID": "slides/partial-interp-slides.html#you-try-coefficient-interpretation",
+    "href": "slides/partial-interp-slides.html#you-try-coefficient-interpretation",
+    "title": "Untitled",
     "section": "You Try: Coefficient Interpretation",
     "text": "You Try: Coefficient Interpretation\n\nGiven the regression: \\(\\text{Salary} = 40000 + 2000 \\times \\text{YearsExperience} + 5000 \\times \\text{HasDegree}\\)\nWhere HasDegree = 1 if person has degree, 0 otherwise\nInterpret each coefficient:\n\nWhat does 40000 represent?\n\nWhat does 2000 represent?\n\nWhat does 5000 represent?\n\n\n\n\n\n−+\n04:00"
   },
   {
-    "objectID": "slides/04-slides.html#practical-exercise",
-    "href": "slides/04-slides.html#practical-exercise",
-    "title": "Deriving the Hat Matrix and QR Decomposition",
+    "objectID": "slides/partial-interp-slides.html#practical-exercise",
+    "href": "slides/partial-interp-slides.html#practical-exercise",
+    "title": "Untitled",
     "section": " Practical Exercise",
     "text": "Practical Exercise\n\nLog in to RStudio Pro.\nUsing the teengamb dataset from the faraway package,\nPredict gambling expenditure using sex, status, and income\nDo this 3 ways:\n\n\nusing the derivation from our derivative of the SSE\nusing QR decomposition\nusing the lm function"
+  },
+  {
+    "objectID": "slides/03-slides.html#before-you-fit-a-model",
+    "href": "slides/03-slides.html#before-you-fit-a-model",
+    "title": "Linear Regression Fundamentals",
+    "section": "Before You Fit a Model",
+    "text": "Before You Fit a Model\n\n📖 Understand the content matter\nAs a statistician I collaborate frequently with subject matter experts to ensure that I understand the context of the problem at hand.\n\n\n❓ Understand the objective\nIt is crucial to understand what the objectives are. Ideally, these are set a priori, or if exploratory analyses are being done that is very explicit from beginning to end."
+  },
+  {
+    "objectID": "slides/03-slides.html#before-you-fit-a-model-1",
+    "href": "slides/03-slides.html#before-you-fit-a-model-1",
+    "title": "Linear Regression Fundamentals",
+    "section": "Before You Fit a Model",
+    "text": "Before You Fit a Model\n\n📏 Understand where the data came from\nWas this observational or experimental data? Is any data missing? What are the units? Are there data entry issues?\n\n\n🧹 Get the data into a tidy, analyzable form\nOften we get data in a form that is not easily analyzable. In this class, we will be focusing mostly on statistical methodology once the data is in an analyzable format, but just because it is analyzable doesn’t mean the analysis choice is obvious."
+  },
+  {
+    "objectID": "slides/03-slides.html#before-you-fit-a-model-2",
+    "href": "slides/03-slides.html#before-you-fit-a-model-2",
+    "title": "Linear Regression Fundamentals",
+    "section": "Before You Fit a Model",
+    "text": "Before You Fit a Model\n💃 Determine the appropriate model\nIn this class we are focusing on Linear Models. Linear models are not always appropriate. You must examine your data to determine whether a linear model is a good choice."
+  },
+  {
+    "objectID": "slides/03-slides.html#is-a-linear-model-appropriate",
+    "href": "slides/03-slides.html#is-a-linear-model-appropriate",
+    "title": "Linear Regression Fundamentals",
+    "section": "Is a Linear Model Appropriate?",
+    "text": "Is a Linear Model Appropriate?\n\nOutcome variable, \\(y\\) is continuous\nExplanatory variable(s), \\(X = \\{X_1, ..., X_p\\}\\) can take any form\nObservations are independent\nThe residuals are homoscedastic (Equal variance)\nThe residuals are normally distributed\nThe relationship between \\(X\\) and \\(y\\) is linear"
+  },
+  {
+    "objectID": "slides/03-slides.html#calculating-a-sample-average",
+    "href": "slides/03-slides.html#calculating-a-sample-average",
+    "title": "Linear Regression Fundamentals",
+    "section": "Calculating a sample average",
+    "text": "Calculating a sample average\n\\[\\bar{Y}=\\frac{1}{N}\\sum_{i=1}^NY_i\\]\n\nHow could we write this using matrices?"
+  },
+  {
+    "objectID": "slides/03-slides.html#calculating-a-sample-average-1",
+    "href": "slides/03-slides.html#calculating-a-sample-average-1",
+    "title": "Linear Regression Fundamentals",
+    "section": "Calculating a sample average",
+    "text": "Calculating a sample average\n\\[\\mathbf{A} = \\begin{bmatrix}1 \\\\ 1 \\\\ \\vdots \\\\ 1\\end{bmatrix}\\]"
+  },
+  {
+    "objectID": "slides/03-slides.html#calculating-a-sample-average-2",
+    "href": "slides/03-slides.html#calculating-a-sample-average-2",
+    "title": "Linear Regression Fundamentals",
+    "section": "Calculating a sample average",
+    "text": "Calculating a sample average\n\\[\\frac{1}{N}\\mathbf{A}^TY = \\frac{1}{N}\\begin{bmatrix}1 & 1 & ... & 1\\end{bmatrix}\\begin{bmatrix}Y_1\\\\Y_2\\\\\\vdots\\\\Y_n\\end{bmatrix}=\\bar{Y}\\]"
+  },
+  {
+    "objectID": "slides/03-slides.html#in-r",
+    "href": "slides/03-slides.html#in-r",
+    "title": "Linear Regression Fundamentals",
+    "section": " In R",
+    "text": "In R\n\nset.seed(1)\n\ny &lt;- rnorm(100)\nN &lt;- length(y)\nY &lt;- matrix(y, nrow = N)\nA &lt;- matrix(1, nrow = N)\nt(A) %*% Y / N\n\n          [,1]\n[1,] 0.1088874\n\nmean(Y)\n\n[1] 0.1088874"
+  },
+  {
+    "objectID": "slides/03-slides.html#calculating-a-variance",
+    "href": "slides/03-slides.html#calculating-a-variance",
+    "title": "Linear Regression Fundamentals",
+    "section": "Calculating a Variance",
+    "text": "Calculating a Variance\n\\[\\frac{1}{N}\\sum_{i=1}^N(Y_i-\\bar{Y})^2\\]\n\nHow could we write this using matrices"
+  },
+  {
+    "objectID": "slides/03-slides.html#calculating-a-variance-1",
+    "href": "slides/03-slides.html#calculating-a-variance-1",
+    "title": "Linear Regression Fundamentals",
+    "section": "Calculating a Variance",
+    "text": "Calculating a Variance\n\\[\\mathbf{e} = \\begin{bmatrix}Y_1 - \\bar{Y}\\\\\\vdots \\\\Y_N-\\bar{Y}\\end{bmatrix}, \\frac{1}{N}\\mathbf{e}^T\\mathbf{e} = \\frac{1}{N}\\sum_{i=1}^N(Y_i-\\bar{Y})^2\\]"
+  },
+  {
+    "objectID": "slides/03-slides.html#in-r-1",
+    "href": "slides/03-slides.html#in-r-1",
+    "title": "Linear Regression Fundamentals",
+    "section": " In R",
+    "text": "In R\n\nMultiplying a transpose of a matrix with another matrix is very common\n\nBecause R was made by and for statisticians, there is a function for this: crossprod\n\n\ncrossprod(A, Y) / N\n\n          [,1]\n[1,] 0.1088874"
+  },
+  {
+    "objectID": "slides/03-slides.html#in-r-2",
+    "href": "slides/03-slides.html#in-r-2",
+    "title": "Linear Regression Fundamentals",
+    "section": " In R",
+    "text": "In R\n\nYou can just put one matrix if you want the transpose of a matrix multiplied by itself\n\n\nY_bar &lt;- crossprod(A, Y) / N\ne &lt;- y - c(Y_bar)\ncrossprod(e) / N\n\n          [,1]\n[1,] 0.7986945"
+  },
+  {
+    "objectID": "slides/03-slides.html#the-linear-model",
+    "href": "slides/03-slides.html#the-linear-model",
+    "title": "Linear Regression Fundamentals",
+    "section": "The Linear Model",
+    "text": "The Linear Model\n\n\nStandard form: \\[\\mathbf{y} = \\mathbf{X}\\boldsymbol{\\beta} + \\boldsymbol{\\varepsilon}\\]\n\n\n\nWhere:\n\n\\(\\mathbf{y}\\) is an \\(n \\times 1\\) vector of responses\n\n\\(\\mathbf{X}\\) is an \\(n \\times p\\) design matrix\n\n\\(\\boldsymbol{\\beta}\\) is a \\(p \\times 1\\) vector of parameters\n\n\\(\\boldsymbol{\\varepsilon}\\) is an \\(n \\times 1\\) vector of errors"
+  },
+  {
+    "objectID": "slides/03-slides.html#the-design-matrix",
+    "href": "slides/03-slides.html#the-design-matrix",
+    "title": "Linear Regression Fundamentals",
+    "section": "The Design Matrix",
+    "text": "The Design Matrix\n\nSimple linear regression: \\[\\mathbf{X} = \\begin{bmatrix}\n1 & x_1 \\\\\n1 & x_2 \\\\\n\\vdots & \\vdots \\\\\n1 & x_n\n\\end{bmatrix}, \\quad \\boldsymbol{\\beta} = \\begin{bmatrix} \\beta_0 \\\\ \\beta_1 \\end{bmatrix}\\]"
+  },
+  {
+    "objectID": "slides/03-slides.html#the-design-matrix-1",
+    "href": "slides/03-slides.html#the-design-matrix-1",
+    "title": "Linear Regression Fundamentals",
+    "section": "The Design Matrix",
+    "text": "The Design Matrix\nMultiple regression: \\[\\mathbf{X} = \\begin{bmatrix}\n1 & x_{11} & x_{12} & \\cdots & x_{1p} \\\\\n1 & x_{21} & x_{22} & \\cdots & x_{2p} \\\\\n\\vdots & \\vdots & \\vdots & \\ddots & \\vdots \\\\\n1 & x_{n1} & x_{n2} & \\cdots & x_{np}\n\\end{bmatrix}\\]"
+  },
+  {
+    "objectID": "slides/03-slides.html#what-about-hats",
+    "href": "slides/03-slides.html#what-about-hats",
+    "title": "Linear Regression Fundamentals",
+    "section": "What About Hats?",
+    "text": "What About Hats?\n\nHat notation indicates estimates or predicted values\n\n\nParameters vs. Estimates:\n\n\\(\\beta_0, \\beta_1\\) = true (unknown) parameters\n\n\\(\\hat{\\beta}_0, \\hat{\\beta}_1\\) = estimated parameters from data\n\n\n\n\nObserved vs. Predicted:\n\n\\(y_i\\) = observed response values\n\\(\\hat{y}_i\\) = predicted values from model"
+  },
+  {
+    "objectID": "slides/03-slides.html#what-is-a-residual",
+    "href": "slides/03-slides.html#what-is-a-residual",
+    "title": "Linear Regression Fundamentals",
+    "section": "What is a Residual?",
+    "text": "What is a Residual?\n\nDefinition: A residual is the difference between an observed value and its predicted value from the model\n\n\nFormula:\n\\[\\hat\\varepsilon_i = y_i-\\hat{y}_i\\]"
+  },
+  {
+    "objectID": "slides/03-slides.html#you-try-calculating-residuals",
+    "href": "slides/03-slides.html#you-try-calculating-residuals",
+    "title": "Linear Regression Fundamentals",
+    "section": "You Try: Calculating Residuals",
+    "text": "You Try: Calculating Residuals\n\nProblem: Given the regression equation \\(\\hat{y} = 2.3 + 1.5x\\) and the data points below, calculate the residual for each observation:\n\n\n\nx\ny\n\\(\\hat{y}\\)\n\\(\\hat{\\varepsilon}\\)\n\n\n\n\n1\n4.2\n?\n?\n\n\n3\n6.8\n?\n?\n\n\n5\n11.1\n?\n?\n\n\n\n\n\n\n\n−+\n04:00"
+  },
+  {
+    "objectID": "slides/03-slides.html#lets-try-it-in-r",
+    "href": "slides/03-slides.html#lets-try-it-in-r",
+    "title": "Linear Regression Fundamentals",
+    "section": "Let’s Try It in R",
+    "text": "Let’s Try It in R\nProblem: Given the same regression equation \\(\\hat{y} = 2.3 + 1.5x\\) and \\(y = [4.2, 6.8, 11.1]\\), \\(x = [1, 3, 5]\\):\n\nPut the x values in a design matrix called X and the outcome in a vector called y\nPut the coefficients in a vector called beta\n\nMultiply them to get \\(\\hat{y}\\)\nSubtract from y to get residuals\n\n\n\n\n−+\n04:00"
+  },
+  {
+    "objectID": "slides/03-slides.html#lets-try-it-in-r-solution",
+    "href": "slides/03-slides.html#lets-try-it-in-r-solution",
+    "title": "Linear Regression Fundamentals",
+    "section": "Let’s Try It in R Solution",
+    "text": "Let’s Try It in R Solution\n\n\n# 1. Create design matrix X\nX &lt;- matrix(c(1, 1, \n              1, 3, \n              1, 5),\n            byrow = TRUE, ncol = 2)\n# Create y\ny &lt;- c(4.2, 6.8, 11.1)\n\n# 2. Create beta vector\nbeta &lt;- c(2.3, 1.5)\n\n# 3. Calculate y_hat\ny_hat &lt;- X %*% beta\n\n# 4. Calculate residuals\nresiduals &lt;- y - y_hat\n\nresiduals\n\n\n     [,1]\n[1,]  0.4\n[2,]  0.0\n[3,]  1.3"
+  },
+  {
+    "objectID": "slides/03-slides.html#the-goal-minimize-squared-errors",
+    "href": "slides/03-slides.html#the-goal-minimize-squared-errors",
+    "title": "Linear Regression Fundamentals",
+    "section": "The Goal: Minimize Squared Errors",
+    "text": "The Goal: Minimize Squared Errors\n\nSum of squared errors:\n\\[\\text{SSE} = \\sum_{i=1}^n (y_i - \\hat{y}_i)^2 = \\sum_{i=1}^n \\hat\\varepsilon_i^2\\]\n\n\n\\[\\text{SSE} = (\\mathbf{y}- \\mathbf{X}\\boldsymbol\\beta)^T(\\mathbf{y}- \\mathbf{X}\\boldsymbol\\beta)\\]"
+  },
+  {
+    "objectID": "slides/03-slides.html#you-try",
+    "href": "slides/03-slides.html#you-try",
+    "title": "Linear Regression Fundamentals",
+    "section": "You Try",
+    "text": "You Try\n\nProblem: Verify that these two expressions for SSE are the same:\nIndividual terms: \\[\\text{SSE} = \\sum_{i=1}^{n} (y_i - \\hat{y}_i)^2\\]\nMatrix form: \\[\\text{SSE} = (\\mathbf{y} - \\mathbf{X}\\boldsymbol{\\beta})^T(\\mathbf{y} - \\mathbf{X}\\boldsymbol{\\beta})\\]\nTask: Expand the matrix form and show it equals the summation form"
+  },
+  {
+    "objectID": "slides/03-slides.html#visualizing-squared-residuals",
+    "href": "slides/03-slides.html#visualizing-squared-residuals",
+    "title": "Linear Regression Fundamentals",
+    "section": " Visualizing Squared Residuals",
+    "text": "Visualizing Squared Residuals"
+  },
+  {
+    "objectID": "slides/03-slides.html#visualizing-squared-residuals-1",
+    "href": "slides/03-slides.html#visualizing-squared-residuals-1",
+    "title": "Linear Regression Fundamentals",
+    "section": " Visualizing Squared Residuals",
+    "text": "Visualizing Squared Residuals"
+  },
+  {
+    "objectID": "slides/03-slides.html#application-exercise",
+    "href": "slides/03-slides.html#application-exercise",
+    "title": "Linear Regression Fundamentals",
+    "section": " Application Exercise",
+    "text": "Application Exercise\n\nGo to lucy.shinyapps.io/least-squares/.\nThis shows a scatter plot of 10 data points with a line estimating the relationship between x and y. Drag the blue points to change the line.\n\nSee if you can find a line that minimizes the sum of square errors\n\n\n\n\n−+\n03:00"
+  },
+  {
+    "objectID": "slides/03-slides.html#what-were-really-doing",
+    "href": "slides/03-slides.html#what-were-really-doing",
+    "title": "Linear Regression Fundamentals",
+    "section": "What We’re Really Doing",
+    "text": "What We’re Really Doing\n\nThe regression equation: \\[\\mathbf{y} = \\mathbf{X}\\boldsymbol{\\beta} + \\boldsymbol{\\varepsilon}\\]\n\n\nThe goal: Find \\(\\boldsymbol{\\beta}\\) that makes \\(\\mathbf{X}\\boldsymbol{\\beta}\\) as close as possible to \\(\\mathbf{y}\\)"
+  },
+  {
+    "objectID": "slides/03-slides.html#understanding-the-vector-space",
+    "href": "slides/03-slides.html#understanding-the-vector-space",
+    "title": "Linear Regression Fundamentals",
+    "section": "Understanding the Vector Space",
+    "text": "Understanding the Vector Space\n\nIf we have \\(n\\) observations, we work in \\(n\\)-dimensional space\n\n\n\\(\\mathbf{y}\\) is a vector with \\(n\\) components (one value per observation)\n\n\n\\(\\mathbf{X}\\boldsymbol{\\beta}\\) is also a vector with \\(n\\) components (one prediction per observation)\n\n\nBoth vectors live in the same \\(n\\)-dimensional space"
+  },
+  {
+    "objectID": "slides/03-slides.html#what-is-column-space",
+    "href": "slides/03-slides.html#what-is-column-space",
+    "title": "Linear Regression Fundamentals",
+    "section": "What is Column Space?",
+    "text": "What is Column Space?\n\nIn words: All possible predictions your model can make\n\n\nThink of it as: Every combination of your predictor variables"
+  },
+  {
+    "objectID": "slides/03-slides.html#column-space-with-numbers",
+    "href": "slides/03-slides.html#column-space-with-numbers",
+    "title": "Linear Regression Fundamentals",
+    "section": "Column Space with Numbers",
+    "text": "Column Space with Numbers\n\nYour data: \\(x = [1, 2, 3]\\) with 3 observations\n\n\nDesign matrix: \\(\\mathbf{X} = \\begin{bmatrix} 1 & 1 \\\\ 1 & 2 \\\\ 1 & 3 \\end{bmatrix}\\)\n\n\nColumn space contains: All vectors of the form \\(\\beta_0 \\begin{bmatrix} 1 \\\\ 1 \\\\ 1 \\end{bmatrix} + \\beta_1 \\begin{bmatrix} 1 \\\\ 2 \\\\ 3 \\end{bmatrix}\\)"
+  },
+  {
+    "objectID": "slides/03-slides.html#examples-of-vectors-in-column-space",
+    "href": "slides/03-slides.html#examples-of-vectors-in-column-space",
+    "title": "Linear Regression Fundamentals",
+    "section": "Examples of Vectors in Column Space",
+    "text": "Examples of Vectors in Column Space\n\nExample 1: Choose \\(\\beta_0=0, \\beta_1=2\\) gives \\([2, 4, 6]\\)\n\n\nIn words: Intercept = 0, slope = 2, so predictions are [2, 4, 6]\n\n\nExample 2: Choose \\(\\beta_0=5, \\beta_1=0\\) gives \\([5, 5, 5]\\)\n\n\nIn words: Intercept = 5, slope = 0, so all predictions equal 5"
+  },
+  {
+    "objectID": "slides/03-slides.html#the-fundamental-problem",
+    "href": "slides/03-slides.html#the-fundamental-problem",
+    "title": "Linear Regression Fundamentals",
+    "section": "The Fundamental Problem",
+    "text": "The Fundamental Problem\n\nYour actual observed data: \\(\\mathbf{y} = [2.1, 3.9, 5.8]\\)\n\n\nQuestion: Is there some \\(\\beta_0, \\beta_1\\) such that \\(\\mathbf{X}\\boldsymbol{\\beta} = \\mathbf{y}\\) exactly?\n\n\nIn other words: Is \\([2.1, 3.9, 5.8]\\) exactly equal to \\(\\beta_0[1,1,1] + \\beta_1[1,2,3]\\)?"
+  },
+  {
+    "objectID": "slides/03-slides.html#why-we-usually-cant-hit-exactly",
+    "href": "slides/03-slides.html#why-we-usually-cant-hit-exactly",
+    "title": "Linear Regression Fundamentals",
+    "section": "Why We Usually Can’t Hit Exactly",
+    "text": "Why We Usually Can’t Hit Exactly\n\nAnswer: Usually no! Real data has irreducible error\n\nYour observed \\(\\mathbf{y}\\) typically doesn’t lie perfectly in the column space*\n\nIn words: Your data points don’t lie exactly on any straight line"
+  },
+  {
+    "objectID": "slides/03-slides.html#the-geometric-solution",
+    "href": "slides/03-slides.html#the-geometric-solution",
+    "title": "Linear Regression Fundamentals",
+    "section": "The Geometric Solution",
+    "text": "The Geometric Solution\n\nSince we can’t hit \\(\\mathbf{y}\\) exactly, let’s get as close as possible\nFind the point in the column space that is closest to \\(\\mathbf{y}\\)\n\nThis closest point is the orthogonal projection of \\(\\mathbf{y}\\) onto the column space"
+  },
+  {
+    "objectID": "slides/03-slides.html#the-residual-vector",
+    "href": "slides/03-slides.html#the-residual-vector",
+    "title": "Linear Regression Fundamentals",
+    "section": "The Residual Vector",
+    "text": "The Residual Vector\n\nDefinition: \\(\\hat\\varepsilon = \\mathbf{y} - \\hat{\\mathbf{y}}\\)\n\nIn words: The difference between what we observed and what we predicted\n\nThis represents the part of \\(\\mathbf{y}\\) we cannot explain with our model"
+  },
+  {
+    "objectID": "slides/03-slides.html#key-geometric-property",
+    "href": "slides/03-slides.html#key-geometric-property",
+    "title": "Linear Regression Fundamentals",
+    "section": "Key Geometric Property",
+    "text": "Key Geometric Property\n\nThe residual vector is perpendicular to the column space\nMathematical notation: \\(\\hat\\varepsilon \\perp \\text{Col}(\\mathbf{X})\\)\n\nWhy this matters: Perpendicularity guarantees we found the closest point"
+  },
+  {
+    "objectID": "slides/03-slides.html#why-perpendicular-means-closest",
+    "href": "slides/03-slides.html#why-perpendicular-means-closest",
+    "title": "Linear Regression Fundamentals",
+    "section": "Why Perpendicular Means Closest?",
+    "text": "Why Perpendicular Means Closest?\n\nImagine dropping a ball onto a table from above\n\nThe shortest path is straight down (perpendicular to the table)\n\nAny diagonal path would be longer\n\nThe same principle applies in higher dimensions"
+  },
+  {
+    "objectID": "slides/03-slides.html#from-geometry-to-algebra",
+    "href": "slides/03-slides.html#from-geometry-to-algebra",
+    "title": "Linear Regression Fundamentals",
+    "section": "From Geometry to Algebra",
+    "text": "From Geometry to Algebra\n\nGeometric fact: \\(\\hat\\varepsilon \\perp \\text{Col}(\\mathbf{X})\\)\n\nThis means \\(\\hat\\varepsilon\\) is perpendicular to every vector in the column space\n\nSince columns of \\(\\mathbf{X}\\) span the column space, \\(\\hat\\varepsilon\\) is perpendicular to each column"
+  },
+  {
+    "objectID": "slides/03-slides.html#mathematical-expression-of-perpendicularity",
+    "href": "slides/03-slides.html#mathematical-expression-of-perpendicularity",
+    "title": "Linear Regression Fundamentals",
+    "section": "Mathematical Expression of Perpendicularity",
+    "text": "Mathematical Expression of Perpendicularity\n\nIf \\(\\mathbf{X} = [\\mathbf{x}_1, \\mathbf{x}_2, \\ldots, \\mathbf{x}_p]\\), then:\n\n\n\\(\\mathbf{x}_1^T\\hat\\varepsilon = 0\\), \\(\\mathbf{x}_2^T\\hat\\varepsilon = 0\\), …, \\(\\mathbf{x}_p^T\\hat\\varepsilon = 0\\)\n\n\nStacking these equations gives us: \\(\\mathbf{X}^T\\hat\\varepsilon = \\mathbf{0}\\)"
+  },
+  {
+    "objectID": "slides/03-slides.html#the-normal-equations",
+    "href": "slides/03-slides.html#the-normal-equations",
+    "title": "Linear Regression Fundamentals",
+    "section": "The Normal Equations",
+    "text": "The Normal Equations\n\nStarting from: \\(\\mathbf{X}^T\\hat\\varepsilon = \\mathbf{0}\\)\n\n\nSubstitute \\(\\hat\\varepsilon = \\mathbf{y} - \\mathbf{X}\\hat{\\boldsymbol{\\beta}}\\):\n\\[\\mathbf{X}^T(\\mathbf{y} - \\mathbf{X}\\hat{\\boldsymbol{\\beta}}) = \\mathbf{0}\\]\n\n\nIn words: “The residuals are perpendicular to every column of \\(\\mathbf{X}\\)”"
+  },
+  {
+    "objectID": "slides/03-slides.html#you-try-matrix-algebra",
+    "href": "slides/03-slides.html#you-try-matrix-algebra",
+    "title": "Linear Regression Fundamentals",
+    "section": "You Try: Matrix Algebra",
+    "text": "You Try: Matrix Algebra\n\nStarting with: \\(\\mathbf{A}\\mathbf{x} + \\mathbf{b} = \\mathbf{c}\\)\nSolve for \\(\\mathbf{x}\\) step by step:\n\nFirst, isolate the \\(\\mathbf{A}\\mathbf{x}\\) term\n\nThen multiply both sides by \\(\\mathbf{A}^{-1}\\) (on the left!)\n\n\n\n\n\n−+\n04:00"
+  },
+  {
+    "objectID": "slides/03-slides.html#expanding-the-normal-equations",
+    "href": "slides/03-slides.html#expanding-the-normal-equations",
+    "title": "Linear Regression Fundamentals",
+    "section": "Expanding the Normal Equations",
+    "text": "Expanding the Normal Equations\n\nStart with: \\(\\mathbf{X}^T(\\mathbf{y} - \\mathbf{X}\\hat{\\boldsymbol{\\beta}}) = \\mathbf{0}\\)\n\n\nDistribute: \\(\\mathbf{X}^T\\mathbf{y} - \\mathbf{X}^T\\mathbf{X}\\hat{\\boldsymbol{\\beta}} = \\mathbf{0}\\)\n\n\nMove the second term to the right side: \\(\\mathbf{X}^T\\mathbf{y} = \\mathbf{X}^T\\mathbf{X}\\hat{\\boldsymbol{\\beta}}\\)"
+  },
+  {
+    "objectID": "slides/03-slides.html#solving-for-beta",
+    "href": "slides/03-slides.html#solving-for-beta",
+    "title": "Linear Regression Fundamentals",
+    "section": "Solving for Beta",
+    "text": "Solving for Beta\n\nWe have: \\(\\mathbf{X}^T\\mathbf{X}\\hat{\\boldsymbol{\\beta}} = \\mathbf{X}^T\\mathbf{y}\\)\n\n\nTo solve for \\(\\hat{\\boldsymbol{\\beta}}\\), multiply both sides by \\((\\mathbf{X}^T\\mathbf{X})^{-1}\\):\n\n\nResult: \\(\\hat{\\boldsymbol{\\beta}} = (\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\mathbf{y}\\)\n\n\nThis is the least squares solution!"
+  },
+  {
+    "objectID": "slides/03-slides.html#the-hat-matrix",
+    "href": "slides/03-slides.html#the-hat-matrix",
+    "title": "Linear Regression Fundamentals",
+    "section": "The Hat Matrix",
+    "text": "The Hat Matrix\n\nDefinition: \\(\\mathbf{H} = \\mathbf{X}(\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\)\n\n\nWhat it does: \\(\\hat{\\mathbf{y}} = \\mathbf{H}\\mathbf{y}\\)\n\n\nIn words: Takes your observed data and produces the closest possible predictions\n\n\nNickname: “Puts the hat on \\(\\mathbf{y}\\)” to get \\(\\hat{\\mathbf{y}}\\)"
+  },
+  {
+    "objectID": "slides/03-slides.html#hat-matrix-properties",
+    "href": "slides/03-slides.html#hat-matrix-properties",
+    "title": "Linear Regression Fundamentals",
+    "section": "Hat Matrix Properties",
+    "text": "Hat Matrix Properties\n\nSymmetric: \\(\\mathbf{H}^T = \\mathbf{H}\\)\n\n\nIdempotent: \\(\\mathbf{H}^2 = \\mathbf{H}\\)"
+  },
+  {
+    "objectID": "slides/03-slides.html#you-try-hat-matrix-property",
+    "href": "slides/03-slides.html#you-try-hat-matrix-property",
+    "title": "Linear Regression Fundamentals",
+    "section": "You Try: Hat Matrix Property",
+    "text": "You Try: Hat Matrix Property\n\nVerify that: \\(\\mathbf{H}^2 = \\mathbf{H}\\)\nHint: Substitute the definition \\(\\mathbf{H} = \\mathbf{X}(\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\) and multiply it out\nRemember: \\((\\mathbf{A}^{-1})^{-1} = \\mathbf{A}\\)\n\n\n\n\n−+\n03:00"
+  },
+  {
+    "objectID": "slides/03-slides.html#why-least-squares",
+    "href": "slides/03-slides.html#why-least-squares",
+    "title": "Linear Regression Fundamentals",
+    "section": "Why “Least Squares”?",
+    "text": "Why “Least Squares”?\n\nWe minimize: \\(\\sum_{i=1}^n (y_i - \\hat{y}_i)^2\\)\n\n\nIn words: Sum of squared differences between observed and predicted\n\n\nThis equals: \\(||\\mathbf{y} - \\mathbf{X}\\boldsymbol{\\beta}||^2\\)\n\n\nIn words: Squared distance between the observed vector and prediction vector"
+  },
+  {
+    "objectID": "slides/03-slides.html#key-geometric-insights",
+    "href": "slides/03-slides.html#key-geometric-insights",
+    "title": "Linear Regression Fundamentals",
+    "section": "Key Geometric Insights",
+    "text": "Key Geometric Insights\n\n1. Regression is projection: Finding the closest point in the column space to \\(\\mathbf{y}\\)\n\n\n2. Orthogonality is key: Residuals perpendicular to column space guarantees minimum distance\n\n\n3. Hat matrix is the projection operator: \\(\\mathbf{H}\\) projects onto column space"
+  },
+  {
+    "objectID": "slides/03-slides.html#you-try-1",
+    "href": "slides/03-slides.html#you-try-1",
+    "title": "Linear Regression Fundamentals",
+    "section": " You Try",
+    "text": "You Try\n\nTry this in R:\n1. x &lt;- 1:10; y &lt;- 2*x + rnorm(10)\n2. X &lt;- cbind(1, x) # Design matrix\n3. H &lt;- X %*% solve(crossprod(X)) %*% t(X) # Hat matrix\n4. Check: all.equal(H %*% H, H) # Verify idempotent\n5. e &lt;- y - H %*% y # Residuals\n6. Check: t(X) %*% e # Should be approximately zero\n\n\n\n\n−+\n04:00"
+  },
+  {
+    "objectID": "slides/01-slides.html#section",
+    "href": "slides/01-slides.html#section",
+    "title": "Welcome to Linear Models",
+    "section": "",
+    "text": "“truth … is much too complicated to allow anything but approximations”\n- John von Neumann\n\n\n\n\nJohn von Neumann, wearer of funny hats via https://farkasdilemma.wordpress.com/2013/01/04/john-von-neumannm-wearer-of-funny-hats/"
+  },
+  {
+    "objectID": "slides/01-slides.html#section-1",
+    "href": "slides/01-slides.html#section-1",
+    "title": "Welcome to Linear Models",
+    "section": "",
+    "text": "“All models are wrong, but some are useful”\n- George Box\n\n\n   \n\nDavidMCEddy at en.wikipedia  CC BY-SA 3.0 , via Wikimedia Commons"
+  },
+  {
+    "objectID": "slides/01-slides.html#is-this-a-linear-model",
+    "href": "slides/01-slides.html#is-this-a-linear-model",
+    "title": "Welcome to Linear Models",
+    "section": "Is this a linear model?",
+    "text": "Is this a linear model?"
+  },
+  {
+    "objectID": "slides/01-slides.html#what-is-the-equation",
+    "href": "slides/01-slides.html#what-is-the-equation",
+    "title": "Welcome to Linear Models",
+    "section": "What is the equation?",
+    "text": "What is the equation?\n\n\\[y = \\beta_0 + \\beta_1 x + \\varepsilon\\]"
+  },
+  {
+    "objectID": "slides/01-slides.html#is-this-a-linear-model-1",
+    "href": "slides/01-slides.html#is-this-a-linear-model-1",
+    "title": "Welcome to Linear Models",
+    "section": "Is this a linear model?",
+    "text": "Is this a linear model?\n\n\n Where is \\(\\beta_0\\)"
+  },
+  {
+    "objectID": "slides/01-slides.html#is-this-a-linear-model-2",
+    "href": "slides/01-slides.html#is-this-a-linear-model-2",
+    "title": "Welcome to Linear Models",
+    "section": "Is this a linear model?",
+    "text": "Is this a linear model?\n\n\n Where is \\(\\beta_0\\)"
+  },
+  {
+    "objectID": "slides/01-slides.html#is-this-a-linear-model-3",
+    "href": "slides/01-slides.html#is-this-a-linear-model-3",
+    "title": "Welcome to Linear Models",
+    "section": "Is this a linear model?",
+    "text": "Is this a linear model?\n\n\n Where is \\(\\beta_1\\)"
+  },
+  {
+    "objectID": "slides/01-slides.html#is-this-a-linear-model-4",
+    "href": "slides/01-slides.html#is-this-a-linear-model-4",
+    "title": "Welcome to Linear Models",
+    "section": "Is this a linear model?",
+    "text": "Is this a linear model?\n\n\n Where is \\(\\beta_1\\)"
+  },
+  {
+    "objectID": "slides/01-slides.html#what-is-the-equation-1",
+    "href": "slides/01-slides.html#what-is-the-equation-1",
+    "title": "Welcome to Linear Models",
+    "section": "What is the equation?",
+    "text": "What is the equation?\n\n\\[y = \\beta_0 + \\beta_1 x + \\varepsilon\\]"
+  },
+  {
+    "objectID": "slides/01-slides.html#what-is-the-equation-2",
+    "href": "slides/01-slides.html#what-is-the-equation-2",
+    "title": "Welcome to Linear Models",
+    "section": "What is the equation?",
+    "text": "What is the equation?\n\n\\[\nX = \\begin{bmatrix}1 & x_1\\\\\n\\vdots & \\vdots \\\\ 1 & x_n\\end{bmatrix},\\quad\n\\beta = \\begin{bmatrix}\\beta_0\\\\ \\beta_1\\end{bmatrix}\n\\]"
+  },
+  {
+    "objectID": "slides/01-slides.html#what-does-the-data-look-like",
+    "href": "slides/01-slides.html#what-does-the-data-look-like",
+    "title": "Welcome to Linear Models",
+    "section": "What does the “data” look like?",
+    "text": "What does the “data” look like?\n\n\n\n  (Intercept)        x\n1           1 1.920595\n2           1 3.093363\n3           1 5.301387\n4           1 8.990286\n5           1 1.218501\n6           1 8.882287"
+  },
+  {
+    "objectID": "slides/01-slides.html#is-this-a-linear-model-5",
+    "href": "slides/01-slides.html#is-this-a-linear-model-5",
+    "title": "Welcome to Linear Models",
+    "section": "Is this a linear model?",
+    "text": "Is this a linear model?"
+  },
+  {
+    "objectID": "slides/01-slides.html#what-is-the-equation-3",
+    "href": "slides/01-slides.html#what-is-the-equation-3",
+    "title": "Welcome to Linear Models",
+    "section": "What is the equation?",
+    "text": "What is the equation?\n\\[y = \\beta_0 + \\sum_{j=1}^{J} \\beta_j B_j(x) + \\varepsilon\\]\n\nwhere \\(B_j(x)\\) are known spline basis functions\nthe model is linear in the \\(\\beta_j\\)"
+  },
+  {
+    "objectID": "slides/01-slides.html#what-does-the-data-look-like-1",
+    "href": "slides/01-slides.html#what-does-the-data-look-like-1",
+    "title": "Welcome to Linear Models",
+    "section": "What does the “data” look like?",
+    "text": "What does the “data” look like?\n\n\n\n  (Intercept) ns(x, df = 3)1 ns(x, df = 3)2 ns(x, df = 3)3\n1           1   -0.095842465      0.4743374     -0.3103069\n2           1    0.006273703      0.5498909     -0.3597333\n3           1    0.444366108      0.4236598     -0.2337245\n4           1    0.133806217      0.3714757      0.4916902\n5           1   -0.103895176      0.3825795     -0.2502798\n6           1    0.164715184      0.3660870      0.4649746"
+  },
+  {
+    "objectID": "slides/01-slides.html#is-this-a-linear-model-6",
+    "href": "slides/01-slides.html#is-this-a-linear-model-6",
+    "title": "Welcome to Linear Models",
+    "section": "Is this a linear model?",
+    "text": "Is this a linear model?"
+  },
+  {
+    "objectID": "slides/01-slides.html#is-this-a-linear-model-7",
+    "href": "slides/01-slides.html#is-this-a-linear-model-7",
+    "title": "Welcome to Linear Models",
+    "section": "Is this a linear model?",
+    "text": "Is this a linear model?"
+  },
+  {
+    "objectID": "slides/01-slides.html#what-is-the-equation-4",
+    "href": "slides/01-slides.html#what-is-the-equation-4",
+    "title": "Welcome to Linear Models",
+    "section": "What is the equation?",
+    "text": "What is the equation?\n\\[y = \\sum_{k=1}^{K} \\beta_k \\, \\mathbf{1}\\{x \\in R_k\\} + \\varepsilon\\]\n\nwhere \\(R_1,\\ldots,R_K\\) are each of the regions\nthis is linear in the parameters \\(\\beta_k\\)"
+  },
+  {
+    "objectID": "slides/01-slides.html#what-does-the-data-look-like-2",
+    "href": "slides/01-slides.html#what-does-the-data-look-like-2",
+    "title": "Welcome to Linear Models",
+    "section": "What does the “data” look like?",
+    "text": "What does the “data” look like?\n\n\n\n  ind1 ind2 ind3 ind4 ind5 ind6 ind7 ind8\n1    0    0    0    0    0    0    0    1\n2    0    0    0    0    0    0    1    0\n3    0    0    0    0    0    0    1    0\n4    0    0    0    0    0    0    0    1\n5    0    1    0    0    0    0    0    0\n6    0    0    1    0    0    0    0    0"
+  },
+  {
+    "objectID": "rstudio-pro.html",
+    "href": "rstudio-pro.html",
+    "title": "Logging into RStudio Pro",
+    "section": "",
+    "text": "Follow these steps to access RStudio Pro:\n\nMake sure you are connected to the WFU Network. This means you must be on the eduroam wireless network, or connected through the VPN if you are off-campus.\n\nIf you are off-campus, go through the VPN first: WFU VPN Instructions.\n\nGo to login.deac.wfu.edu and sign in with your school email and password.\nOnce logged in, click the RStudio icon.\nSet your working directory to /deac/sta/classes/sta312/YOUR-USERNAME where YOUR-USERNAME is replaced by the first part of your email address, i.e., mine is mcgowald because my email is mcgowald@wfu.edu\nSet the number of hours to how long you plan to work on the project (I usually enter 4).\nClick Launch.\nThe session will show as Queued for a moment. Once it is ready, the status will turn green and say Ready.\nClick the Connect to RStudio Server button. You should now be in RStudio Pro.\n\n\nNote: You are not required to use this setup (i.e., you can download RStudio and all the necessary packages locally). However, the focus of this class is not on technical setup, so we will not be able to spend time troubleshooting issues if you are not using the official setup described here.",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Computing",
+      "Using the RStudio Pro Server"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "STA 312: Linear Models",
+    "section": "",
+    "text": "Course Info\nLocation: Carswell 208\nTime: W/F 9:30a-10:45a\n\n\n Office Hours\nInstructor: Dr. Lucy D’Agostino McGowan\nEmail: mcgowald@wfu.edu\nHours: Bookable\nOffice: Manchester 342\nMath & Stats Center: mathandstatscenter@wfu.edu\nLocation: Math & Stats Center\n\n\n\n Texts\nThe main text book is: Linear Models with R by Julian Faraway\n\n\n Materials\nThis class is very hands on; be sure to bring a fully charged laptop to every class."
+  },
+  {
+    "objectID": "help-quarto.html",
+    "href": "help-quarto.html",
+    "title": "Creating a New Quarto Document in RStudio",
+    "section": "",
+    "text": "To create a new Quarto document:\n\nBe sure that you are in the correct project for the exercise or assignment. If you need help creating a new project here are some tips.\nIn RStudio, go to the menu bar and select File &gt; New File &gt; Quarto Document.\nEnter a title for your document and select the output format (e.g., HTML, PDF, Word).\nClick Create. A new Quarto file (.qmd) will open.\nSave the file to your project directory\nUse the toolbar or the Render button to build your document.",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Computing",
+      "Creating a Quarto Document"
+    ]
+  },
+  {
+    "objectID": "ex/ex-4.html",
+    "href": "ex/ex-4.html",
+    "title": "It’s Just a Linear Model",
+    "section": "",
+    "text": "Background Reading: Lindeløv, J. K. “Common statistical tests are linear models”URL: https://lindeloev.github.io/tests-as-linear/",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 4: It's Just a Linear Model!"
+    ]
+  },
+  {
+    "objectID": "ex/ex-4.html#instructions",
+    "href": "ex/ex-4.html#instructions",
+    "title": "It’s Just a Linear Model",
+    "section": "Instructions",
+    "text": "Instructions\nRead through Lindeløv’s resource to understand how common statistical tests are special cases of linear models. Then complete the matrix-based exercises below using the provided data. I’ll do the first one (one-sample t-test) so you can see what I mean.\nQuestion 1: t-tests\na) One-sample t-test\nData: \\(\\mathbf{y} = \\begin{bmatrix} 2.1 \\\\ 1.8 \\\\ 2.3 \\\\ 1.9 \\\\ 2.0 \\end{bmatrix}\\)\n\nConstruct design matrix \\(\\mathbf{X}\\) and \\(\\mathbf{y}\\) such that \\(\\boldsymbol{\\beta}\\) gives the one-sample t-test result\n\nCompare your matrix setup to t.test(y) in R\n\n\nX &lt;- c(1, 1, 1, 1, 1)\ny &lt;- c(2.1, 1.8, 2.3, 1.9, 2.0)\n\n## these should give me the same answer\nsolve(crossprod(X)) %*% crossprod(X, y)\n\n     [,1]\n[1,] 2.02\n\nt.test(y)\n\n\n    One Sample t-test\n\ndata:  y\nt = 23.482, df = 4, p-value = 1.95e-05\nalternative hypothesis: true mean is not equal to 0\n95 percent confidence interval:\n 1.781161 2.258839\nsample estimates:\nmean of x \n     2.02 \n\n\nb) Independent two-sample t-test\n\nGroup 1: \\(\\begin{bmatrix} 1.2 \\\\ 1.5 \\\\ 1.1 \\\\ 1.4 \\end{bmatrix}\\)\n\nGroup 2: \\(\\begin{bmatrix} 2.1 \\\\ 2.3 \\\\ 2.0 \\end{bmatrix}\\)\n\n\nCombined: \\(\\mathbf{y} = \\begin{bmatrix} 1.2 \\\\ 1.5 \\\\ 1.1 \\\\ 1.4 \\\\ 2.1 \\\\ 2.3 \\\\ 2.0 \\end{bmatrix}\\)\n\nConstruct design matrix \\(\\mathbf{X}\\) (using dummy coding) and \\(\\mathbf{y}\\) such that \\(\\boldsymbol{\\beta}\\) gives the two-sample t-test result\n\nCompare to t.test(group1, group2, var.equal = TRUE) in R\n\nc) Paired t-test\n\nBefore: \\(\\begin{bmatrix} 3.2 \\\\ 2.8 \\\\ 3.1 \\\\ 2.9 \\end{bmatrix}\\), After: \\(\\begin{bmatrix} 3.0 \\\\ 2.5 \\\\ 2.8 \\\\ 2.6 \\end{bmatrix}\\)\n\n\nDifferences: \\(\\mathbf{y} = \\begin{bmatrix} -0.2 \\\\ -0.3 \\\\ -0.3 \\\\ -0.3 \\end{bmatrix}\\)\n\nConstruct design matrix \\(\\mathbf{X}\\) and \\(\\mathbf{y}\\) such that \\(\\boldsymbol{\\beta}\\) gives the paired t-test result\n\nCompare to t.test(before, after, paired = TRUE) in R\nQuestion 2: ANOVA\na) One-way ANOVA\n\nGroup A: \\(\\begin{bmatrix} 1.1 \\\\ 1.3 \\\\ 1.2 \\end{bmatrix}\\)\n\nGroup B: \\(\\begin{bmatrix} 2.0 \\\\ 2.2 \\\\ 1.9 \\\\ 2.1 \\end{bmatrix}\\)\n\nGroup C: \\(\\begin{bmatrix} 2.8 \\\\ 2.9 \\end{bmatrix}\\)\n\n\nCombined: \\(\\mathbf{y} = \\begin{bmatrix} 1.1 \\\\ 1.3 \\\\ 1.2 \\\\ 2.0 \\\\ 2.2 \\\\ 1.9 \\\\ 2.1 \\\\ 2.8 \\\\ 2.9 \\end{bmatrix}\\)\n\nConstruct design matrix \\(\\mathbf{X}\\) (using dummy coding) and \\(\\mathbf{y}\\) such that \\(\\boldsymbol{\\beta}\\) gives the one-way ANOVA result\nCompare to aov(y ~ group) in R\n\nb) Two-way ANOVA (2×2 design)\nFactors: A (Low/High), B (Control/Treatment)\n\nLow-Control: \\(\\begin{bmatrix} 1.0 \\\\ 1.2 \\end{bmatrix}\\)\n\nLow-Treatment: \\(\\begin{bmatrix} 1.5 \\\\ 1.7 \\end{bmatrix}\\)\n\nHigh-Control: \\(\\begin{bmatrix} 2.0 \\\\ 2.1 \\end{bmatrix}\\)\n\nHigh-Treatment: \\(\\begin{bmatrix} 3.0 \\\\ 3.2 \\end{bmatrix}\\)\n\n\nCombined: \\(\\mathbf{y} = \\begin{bmatrix} 1.0 \\\\ 1.2 \\\\ 1.5 \\\\ 1.7 \\\\ 2.0 \\\\ 2.1 \\\\ 3.0 \\\\ 3.2 \\end{bmatrix}\\)\n\nConstruct \\(\\mathbf{X}\\) with main effects and interaction and \\(\\mathbf{y}\\) such that \\(\\boldsymbol{\\beta}\\) gives the two-way ANOVA result\nCompare to aov(y ~ A * B) in R\nQuestion 3: Correlation/Regression\na) Simple linear regression\n\\(\\mathbf{x} = \\begin{bmatrix} 1 \\\\ 2 \\\\ 3 \\\\ 4 \\end{bmatrix}\\), \\(\\mathbf{y} = \\begin{bmatrix} 2.1 \\\\ 3.9 \\\\ 6.1 \\\\ 7.8 \\end{bmatrix}\\)\n\nConstruct design matrix \\(\\mathbf{X}\\) and \\(\\mathbf{y}\\) to calculate Pearson Correlation\n\nCompare to cor.test(x, y) in R\n\nb) Spearman correlation - Using same data as (a), construct \\(\\mathbf{X}\\) and \\(\\mathbf{y}\\) for rank-based analysis - Compare to cor.test(x, y, method = \"spearman\") in R",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 4: It's Just a Linear Model!"
+    ]
+  },
+  {
+    "objectID": "ex/ex-2.html",
+    "href": "ex/ex-2.html",
+    "title": "Matrix Problem Set",
+    "section": "",
+    "text": "Complete all problems showing your work. For matrix calculations, show each step clearly. You may use R to verify your answers, but show the mathematical steps first.",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 2: Matrices"
+    ]
+  },
+  {
+    "objectID": "ex/ex-2.html#instructions",
+    "href": "ex/ex-2.html#instructions",
+    "title": "Matrix Problem Set",
+    "section": "",
+    "text": "Complete all problems showing your work. For matrix calculations, show each step clearly. You may use R to verify your answers, but show the mathematical steps first.",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 2: Matrices"
+    ]
+  },
+  {
+    "objectID": "ex/ex-2.html#problem-1",
+    "href": "ex/ex-2.html#problem-1",
+    "title": "Matrix Problem Set",
+    "section": "Problem 1",
+    "text": "Problem 1\nGiven the following matrices:\n\\[\\mathbf{A} = \\begin{bmatrix} 1 & 3 & -2 \\\\ 4 & 0 & 5 \\end{bmatrix}, \\quad \\mathbf{B} = \\begin{bmatrix} 2 & 1 \\\\ -1 & 3 \\\\ 0 & 4 \\end{bmatrix}, \\quad \\mathbf{C} = \\begin{bmatrix} 3 & -1 \\\\ 2 & 6 \\end{bmatrix}\\]\na) What are the dimensions of each matrix?\nb) Which of the following operations are possible? If possible, state the dimensions of the result:\n\n\\(\\mathbf{A} + \\mathbf{B}\\)\n\\(\\mathbf{A} \\times \\mathbf{B}\\)\n\\(\\mathbf{B} \\times \\mathbf{C}\\)\n\\(\\mathbf{C} \\times \\mathbf{B}\\)\n\nc) Calculate \\(\\mathbf{A} \\times \\mathbf{B}\\) (show all steps).",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 2: Matrices"
+    ]
+  },
+  {
+    "objectID": "ex/ex-2.html#problem-2",
+    "href": "ex/ex-2.html#problem-2",
+    "title": "Matrix Problem Set",
+    "section": "Problem 2",
+    "text": "Problem 2\nGiven \\(\\mathbf{P} = \\begin{bmatrix} 2 & -1 & 4 \\\\ 3 & 0 & 1 \\end{bmatrix}\\) and \\(\\mathbf{Q} = \\begin{bmatrix} 1 & 2 \\\\ -1 & 3 \\\\ 0 & 1 \\end{bmatrix}\\)\na) Find \\(\\mathbf{P}^T\\) and \\(\\mathbf{Q}^T\\).\nb) Calculate \\(\\mathbf{P} \\times \\mathbf{Q}\\).\nc) Calculate \\((\\mathbf{P} \\times \\mathbf{Q})^T\\).\nd) Calculate \\(\\mathbf{Q}^T \\times \\mathbf{P}^T\\) and verify that \\((\\mathbf{P} \\times \\mathbf{Q})^T = \\mathbf{Q}^T \\times \\mathbf{P}^T\\).",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 2: Matrices"
+    ]
+  },
+  {
+    "objectID": "ex/ex-2.html#problem-3",
+    "href": "ex/ex-2.html#problem-3",
+    "title": "Matrix Problem Set",
+    "section": "Problem 3",
+    "text": "Problem 3\na) Find the inverse of \\(\\mathbf{R} = \\begin{bmatrix} 3 & 1 \\\\ 2 & 1 \\end{bmatrix}\\).\nb) Verify your answer by showing that \\(\\mathbf{R} \\times \\mathbf{R}^{-1} = \\mathbf{I}\\).\nc) Explain why the matrix \\(\\mathbf{S} = \\begin{bmatrix} 2 & 4 \\\\ 1 & 2 \\end{bmatrix}\\) does not have an inverse.",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 2: Matrices"
+    ]
+  },
+  {
+    "objectID": "ex/ex-2.html#problem-4",
+    "href": "ex/ex-2.html#problem-4",
+    "title": "Matrix Problem Set",
+    "section": "Problem 4",
+    "text": "Problem 4\na) Find \\(\\frac{\\partial}{\\partial \\mathbf{x}}(\\mathbf{a}^T\\mathbf{x})\\) where \\(\\mathbf{a} = \\begin{bmatrix} 3 \\\\ -2 \\\\ 1 \\\\ 4 \\end{bmatrix}\\) and \\(\\mathbf{x} = \\begin{bmatrix} x_1 \\\\ x_2 \\\\ x_3 \\\\ x_4 \\end{bmatrix}\\).\nb) If \\(f(\\mathbf{x}) = 2x_1 - 5x_2 + 3x_3\\), write this in the form \\(\\mathbf{c}^T\\mathbf{x}\\) and find \\(\\frac{\\partial f}{\\partial \\mathbf{x}}\\).",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 2: Matrices"
+    ]
+  },
+  {
+    "objectID": "ex/ex-2.html#problem-5",
+    "href": "ex/ex-2.html#problem-5",
+    "title": "Matrix Problem Set",
+    "section": "Problem 5",
+    "text": "Problem 5\nConsider the quadratic form \\(\\mathbf{x}^T\\mathbf{A}\\mathbf{x}\\) where \\(\\mathbf{A} = \\begin{bmatrix} 2 & 3 \\\\ 1 & 4 \\end{bmatrix}\\) and \\(\\mathbf{x} = \\begin{bmatrix} x_1 \\\\ x_2 \\end{bmatrix}\\).\na) Expand \\(\\mathbf{x}^T\\mathbf{A}\\mathbf{x}\\) into scalar form.\nb) Find \\(\\mathbf{A}^T\\) and calculate \\(\\mathbf{A} + \\mathbf{A}^T\\).\nc) Use the derivative rule to find \\(\\frac{\\partial}{\\partial \\mathbf{x}}(\\mathbf{x}^T\\mathbf{A}\\mathbf{x})\\).",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 2: Matrices"
+    ]
+  },
+  {
+    "objectID": "ex/ex-2.html#problem-6",
+    "href": "ex/ex-2.html#problem-6",
+    "title": "Matrix Problem Set",
+    "section": "Problem 6",
+    "text": "Problem 6\nLet \\(\\mathbf{B} = \\begin{bmatrix} 4 & -1 & 2 \\\\ -1 & 3 & 0 \\\\ 2 & 0 & 5 \\end{bmatrix}\\) and \\(\\mathbf{x} = \\begin{bmatrix} x_1 \\\\ x_2 \\\\ x_3 \\end{bmatrix}\\).\na) Verify that \\(\\mathbf{B}\\) is symmetric.\nb) Find \\(\\frac{\\partial}{\\partial \\mathbf{x}}(\\mathbf{x}^T\\mathbf{B}\\mathbf{x})\\) using the symmetric matrix rule.\nc) What would be the result if we used the general rule \\((\\mathbf{A} + \\mathbf{A}^T)\\mathbf{x}\\) instead? Show that both methods give the same answer.",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 2: Matrices"
+    ]
+  },
+  {
+    "objectID": "ex/ex-2.html#problem-7",
+    "href": "ex/ex-2.html#problem-7",
+    "title": "Matrix Problem Set",
+    "section": "Problem 7",
+    "text": "Problem 7\nConsider the expression \\(g(\\mathbf{x}) = \\mathbf{b}^T\\mathbf{A}\\mathbf{x}\\) where: \\[\\mathbf{b} = \\begin{bmatrix} 2 \\\\ -1 \\\\ 3 \\end{bmatrix}, \\quad \\mathbf{A} = \\begin{bmatrix} 1 & 0 & 2 \\\\ 3 & -1 & 1 \\\\ 0 & 2 & 4 \\end{bmatrix}, \\quad \\mathbf{x} = \\begin{bmatrix} x_1 \\\\ x_2 \\\\ x_3 \\end{bmatrix}\\]\na) What is the dimension of \\(g(\\mathbf{x})\\)? (Is it a scalar, vector, or matrix?)\nb) Use the rule \\(\\frac{\\partial}{\\partial \\mathbf{x}}(\\mathbf{b}^T\\mathbf{A}\\mathbf{x}) = \\mathbf{A}^T\\mathbf{b}\\) to find \\(\\frac{\\partial g}{\\partial \\mathbf{x}}\\).\nc) Calculate \\(\\mathbf{A}\\mathbf{x}\\) first, then compute \\(\\mathbf{b}^T(\\mathbf{A}\\mathbf{x})\\) to expand \\(g(\\mathbf{x})\\) into scalar form.\nd) Verify your answer from part (b) by taking partial derivatives of the scalar form from part (c).",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 2: Matrices"
+    ]
+  },
+  {
+    "objectID": "ex/ex-2.html#bonus-challenge",
+    "href": "ex/ex-2.html#bonus-challenge",
+    "title": "Matrix Problem Set",
+    "section": "Bonus Challenge",
+    "text": "Bonus Challenge\nHat Matrix Connection: In linear regression, we minimize the sum of squared errors: \\[SSE = (\\mathbf{y} - \\mathbf{X}\\boldsymbol{\\beta})^T(\\mathbf{y} - \\mathbf{X}\\boldsymbol{\\beta})\\]\nExpand this expression and identify which derivative rules from this problem set you would need to find \\(\\frac{\\partial SSE}{\\partial \\boldsymbol{\\beta}}\\). You don’t need to solve it completely, just identify the relevant derivative rules and explain how they would be applied.",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 2: Matrices"
+    ]
+  },
+  {
+    "objectID": "demo/least-squares.html",
+    "href": "demo/least-squares.html",
+    "title": "Interactive Least Squares Visualization",
+    "section": "",
+    "text": "Adjust the red line using the sliders below to try to minimize the sum of squared errors. The blue squares show the squared residuals!\n\n\nIntercept \\(\\hat\\beta_0\\)\n\n1.5\n\n\nSlope \\(\\hat\\beta_1\\)\n\n1\n\n\nShow Optimal\n\n\n\n\n\n\nYour Line\ny = 1.50 + 1.00x\n\n\nOptimal Least Squares\ny = 1.50 + 1.00x\n\n\n\n\nYour SSE\n0.00\n\n\nOptimal SSE\n0.00",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Demos",
+      "Least Squares Solution"
+    ]
+  },
+  {
+    "objectID": "demo/least-squares.html#interactive-least-squares-learning-tool",
+    "href": "demo/least-squares.html#interactive-least-squares-learning-tool",
+    "title": "Interactive Least Squares Visualization",
+    "section": "",
+    "text": "Adjust the red line using the sliders below to try to minimize the sum of squared errors. The blue squares show the squared residuals!\n\n\nIntercept \\(\\hat\\beta_0\\)\n\n1.5\n\n\nSlope \\(\\hat\\beta_1\\)\n\n1\n\n\nShow Optimal\n\n\n\n\n\n\nYour Line\ny = 1.50 + 1.00x\n\n\nOptimal Least Squares\ny = 1.50 + 1.00x\n\n\n\n\nYour SSE\n0.00\n\n\nOptimal SSE\n0.00",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Demos",
+      "Least Squares Solution"
+    ]
+  },
+  {
+    "objectID": "demo/least-squares.html#key-concepts",
+    "href": "demo/least-squares.html#key-concepts",
+    "title": "Interactive Least Squares Visualization",
+    "section": "Key Concepts",
+    "text": "Key Concepts\nGoal: Find the line \\(\\hat{y} = \\hat\\beta_0 + \\hat\\beta_1x\\) that minimizes the Sum of Squared Errors (SSE)\nThe blue squares show the squared residuals - their total area equals the SSE!\nWhat to Try:\n\nAdjust the sliders to minimize the total area of blue squares\n\nTry to match the optimal (green) line\n\nNotice how the squares get smaller as you approach the optimal solution",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Demos",
+      "Least Squares Solution"
+    ]
+  },
+  {
+    "objectID": "demo/hat-matrix-symmetry.html",
+    "href": "demo/hat-matrix-symmetry.html",
+    "title": "Hat Matrix Symmetry Visualization",
+    "section": "",
+    "text": "Point 1 X:  1.0\n\n\nPoint 2 X:  2.0\n\n\nPoint 3 X:  -1.0\n\n\nRandomize Points",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Demos",
+      "Hat Matrix Symmetry"
+    ]
+  },
+  {
+    "objectID": "demo/hat-matrix-symmetry.html#interactive-linear-regression-example",
+    "href": "demo/hat-matrix-symmetry.html#interactive-linear-regression-example",
+    "title": "Hat Matrix Symmetry Visualization",
+    "section": "",
+    "text": "Point 1 X:  1.0\n\n\nPoint 2 X:  2.0\n\n\nPoint 3 X:  -1.0\n\n\nRandomize Points",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Demos",
+      "Hat Matrix Symmetry"
+    ]
+  },
+  {
+    "objectID": "demo/hat-matrix-symmetry.html#hat-matrix-h",
+    "href": "demo/hat-matrix-symmetry.html#hat-matrix-h",
+    "title": "Hat Matrix Symmetry Visualization",
+    "section": "Hat Matrix H",
+    "text": "Hat Matrix H",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Demos",
+      "Hat Matrix Symmetry"
+    ]
+  },
+  {
+    "objectID": "demo/hat-matrix-symmetry.html#what-symmetry-means",
+    "href": "demo/hat-matrix-symmetry.html#what-symmetry-means",
+    "title": "Hat Matrix Symmetry Visualization",
+    "section": "What Symmetry Means:",
+    "text": "What Symmetry Means:\nHij = Hji means:\n\nHow much point i influences point j’s fitted value = How much point j influences point i’s fitted value\n\nThis reciprocal relationship holds for ALL pairs of points\nReciprocal influence is a geometric consequence of orthogonal projection",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Demos",
+      "Hat Matrix Symmetry"
+    ]
+  },
+  {
+    "objectID": "demo/hat-matrix-symmetry.html#key-observations",
+    "href": "demo/hat-matrix-symmetry.html#key-observations",
+    "title": "Hat Matrix Symmetry Visualization",
+    "section": "Key Observations",
+    "text": "Key Observations",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Demos",
+      "Hat Matrix Symmetry"
+    ]
+  },
+  {
+    "objectID": "ex/ex-1.html",
+    "href": "ex/ex-1.html",
+    "title": "Exercise 1",
+    "section": "",
+    "text": "Exercise 1: Login to RStudio Pro\n\nGo to course website → Computing → Using the RStudio Server\nFollow login instructions\nLog in with your credentials\n\nCheck: You should see the RStudio interface with 4 panes.\nExercise 2: Create RStudio Project\n\nFile → New Project → New Directory → New Project\nName: ex-1\n\nClick Create Project\n\nCheck: Project name appears in top-right corner.\nExercise 3: Create Quarto Document\n\nFile → New File → Quarto Document\nTitle: “My First Analysis”\nSave as analysis.qmd\n\n\nCheck: New .qmd file is open and saved.\nExercise 4: Install faraway Package and Load Data\nRun this code in the console ONCE:\n\ninstall.packages(\"faraway\")\n\nThen run this:\n\nlibrary(faraway)\nlibrary(ggplot2)\n\n# Test it works\ndata(teengamb)\nhead(teengamb)\n\n  sex status income verbal gamble\n1   1     51   2.00      8    0.0\n2   1     28   2.50      8    0.0\n3   1     37   2.00      6    0.0\n4   1     28   7.00      4    7.3\n5   1     65   2.00      8   19.6\n6   1     61   3.47      6    0.1\n\n\nCheck: You see the teengamb dataset.\nNow run this in the console:\n\n?teengamb\n\nQuestion: What is in this dataset?\nAction: Add the code below to your .qmd file along with a short description of the data.\n\nlibrary(faraway)\nlibrary(ggplot2)\ndata(teengamb)\n\nExercise 5: Linear Model and Plot\nAdd the following code to your .qmd file. Try running it.\n\n# Fit linear model\nmodel1 &lt;- lm(gamble ~ income, data = teengamb)\nsummary(model1)\n\n\nCall:\nlm(formula = gamble ~ income, data = teengamb)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-46.020 -11.874  -3.757  11.934 107.120 \n\nCoefficients:\n            Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)   -6.325      6.030  -1.049      0.3    \nincome         5.520      1.036   5.330 3.05e-06 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 24.95 on 45 degrees of freedom\nMultiple R-squared:  0.387, Adjusted R-squared:  0.3734 \nF-statistic: 28.41 on 1 and 45 DF,  p-value: 3.045e-06\n\n# Create plot\nggplot(teengamb, aes(x = income, y = gamble)) +\n  geom_point() +\n  geom_smooth(method = \"lm\", formula = \"y ~ x\") +\n  labs(title = \"Income vs Gambling\",\n       x = \"Income\", \n       y = \"Gambling\")\n\n\n\n\n\n\n\nCheck: You have model output and a scatter plot with trend line.\nFinish\nClick “Render” to create your HTML report. Upload your .html file in Canvas under Exercise 1",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 1"
+    ]
+  },
+  {
+    "objectID": "ex/ex-3.html",
+    "href": "ex/ex-3.html",
+    "title": "Linear Regression Fundamentals Problem Set",
+    "section": "",
+    "text": "This problem set covers the fundamental concepts of linear regression, including matrix formulations, geometric interpretations, and computational methods. Show all work and provide clear explanations for your reasoning.",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 3: Linear Regression Fundamentals"
+    ]
+  },
+  {
+    "objectID": "ex/ex-3.html#instructions",
+    "href": "ex/ex-3.html#instructions",
+    "title": "Linear Regression Fundamentals Problem Set",
+    "section": "",
+    "text": "This problem set covers the fundamental concepts of linear regression, including matrix formulations, geometric interpretations, and computational methods. Show all work and provide clear explanations for your reasoning.",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 3: Linear Regression Fundamentals"
+    ]
+  },
+  {
+    "objectID": "ex/ex-3.html#problem-1",
+    "href": "ex/ex-3.html#problem-1",
+    "title": "Linear Regression Fundamentals Problem Set",
+    "section": "Problem 1",
+    "text": "Problem 1\nConsider the following dataset with two predictors:\n\n\nObservation\nx1\nx2\ny\n\n\n\n1\n2\n1\n5.2\n\n\n2\n3\n4\n8.1\n\n\n3\n1\n2\n4.8\n\n\n4\n4\n3\n9.5\n\n\n\na) Write out the design matrix X for the multiple regression model with intercept term.\nb) Calculate \\(\\mathbf{X}^T\\mathbf{X}\\) and \\(\\mathbf{X}^T\\mathbf{y}\\) by hand. Show your matrix multiplication steps.\nc) Using your results from Part B, set up the normal equations \\(\\mathbf{X}^T\\mathbf{X}\\hat\\beta=\\mathbf{X}^T\\mathbf{y}\\) and solve for the coefficient vector \\(\\hat\\beta\\). (You can use R if you need to take an inverse).\nd) Verify your answer using R’s built-in functions.",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 3: Linear Regression Fundamentals"
+    ]
+  },
+  {
+    "objectID": "ex/ex-3.html#problem-2",
+    "href": "ex/ex-3.html#problem-2",
+    "title": "Linear Regression Fundamentals Problem Set",
+    "section": "Problem 2",
+    "text": "Problem 2\nUsing the data from Problem 1 and your estimated coefficients:\na) Calculate the predicted values \\(\\hat{y}_i\\) for each observation by hand.\nb) Calculate the residuals \\(\\hat\\varepsilon=y_i-\\hat{y}_i\\) for each observation.\nc) Compute the sum of squared errors (SSE) using both formulations:\n\nIndividual terms: SSE \\(= \\sum(y_i - \\hat{y}_i)^2\\)\n\nMatrix form: SSE \\(=  (\\mathbf{y}-\\mathbf{X}\\hat\\beta)^T(\\mathbf{y}-\\mathbf{X}\\hat\\beta)\\)\n\n\nd) Verify that your residuals sum to approximately zero and explain why this should be true geometrically.",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 3: Linear Regression Fundamentals"
+    ]
+  },
+  {
+    "objectID": "ex/ex-3.html#problem-3",
+    "href": "ex/ex-3.html#problem-3",
+    "title": "Linear Regression Fundamentals Problem Set",
+    "section": "Problem 3",
+    "text": "Problem 3\na) For simple linear regression with n = 3 observations and design matrix:\n\\[\\mathbf{X} = \\begin{bmatrix}1 & 2\\\\1 & 4\\\\1&6\\end{bmatrix}\\]\nCalculate the hat matrix (\\(\\mathbf{H}\\)) by hand (you can use R if you need to take an inverse).\nb) Verify that \\(\\mathbf{H}\\) is idempotent.\nc) Show that \\(\\mathbf{H}\\) is symmetric and interpret what this property means geometrically.",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 3: Linear Regression Fundamentals"
+    ]
+  },
+  {
+    "objectID": "ex/ex-3.html#problem-4",
+    "href": "ex/ex-3.html#problem-4",
+    "title": "Linear Regression Fundamentals Problem Set",
+    "section": "Problem 4",
+    "text": "Problem 4\nConsider the simple linear regression case with the design matrix from Problem 3.\na) Write out two specific vectors that lie in the column space of \\(\\mathbf{X}\\). Explain what these vectors represent in terms of the regression model.\nb) If the observed response vector is \\(\\mathbf{y} = \\begin{bmatrix}3\\\\7\\\\12\\end{bmatrix}\\), explain why this vector likely does NOT lie exactly in the column space of \\(\\mathbf{X}\\). What does this mean practically?\nc) Calculate the projection of \\(\\mathbf{y}\\) onto the column space (i.e., \\(\\mathbf{\\hat{y}} = \\mathbf{Hy}\\)) and show that the residual vector is orthogonal to the column space by verifying \\(\\mathbf{X}^T\\hat\\varepsilon=0\\).",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 3: Linear Regression Fundamentals"
+    ]
+  },
+  {
+    "objectID": "ex/ex-3.html#problem-5",
+    "href": "ex/ex-3.html#problem-5",
+    "title": "Linear Regression Fundamentals Problem Set",
+    "section": "Problem 5",
+    "text": "Problem 5\na) Starting from the geometric principle that residuals must be orthogonal to the column space of \\(\\mathbf{X}\\), derive the normal equations step by step. Begin with the condition \\(\\mathbf{X}^T\\hat\\varepsilon = 0\\) and show all algebraic steps to arrive at \\(\\mathbf{X}^T\\mathbf{X}\\hat\\beta=\\mathbf{X}^T\\mathbf{y}\\).\nb) Explain why we multiply both sides by \\((\\mathbf{X}^T\\mathbf{X})^{-1}\\) to solve for \\(\\hat\\beta\\), and under what conditions this inverse might not exist.\nc) Show that the least squares estimator \\(\\hat\\beta = (\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\mathbf{y}\\) minimizes the sum of squared errors by demonstrating that this solution satisfies the orthogonality condition.",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 3: Linear Regression Fundamentals"
+    ]
+  },
+  {
+    "objectID": "ex/ex-3.html#problem-6",
+    "href": "ex/ex-3.html#problem-6",
+    "title": "Linear Regression Fundamentals Problem Set",
+    "section": "Problem 6",
+    "text": "Problem 6\nYou are given the following dataset with 10 observations:\n\n\nx\ny\n\n\n\n1\n4.8\n\n\n2\n6.2\n\n\n3\n8.1\n\n\n4\n9.9\n\n\n5\n11.5\n\n\n6\n13.8\n\n\n7\n15.2\n\n\n8\n17.1\n\n\n9\n18.9\n\n\n10\n21.3\n\n\n\na) Implement the least squares solution in R using matrix operations. Calculate \\(\\hat\\beta\\) without using lm().\nb) Compare your results with R’s lm() function and verify they match.\nc) Using the grid below, hand-draw the following elements:\n\nPlot the 10 data points from the table above\n\nDraw the true regression line: y = 3.5 + 1.8x (shown as a dashed line)\nDraw your fitted regression line from Part A (shown as a solid line)\nLabel both lines clearly in your plot\n\n\n\n\n\n\n\n\n\n(You don’t have to upload this drawing on Canvas, but make sure you do it and understand it, we will do it during the board work portion in class.)\nd) Based on your plot, comment on how well the fitted line approximates the true relationship. What does this tell you about the effectiveness of least squares estimation?",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 3: Linear Regression Fundamentals"
+    ]
+  },
+  {
+    "objectID": "help-project.html",
+    "href": "help-project.html",
+    "title": "Creating or Opening a Project",
+    "section": "",
+    "text": "Before starting an assignment or exercise, always create or open a project:\n\nTo create a new project:\n\nIn RStudio, go to File &gt; New Project.\nChoose whether to create a project in a new directory or within an existing directory.\nNavigate to the folder where you want your project\nClick Create Project.\n\nTo open an existing project:\n\nIn RStudio, go to File &gt; Open Project.\nBrowse to the .Rproj file of the project you want to open.\nSelect it and click Open.\n\n\nThis ensures all your files and settings are organized within the correct project environment.",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Computing",
+      "Creating an RStudio Project"
+    ]
+  },
+  {
+    "objectID": "help.html",
+    "href": "help.html",
+    "title": "Help",
+    "section": "",
+    "text": "Welcome to the help section! This page contains resources to help you succeed in the course, from technical setup to troubleshooting common issues. Click through the sidebar on the left."
+  },
+  {
+    "objectID": "help.html#getting-started-with-rstudio-and-quarto",
+    "href": "help.html#getting-started-with-rstudio-and-quarto",
+    "title": "Help",
+    "section": "Getting Started with RStudio and Quarto",
+    "text": "Getting Started with RStudio and Quarto\nIf you’re new to using RStudio Pro or working with Quarto documents, check out our getting started guides.\nGetting Started Guide with RStudio Pro →\nGetting Started Guide with Quarto →"
+  },
+  {
+    "objectID": "help.html#quick-links",
+    "href": "help.html#quick-links",
+    "title": "Help",
+    "section": "Quick Links",
+    "text": "Quick Links\n\nRStudio Pro Server: Access your computing environment at login.deac.wfu.edu\nCourse Schedule: Check the schedule for upcoming assignments and due dates"
+  },
+  {
+    "objectID": "help.html#need-additional-help",
+    "href": "help.html#need-additional-help",
+    "title": "Help",
+    "section": "Need Additional Help?",
+    "text": "Need Additional Help?\nIf you can’t find what you’re looking for in our guides, don’t hesitate to reach out."
+  },
+  {
+    "objectID": "quarto-quick-guide.html",
+    "href": "quarto-quick-guide.html",
+    "title": "Quarto Quick Reference Guide",
+    "section": "",
+    "text": "Quarto is the next-generation version of R Markdown that combines code, results, and narrative text into dynamic documents. This guide covers the essentials you’ll need for STA 312.",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Computing",
+      "Quarto Quick Guide"
+    ]
+  },
+  {
+    "objectID": "quarto-quick-guide.html#document-structure",
+    "href": "quarto-quick-guide.html#document-structure",
+    "title": "Quarto Quick Reference Guide",
+    "section": "Document Structure",
+    "text": "Document Structure\nEvery Quarto document starts with a YAML header (between --- lines) that contains metadata:\n---\ntitle: \"My Statistical Analysis\"\nauthor: \"Your Name\"\ndate: today\nformat: html\nexecute:\n  echo: true\n  warning: false\n---",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Computing",
+      "Quarto Quick Guide"
+    ]
+  },
+  {
+    "objectID": "quarto-quick-guide.html#basic-markdown-syntax",
+    "href": "quarto-quick-guide.html#basic-markdown-syntax",
+    "title": "Quarto Quick Reference Guide",
+    "section": "Basic Markdown Syntax",
+    "text": "Basic Markdown Syntax\n\nHeaders\n# Header 1 (largest)\n## Header 2\n### Header 3\n#### Header 4\n\n\nText Formatting\n\nBold text: **bold text** or __bold text__\nItalic text: *italic text* or _italic text_\nCode text: `code text`\nLinks: [link text](URL)\n\n\n\nLists\nUnordered lists:\n- Item 1\n- Item 2\n  - Sub-item\n  - Sub-item\nOrdered lists:\n1. First item\n2. Second item\n3. Third item",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Computing",
+      "Quarto Quick Guide"
+    ]
+  },
+  {
+    "objectID": "quarto-quick-guide.html#r-code-chunks",
+    "href": "quarto-quick-guide.html#r-code-chunks",
+    "title": "Quarto Quick Reference Guide",
+    "section": "R Code Chunks",
+    "text": "R Code Chunks\nThe power of Quarto comes from embedding R code directly in your document.\n\nBasic Code Chunk\nCode chucks start with {r}.\n```{r}\n# Your R code here\nx &lt;- c(1, 2, 3, 4, 5)\nmean(x)\n```\n\n\nCode Chunk Options\nYour code chunks can have options that are written in YAML style starting with a #| at the beginning of the line.\n```{r}\n#| label: data-setup\n#| echo: false\n#| message: false\n#| warning: false\n\n# Load libraries and data\nlibrary(tidyverse)\nlibrary(ggplot2)\n```\n\n\nCommon Chunk Options\n\n#| echo: false: Hide code, show output\n\n#| eval: false: Show code, don’t run it\n\n#| include: false: Run code, hide everything\n\n#| message: false: Hide messages\n\n#| warning: false: Hide warnings\n\n#| fig-width: 8 and #| fig-height: 6: Control plot dimensions",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Computing",
+      "Quarto Quick Guide"
+    ]
+  },
+  {
+    "objectID": "quarto-quick-guide.html#inline-r-code",
+    "href": "quarto-quick-guide.html#inline-r-code",
+    "title": "Quarto Quick Reference Guide",
+    "section": "Inline R Code",
+    "text": "Inline R Code\nYou can include R results directly in text using `r`:\nThe mean of our data is `r round(mean(x), 2)`.",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Computing",
+      "Quarto Quick Guide"
+    ]
+  },
+  {
+    "objectID": "quarto-quick-guide.html#mathematical-expressions",
+    "href": "quarto-quick-guide.html#mathematical-expressions",
+    "title": "Quarto Quick Reference Guide",
+    "section": "Mathematical Expressions",
+    "text": "Mathematical Expressions\nQuarto uses LaTeX syntax for mathematical notation:\n\nInline Math\nUse single dollar signs for inline math: $x^2 + y^2 = z^2$\n\n\nDisplay Math\nUse double dollar signs for centered display math:\n$$\\bar{x} = \\frac{1}{n}\\sum_{i=1}^{n} x_i$$\n\n\nCommon Statistical Notation\n\n\n\n\n\n\n\n\nConcept\nLaTeX Code\nRendered Output\n\n\n\n\nMean\n$\\bar{x}$\n\\(\\bar{x}\\)\n\n\nStandard deviation\n$\\sigma$\n\\(\\sigma\\)\n\n\nRegression equation\n$y = \\beta_0 + \\beta_1 x + \\epsilon$\n\\(y = \\beta_0 + \\beta_1 x + \\epsilon\\)\n\n\nSums\n$\\sum_{i=1}^{n} x_i$\n\\(\\sum_{i=1}^{n} x_i\\)\n\n\nSquare root\n$\\sqrt{n}$\n\\(\\sqrt{n}\\)\n\n\nFractions\n$\\frac{a}{b}$\n\\(\\frac{a}{b}\\)\n\n\nSubscripts\n$x_i$\n\\(x_i\\)\n\n\nSuperscripts\n$x^2$\n\\(x^2\\)\n\n\nMatrices\n$\\begin{bmatrix} 1 & 2 & 3 \\\\ 4 & 5 & 6 \\end{bmatrix}$\n\\(\\begin{bmatrix} 1 & 2 & 3 \\\\ 4 & 5 & 6 \\end{bmatrix}\\)",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Computing",
+      "Quarto Quick Guide"
+    ]
+  },
+  {
+    "objectID": "quarto-quick-guide.html#tables",
+    "href": "quarto-quick-guide.html#tables",
+    "title": "Quarto Quick Reference Guide",
+    "section": "Tables",
+    "text": "Tables\n\nSimple Tables\n| Variable | Mean | SD   |\n|----------|------|------|\n| Height   | 68.2 | 3.1  |\n| Weight   | 155  | 22.5 |\n\n\nTables from R Code\n```{r}\n#| label: summary-table\n#| tbl-cap: \"Summary Statistics\"\n\nlibrary(knitr)\nsummary_stats &lt;- data.frame(\n  Variable = c(\"Height\", \"Weight\"),\n  Mean = c(68.2, 155.0),\n  SD = c(3.1, 22.5)\n)\nkable(summary_stats)\n```",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Computing",
+      "Quarto Quick Guide"
+    ]
+  },
+  {
+    "objectID": "quarto-quick-guide.html#figures",
+    "href": "quarto-quick-guide.html#figures",
+    "title": "Quarto Quick Reference Guide",
+    "section": "Figures",
+    "text": "Figures\n\nPlots with Captions\n```{r}\n#| label: fig-scatter\n#| fig-cap: \"Relationship between height and weight\"\n#| fig-width: 6\n#| fig-height: 4\n\nggplot(data, aes(x = height, y = weight)) +\n  geom_point() +\n  geom_smooth(method = \"lm\") +\n  labs(x = \"Height (inches)\", y = \"Weight (lbs)\")\n```",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Computing",
+      "Quarto Quick Guide"
+    ]
+  },
+  {
+    "objectID": "quarto-quick-guide.html#cross-references",
+    "href": "quarto-quick-guide.html#cross-references",
+    "title": "Quarto Quick Reference Guide",
+    "section": "Cross-References",
+    "text": "Cross-References\nYou can reference figures, tables, and equations:\n\nReference a figure: @fig-scatter\n\nReference a table: @tbl-summary\n\nReference an equation: @eq-regression\n\nFor equations with labels:\n$$y = \\beta_0 + \\beta_1 x + \\epsilon$$ {#eq-regression}",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Computing",
+      "Quarto Quick Guide"
+    ]
+  },
+  {
+    "objectID": "quarto-quick-guide.html#callout-blocks",
+    "href": "quarto-quick-guide.html#callout-blocks",
+    "title": "Quarto Quick Reference Guide",
+    "section": "Callout Blocks",
+    "text": "Callout Blocks\nQuarto provides special callout blocks for important information:\n::: {.callout-note}\nThis is a note callout.\n:::\n\n::: {.callout-warning}\nThis is a warning callout.\n:::\n\n::: {.callout-important}\nThis is an important callout.\n:::",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Computing",
+      "Quarto Quick Guide"
+    ]
+  },
+  {
+    "objectID": "quarto-quick-guide.html#rendering-your-document",
+    "href": "quarto-quick-guide.html#rendering-your-document",
+    "title": "Quarto Quick Reference Guide",
+    "section": "Rendering Your Document",
+    "text": "Rendering Your Document\nTo render your Quarto document:\n\nIn RStudio: Click the “Render” button\n\nCommand line: Run quarto render filename.qmd\n\nPreview: Use quarto preview filename.qmd for live preview",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Computing",
+      "Quarto Quick Guide"
+    ]
+  },
+  {
+    "objectID": "quarto-quick-guide.html#tips-for-statistical-writing",
+    "href": "quarto-quick-guide.html#tips-for-statistical-writing",
+    "title": "Quarto Quick Reference Guide",
+    "section": "Tips for Statistical Writing",
+    "text": "Tips for Statistical Writing\n\nAlways explain your code: Use comments (#) and narrative text\nRound numbers appropriately: Use round() function for inline code\nLabel your chunks: Makes debugging easier\nInclude figure captions: Helps with interpretation",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Computing",
+      "Quarto Quick Guide"
+    ]
+  },
+  {
+    "objectID": "schedule.html",
+    "href": "schedule.html",
+    "title": "\n Schedule",
+    "section": "",
+    "text": "Note: The timeline of topics and assignments might be updated throughout the semester.\n\n\n\n\nweek\n\n\ndate\n\n\ntopic\n\n\nprepare\n\n\nslides\n\n\nexercises\n\n\n\n\n\n1\n\n\n27 August\n\n\nWelcome to Linear Models\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nR and Reproducible Workflows\n\n\n\n\n\n\n\n\n\n\n\n\n1\n\n\n29 August\n\n\nMatrix Refresher\n\n\n\n\n\n\n\n\n\n\n\n\n2\n\n\n3 September\n\n\nMatrix Workshop\n\n\n\n\n\n\n\n\n\n\n\n\n2\n\n\n5 September\n\n\nLinear Regression Fundamentals\n\n\nFaraway Sections 1.3 - 1.4\n\n\n\n\n\n\n\n\n\n\n3\n\n\n10 September\n\n\nLinear Regression Fundamentals (Workshop)\n\n\n\n\n\n\n\n\n\n\n\n\n3\n\n\n12 September\n\n\nDeriving the Hat Matrix and QR Decomposition\n\n\nFaraway Sections 2.1-2.6\n\n\n\n\n\n\n\n\n\n\n4\n\n\n17 September\n\n\nNo Class\n\n\n\n\n\n\n\n\n\n\n\n\n4\n\n\n19 September\n\n\nProperties of Random Vectors\n\n\nFaraway Section 2.8\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nGauss Markov Theorem\n\n\n\n\n\n\n\n\n\n\n\n\n5\n\n\n24 September\n\n\nGauss Markov Theorem (Workshop)\n\n\n\n\n\n\n\n\n\n\n\n\n5\n\n\n26 September\n\n\nResidual Sum of Squares\n\n\nFaraway Sections 2.9, 3.1\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nGoodness of Fit\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHypothesis Testing\n\n\n\n\n\n\n\n\n\n\n\n\n6\n\n\n1 October\n\n\nPractical Workshop\n\n\n\n\n\n\n\n\n\n\n\n\n6\n\n\n3 October\n\n\nMidterm review\n\n\n\n\n\n\n\n\n\n\n\n\n7\n\n\n8 October\n\n\nMidterm (In Class)\n\n\n\n\n\n\n\n\n\n\n\n\n7\n\n\n10 October\n\n\nMidterm (Out of Class)\n\n\n\n\n\n\n\n\n\n\n\n\n8\n\n\n15 October\n\n\nMidterm Recap\n\n\n\n\n\n\n\n\n\n\n\n\n8\n\n\n17 October\n\n\nConfidence Intervals\n\n\nFaraway Sections 3.4-3.6\n\n\n\n\n\n\n\n\n\n\n9\n\n\n22 October\n\n\nConfidence Intervals (Workshop)\n\n\n\n\n\n\n\n\n\n\n\n\n9\n\n\n24 October\n\n\nDiagnostics\n\n\nFaraway Chapter 6\n\n\n\n\n\n\n\n\n\n\n10\n\n\n29 October\n\n\nDiagnostics (Workshop)\n\n\n\n\n\n\n\n\n\n\n\n\n10\n\n\n31 October\n\n\nTransformations\n\n\nFaraway Chapter 9\n\n\n\n\n\n\n\n\n\n\n11\n\n\n5 November\n\n\nTransformations (Workshop)\n\n\n\n\n\n\n\n\n\n\n\n\n11\n\n\n7 November\n\n\nPrediction & Prediction Intervals\n\n\nFaraway Chapter 4\n\n\n\n\n\n\n\n\n\n\n12\n\n\n12 November\n\n\nPrediction (Workshop)\n\n\n\n\n\n\n\n\n\n\n\n\n12\n\n\n14 November\n\n\nExplanation\n\n\nFaraway Chapter 5\n\n\n\n\n\n\n\n\n\n\n13\n\n\n19 November\n\n\nCausal Inference (Workshop)\n\n\n\n\n\n\n\n\n\n\n\n\n13\n\n\n21 November\n\n\nFinal Project\n\n\n\n\n\n\n\n\n\n\n\n\n14\n\n\n26 November\n\n\nThanksgiving\n\n\n\n\n\n\n\n\n\n\n\n\n14\n\n\n28 November\n\n\nThanksgiving\n\n\n\n\n\n\n\n\n\n\n\n\n15\n\n\n3 December\n\n\nFinal Presentation (Out of Class)\n\n\n\n\n\n\n\n\n\n\n\n\n15\n\n\n5 December\n\n\nFinal Presentation (Out of Class)",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Course Details",
+      "Schedule"
+    ]
   },
   {
     "objectID": "slides/02-slides.html#what-is-a-matrix",
@@ -789,1017 +1651,186 @@
     "text": "Connection to Hat Matrix\n\nThese rules are essential for deriving:\n\nNormal equations: \\(\\mathbf{X}'\\mathbf{X}\\hat{\\boldsymbol{\\beta}} = \\mathbf{X}'\\mathbf{y}\\)\nHat matrix: \\(\\mathbf{H} = \\mathbf{X}(\\mathbf{X}'\\mathbf{X})^{-1}\\mathbf{X}'\\)\nLeast squares solution: \\(\\hat{\\boldsymbol{\\beta}} = (\\mathbf{X}'\\mathbf{X})^{-1}\\mathbf{X}'\\mathbf{y}\\)\n\n\n\nWe’ll use these derivatives to minimize the sum of squared errors!"
   },
   {
-    "objectID": "schedule.html",
-    "href": "schedule.html",
-    "title": "\n Schedule",
-    "section": "",
-    "text": "Note: The timeline of topics and assignments might be updated throughout the semester.\n\n\n\n\nweek\n\n\ndate\n\n\ntopic\n\n\nprepare\n\n\nslides\n\n\nexercises\n\n\n\n\n\n1\n\n\n27 August\n\n\nWelcome to Linear Models\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nR and Reproducible Workflows\n\n\n\n\n\n\n\n\n\n\n\n\n1\n\n\n29 August\n\n\nMatrix Refresher\n\n\n\n\n\n\n\n\n\n\n\n\n2\n\n\n3 September\n\n\nMatrix Workshop\n\n\n\n\n\n\n\n\n\n\n\n\n2\n\n\n5 September\n\n\nLinear Regression Fundamentals\n\n\nFaraway Sections 1.3 - 1.4\n\n\n\n\n\n\n\n\n\n\n3\n\n\n10 September\n\n\nLinear Regression Fundamentals (Workshop)\n\n\n\n\n\n\n\n\n\n\n\n\n3\n\n\n12 September\n\n\nDeriving the Hat Matrix and QR Decomposition\n\n\nFaraway Sections 2.1-2.6\n\n\n\n\n\n\n\n\n\n\n4\n\n\n17 September\n\n\nNo Class\n\n\n\n\n\n\n\n\n\n\n\n\n4\n\n\n19 September\n\n\nProperties of Random Vectors\n\n\nFaraway Section 2.8\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nGauss Markov Theorem\n\n\n\n\n\n\n\n\n\n\n\n\n5\n\n\n24 September\n\n\nGauss Markov Theorem (Workshop)\n\n\n\n\n\n\n\n\n\n\n\n\n5\n\n\n26 September\n\n\nResidual Sum of Squares\n\n\nFaraway Sections 2.9, 3.1\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nGoodness of Fit\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHypothesis Testing\n\n\n\n\n\n\n\n\n\n\n\n\n6\n\n\n1 October\n\n\nPractical Workshop\n\n\n\n\n\n\n\n\n\n\n\n\n6\n\n\n3 October\n\n\nMidterm review\n\n\n\n\n\n\n\n\n\n\n\n\n7\n\n\n8 October\n\n\nMidterm (In Class)\n\n\n\n\n\n\n\n\n\n\n\n\n7\n\n\n10 October\n\n\nMidterm (Out of Class)\n\n\n\n\n\n\n\n\n\n\n\n\n8\n\n\n15 October\n\n\nMidterm Recap\n\n\n\n\n\n\n\n\n\n\n\n\n8\n\n\n17 October\n\n\nConfidence Intervals\n\n\nFaraway Sections 3.4-3.6\n\n\n\n\n\n\n\n\n\n\n9\n\n\n22 October\n\n\nConfidence Intervals (Workshop)\n\n\n\n\n\n\n\n\n\n\n\n\n9\n\n\n24 October\n\n\nDiagnostics\n\n\nFaraway Chapter 6\n\n\n\n\n\n\n\n\n\n\n10\n\n\n29 October\n\n\nDiagnostics (Workshop)\n\n\n\n\n\n\n\n\n\n\n\n\n10\n\n\n31 October\n\n\nTransformations\n\n\nFaraway Chapter 9\n\n\n\n\n\n\n\n\n\n\n11\n\n\n5 November\n\n\nTransformations (Workshop)\n\n\n\n\n\n\n\n\n\n\n\n\n11\n\n\n7 November\n\n\nPrediction & Prediction Intervals\n\n\nFaraway Chapter 4\n\n\n\n\n\n\n\n\n\n\n12\n\n\n12 November\n\n\nPrediction (Workshop)\n\n\n\n\n\n\n\n\n\n\n\n\n12\n\n\n14 November\n\n\nExplanation\n\n\nFaraway Chapter 5\n\n\n\n\n\n\n\n\n\n\n13\n\n\n19 November\n\n\nCausal Inference (Workshop)\n\n\n\n\n\n\n\n\n\n\n\n\n13\n\n\n21 November\n\n\nFinal Project\n\n\n\n\n\n\n\n\n\n\n\n\n14\n\n\n26 November\n\n\nThanksgiving\n\n\n\n\n\n\n\n\n\n\n\n\n14\n\n\n28 November\n\n\nThanksgiving\n\n\n\n\n\n\n\n\n\n\n\n\n15\n\n\n3 December\n\n\nFinal Presentation (Out of Class)\n\n\n\n\n\n\n\n\n\n\n\n\n15\n\n\n5 December\n\n\nFinal Presentation (Out of Class)",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Course Details",
-      "Schedule"
-    ]
+    "objectID": "slides/04-slides.html#the-sum-of-squared-errors",
+    "href": "slides/04-slides.html#the-sum-of-squared-errors",
+    "title": "Deriving the Hat Matrix and QR Decomposition",
+    "section": "The Sum of Squared Errors",
+    "text": "The Sum of Squared Errors\n\nRecall our objective: \\[\\text{SSE} = (\\mathbf{y} - \\mathbf{X}\\boldsymbol{\\beta})^T(\\mathbf{y} - \\mathbf{X}\\boldsymbol{\\beta})\\]\n\n\nGoal: Find \\(\\hat{\\boldsymbol{\\beta}}\\) that minimizes SSE\n\n\nMethod: Take the derivative with respect to \\(\\boldsymbol{\\beta}\\) and set equal to zero"
   },
   {
-    "objectID": "quarto-quick-guide.html",
-    "href": "quarto-quick-guide.html",
-    "title": "Quarto Quick Reference Guide",
-    "section": "",
-    "text": "Quarto is the next-generation version of R Markdown that combines code, results, and narrative text into dynamic documents. This guide covers the essentials you’ll need for STA 312.",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Computing",
-      "Quarto Quick Guide"
-    ]
+    "objectID": "slides/04-slides.html#expanding-the-sse-expression",
+    "href": "slides/04-slides.html#expanding-the-sse-expression",
+    "title": "Deriving the Hat Matrix and QR Decomposition",
+    "section": "Expanding the SSE Expression",
+    "text": "Expanding the SSE Expression\n\nStart with: \\[\\text{SSE} = (\\mathbf{y} - \\mathbf{X}\\boldsymbol{\\beta})^T(\\mathbf{y} - \\mathbf{X}\\boldsymbol{\\beta})\\]\n\n\nExpand: \\[\\text{SSE} = \\mathbf{y}^T\\mathbf{y} - \\mathbf{y}^T\\mathbf{X}\\boldsymbol{\\beta} - \\boldsymbol{\\beta}^T\\mathbf{X}^T\\mathbf{y} + \\boldsymbol{\\beta}^T\\mathbf{X}^T\\mathbf{X}\\boldsymbol{\\beta}\\]"
   },
   {
-    "objectID": "quarto-quick-guide.html#document-structure",
-    "href": "quarto-quick-guide.html#document-structure",
-    "title": "Quarto Quick Reference Guide",
-    "section": "Document Structure",
-    "text": "Document Structure\nEvery Quarto document starts with a YAML header (between --- lines) that contains metadata:\n---\ntitle: \"My Statistical Analysis\"\nauthor: \"Your Name\"\ndate: today\nformat: html\nexecute:\n  echo: true\n  warning: false\n---",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Computing",
-      "Quarto Quick Guide"
-    ]
+    "objectID": "slides/04-slides.html#expanding-the-sse-expression-1",
+    "href": "slides/04-slides.html#expanding-the-sse-expression-1",
+    "title": "Deriving the Hat Matrix and QR Decomposition",
+    "section": "Expanding the SSE Expression",
+    "text": "Expanding the SSE Expression\n\nSince \\(\\mathbf{y}^T\\mathbf{X}\\boldsymbol{\\beta} = \\boldsymbol{\\beta}^T\\mathbf{X}^T\\mathbf{y}\\) (both are scalars): \\[\\text{SSE} = \\mathbf{y}^T\\mathbf{y} - 2\\boldsymbol{\\beta}^T\\mathbf{X}^T\\mathbf{y} + \\boldsymbol{\\beta}^T\\mathbf{X}^T\\mathbf{X}\\boldsymbol{\\beta}\\]"
   },
   {
-    "objectID": "quarto-quick-guide.html#basic-markdown-syntax",
-    "href": "quarto-quick-guide.html#basic-markdown-syntax",
-    "title": "Quarto Quick Reference Guide",
-    "section": "Basic Markdown Syntax",
-    "text": "Basic Markdown Syntax\n\nHeaders\n# Header 1 (largest)\n## Header 2\n### Header 3\n#### Header 4\n\n\nText Formatting\n\nBold text: **bold text** or __bold text__\nItalic text: *italic text* or _italic text_\nCode text: `code text`\nLinks: [link text](URL)\n\n\n\nLists\nUnordered lists:\n- Item 1\n- Item 2\n  - Sub-item\n  - Sub-item\nOrdered lists:\n1. First item\n2. Second item\n3. Third item",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Computing",
-      "Quarto Quick Guide"
-    ]
+    "objectID": "slides/04-slides.html#taking-the-derivative",
+    "href": "slides/04-slides.html#taking-the-derivative",
+    "title": "Deriving the Hat Matrix and QR Decomposition",
+    "section": "Taking the Derivative",
+    "text": "Taking the Derivative\n\nMatrix calculus rules we need:\n\n\\(\\frac{\\partial}{\\partial \\boldsymbol{\\beta}}(\\mathbf{a}^T\\boldsymbol{\\beta}) = \\mathbf{a}\\)\n\n\\(\\frac{\\partial}{\\partial \\boldsymbol{\\beta}}(\\boldsymbol{\\beta}^T\\mathbf{A}\\boldsymbol{\\beta}) = 2\\mathbf{A}\\boldsymbol{\\beta}\\) (when \\(\\mathbf{A}\\) is symmetric)\n\n\n\nTaking the derivative: \\[\\frac{\\partial \\text{SSE}}{\\partial \\boldsymbol{\\beta}} = -2\\mathbf{X}^T\\mathbf{y} + 2\\mathbf{X}^T\\mathbf{X}\\boldsymbol{\\beta}\\]"
   },
   {
-    "objectID": "quarto-quick-guide.html#r-code-chunks",
-    "href": "quarto-quick-guide.html#r-code-chunks",
-    "title": "Quarto Quick Reference Guide",
-    "section": "R Code Chunks",
-    "text": "R Code Chunks\nThe power of Quarto comes from embedding R code directly in your document.\n\nBasic Code Chunk\nCode chucks start with {r}.\n```{r}\n# Your R code here\nx &lt;- c(1, 2, 3, 4, 5)\nmean(x)\n```\n\n\nCode Chunk Options\nYour code chunks can have options that are written in YAML style starting with a #| at the beginning of the line.\n```{r}\n#| label: data-setup\n#| echo: false\n#| message: false\n#| warning: false\n\n# Load libraries and data\nlibrary(tidyverse)\nlibrary(ggplot2)\n```\n\n\nCommon Chunk Options\n\n#| echo: false: Hide code, show output\n\n#| eval: false: Show code, don’t run it\n\n#| include: false: Run code, hide everything\n\n#| message: false: Hide messages\n\n#| warning: false: Hide warnings\n\n#| fig-width: 8 and #| fig-height: 6: Control plot dimensions",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Computing",
-      "Quarto Quick Guide"
-    ]
+    "objectID": "slides/04-slides.html#setting-equal-to-zero",
+    "href": "slides/04-slides.html#setting-equal-to-zero",
+    "title": "Deriving the Hat Matrix and QR Decomposition",
+    "section": "Setting Equal to Zero",
+    "text": "Setting Equal to Zero\n\nSet the derivative equal to zero: \\[-2\\mathbf{X}^T\\mathbf{y} + 2\\mathbf{X}^T\\mathbf{X}\\boldsymbol{\\beta} = \\mathbf{0}\\]\n\n\nDivide by 2: \\[-\\mathbf{X}^T\\mathbf{y} + \\mathbf{X}^T\\mathbf{X}\\boldsymbol{\\beta} = \\mathbf{0}\\]"
   },
   {
-    "objectID": "quarto-quick-guide.html#inline-r-code",
-    "href": "quarto-quick-guide.html#inline-r-code",
-    "title": "Quarto Quick Reference Guide",
-    "section": "Inline R Code",
-    "text": "Inline R Code\nYou can include R results directly in text using `r`:\nThe mean of our data is `r round(mean(x), 2)`.",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Computing",
-      "Quarto Quick Guide"
-    ]
+    "objectID": "slides/04-slides.html#setting-equal-to-zero-1",
+    "href": "slides/04-slides.html#setting-equal-to-zero-1",
+    "title": "Deriving the Hat Matrix and QR Decomposition",
+    "section": "Setting Equal to Zero",
+    "text": "Setting Equal to Zero\nRearrange: \\[\\mathbf{X}^T\\mathbf{X}\\boldsymbol{\\beta} = \\mathbf{X}^T\\mathbf{y}\\]"
   },
   {
-    "objectID": "quarto-quick-guide.html#mathematical-expressions",
-    "href": "quarto-quick-guide.html#mathematical-expressions",
-    "title": "Quarto Quick Reference Guide",
-    "section": "Mathematical Expressions",
-    "text": "Mathematical Expressions\nQuarto uses LaTeX syntax for mathematical notation:\n\nInline Math\nUse single dollar signs for inline math: $x^2 + y^2 = z^2$\n\n\nDisplay Math\nUse double dollar signs for centered display math:\n$$\\bar{x} = \\frac{1}{n}\\sum_{i=1}^{n} x_i$$\n\n\nCommon Statistical Notation\n\n\n\n\n\n\n\n\nConcept\nLaTeX Code\nRendered Output\n\n\n\n\nMean\n$\\bar{x}$\n\\(\\bar{x}\\)\n\n\nStandard deviation\n$\\sigma$\n\\(\\sigma\\)\n\n\nRegression equation\n$y = \\beta_0 + \\beta_1 x + \\epsilon$\n\\(y = \\beta_0 + \\beta_1 x + \\epsilon\\)\n\n\nSums\n$\\sum_{i=1}^{n} x_i$\n\\(\\sum_{i=1}^{n} x_i\\)\n\n\nSquare root\n$\\sqrt{n}$\n\\(\\sqrt{n}\\)\n\n\nFractions\n$\\frac{a}{b}$\n\\(\\frac{a}{b}\\)\n\n\nSubscripts\n$x_i$\n\\(x_i\\)\n\n\nSuperscripts\n$x^2$\n\\(x^2\\)\n\n\nMatrices\n$\\begin{bmatrix} 1 & 2 & 3 \\\\ 4 & 5 & 6 \\end{bmatrix}$\n\\(\\begin{bmatrix} 1 & 2 & 3 \\\\ 4 & 5 & 6 \\end{bmatrix}\\)",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Computing",
-      "Quarto Quick Guide"
-    ]
+    "objectID": "slides/04-slides.html#the-least-squares-solution",
+    "href": "slides/04-slides.html#the-least-squares-solution",
+    "title": "Deriving the Hat Matrix and QR Decomposition",
+    "section": "The Least Squares Solution",
+    "text": "The Least Squares Solution\n\nSolve for \\(\\hat{\\boldsymbol{\\beta}}\\): \\[\\hat{\\boldsymbol{\\beta}} = (\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\mathbf{y}\\]"
   },
   {
-    "objectID": "quarto-quick-guide.html#tables",
-    "href": "quarto-quick-guide.html#tables",
-    "title": "Quarto Quick Reference Guide",
-    "section": "Tables",
-    "text": "Tables\n\nSimple Tables\n| Variable | Mean | SD   |\n|----------|------|------|\n| Height   | 68.2 | 3.1  |\n| Weight   | 155  | 22.5 |\n\n\nTables from R Code\n```{r}\n#| label: summary-table\n#| tbl-cap: \"Summary Statistics\"\n\nlibrary(knitr)\nsummary_stats &lt;- data.frame(\n  Variable = c(\"Height\", \"Weight\"),\n  Mean = c(68.2, 155.0),\n  SD = c(3.1, 22.5)\n)\nkable(summary_stats)\n```",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Computing",
-      "Quarto Quick Guide"
-    ]
+    "objectID": "slides/04-slides.html#verification-in-r",
+    "href": "slides/04-slides.html#verification-in-r",
+    "title": "Deriving the Hat Matrix and QR Decomposition",
+    "section": " Verification in R",
+    "text": "Verification in R\n\nset.seed(1)\nx &lt;- 1:10\ny &lt;- 2 + 3 * x + rnorm(10, 0, 2)\n\nX &lt;- cbind(1, x)\n\nbeta_hat &lt;- solve(t(X) %*% X) %*% t(X) %*% y\n\nmodel &lt;- lm(y ~ x)\ncbind(beta_hat, coef(model))\n\n      [,1]     [,2]\n  1.662353 1.662353\nx 3.109464 3.109464"
   },
   {
-    "objectID": "quarto-quick-guide.html#figures",
-    "href": "quarto-quick-guide.html#figures",
-    "title": "Quarto Quick Reference Guide",
-    "section": "Figures",
-    "text": "Figures\n\nPlots with Captions\n```{r}\n#| label: fig-scatter\n#| fig-cap: \"Relationship between height and weight\"\n#| fig-width: 6\n#| fig-height: 4\n\nggplot(data, aes(x = height, y = weight)) +\n  geom_point() +\n  geom_smooth(method = \"lm\") +\n  labs(x = \"Height (inches)\", y = \"Weight (lbs)\")\n```",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Computing",
-      "Quarto Quick Guide"
-    ]
+    "objectID": "slides/04-slides.html#what-is-qr-decomposition",
+    "href": "slides/04-slides.html#what-is-qr-decomposition",
+    "title": "Deriving the Hat Matrix and QR Decomposition",
+    "section": "What is QR Decomposition?",
+    "text": "What is QR Decomposition?\n\nAny matrix \\(\\mathbf{X}\\) can be decomposed as: \\[\\mathbf{X} = \\mathbf{Q}\\mathbf{R}\\]\n\n\nWhere:\n\n\\(\\mathbf{Q}\\) is orthogonal: \\(\\mathbf{Q}^T\\mathbf{Q} = \\mathbf{I}\\)\n\n\\(\\mathbf{R}\\) is upper triangular"
   },
   {
-    "objectID": "quarto-quick-guide.html#cross-references",
-    "href": "quarto-quick-guide.html#cross-references",
-    "title": "Quarto Quick Reference Guide",
-    "section": "Cross-References",
-    "text": "Cross-References\nYou can reference figures, tables, and equations:\n\nReference a figure: @fig-scatter\n\nReference a table: @tbl-summary\n\nReference an equation: @eq-regression\n\nFor equations with labels:\n$$y = \\beta_0 + \\beta_1 x + \\epsilon$$ {#eq-regression}",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Computing",
-      "Quarto Quick Guide"
-    ]
+    "objectID": "slides/04-slides.html#what-is-qr-decomposition-1",
+    "href": "slides/04-slides.html#what-is-qr-decomposition-1",
+    "title": "Deriving the Hat Matrix and QR Decomposition",
+    "section": "What is QR Decomposition?",
+    "text": "What is QR Decomposition?\nAny matrix \\(\\mathbf{X}\\) can be decomposed as: \\[\\mathbf{X} = \\mathbf{Q}\\mathbf{R}\\]\nIn words: Break down \\(\\mathbf{X}\\) into perpendicular directions (\\(\\mathbf{Q}\\)) and scaling/rotation (\\(\\mathbf{R}\\))"
   },
   {
-    "objectID": "quarto-quick-guide.html#callout-blocks",
-    "href": "quarto-quick-guide.html#callout-blocks",
-    "title": "Quarto Quick Reference Guide",
-    "section": "Callout Blocks",
-    "text": "Callout Blocks\nQuarto provides special callout blocks for important information:\n::: {.callout-note}\nThis is a note callout.\n:::\n\n::: {.callout-warning}\nThis is a warning callout.\n:::\n\n::: {.callout-important}\nThis is an important callout.\n:::",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Computing",
-      "Quarto Quick Guide"
-    ]
+    "objectID": "slides/04-slides.html#why-use-qr-for-regression",
+    "href": "slides/04-slides.html#why-use-qr-for-regression",
+    "title": "Deriving the Hat Matrix and QR Decomposition",
+    "section": "Why Use QR for Regression?",
+    "text": "Why Use QR for Regression?\n\nTraditional approach requires: \\[\\hat{\\boldsymbol{\\beta}} = (\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\mathbf{y}\\]"
   },
   {
-    "objectID": "quarto-quick-guide.html#rendering-your-document",
-    "href": "quarto-quick-guide.html#rendering-your-document",
-    "title": "Quarto Quick Reference Guide",
-    "section": "Rendering Your Document",
-    "text": "Rendering Your Document\nTo render your Quarto document:\n\nIn RStudio: Click the “Render” button\n\nCommand line: Run quarto render filename.qmd\n\nPreview: Use quarto preview filename.qmd for live preview",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Computing",
-      "Quarto Quick Guide"
-    ]
+    "objectID": "slides/04-slides.html#why-use-qr-for-regression-1",
+    "href": "slides/04-slides.html#why-use-qr-for-regression-1",
+    "title": "Deriving the Hat Matrix and QR Decomposition",
+    "section": "Why Use QR for Regression?",
+    "text": "Why Use QR for Regression?\nProblems with \\((\\mathbf{X}^T\\mathbf{X})^{-1}\\):\n\nComputing \\(\\mathbf{X}^T\\mathbf{X}\\) can be numerically unstable\n\nMatrix inversion is computationally expensive\n\nCondition number gets squared: \\(\\kappa(\\mathbf{X}^T\\mathbf{X}) = \\kappa(\\mathbf{X})^2\\)"
   },
   {
-    "objectID": "quarto-quick-guide.html#tips-for-statistical-writing",
-    "href": "quarto-quick-guide.html#tips-for-statistical-writing",
-    "title": "Quarto Quick Reference Guide",
-    "section": "Tips for Statistical Writing",
-    "text": "Tips for Statistical Writing\n\nAlways explain your code: Use comments (#) and narrative text\nRound numbers appropriately: Use round() function for inline code\nLabel your chunks: Makes debugging easier\nInclude figure captions: Helps with interpretation",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Computing",
-      "Quarto Quick Guide"
-    ]
+    "objectID": "slides/04-slides.html#demo",
+    "href": "slides/04-slides.html#demo",
+    "title": "Deriving the Hat Matrix and QR Decomposition",
+    "section": " Demo",
+    "text": "Demo\nWhat do I mean by “unstable”\n\nx &lt;- seq(1, 500, len = 30)\nX &lt;- cbind(1, x, x^2, x^3)\nbeta &lt;- matrix(c(1, 1, 1, 1), 4, 1)\n\nset.seed(1)\ny &lt;- X%*%beta + rnorm(30)\n\n\nsolve(crossprod(X))\n\n\n\nError in solve.default(crossprod(X)) : system is computationally singular: reciprocal condition number = 3.11914e-17\n\n\n\nlog10(crossprod(X))\n\n                   x                    \n  1.477121  3.875929  6.406189  8.987506\nx 3.875929  6.406189  8.987506 11.596810\n  6.406189  8.987506 11.596810 14.223800\n  8.987506 11.596810 14.223800 16.862984"
   },
   {
-    "objectID": "help.html",
-    "href": "help.html",
-    "title": "Help",
-    "section": "",
-    "text": "Welcome to the help section! This page contains resources to help you succeed in the course, from technical setup to troubleshooting common issues. Click through the sidebar on the left."
+    "objectID": "slides/04-slides.html#qr-solution",
+    "href": "slides/04-slides.html#qr-solution",
+    "title": "Deriving the Hat Matrix and QR Decomposition",
+    "section": "QR Solution",
+    "text": "QR Solution\n\nIf \\(\\mathbf{X} = \\mathbf{Q}\\mathbf{R}\\), then: \\[\\mathbf{X}^T\\mathbf{X} = (\\mathbf{Q}\\mathbf{R})^T(\\mathbf{Q}\\mathbf{R}) = \\mathbf{R}^T\\mathbf{Q}^T\\mathbf{Q}\\mathbf{R} = \\mathbf{R}^T\\mathbf{R}\\]"
   },
   {
-    "objectID": "help.html#getting-started-with-rstudio-and-quarto",
-    "href": "help.html#getting-started-with-rstudio-and-quarto",
-    "title": "Help",
-    "section": "Getting Started with RStudio and Quarto",
-    "text": "Getting Started with RStudio and Quarto\nIf you’re new to using RStudio Pro or working with Quarto documents, check out our getting started guides.\nGetting Started Guide with RStudio Pro →\nGetting Started Guide with Quarto →"
+    "objectID": "slides/04-slides.html#qr-solution-1",
+    "href": "slides/04-slides.html#qr-solution-1",
+    "title": "Deriving the Hat Matrix and QR Decomposition",
+    "section": "QR Solution",
+    "text": "QR Solution\nSo: \\[\n\\begin{align}\n\\hat{\\boldsymbol{\\beta}} &= (\\mathbf{R}^T\\mathbf{R})^{-1}\\mathbf{R}^T\\mathbf{Q}^T\\mathbf{y}\n\\end{align}\n\\] ::: fragment Note that \\((\\mathbf{AB})^{-1}=\\mathbf{B}^{-1}\\mathbf{A}^{-1}\\) as long as both \\(\\mathbf{A}\\) and \\(\\mathbf{B}\\) are invertible (so if \\(\\mathbf{R}\\) is invertible then \\((\\mathbf{R}^T\\mathbf{R})^{-1} = \\mathbf{R}^{-1}(\\mathbf{R}^T)^{-1}\\)) :::"
   },
   {
-    "objectID": "help.html#quick-links",
-    "href": "help.html#quick-links",
-    "title": "Help",
-    "section": "Quick Links",
-    "text": "Quick Links\n\nRStudio Pro Server: Access your computing environment at login.deac.wfu.edu\nCourse Schedule: Check the schedule for upcoming assignments and due dates"
+    "objectID": "slides/04-slides.html#qr-solution-2",
+    "href": "slides/04-slides.html#qr-solution-2",
+    "title": "Deriving the Hat Matrix and QR Decomposition",
+    "section": "QR Solution",
+    "text": "QR Solution\nSo: \\[\n\\begin{align}\n\\hat{\\boldsymbol{\\beta}} &= (\\mathbf{R}^T\\mathbf{R})^{-1}\\mathbf{R}^T\\mathbf{Q}^T\\mathbf{y} \\\\&= \\mathbf{R}^{-1}(\\mathbf{R}^T)^{-1}\\mathbf{R}^T\\mathbf{Q}^T\\mathbf{y}\\\\& = \\mathbf{R}^{-1}\\mathbf{Q}^T\\mathbf{y}\n\\end{align}\n\\]"
   },
   {
-    "objectID": "help.html#need-additional-help",
-    "href": "help.html#need-additional-help",
-    "title": "Help",
-    "section": "Need Additional Help?",
-    "text": "Need Additional Help?\nIf you can’t find what you’re looking for in our guides, don’t hesitate to reach out."
+    "objectID": "slides/04-slides.html#qr-advantages",
+    "href": "slides/04-slides.html#qr-advantages",
+    "title": "Deriving the Hat Matrix and QR Decomposition",
+    "section": "QR Advantages",
+    "text": "QR Advantages\n\nOnly need to solve \\(\\mathbf{R}\\hat{\\boldsymbol{\\beta}} = \\mathbf{Q}^T\\mathbf{y}\\) (back substitution)\n\nMore numerically stable\n\nAvoids explicit matrix inversion"
   },
   {
-    "objectID": "help-project.html",
-    "href": "help-project.html",
-    "title": "Creating or Opening a Project",
-    "section": "",
-    "text": "Before starting an assignment or exercise, always create or open a project:\n\nTo create a new project:\n\nIn RStudio, go to File &gt; New Project.\nChoose whether to create a project in a new directory or within an existing directory.\nNavigate to the folder where you want your project\nClick Create Project.\n\nTo open an existing project:\n\nIn RStudio, go to File &gt; Open Project.\nBrowse to the .Rproj file of the project you want to open.\nSelect it and click Open.\n\n\nThis ensures all your files and settings are organized within the correct project environment.",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Computing",
-      "Creating an RStudio Project"
-    ]
+    "objectID": "slides/04-slides.html#backsolve-example",
+    "href": "slides/04-slides.html#backsolve-example",
+    "title": "Deriving the Hat Matrix and QR Decomposition",
+    "section": "Backsolve Example",
+    "text": "Backsolve Example\nGiven: \\[\\mathbf{R} = \\begin{bmatrix} 2 & 1 & 3 \\\\ 0 & 4 & 2 \\\\ 0 & 0 & 5 \\end{bmatrix}, \\quad \\mathbf{Q}^T\\mathbf{y} = \\begin{bmatrix} 8 \\\\ 12 \\\\ 15 \\end{bmatrix}\\]\nSolve: \\(\\mathbf{R}\\hat{\\boldsymbol{\\beta}} = \\mathbf{Q}^T\\mathbf{y}\\)"
   },
   {
-    "objectID": "ex/ex-2.html",
-    "href": "ex/ex-2.html",
-    "title": "Matrix Problem Set",
-    "section": "",
-    "text": "Complete all problems showing your work. For matrix calculations, show each step clearly. You may use R to verify your answers, but show the mathematical steps first.",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Exercises",
-      "Exercise 2: Matrices"
-    ]
+    "objectID": "slides/04-slides.html#step-by-step-backsolve",
+    "href": "slides/04-slides.html#step-by-step-backsolve",
+    "title": "Deriving the Hat Matrix and QR Decomposition",
+    "section": "Step-by-Step Backsolve",
+    "text": "Step-by-Step Backsolve\n\n\\[\\begin{bmatrix} 2 & 1 & 3 \\\\ 0 & 4 & 2 \\\\ 0 & 0 & 5 \\end{bmatrix} \\begin{bmatrix} \\hat\\beta_1 \\\\ \\hat\\beta_2 \\\\ \\hat\\beta_3 \\end{bmatrix} = \\begin{bmatrix} 8 \\\\ 12 \\\\ 15 \\end{bmatrix}\\]\n\n\nStep 1: Solve bottom row first \\[5\\hat\\beta_3 = 15 \\implies \\hat\\beta_3 = 3\\]"
   },
   {
-    "objectID": "ex/ex-2.html#instructions",
-    "href": "ex/ex-2.html#instructions",
-    "title": "Matrix Problem Set",
-    "section": "",
-    "text": "Complete all problems showing your work. For matrix calculations, show each step clearly. You may use R to verify your answers, but show the mathematical steps first.",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Exercises",
-      "Exercise 2: Matrices"
-    ]
+    "objectID": "slides/04-slides.html#step-by-step-backsolve-1",
+    "href": "slides/04-slides.html#step-by-step-backsolve-1",
+    "title": "Deriving the Hat Matrix and QR Decomposition",
+    "section": "Step-by-Step Backsolve",
+    "text": "Step-by-Step Backsolve\n\n\\[\\begin{bmatrix} 2 & 1 & 3 \\\\ 0 & 4 & 2 \\\\ 0 & 0 & 5 \\end{bmatrix} \\begin{bmatrix} \\hat\\beta_1 \\\\ \\hat\\beta_2 \\\\ \\hat\\beta_3 \\end{bmatrix} = \\begin{bmatrix} 8 \\\\ 12 \\\\ 15 \\end{bmatrix}\\]\n\nStep 2: Substitute into second row \\[4\\beta_2 + 2(3) = 12 \\implies 4\\beta_2 = 6 \\implies \\beta_2 = 1.5\\]"
   },
   {
-    "objectID": "ex/ex-2.html#problem-1",
-    "href": "ex/ex-2.html#problem-1",
-    "title": "Matrix Problem Set",
-    "section": "Problem 1",
-    "text": "Problem 1\nGiven the following matrices:\n\\[\\mathbf{A} = \\begin{bmatrix} 1 & 3 & -2 \\\\ 4 & 0 & 5 \\end{bmatrix}, \\quad \\mathbf{B} = \\begin{bmatrix} 2 & 1 \\\\ -1 & 3 \\\\ 0 & 4 \\end{bmatrix}, \\quad \\mathbf{C} = \\begin{bmatrix} 3 & -1 \\\\ 2 & 6 \\end{bmatrix}\\]\na) What are the dimensions of each matrix?\nb) Which of the following operations are possible? If possible, state the dimensions of the result:\n\n\\(\\mathbf{A} + \\mathbf{B}\\)\n\\(\\mathbf{A} \\times \\mathbf{B}\\)\n\\(\\mathbf{B} \\times \\mathbf{C}\\)\n\\(\\mathbf{C} \\times \\mathbf{B}\\)\n\nc) Calculate \\(\\mathbf{A} \\times \\mathbf{B}\\) (show all steps).",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Exercises",
-      "Exercise 2: Matrices"
-    ]
+    "objectID": "slides/04-slides.html#step-by-step-backsolve-2",
+    "href": "slides/04-slides.html#step-by-step-backsolve-2",
+    "title": "Deriving the Hat Matrix and QR Decomposition",
+    "section": "Step-by-Step Backsolve",
+    "text": "Step-by-Step Backsolve\n\n\\[\\begin{bmatrix} 2 & 1 & 3 \\\\ 0 & 4 & 2 \\\\ 0 & 0 & 5 \\end{bmatrix} \\begin{bmatrix} \\hat\\beta_1 \\\\ \\hat\\beta_2 \\\\ \\hat\\beta_3 \\end{bmatrix} = \\begin{bmatrix} 8 \\\\ 12 \\\\ 15 \\end{bmatrix}\\]\n\nStep 3: Substitute into first row \\[2\\beta_1 + 1(1.5) + 3(3) = 8 \\implies 2\\beta_1 = -2.5 \\implies \\beta_1 = -1.25\\]"
   },
   {
-    "objectID": "ex/ex-2.html#problem-2",
-    "href": "ex/ex-2.html#problem-2",
-    "title": "Matrix Problem Set",
-    "section": "Problem 2",
-    "text": "Problem 2\nGiven \\(\\mathbf{P} = \\begin{bmatrix} 2 & -1 & 4 \\\\ 3 & 0 & 1 \\end{bmatrix}\\) and \\(\\mathbf{Q} = \\begin{bmatrix} 1 & 2 \\\\ -1 & 3 \\\\ 0 & 1 \\end{bmatrix}\\)\na) Find \\(\\mathbf{P}^T\\) and \\(\\mathbf{Q}^T\\).\nb) Calculate \\(\\mathbf{P} \\times \\mathbf{Q}\\).\nc) Calculate \\((\\mathbf{P} \\times \\mathbf{Q})^T\\).\nd) Calculate \\(\\mathbf{Q}^T \\times \\mathbf{P}^T\\) and verify that \\((\\mathbf{P} \\times \\mathbf{Q})^T = \\mathbf{Q}^T \\times \\mathbf{P}^T\\).",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Exercises",
-      "Exercise 2: Matrices"
-    ]
+    "objectID": "slides/04-slides.html#backsolve-solution",
+    "href": "slides/04-slides.html#backsolve-solution",
+    "title": "Deriving the Hat Matrix and QR Decomposition",
+    "section": "Backsolve Solution",
+    "text": "Backsolve Solution\n\\[\\hat{\\boldsymbol{\\beta}} = \\begin{bmatrix} -1.25 \\\\ 1.5 \\\\ 3 \\end{bmatrix}\\]\nKey insight: Work backwards through the triangular matrix, using previously solved values to eliminate unknowns in each step."
   },
   {
-    "objectID": "ex/ex-2.html#problem-3",
-    "href": "ex/ex-2.html#problem-3",
-    "title": "Matrix Problem Set",
-    "section": "Problem 3",
-    "text": "Problem 3\na) Find the inverse of \\(\\mathbf{R} = \\begin{bmatrix} 3 & 1 \\\\ 2 & 1 \\end{bmatrix}\\).\nb) Verify your answer by showing that \\(\\mathbf{R} \\times \\mathbf{R}^{-1} = \\mathbf{I}\\).\nc) Explain why the matrix \\(\\mathbf{S} = \\begin{bmatrix} 2 & 4 \\\\ 1 & 2 \\end{bmatrix}\\) does not have an inverse.",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Exercises",
-      "Exercise 2: Matrices"
-    ]
+    "objectID": "slides/04-slides.html#you-try-qr-properties",
+    "href": "slides/04-slides.html#you-try-qr-properties",
+    "title": "Deriving the Hat Matrix and QR Decomposition",
+    "section": "You Try: QR Properties",
+    "text": "You Try: QR Properties\n\nGiven \\(\\mathbf{X} = \\mathbf{Q}\\mathbf{R}\\), verify that:\n\n\\(\\mathbf{X}^T\\mathbf{X} = \\mathbf{R}^T\\mathbf{R}\\)\nThe hat matrix becomes \\(\\mathbf{H} = \\mathbf{Q}\\mathbf{Q}^T\\)\n\nHint: Use the fact that \\(\\mathbf{Q}^T\\mathbf{Q} = \\mathbf{I}\\) and remember \\((\\mathbf{AB})^{-1}=\\mathbf{B}^{-1}\\mathbf{A}^{-1}\\) as long as both \\(\\mathbf{A}\\) and \\(\\mathbf{B}\\) are invertible.\n\n\n\n\n−+\n05:00"
   },
   {
-    "objectID": "ex/ex-2.html#problem-4",
-    "href": "ex/ex-2.html#problem-4",
-    "title": "Matrix Problem Set",
-    "section": "Problem 4",
-    "text": "Problem 4\na) Find \\(\\frac{\\partial}{\\partial \\mathbf{x}}(\\mathbf{a}^T\\mathbf{x})\\) where \\(\\mathbf{a} = \\begin{bmatrix} 3 \\\\ -2 \\\\ 1 \\\\ 4 \\end{bmatrix}\\) and \\(\\mathbf{x} = \\begin{bmatrix} x_1 \\\\ x_2 \\\\ x_3 \\\\ x_4 \\end{bmatrix}\\).\nb) If \\(f(\\mathbf{x}) = 2x_1 - 5x_2 + 3x_3\\), write this in the form \\(\\mathbf{c}^T\\mathbf{x}\\) and find \\(\\frac{\\partial f}{\\partial \\mathbf{x}}\\).",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Exercises",
-      "Exercise 2: Matrices"
-    ]
+    "objectID": "slides/04-slides.html#qr-in-r",
+    "href": "slides/04-slides.html#qr-in-r",
+    "title": "Deriving the Hat Matrix and QR Decomposition",
+    "section": " QR in R",
+    "text": "QR in R\n\n# Using our previous data\n\n# QR decomposition\nqr_decomp &lt;- qr(X)\nQ &lt;- qr.Q(qr_decomp)\nR &lt;- qr.R(qr_decomp)\n\n# Solve using QR\nbeta_qr &lt;- backsolve(R, t(Q) %*% y)\nbeta_qr"
   },
   {
-    "objectID": "ex/ex-2.html#problem-5",
-    "href": "ex/ex-2.html#problem-5",
-    "title": "Matrix Problem Set",
-    "section": "Problem 5",
-    "text": "Problem 5\nConsider the quadratic form \\(\\mathbf{x}^T\\mathbf{A}\\mathbf{x}\\) where \\(\\mathbf{A} = \\begin{bmatrix} 2 & 3 \\\\ 1 & 4 \\end{bmatrix}\\) and \\(\\mathbf{x} = \\begin{bmatrix} x_1 \\\\ x_2 \\end{bmatrix}\\).\na) Expand \\(\\mathbf{x}^T\\mathbf{A}\\mathbf{x}\\) into scalar form.\nb) Find \\(\\mathbf{A}^T\\) and calculate \\(\\mathbf{A} + \\mathbf{A}^T\\).\nc) Use the derivative rule to find \\(\\frac{\\partial}{\\partial \\mathbf{x}}(\\mathbf{x}^T\\mathbf{A}\\mathbf{x})\\).",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Exercises",
-      "Exercise 2: Matrices"
-    ]
+    "objectID": "slides/04-slides.html#why-qr-matters",
+    "href": "slides/04-slides.html#why-qr-matters",
+    "title": "Deriving the Hat Matrix and QR Decomposition",
+    "section": " Why QR Matters",
+    "text": "Why QR Matters\nCondition number comparison:\n\n# Compare condition numbers\nkappa(X)               # Condition of X\n\n[1] 158915720\n\nkappa(t(X) %*% X)      # Condition of X'X (much worse!)\n\n[1] 3.165203e+16"
   },
   {
-    "objectID": "ex/ex-2.html#problem-6",
-    "href": "ex/ex-2.html#problem-6",
-    "title": "Matrix Problem Set",
-    "section": "Problem 6",
-    "text": "Problem 6\nLet \\(\\mathbf{B} = \\begin{bmatrix} 4 & -1 & 2 \\\\ -1 & 3 & 0 \\\\ 2 & 0 & 5 \\end{bmatrix}\\) and \\(\\mathbf{x} = \\begin{bmatrix} x_1 \\\\ x_2 \\\\ x_3 \\end{bmatrix}\\).\na) Verify that \\(\\mathbf{B}\\) is symmetric.\nb) Find \\(\\frac{\\partial}{\\partial \\mathbf{x}}(\\mathbf{x}^T\\mathbf{B}\\mathbf{x})\\) using the symmetric matrix rule.\nc) What would be the result if we used the general rule \\((\\mathbf{A} + \\mathbf{A}^T)\\mathbf{x}\\) instead? Show that both methods give the same answer.",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Exercises",
-      "Exercise 2: Matrices"
-    ]
-  },
-  {
-    "objectID": "ex/ex-2.html#problem-7",
-    "href": "ex/ex-2.html#problem-7",
-    "title": "Matrix Problem Set",
-    "section": "Problem 7",
-    "text": "Problem 7\nConsider the expression \\(g(\\mathbf{x}) = \\mathbf{b}^T\\mathbf{A}\\mathbf{x}\\) where: \\[\\mathbf{b} = \\begin{bmatrix} 2 \\\\ -1 \\\\ 3 \\end{bmatrix}, \\quad \\mathbf{A} = \\begin{bmatrix} 1 & 0 & 2 \\\\ 3 & -1 & 1 \\\\ 0 & 2 & 4 \\end{bmatrix}, \\quad \\mathbf{x} = \\begin{bmatrix} x_1 \\\\ x_2 \\\\ x_3 \\end{bmatrix}\\]\na) What is the dimension of \\(g(\\mathbf{x})\\)? (Is it a scalar, vector, or matrix?)\nb) Use the rule \\(\\frac{\\partial}{\\partial \\mathbf{x}}(\\mathbf{b}^T\\mathbf{A}\\mathbf{x}) = \\mathbf{A}^T\\mathbf{b}\\) to find \\(\\frac{\\partial g}{\\partial \\mathbf{x}}\\).\nc) Calculate \\(\\mathbf{A}\\mathbf{x}\\) first, then compute \\(\\mathbf{b}^T(\\mathbf{A}\\mathbf{x})\\) to expand \\(g(\\mathbf{x})\\) into scalar form.\nd) Verify your answer from part (b) by taking partial derivatives of the scalar form from part (c).",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Exercises",
-      "Exercise 2: Matrices"
-    ]
-  },
-  {
-    "objectID": "ex/ex-2.html#bonus-challenge",
-    "href": "ex/ex-2.html#bonus-challenge",
-    "title": "Matrix Problem Set",
-    "section": "Bonus Challenge",
-    "text": "Bonus Challenge\nHat Matrix Connection: In linear regression, we minimize the sum of squared errors: \\[SSE = (\\mathbf{y} - \\mathbf{X}\\boldsymbol{\\beta})^T(\\mathbf{y} - \\mathbf{X}\\boldsymbol{\\beta})\\]\nExpand this expression and identify which derivative rules from this problem set you would need to find \\(\\frac{\\partial SSE}{\\partial \\boldsymbol{\\beta}}\\). You don’t need to solve it completely, just identify the relevant derivative rules and explain how they would be applied.",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Exercises",
-      "Exercise 2: Matrices"
-    ]
-  },
-  {
-    "objectID": "demo/least-squares.html",
-    "href": "demo/least-squares.html",
-    "title": "Interactive Least Squares Visualization",
-    "section": "",
-    "text": "Adjust the red line using the sliders below to try to minimize the sum of squared errors. The blue squares show the squared residuals!\n\n\nIntercept \\(\\hat\\beta_0\\)\n\n1.5\n\n\nSlope \\(\\hat\\beta_1\\)\n\n1\n\n\nShow Optimal\n\n\n\n\n\n\nYour Line\ny = 1.50 + 1.00x\n\n\nOptimal Least Squares\ny = 1.50 + 1.00x\n\n\n\n\nYour SSE\n0.00\n\n\nOptimal SSE\n0.00",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Demos",
-      "Least Squares Solution"
-    ]
-  },
-  {
-    "objectID": "demo/least-squares.html#interactive-least-squares-learning-tool",
-    "href": "demo/least-squares.html#interactive-least-squares-learning-tool",
-    "title": "Interactive Least Squares Visualization",
-    "section": "",
-    "text": "Adjust the red line using the sliders below to try to minimize the sum of squared errors. The blue squares show the squared residuals!\n\n\nIntercept \\(\\hat\\beta_0\\)\n\n1.5\n\n\nSlope \\(\\hat\\beta_1\\)\n\n1\n\n\nShow Optimal\n\n\n\n\n\n\nYour Line\ny = 1.50 + 1.00x\n\n\nOptimal Least Squares\ny = 1.50 + 1.00x\n\n\n\n\nYour SSE\n0.00\n\n\nOptimal SSE\n0.00",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Demos",
-      "Least Squares Solution"
-    ]
-  },
-  {
-    "objectID": "demo/least-squares.html#key-concepts",
-    "href": "demo/least-squares.html#key-concepts",
-    "title": "Interactive Least Squares Visualization",
-    "section": "Key Concepts",
-    "text": "Key Concepts\nGoal: Find the line \\(\\hat{y} = \\hat\\beta_0 + \\hat\\beta_1x\\) that minimizes the Sum of Squared Errors (SSE)\nThe blue squares show the squared residuals - their total area equals the SSE!\nWhat to Try:\n\nAdjust the sliders to minimize the total area of blue squares\n\nTry to match the optimal (green) line\n\nNotice how the squares get smaller as you approach the optimal solution",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Demos",
-      "Least Squares Solution"
-    ]
-  },
-  {
-    "objectID": "demo/hat-matrix-symmetry.html",
-    "href": "demo/hat-matrix-symmetry.html",
-    "title": "Hat Matrix Symmetry Visualization",
-    "section": "",
-    "text": "Point 1 X:  1.0\n\n\nPoint 2 X:  2.0\n\n\nPoint 3 X:  -1.0\n\n\nRandomize Points",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Demos",
-      "Hat Matrix Symmetry"
-    ]
-  },
-  {
-    "objectID": "demo/hat-matrix-symmetry.html#interactive-linear-regression-example",
-    "href": "demo/hat-matrix-symmetry.html#interactive-linear-regression-example",
-    "title": "Hat Matrix Symmetry Visualization",
-    "section": "",
-    "text": "Point 1 X:  1.0\n\n\nPoint 2 X:  2.0\n\n\nPoint 3 X:  -1.0\n\n\nRandomize Points",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Demos",
-      "Hat Matrix Symmetry"
-    ]
-  },
-  {
-    "objectID": "demo/hat-matrix-symmetry.html#hat-matrix-h",
-    "href": "demo/hat-matrix-symmetry.html#hat-matrix-h",
-    "title": "Hat Matrix Symmetry Visualization",
-    "section": "Hat Matrix H",
-    "text": "Hat Matrix H",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Demos",
-      "Hat Matrix Symmetry"
-    ]
-  },
-  {
-    "objectID": "demo/hat-matrix-symmetry.html#what-symmetry-means",
-    "href": "demo/hat-matrix-symmetry.html#what-symmetry-means",
-    "title": "Hat Matrix Symmetry Visualization",
-    "section": "What Symmetry Means:",
-    "text": "What Symmetry Means:\nHij = Hji means:\n\nHow much point i influences point j’s fitted value = How much point j influences point i’s fitted value\n\nThis reciprocal relationship holds for ALL pairs of points\nReciprocal influence is a geometric consequence of orthogonal projection",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Demos",
-      "Hat Matrix Symmetry"
-    ]
-  },
-  {
-    "objectID": "demo/hat-matrix-symmetry.html#key-observations",
-    "href": "demo/hat-matrix-symmetry.html#key-observations",
-    "title": "Hat Matrix Symmetry Visualization",
-    "section": "Key Observations",
-    "text": "Key Observations",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Demos",
-      "Hat Matrix Symmetry"
-    ]
-  },
-  {
-    "objectID": "ex/ex-1.html",
-    "href": "ex/ex-1.html",
-    "title": "Exercise 1",
-    "section": "",
-    "text": "Exercise 1: Login to RStudio Pro\n\nGo to course website → Computing → Using the RStudio Server\nFollow login instructions\nLog in with your credentials\n\nCheck: You should see the RStudio interface with 4 panes.\nExercise 2: Create RStudio Project\n\nFile → New Project → New Directory → New Project\nName: ex-1\n\nClick Create Project\n\nCheck: Project name appears in top-right corner.\nExercise 3: Create Quarto Document\n\nFile → New File → Quarto Document\nTitle: “My First Analysis”\nSave as analysis.qmd\n\n\nCheck: New .qmd file is open and saved.\nExercise 4: Install faraway Package and Load Data\nRun this code in the console ONCE:\n\ninstall.packages(\"faraway\")\n\nThen run this:\n\nlibrary(faraway)\nlibrary(ggplot2)\n\n# Test it works\ndata(teengamb)\nhead(teengamb)\n\n  sex status income verbal gamble\n1   1     51   2.00      8    0.0\n2   1     28   2.50      8    0.0\n3   1     37   2.00      6    0.0\n4   1     28   7.00      4    7.3\n5   1     65   2.00      8   19.6\n6   1     61   3.47      6    0.1\n\n\nCheck: You see the teengamb dataset.\nNow run this in the console:\n\n?teengamb\n\nQuestion: What is in this dataset?\nAction: Add the code below to your .qmd file along with a short description of the data.\n\nlibrary(faraway)\nlibrary(ggplot2)\ndata(teengamb)\n\nExercise 5: Linear Model and Plot\nAdd the following code to your .qmd file. Try running it.\n\n# Fit linear model\nmodel1 &lt;- lm(gamble ~ income, data = teengamb)\nsummary(model1)\n\n\nCall:\nlm(formula = gamble ~ income, data = teengamb)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-46.020 -11.874  -3.757  11.934 107.120 \n\nCoefficients:\n            Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)   -6.325      6.030  -1.049      0.3    \nincome         5.520      1.036   5.330 3.05e-06 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 24.95 on 45 degrees of freedom\nMultiple R-squared:  0.387, Adjusted R-squared:  0.3734 \nF-statistic: 28.41 on 1 and 45 DF,  p-value: 3.045e-06\n\n# Create plot\nggplot(teengamb, aes(x = income, y = gamble)) +\n  geom_point() +\n  geom_smooth(method = \"lm\", formula = \"y ~ x\") +\n  labs(title = \"Income vs Gambling\",\n       x = \"Income\", \n       y = \"Gambling\")\n\n\n\n\n\n\n\nCheck: You have model output and a scatter plot with trend line.\nFinish\nClick “Render” to create your HTML report. Upload your .html file in Canvas under Exercise 1",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Exercises",
-      "Exercise 1"
-    ]
-  },
-  {
-    "objectID": "ex/ex-3.html",
-    "href": "ex/ex-3.html",
-    "title": "Linear Regression Fundamentals Problem Set",
-    "section": "",
-    "text": "This problem set covers the fundamental concepts of linear regression, including matrix formulations, geometric interpretations, and computational methods. Show all work and provide clear explanations for your reasoning.",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Exercises",
-      "Exercise 3: Linear Regression Fundamentals"
-    ]
-  },
-  {
-    "objectID": "ex/ex-3.html#instructions",
-    "href": "ex/ex-3.html#instructions",
-    "title": "Linear Regression Fundamentals Problem Set",
-    "section": "",
-    "text": "This problem set covers the fundamental concepts of linear regression, including matrix formulations, geometric interpretations, and computational methods. Show all work and provide clear explanations for your reasoning.",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Exercises",
-      "Exercise 3: Linear Regression Fundamentals"
-    ]
-  },
-  {
-    "objectID": "ex/ex-3.html#problem-1",
-    "href": "ex/ex-3.html#problem-1",
-    "title": "Linear Regression Fundamentals Problem Set",
-    "section": "Problem 1",
-    "text": "Problem 1\nConsider the following dataset with two predictors:\n\n\nObservation\nx1\nx2\ny\n\n\n\n1\n2\n1\n5.2\n\n\n2\n3\n4\n8.1\n\n\n3\n1\n2\n4.8\n\n\n4\n4\n3\n9.5\n\n\n\na) Write out the design matrix X for the multiple regression model with intercept term.\nb) Calculate \\(\\mathbf{X}^T\\mathbf{X}\\) and \\(\\mathbf{X}^T\\mathbf{y}\\) by hand. Show your matrix multiplication steps.\nc) Using your results from Part B, set up the normal equations \\(\\mathbf{X}^T\\mathbf{X}\\hat\\beta=\\mathbf{X}^T\\mathbf{y}\\) and solve for the coefficient vector \\(\\hat\\beta\\). (You can use R if you need to take an inverse).\nd) Verify your answer using R’s built-in functions.",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Exercises",
-      "Exercise 3: Linear Regression Fundamentals"
-    ]
-  },
-  {
-    "objectID": "ex/ex-3.html#problem-2",
-    "href": "ex/ex-3.html#problem-2",
-    "title": "Linear Regression Fundamentals Problem Set",
-    "section": "Problem 2",
-    "text": "Problem 2\nUsing the data from Problem 1 and your estimated coefficients:\na) Calculate the predicted values \\(\\hat{y}_i\\) for each observation by hand.\nb) Calculate the residuals \\(\\hat\\varepsilon=y_i-\\hat{y}_i\\) for each observation.\nc) Compute the sum of squared errors (SSE) using both formulations:\n\nIndividual terms: SSE \\(= \\sum(y_i - \\hat{y}_i)^2\\)\n\nMatrix form: SSE \\(=  (\\mathbf{y}-\\mathbf{X}\\hat\\beta)^T(\\mathbf{y}-\\mathbf{X}\\hat\\beta)\\)\n\n\nd) Verify that your residuals sum to approximately zero and explain why this should be true geometrically.",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Exercises",
-      "Exercise 3: Linear Regression Fundamentals"
-    ]
-  },
-  {
-    "objectID": "ex/ex-3.html#problem-3",
-    "href": "ex/ex-3.html#problem-3",
-    "title": "Linear Regression Fundamentals Problem Set",
-    "section": "Problem 3",
-    "text": "Problem 3\na) For simple linear regression with n = 3 observations and design matrix:\n\\[\\mathbf{X} = \\begin{bmatrix}1 & 2\\\\1 & 4\\\\1&6\\end{bmatrix}\\]\nCalculate the hat matrix (\\(\\mathbf{H}\\)) by hand (you can use R if you need to take an inverse).\nb) Verify that \\(\\mathbf{H}\\) is idempotent.\nc) Show that \\(\\mathbf{H}\\) is symmetric and interpret what this property means geometrically.",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Exercises",
-      "Exercise 3: Linear Regression Fundamentals"
-    ]
-  },
-  {
-    "objectID": "ex/ex-3.html#problem-4",
-    "href": "ex/ex-3.html#problem-4",
-    "title": "Linear Regression Fundamentals Problem Set",
-    "section": "Problem 4",
-    "text": "Problem 4\nConsider the simple linear regression case with the design matrix from Problem 3.\na) Write out two specific vectors that lie in the column space of \\(\\mathbf{X}\\). Explain what these vectors represent in terms of the regression model.\nb) If the observed response vector is \\(\\mathbf{y} = \\begin{bmatrix}3\\\\7\\\\12\\end{bmatrix}\\), explain why this vector likely does NOT lie exactly in the column space of \\(\\mathbf{X}\\). What does this mean practically?\nc) Calculate the projection of \\(\\mathbf{y}\\) onto the column space (i.e., \\(\\mathbf{\\hat{y}} = \\mathbf{Hy}\\)) and show that the residual vector is orthogonal to the column space by verifying \\(\\mathbf{X}^T\\hat\\varepsilon=0\\).",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Exercises",
-      "Exercise 3: Linear Regression Fundamentals"
-    ]
-  },
-  {
-    "objectID": "ex/ex-3.html#problem-5",
-    "href": "ex/ex-3.html#problem-5",
-    "title": "Linear Regression Fundamentals Problem Set",
-    "section": "Problem 5",
-    "text": "Problem 5\na) Starting from the geometric principle that residuals must be orthogonal to the column space of \\(\\mathbf{X}\\), derive the normal equations step by step. Begin with the condition \\(\\mathbf{X}^T\\hat\\varepsilon = 0\\) and show all algebraic steps to arrive at \\(\\mathbf{X}^T\\mathbf{X}\\hat\\beta=\\mathbf{X}^T\\mathbf{y}\\).\nb) Explain why we multiply both sides by \\((\\mathbf{X}^T\\mathbf{X})^{-1}\\) to solve for \\(\\hat\\beta\\), and under what conditions this inverse might not exist.\nc) Show that the least squares estimator \\(\\hat\\beta = (\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\mathbf{y}\\) minimizes the sum of squared errors by demonstrating that this solution satisfies the orthogonality condition.",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Exercises",
-      "Exercise 3: Linear Regression Fundamentals"
-    ]
-  },
-  {
-    "objectID": "ex/ex-3.html#problem-6",
-    "href": "ex/ex-3.html#problem-6",
-    "title": "Linear Regression Fundamentals Problem Set",
-    "section": "Problem 6",
-    "text": "Problem 6\nYou are given the following dataset with 10 observations:\n\n\nx\ny\n\n\n\n1\n4.8\n\n\n2\n6.2\n\n\n3\n8.1\n\n\n4\n9.9\n\n\n5\n11.5\n\n\n6\n13.8\n\n\n7\n15.2\n\n\n8\n17.1\n\n\n9\n18.9\n\n\n10\n21.3\n\n\n\na) Implement the least squares solution in R using matrix operations. Calculate \\(\\hat\\beta\\) without using lm().\nb) Compare your results with R’s lm() function and verify they match.\nc) Using the grid below, hand-draw the following elements:\n\nPlot the 10 data points from the table above\n\nDraw the true regression line: y = 3.5 + 1.8x (shown as a dashed line)\nDraw your fitted regression line from Part A (shown as a solid line)\nLabel both lines clearly in your plot\n\n\n\n\n\n\n\n\n\n(You don’t have to upload this drawing on Canvas, but make sure you do it and understand it, we will do it during the board work portion in class.)\nd) Based on your plot, comment on how well the fitted line approximates the true relationship. What does this tell you about the effectiveness of least squares estimation?",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Exercises",
-      "Exercise 3: Linear Regression Fundamentals"
-    ]
-  },
-  {
-    "objectID": "help-quarto.html",
-    "href": "help-quarto.html",
-    "title": "Creating a New Quarto Document in RStudio",
-    "section": "",
-    "text": "To create a new Quarto document:\n\nBe sure that you are in the correct project for the exercise or assignment. If you need help creating a new project here are some tips.\nIn RStudio, go to the menu bar and select File &gt; New File &gt; Quarto Document.\nEnter a title for your document and select the output format (e.g., HTML, PDF, Word).\nClick Create. A new Quarto file (.qmd) will open.\nSave the file to your project directory\nUse the toolbar or the Render button to build your document.",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Computing",
-      "Creating a Quarto Document"
-    ]
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "STA 312: Linear Models",
-    "section": "",
-    "text": "Course Info\nLocation: Carswell 208\nTime: W/F 9:30a-10:45a\n\n\n Office Hours\nInstructor: Dr. Lucy D’Agostino McGowan\nEmail: mcgowald@wfu.edu\nHours: Bookable\nOffice: Manchester 342\nMath & Stats Center: mathandstatscenter@wfu.edu\nLocation: Math & Stats Center\n\n\n\n Texts\nThe main text book is: Linear Models with R by Julian Faraway\n\n\n Materials\nThis class is very hands on; be sure to bring a fully charged laptop to every class."
-  },
-  {
-    "objectID": "rstudio-pro.html",
-    "href": "rstudio-pro.html",
-    "title": "Logging into RStudio Pro",
-    "section": "",
-    "text": "Follow these steps to access RStudio Pro:\n\nMake sure you are connected to the WFU Network. This means you must be on the eduroam wireless network, or connected through the VPN if you are off-campus.\n\nIf you are off-campus, go through the VPN first: WFU VPN Instructions.\n\nGo to login.deac.wfu.edu and sign in with your school email and password.\nOnce logged in, click the RStudio icon.\nSet your working directory to /deac/sta/classes/sta312/YOUR-USERNAME where YOUR-USERNAME is replaced by the first part of your email address, i.e., mine is mcgowald because my email is mcgowald@wfu.edu\nSet the number of hours to how long you plan to work on the project (I usually enter 4).\nClick Launch.\nThe session will show as Queued for a moment. Once it is ready, the status will turn green and say Ready.\nClick the Connect to RStudio Server button. You should now be in RStudio Pro.\n\n\nNote: You are not required to use this setup (i.e., you can download RStudio and all the necessary packages locally). However, the focus of this class is not on technical setup, so we will not be able to spend time troubleshooting issues if you are not using the official setup described here.",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Computing",
-      "Using the RStudio Pro Server"
-    ]
-  },
-  {
-    "objectID": "slides/01-slides.html#section",
-    "href": "slides/01-slides.html#section",
-    "title": "Welcome to Linear Models",
-    "section": "",
-    "text": "“truth … is much too complicated to allow anything but approximations”\n- John von Neumann\n\n\n\n\nJohn von Neumann, wearer of funny hats via https://farkasdilemma.wordpress.com/2013/01/04/john-von-neumannm-wearer-of-funny-hats/"
-  },
-  {
-    "objectID": "slides/01-slides.html#section-1",
-    "href": "slides/01-slides.html#section-1",
-    "title": "Welcome to Linear Models",
-    "section": "",
-    "text": "“All models are wrong, but some are useful”\n- George Box\n\n\n   \n\nDavidMCEddy at en.wikipedia  CC BY-SA 3.0 , via Wikimedia Commons"
-  },
-  {
-    "objectID": "slides/01-slides.html#is-this-a-linear-model",
-    "href": "slides/01-slides.html#is-this-a-linear-model",
-    "title": "Welcome to Linear Models",
-    "section": "Is this a linear model?",
-    "text": "Is this a linear model?"
-  },
-  {
-    "objectID": "slides/01-slides.html#what-is-the-equation",
-    "href": "slides/01-slides.html#what-is-the-equation",
-    "title": "Welcome to Linear Models",
-    "section": "What is the equation?",
-    "text": "What is the equation?\n\n\\[y = \\beta_0 + \\beta_1 x + \\varepsilon\\]"
-  },
-  {
-    "objectID": "slides/01-slides.html#is-this-a-linear-model-1",
-    "href": "slides/01-slides.html#is-this-a-linear-model-1",
-    "title": "Welcome to Linear Models",
-    "section": "Is this a linear model?",
-    "text": "Is this a linear model?\n\n\n Where is \\(\\beta_0\\)"
-  },
-  {
-    "objectID": "slides/01-slides.html#is-this-a-linear-model-2",
-    "href": "slides/01-slides.html#is-this-a-linear-model-2",
-    "title": "Welcome to Linear Models",
-    "section": "Is this a linear model?",
-    "text": "Is this a linear model?\n\n\n Where is \\(\\beta_0\\)"
-  },
-  {
-    "objectID": "slides/01-slides.html#is-this-a-linear-model-3",
-    "href": "slides/01-slides.html#is-this-a-linear-model-3",
-    "title": "Welcome to Linear Models",
-    "section": "Is this a linear model?",
-    "text": "Is this a linear model?\n\n\n Where is \\(\\beta_1\\)"
-  },
-  {
-    "objectID": "slides/01-slides.html#is-this-a-linear-model-4",
-    "href": "slides/01-slides.html#is-this-a-linear-model-4",
-    "title": "Welcome to Linear Models",
-    "section": "Is this a linear model?",
-    "text": "Is this a linear model?\n\n\n Where is \\(\\beta_1\\)"
-  },
-  {
-    "objectID": "slides/01-slides.html#what-is-the-equation-1",
-    "href": "slides/01-slides.html#what-is-the-equation-1",
-    "title": "Welcome to Linear Models",
-    "section": "What is the equation?",
-    "text": "What is the equation?\n\n\\[y = \\beta_0 + \\beta_1 x + \\varepsilon\\]"
-  },
-  {
-    "objectID": "slides/01-slides.html#what-is-the-equation-2",
-    "href": "slides/01-slides.html#what-is-the-equation-2",
-    "title": "Welcome to Linear Models",
-    "section": "What is the equation?",
-    "text": "What is the equation?\n\n\\[\nX = \\begin{bmatrix}1 & x_1\\\\\n\\vdots & \\vdots \\\\ 1 & x_n\\end{bmatrix},\\quad\n\\beta = \\begin{bmatrix}\\beta_0\\\\ \\beta_1\\end{bmatrix}\n\\]"
-  },
-  {
-    "objectID": "slides/01-slides.html#what-does-the-data-look-like",
-    "href": "slides/01-slides.html#what-does-the-data-look-like",
-    "title": "Welcome to Linear Models",
-    "section": "What does the “data” look like?",
-    "text": "What does the “data” look like?\n\n\n\n  (Intercept)        x\n1           1 1.920595\n2           1 3.093363\n3           1 5.301387\n4           1 8.990286\n5           1 1.218501\n6           1 8.882287"
-  },
-  {
-    "objectID": "slides/01-slides.html#is-this-a-linear-model-5",
-    "href": "slides/01-slides.html#is-this-a-linear-model-5",
-    "title": "Welcome to Linear Models",
-    "section": "Is this a linear model?",
-    "text": "Is this a linear model?"
-  },
-  {
-    "objectID": "slides/01-slides.html#what-is-the-equation-3",
-    "href": "slides/01-slides.html#what-is-the-equation-3",
-    "title": "Welcome to Linear Models",
-    "section": "What is the equation?",
-    "text": "What is the equation?\n\\[y = \\beta_0 + \\sum_{j=1}^{J} \\beta_j B_j(x) + \\varepsilon\\]\n\nwhere \\(B_j(x)\\) are known spline basis functions\nthe model is linear in the \\(\\beta_j\\)"
-  },
-  {
-    "objectID": "slides/01-slides.html#what-does-the-data-look-like-1",
-    "href": "slides/01-slides.html#what-does-the-data-look-like-1",
-    "title": "Welcome to Linear Models",
-    "section": "What does the “data” look like?",
-    "text": "What does the “data” look like?\n\n\n\n  (Intercept) ns(x, df = 3)1 ns(x, df = 3)2 ns(x, df = 3)3\n1           1   -0.095842465      0.4743374     -0.3103069\n2           1    0.006273703      0.5498909     -0.3597333\n3           1    0.444366108      0.4236598     -0.2337245\n4           1    0.133806217      0.3714757      0.4916902\n5           1   -0.103895176      0.3825795     -0.2502798\n6           1    0.164715184      0.3660870      0.4649746"
-  },
-  {
-    "objectID": "slides/01-slides.html#is-this-a-linear-model-6",
-    "href": "slides/01-slides.html#is-this-a-linear-model-6",
-    "title": "Welcome to Linear Models",
-    "section": "Is this a linear model?",
-    "text": "Is this a linear model?"
-  },
-  {
-    "objectID": "slides/01-slides.html#is-this-a-linear-model-7",
-    "href": "slides/01-slides.html#is-this-a-linear-model-7",
-    "title": "Welcome to Linear Models",
-    "section": "Is this a linear model?",
-    "text": "Is this a linear model?"
-  },
-  {
-    "objectID": "slides/01-slides.html#what-is-the-equation-4",
-    "href": "slides/01-slides.html#what-is-the-equation-4",
-    "title": "Welcome to Linear Models",
-    "section": "What is the equation?",
-    "text": "What is the equation?\n\\[y = \\sum_{k=1}^{K} \\beta_k \\, \\mathbf{1}\\{x \\in R_k\\} + \\varepsilon\\]\n\nwhere \\(R_1,\\ldots,R_K\\) are each of the regions\nthis is linear in the parameters \\(\\beta_k\\)"
-  },
-  {
-    "objectID": "slides/01-slides.html#what-does-the-data-look-like-2",
-    "href": "slides/01-slides.html#what-does-the-data-look-like-2",
-    "title": "Welcome to Linear Models",
-    "section": "What does the “data” look like?",
-    "text": "What does the “data” look like?\n\n\n\n  ind1 ind2 ind3 ind4 ind5 ind6 ind7 ind8\n1    0    0    0    0    0    0    0    1\n2    0    0    0    0    0    0    1    0\n3    0    0    0    0    0    0    1    0\n4    0    0    0    0    0    0    0    1\n5    0    1    0    0    0    0    0    0\n6    0    0    1    0    0    0    0    0"
-  },
-  {
-    "objectID": "slides/03-slides.html#before-you-fit-a-model",
-    "href": "slides/03-slides.html#before-you-fit-a-model",
-    "title": "Linear Regression Fundamentals",
-    "section": "Before You Fit a Model",
-    "text": "Before You Fit a Model\n\n📖 Understand the content matter\nAs a statistician I collaborate frequently with subject matter experts to ensure that I understand the context of the problem at hand.\n\n\n❓ Understand the objective\nIt is crucial to understand what the objectives are. Ideally, these are set a priori, or if exploratory analyses are being done that is very explicit from beginning to end."
-  },
-  {
-    "objectID": "slides/03-slides.html#before-you-fit-a-model-1",
-    "href": "slides/03-slides.html#before-you-fit-a-model-1",
-    "title": "Linear Regression Fundamentals",
-    "section": "Before You Fit a Model",
-    "text": "Before You Fit a Model\n\n📏 Understand where the data came from\nWas this observational or experimental data? Is any data missing? What are the units? Are there data entry issues?\n\n\n🧹 Get the data into a tidy, analyzable form\nOften we get data in a form that is not easily analyzable. In this class, we will be focusing mostly on statistical methodology once the data is in an analyzable format, but just because it is analyzable doesn’t mean the analysis choice is obvious."
-  },
-  {
-    "objectID": "slides/03-slides.html#before-you-fit-a-model-2",
-    "href": "slides/03-slides.html#before-you-fit-a-model-2",
-    "title": "Linear Regression Fundamentals",
-    "section": "Before You Fit a Model",
-    "text": "Before You Fit a Model\n💃 Determine the appropriate model\nIn this class we are focusing on Linear Models. Linear models are not always appropriate. You must examine your data to determine whether a linear model is a good choice."
-  },
-  {
-    "objectID": "slides/03-slides.html#is-a-linear-model-appropriate",
-    "href": "slides/03-slides.html#is-a-linear-model-appropriate",
-    "title": "Linear Regression Fundamentals",
-    "section": "Is a Linear Model Appropriate?",
-    "text": "Is a Linear Model Appropriate?\n\nOutcome variable, \\(y\\) is continuous\nExplanatory variable(s), \\(X = \\{X_1, ..., X_p\\}\\) can take any form\nObservations are independent\nThe residuals are homoscedastic (Equal variance)\nThe residuals are normally distributed\nThe relationship between \\(X\\) and \\(y\\) is linear"
-  },
-  {
-    "objectID": "slides/03-slides.html#calculating-a-sample-average",
-    "href": "slides/03-slides.html#calculating-a-sample-average",
-    "title": "Linear Regression Fundamentals",
-    "section": "Calculating a sample average",
-    "text": "Calculating a sample average\n\\[\\bar{Y}=\\frac{1}{N}\\sum_{i=1}^NY_i\\]\n\nHow could we write this using matrices?"
-  },
-  {
-    "objectID": "slides/03-slides.html#calculating-a-sample-average-1",
-    "href": "slides/03-slides.html#calculating-a-sample-average-1",
-    "title": "Linear Regression Fundamentals",
-    "section": "Calculating a sample average",
-    "text": "Calculating a sample average\n\\[\\mathbf{A} = \\begin{bmatrix}1 \\\\ 1 \\\\ \\vdots \\\\ 1\\end{bmatrix}\\]"
-  },
-  {
-    "objectID": "slides/03-slides.html#calculating-a-sample-average-2",
-    "href": "slides/03-slides.html#calculating-a-sample-average-2",
-    "title": "Linear Regression Fundamentals",
-    "section": "Calculating a sample average",
-    "text": "Calculating a sample average\n\\[\\frac{1}{N}\\mathbf{A}^TY = \\frac{1}{N}\\begin{bmatrix}1 & 1 & ... & 1\\end{bmatrix}\\begin{bmatrix}Y_1\\\\Y_2\\\\\\vdots\\\\Y_n\\end{bmatrix}=\\bar{Y}\\]"
-  },
-  {
-    "objectID": "slides/03-slides.html#in-r",
-    "href": "slides/03-slides.html#in-r",
-    "title": "Linear Regression Fundamentals",
-    "section": " In R",
-    "text": "In R\n\nset.seed(1)\n\ny &lt;- rnorm(100)\nN &lt;- length(y)\nY &lt;- matrix(y, nrow = N)\nA &lt;- matrix(1, nrow = N)\nt(A) %*% Y / N\n\n          [,1]\n[1,] 0.1088874\n\nmean(Y)\n\n[1] 0.1088874"
-  },
-  {
-    "objectID": "slides/03-slides.html#calculating-a-variance",
-    "href": "slides/03-slides.html#calculating-a-variance",
-    "title": "Linear Regression Fundamentals",
-    "section": "Calculating a Variance",
-    "text": "Calculating a Variance\n\\[\\frac{1}{N}\\sum_{i=1}^N(Y_i-\\bar{Y})^2\\]\n\nHow could we write this using matrices"
-  },
-  {
-    "objectID": "slides/03-slides.html#calculating-a-variance-1",
-    "href": "slides/03-slides.html#calculating-a-variance-1",
-    "title": "Linear Regression Fundamentals",
-    "section": "Calculating a Variance",
-    "text": "Calculating a Variance\n\\[\\mathbf{e} = \\begin{bmatrix}Y_1 - \\bar{Y}\\\\\\vdots \\\\Y_N-\\bar{Y}\\end{bmatrix}, \\frac{1}{N}\\mathbf{e}^T\\mathbf{e} = \\frac{1}{N}\\sum_{i=1}^N(Y_i-\\bar{Y})^2\\]"
-  },
-  {
-    "objectID": "slides/03-slides.html#in-r-1",
-    "href": "slides/03-slides.html#in-r-1",
-    "title": "Linear Regression Fundamentals",
-    "section": " In R",
-    "text": "In R\n\nMultiplying a transpose of a matrix with another matrix is very common\n\nBecause R was made by and for statisticians, there is a function for this: crossprod\n\n\ncrossprod(A, Y) / N\n\n          [,1]\n[1,] 0.1088874"
-  },
-  {
-    "objectID": "slides/03-slides.html#in-r-2",
-    "href": "slides/03-slides.html#in-r-2",
-    "title": "Linear Regression Fundamentals",
-    "section": " In R",
-    "text": "In R\n\nYou can just put one matrix if you want the transpose of a matrix multiplied by itself\n\n\nY_bar &lt;- crossprod(A, Y) / N\ne &lt;- y - c(Y_bar)\ncrossprod(e) / N\n\n          [,1]\n[1,] 0.7986945"
-  },
-  {
-    "objectID": "slides/03-slides.html#the-linear-model",
-    "href": "slides/03-slides.html#the-linear-model",
-    "title": "Linear Regression Fundamentals",
-    "section": "The Linear Model",
-    "text": "The Linear Model\n\n\nStandard form: \\[\\mathbf{y} = \\mathbf{X}\\boldsymbol{\\beta} + \\boldsymbol{\\varepsilon}\\]\n\n\n\nWhere:\n\n\\(\\mathbf{y}\\) is an \\(n \\times 1\\) vector of responses\n\n\\(\\mathbf{X}\\) is an \\(n \\times p\\) design matrix\n\n\\(\\boldsymbol{\\beta}\\) is a \\(p \\times 1\\) vector of parameters\n\n\\(\\boldsymbol{\\varepsilon}\\) is an \\(n \\times 1\\) vector of errors"
-  },
-  {
-    "objectID": "slides/03-slides.html#the-design-matrix",
-    "href": "slides/03-slides.html#the-design-matrix",
-    "title": "Linear Regression Fundamentals",
-    "section": "The Design Matrix",
-    "text": "The Design Matrix\n\nSimple linear regression: \\[\\mathbf{X} = \\begin{bmatrix}\n1 & x_1 \\\\\n1 & x_2 \\\\\n\\vdots & \\vdots \\\\\n1 & x_n\n\\end{bmatrix}, \\quad \\boldsymbol{\\beta} = \\begin{bmatrix} \\beta_0 \\\\ \\beta_1 \\end{bmatrix}\\]"
-  },
-  {
-    "objectID": "slides/03-slides.html#the-design-matrix-1",
-    "href": "slides/03-slides.html#the-design-matrix-1",
-    "title": "Linear Regression Fundamentals",
-    "section": "The Design Matrix",
-    "text": "The Design Matrix\nMultiple regression: \\[\\mathbf{X} = \\begin{bmatrix}\n1 & x_{11} & x_{12} & \\cdots & x_{1p} \\\\\n1 & x_{21} & x_{22} & \\cdots & x_{2p} \\\\\n\\vdots & \\vdots & \\vdots & \\ddots & \\vdots \\\\\n1 & x_{n1} & x_{n2} & \\cdots & x_{np}\n\\end{bmatrix}\\]"
-  },
-  {
-    "objectID": "slides/03-slides.html#what-about-hats",
-    "href": "slides/03-slides.html#what-about-hats",
-    "title": "Linear Regression Fundamentals",
-    "section": "What About Hats?",
-    "text": "What About Hats?\n\nHat notation indicates estimates or predicted values\n\n\nParameters vs. Estimates:\n\n\\(\\beta_0, \\beta_1\\) = true (unknown) parameters\n\n\\(\\hat{\\beta}_0, \\hat{\\beta}_1\\) = estimated parameters from data\n\n\n\n\nObserved vs. Predicted:\n\n\\(y_i\\) = observed response values\n\\(\\hat{y}_i\\) = predicted values from model"
-  },
-  {
-    "objectID": "slides/03-slides.html#what-is-a-residual",
-    "href": "slides/03-slides.html#what-is-a-residual",
-    "title": "Linear Regression Fundamentals",
-    "section": "What is a Residual?",
-    "text": "What is a Residual?\n\nDefinition: A residual is the difference between an observed value and its predicted value from the model\n\n\nFormula:\n\\[\\hat\\varepsilon_i = y_i-\\hat{y}_i\\]"
-  },
-  {
-    "objectID": "slides/03-slides.html#you-try-calculating-residuals",
-    "href": "slides/03-slides.html#you-try-calculating-residuals",
-    "title": "Linear Regression Fundamentals",
-    "section": "You Try: Calculating Residuals",
-    "text": "You Try: Calculating Residuals\n\nProblem: Given the regression equation \\(\\hat{y} = 2.3 + 1.5x\\) and the data points below, calculate the residual for each observation:\n\n\n\nx\ny\n\\(\\hat{y}\\)\n\\(\\hat{\\varepsilon}\\)\n\n\n\n\n1\n4.2\n?\n?\n\n\n3\n6.8\n?\n?\n\n\n5\n11.1\n?\n?\n\n\n\n\n\n\n\n−+\n04:00"
-  },
-  {
-    "objectID": "slides/03-slides.html#lets-try-it-in-r",
-    "href": "slides/03-slides.html#lets-try-it-in-r",
-    "title": "Linear Regression Fundamentals",
-    "section": "Let’s Try It in R",
-    "text": "Let’s Try It in R\nProblem: Given the same regression equation \\(\\hat{y} = 2.3 + 1.5x\\) and \\(y = [4.2, 6.8, 11.1]\\), \\(x = [1, 3, 5]\\):\n\nPut the x values in a design matrix called X and the outcome in a vector called y\nPut the coefficients in a vector called beta\n\nMultiply them to get \\(\\hat{y}\\)\nSubtract from y to get residuals\n\n\n\n\n−+\n04:00"
-  },
-  {
-    "objectID": "slides/03-slides.html#lets-try-it-in-r-solution",
-    "href": "slides/03-slides.html#lets-try-it-in-r-solution",
-    "title": "Linear Regression Fundamentals",
-    "section": "Let’s Try It in R Solution",
-    "text": "Let’s Try It in R Solution\n\n\n# 1. Create design matrix X\nX &lt;- matrix(c(1, 1, \n              1, 3, \n              1, 5),\n            byrow = TRUE, ncol = 2)\n# Create y\ny &lt;- c(4.2, 6.8, 11.1)\n\n# 2. Create beta vector\nbeta &lt;- c(2.3, 1.5)\n\n# 3. Calculate y_hat\ny_hat &lt;- X %*% beta\n\n# 4. Calculate residuals\nresiduals &lt;- y - y_hat\n\nresiduals\n\n\n     [,1]\n[1,]  0.4\n[2,]  0.0\n[3,]  1.3"
-  },
-  {
-    "objectID": "slides/03-slides.html#the-goal-minimize-squared-errors",
-    "href": "slides/03-slides.html#the-goal-minimize-squared-errors",
-    "title": "Linear Regression Fundamentals",
-    "section": "The Goal: Minimize Squared Errors",
-    "text": "The Goal: Minimize Squared Errors\n\nSum of squared errors:\n\\[\\text{SSE} = \\sum_{i=1}^n (y_i - \\hat{y}_i)^2 = \\sum_{i=1}^n \\hat\\varepsilon_i^2\\]\n\n\n\\[\\text{SSE} = (\\mathbf{y}- \\mathbf{X}\\boldsymbol\\beta)^T(\\mathbf{y}- \\mathbf{X}\\boldsymbol\\beta)\\]"
-  },
-  {
-    "objectID": "slides/03-slides.html#you-try",
-    "href": "slides/03-slides.html#you-try",
-    "title": "Linear Regression Fundamentals",
-    "section": "You Try",
-    "text": "You Try\n\nProblem: Verify that these two expressions for SSE are the same:\nIndividual terms: \\[\\text{SSE} = \\sum_{i=1}^{n} (y_i - \\hat{y}_i)^2\\]\nMatrix form: \\[\\text{SSE} = (\\mathbf{y} - \\mathbf{X}\\boldsymbol{\\beta})^T(\\mathbf{y} - \\mathbf{X}\\boldsymbol{\\beta})\\]\nTask: Expand the matrix form and show it equals the summation form"
-  },
-  {
-    "objectID": "slides/03-slides.html#visualizing-squared-residuals",
-    "href": "slides/03-slides.html#visualizing-squared-residuals",
-    "title": "Linear Regression Fundamentals",
-    "section": " Visualizing Squared Residuals",
-    "text": "Visualizing Squared Residuals"
-  },
-  {
-    "objectID": "slides/03-slides.html#visualizing-squared-residuals-1",
-    "href": "slides/03-slides.html#visualizing-squared-residuals-1",
-    "title": "Linear Regression Fundamentals",
-    "section": " Visualizing Squared Residuals",
-    "text": "Visualizing Squared Residuals"
-  },
-  {
-    "objectID": "slides/03-slides.html#application-exercise",
-    "href": "slides/03-slides.html#application-exercise",
-    "title": "Linear Regression Fundamentals",
-    "section": " Application Exercise",
-    "text": "Application Exercise\n\nGo to lucy.shinyapps.io/least-squares/.\nThis shows a scatter plot of 10 data points with a line estimating the relationship between x and y. Drag the blue points to change the line.\n\nSee if you can find a line that minimizes the sum of square errors\n\n\n\n\n−+\n03:00"
-  },
-  {
-    "objectID": "slides/03-slides.html#what-were-really-doing",
-    "href": "slides/03-slides.html#what-were-really-doing",
-    "title": "Linear Regression Fundamentals",
-    "section": "What We’re Really Doing",
-    "text": "What We’re Really Doing\n\nThe regression equation: \\[\\mathbf{y} = \\mathbf{X}\\boldsymbol{\\beta} + \\boldsymbol{\\varepsilon}\\]\n\n\nThe goal: Find \\(\\boldsymbol{\\beta}\\) that makes \\(\\mathbf{X}\\boldsymbol{\\beta}\\) as close as possible to \\(\\mathbf{y}\\)"
-  },
-  {
-    "objectID": "slides/03-slides.html#understanding-the-vector-space",
-    "href": "slides/03-slides.html#understanding-the-vector-space",
-    "title": "Linear Regression Fundamentals",
-    "section": "Understanding the Vector Space",
-    "text": "Understanding the Vector Space\n\nIf we have \\(n\\) observations, we work in \\(n\\)-dimensional space\n\n\n\\(\\mathbf{y}\\) is a vector with \\(n\\) components (one value per observation)\n\n\n\\(\\mathbf{X}\\boldsymbol{\\beta}\\) is also a vector with \\(n\\) components (one prediction per observation)\n\n\nBoth vectors live in the same \\(n\\)-dimensional space"
-  },
-  {
-    "objectID": "slides/03-slides.html#what-is-column-space",
-    "href": "slides/03-slides.html#what-is-column-space",
-    "title": "Linear Regression Fundamentals",
-    "section": "What is Column Space?",
-    "text": "What is Column Space?\n\nIn words: All possible predictions your model can make\n\n\nThink of it as: Every combination of your predictor variables"
-  },
-  {
-    "objectID": "slides/03-slides.html#column-space-with-numbers",
-    "href": "slides/03-slides.html#column-space-with-numbers",
-    "title": "Linear Regression Fundamentals",
-    "section": "Column Space with Numbers",
-    "text": "Column Space with Numbers\n\nYour data: \\(x = [1, 2, 3]\\) with 3 observations\n\n\nDesign matrix: \\(\\mathbf{X} = \\begin{bmatrix} 1 & 1 \\\\ 1 & 2 \\\\ 1 & 3 \\end{bmatrix}\\)\n\n\nColumn space contains: All vectors of the form \\(\\beta_0 \\begin{bmatrix} 1 \\\\ 1 \\\\ 1 \\end{bmatrix} + \\beta_1 \\begin{bmatrix} 1 \\\\ 2 \\\\ 3 \\end{bmatrix}\\)"
-  },
-  {
-    "objectID": "slides/03-slides.html#examples-of-vectors-in-column-space",
-    "href": "slides/03-slides.html#examples-of-vectors-in-column-space",
-    "title": "Linear Regression Fundamentals",
-    "section": "Examples of Vectors in Column Space",
-    "text": "Examples of Vectors in Column Space\n\nExample 1: Choose \\(\\beta_0=0, \\beta_1=2\\) gives \\([2, 4, 6]\\)\n\n\nIn words: Intercept = 0, slope = 2, so predictions are [2, 4, 6]\n\n\nExample 2: Choose \\(\\beta_0=5, \\beta_1=0\\) gives \\([5, 5, 5]\\)\n\n\nIn words: Intercept = 5, slope = 0, so all predictions equal 5"
-  },
-  {
-    "objectID": "slides/03-slides.html#the-fundamental-problem",
-    "href": "slides/03-slides.html#the-fundamental-problem",
-    "title": "Linear Regression Fundamentals",
-    "section": "The Fundamental Problem",
-    "text": "The Fundamental Problem\n\nYour actual observed data: \\(\\mathbf{y} = [2.1, 3.9, 5.8]\\)\n\n\nQuestion: Is there some \\(\\beta_0, \\beta_1\\) such that \\(\\mathbf{X}\\boldsymbol{\\beta} = \\mathbf{y}\\) exactly?\n\n\nIn other words: Is \\([2.1, 3.9, 5.8]\\) exactly equal to \\(\\beta_0[1,1,1] + \\beta_1[1,2,3]\\)?"
-  },
-  {
-    "objectID": "slides/03-slides.html#why-we-usually-cant-hit-exactly",
-    "href": "slides/03-slides.html#why-we-usually-cant-hit-exactly",
-    "title": "Linear Regression Fundamentals",
-    "section": "Why We Usually Can’t Hit Exactly",
-    "text": "Why We Usually Can’t Hit Exactly\n\nAnswer: Usually no! Real data has irreducible error\n\nYour observed \\(\\mathbf{y}\\) typically doesn’t lie perfectly in the column space*\n\nIn words: Your data points don’t lie exactly on any straight line"
-  },
-  {
-    "objectID": "slides/03-slides.html#the-geometric-solution",
-    "href": "slides/03-slides.html#the-geometric-solution",
-    "title": "Linear Regression Fundamentals",
-    "section": "The Geometric Solution",
-    "text": "The Geometric Solution\n\nSince we can’t hit \\(\\mathbf{y}\\) exactly, let’s get as close as possible\nFind the point in the column space that is closest to \\(\\mathbf{y}\\)\n\nThis closest point is the orthogonal projection of \\(\\mathbf{y}\\) onto the column space"
-  },
-  {
-    "objectID": "slides/03-slides.html#the-residual-vector",
-    "href": "slides/03-slides.html#the-residual-vector",
-    "title": "Linear Regression Fundamentals",
-    "section": "The Residual Vector",
-    "text": "The Residual Vector\n\nDefinition: \\(\\hat\\varepsilon = \\mathbf{y} - \\hat{\\mathbf{y}}\\)\n\nIn words: The difference between what we observed and what we predicted\n\nThis represents the part of \\(\\mathbf{y}\\) we cannot explain with our model"
-  },
-  {
-    "objectID": "slides/03-slides.html#key-geometric-property",
-    "href": "slides/03-slides.html#key-geometric-property",
-    "title": "Linear Regression Fundamentals",
-    "section": "Key Geometric Property",
-    "text": "Key Geometric Property\n\nThe residual vector is perpendicular to the column space\nMathematical notation: \\(\\hat\\varepsilon \\perp \\text{Col}(\\mathbf{X})\\)\n\nWhy this matters: Perpendicularity guarantees we found the closest point"
-  },
-  {
-    "objectID": "slides/03-slides.html#why-perpendicular-means-closest",
-    "href": "slides/03-slides.html#why-perpendicular-means-closest",
-    "title": "Linear Regression Fundamentals",
-    "section": "Why Perpendicular Means Closest?",
-    "text": "Why Perpendicular Means Closest?\n\nImagine dropping a ball onto a table from above\n\nThe shortest path is straight down (perpendicular to the table)\n\nAny diagonal path would be longer\n\nThe same principle applies in higher dimensions"
-  },
-  {
-    "objectID": "slides/03-slides.html#from-geometry-to-algebra",
-    "href": "slides/03-slides.html#from-geometry-to-algebra",
-    "title": "Linear Regression Fundamentals",
-    "section": "From Geometry to Algebra",
-    "text": "From Geometry to Algebra\n\nGeometric fact: \\(\\hat\\varepsilon \\perp \\text{Col}(\\mathbf{X})\\)\n\nThis means \\(\\hat\\varepsilon\\) is perpendicular to every vector in the column space\n\nSince columns of \\(\\mathbf{X}\\) span the column space, \\(\\hat\\varepsilon\\) is perpendicular to each column"
-  },
-  {
-    "objectID": "slides/03-slides.html#mathematical-expression-of-perpendicularity",
-    "href": "slides/03-slides.html#mathematical-expression-of-perpendicularity",
-    "title": "Linear Regression Fundamentals",
-    "section": "Mathematical Expression of Perpendicularity",
-    "text": "Mathematical Expression of Perpendicularity\n\nIf \\(\\mathbf{X} = [\\mathbf{x}_1, \\mathbf{x}_2, \\ldots, \\mathbf{x}_p]\\), then:\n\n\n\\(\\mathbf{x}_1^T\\hat\\varepsilon = 0\\), \\(\\mathbf{x}_2^T\\hat\\varepsilon = 0\\), …, \\(\\mathbf{x}_p^T\\hat\\varepsilon = 0\\)\n\n\nStacking these equations gives us: \\(\\mathbf{X}^T\\hat\\varepsilon = \\mathbf{0}\\)"
-  },
-  {
-    "objectID": "slides/03-slides.html#the-normal-equations",
-    "href": "slides/03-slides.html#the-normal-equations",
-    "title": "Linear Regression Fundamentals",
-    "section": "The Normal Equations",
-    "text": "The Normal Equations\n\nStarting from: \\(\\mathbf{X}^T\\hat\\varepsilon = \\mathbf{0}\\)\n\n\nSubstitute \\(\\hat\\varepsilon = \\mathbf{y} - \\mathbf{X}\\hat{\\boldsymbol{\\beta}}\\):\n\\[\\mathbf{X}^T(\\mathbf{y} - \\mathbf{X}\\hat{\\boldsymbol{\\beta}}) = \\mathbf{0}\\]\n\n\nIn words: “The residuals are perpendicular to every column of \\(\\mathbf{X}\\)”"
-  },
-  {
-    "objectID": "slides/03-slides.html#you-try-matrix-algebra",
-    "href": "slides/03-slides.html#you-try-matrix-algebra",
-    "title": "Linear Regression Fundamentals",
-    "section": "You Try: Matrix Algebra",
-    "text": "You Try: Matrix Algebra\n\nStarting with: \\(\\mathbf{A}\\mathbf{x} + \\mathbf{b} = \\mathbf{c}\\)\nSolve for \\(\\mathbf{x}\\) step by step:\n\nFirst, isolate the \\(\\mathbf{A}\\mathbf{x}\\) term\n\nThen multiply both sides by \\(\\mathbf{A}^{-1}\\) (on the left!)\n\n\n\n\n\n−+\n04:00"
-  },
-  {
-    "objectID": "slides/03-slides.html#expanding-the-normal-equations",
-    "href": "slides/03-slides.html#expanding-the-normal-equations",
-    "title": "Linear Regression Fundamentals",
-    "section": "Expanding the Normal Equations",
-    "text": "Expanding the Normal Equations\n\nStart with: \\(\\mathbf{X}^T(\\mathbf{y} - \\mathbf{X}\\hat{\\boldsymbol{\\beta}}) = \\mathbf{0}\\)\n\n\nDistribute: \\(\\mathbf{X}^T\\mathbf{y} - \\mathbf{X}^T\\mathbf{X}\\hat{\\boldsymbol{\\beta}} = \\mathbf{0}\\)\n\n\nMove the second term to the right side: \\(\\mathbf{X}^T\\mathbf{y} = \\mathbf{X}^T\\mathbf{X}\\hat{\\boldsymbol{\\beta}}\\)"
-  },
-  {
-    "objectID": "slides/03-slides.html#solving-for-beta",
-    "href": "slides/03-slides.html#solving-for-beta",
-    "title": "Linear Regression Fundamentals",
-    "section": "Solving for Beta",
-    "text": "Solving for Beta\n\nWe have: \\(\\mathbf{X}^T\\mathbf{X}\\hat{\\boldsymbol{\\beta}} = \\mathbf{X}^T\\mathbf{y}\\)\n\n\nTo solve for \\(\\hat{\\boldsymbol{\\beta}}\\), multiply both sides by \\((\\mathbf{X}^T\\mathbf{X})^{-1}\\):\n\n\nResult: \\(\\hat{\\boldsymbol{\\beta}} = (\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\mathbf{y}\\)\n\n\nThis is the least squares solution!"
-  },
-  {
-    "objectID": "slides/03-slides.html#the-hat-matrix",
-    "href": "slides/03-slides.html#the-hat-matrix",
-    "title": "Linear Regression Fundamentals",
-    "section": "The Hat Matrix",
-    "text": "The Hat Matrix\n\nDefinition: \\(\\mathbf{H} = \\mathbf{X}(\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\)\n\n\nWhat it does: \\(\\hat{\\mathbf{y}} = \\mathbf{H}\\mathbf{y}\\)\n\n\nIn words: Takes your observed data and produces the closest possible predictions\n\n\nNickname: “Puts the hat on \\(\\mathbf{y}\\)” to get \\(\\hat{\\mathbf{y}}\\)"
-  },
-  {
-    "objectID": "slides/03-slides.html#hat-matrix-properties",
-    "href": "slides/03-slides.html#hat-matrix-properties",
-    "title": "Linear Regression Fundamentals",
-    "section": "Hat Matrix Properties",
-    "text": "Hat Matrix Properties\n\nSymmetric: \\(\\mathbf{H}^T = \\mathbf{H}\\)\n\n\nIdempotent: \\(\\mathbf{H}^2 = \\mathbf{H}\\)"
-  },
-  {
-    "objectID": "slides/03-slides.html#you-try-hat-matrix-property",
-    "href": "slides/03-slides.html#you-try-hat-matrix-property",
-    "title": "Linear Regression Fundamentals",
-    "section": "You Try: Hat Matrix Property",
-    "text": "You Try: Hat Matrix Property\n\nVerify that: \\(\\mathbf{H}^2 = \\mathbf{H}\\)\nHint: Substitute the definition \\(\\mathbf{H} = \\mathbf{X}(\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\) and multiply it out\nRemember: \\((\\mathbf{A}^{-1})^{-1} = \\mathbf{A}\\)\n\n\n\n\n−+\n03:00"
-  },
-  {
-    "objectID": "slides/03-slides.html#why-least-squares",
-    "href": "slides/03-slides.html#why-least-squares",
-    "title": "Linear Regression Fundamentals",
-    "section": "Why “Least Squares”?",
-    "text": "Why “Least Squares”?\n\nWe minimize: \\(\\sum_{i=1}^n (y_i - \\hat{y}_i)^2\\)\n\n\nIn words: Sum of squared differences between observed and predicted\n\n\nThis equals: \\(||\\mathbf{y} - \\mathbf{X}\\boldsymbol{\\beta}||^2\\)\n\n\nIn words: Squared distance between the observed vector and prediction vector"
-  },
-  {
-    "objectID": "slides/03-slides.html#key-geometric-insights",
-    "href": "slides/03-slides.html#key-geometric-insights",
-    "title": "Linear Regression Fundamentals",
-    "section": "Key Geometric Insights",
-    "text": "Key Geometric Insights\n\n1. Regression is projection: Finding the closest point in the column space to \\(\\mathbf{y}\\)\n\n\n2. Orthogonality is key: Residuals perpendicular to column space guarantees minimum distance\n\n\n3. Hat matrix is the projection operator: \\(\\mathbf{H}\\) projects onto column space"
-  },
-  {
-    "objectID": "slides/03-slides.html#you-try-1",
-    "href": "slides/03-slides.html#you-try-1",
-    "title": "Linear Regression Fundamentals",
-    "section": " You Try",
-    "text": "You Try\n\nTry this in R:\n1. x &lt;- 1:10; y &lt;- 2*x + rnorm(10)\n2. X &lt;- cbind(1, x) # Design matrix\n3. H &lt;- X %*% solve(crossprod(X)) %*% t(X) # Hat matrix\n4. Check: all.equal(H %*% H, H) # Verify idempotent\n5. e &lt;- y - H %*% y # Residuals\n6. Check: t(X) %*% e # Should be approximately zero\n\n\n\n\n−+\n04:00"
+    "objectID": "slides/04-slides.html#you-try-qr-properties-1",
+    "href": "slides/04-slides.html#you-try-qr-properties-1",
+    "title": "Deriving the Hat Matrix and QR Decomposition",
+    "section": "You Try: QR Properties",
+    "text": "You Try: QR Properties\nCalculate \\(\\hat{y}\\) using the QR elements.\n\n\n\n−+\n05:00"
   },
   {
     "objectID": "syllabus.html",
