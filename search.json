@@ -1344,56 +1344,96 @@
     "href": "ex/ex-5.html",
     "title": "Random Vectors and Gauss-Markov Theorem Problem Set",
     "section": "",
-    "text": "This problem set covers random vector properties, variance-covariance matrices, and the Gauss-Markov theorem. Show all work and provide clear explanations for your reasoning. For computational problems, you may verify your answers using R, but show the mathematical work first."
+    "text": "This problem set covers random vector properties, variance-covariance matrices, and the Gauss-Markov theorem. Show all work and provide clear explanations for your reasoning. For computational problems, you may verify your answers using R, but show the mathematical work first.",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 5: Gauss Markov Theorem"
+    ]
   },
   {
     "objectID": "ex/ex-5.html#instructions",
     "href": "ex/ex-5.html#instructions",
     "title": "Random Vectors and Gauss-Markov Theorem Problem Set",
     "section": "",
-    "text": "This problem set covers random vector properties, variance-covariance matrices, and the Gauss-Markov theorem. Show all work and provide clear explanations for your reasoning. For computational problems, you may verify your answers using R, but show the mathematical work first."
+    "text": "This problem set covers random vector properties, variance-covariance matrices, and the Gauss-Markov theorem. Show all work and provide clear explanations for your reasoning. For computational problems, you may verify your answers using R, but show the mathematical work first.",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 5: Gauss Markov Theorem"
+    ]
   },
   {
     "objectID": "ex/ex-5.html#problem-1-random-vector-expected-values",
     "href": "ex/ex-5.html#problem-1-random-vector-expected-values",
     "title": "Random Vectors and Gauss-Markov Theorem Problem Set",
     "section": "Problem 1: Random Vector Expected Values",
-    "text": "Problem 1: Random Vector Expected Values\nConsider the random vector \\(\\mathbf{Y} = \\begin{bmatrix} Y_1 \\\\ Y_2 \\\\ Y_3 \\end{bmatrix}\\) where \\(E[\\mathbf{Y}] = \\begin{bmatrix} 3 \\\\ -1 \\\\ 2 \\end{bmatrix}\\).\na) Let \\(\\mathbf{A} = \\begin{bmatrix} 2 & 0 & 1 \\\\ 1 & -1 & 3 \\end{bmatrix}\\). Calculate \\(E[\\mathbf{A}\\mathbf{Y}]\\) using the linearity property.\nb) What would \\(E[\\mathbf{A}\\mathbf{Y} + \\mathbf{c}]\\) be if \\(\\mathbf{c} = \\begin{bmatrix} 5 \\\\ -2 \\end{bmatrix}\\)?"
+    "text": "Problem 1: Random Vector Expected Values\nConsider the random vector \\(\\mathbf{Y} = \\begin{bmatrix} Y_1 \\\\ Y_2 \\\\ Y_3 \\end{bmatrix}\\) where \\(E[\\mathbf{Y}] = \\begin{bmatrix} 3 \\\\ -1 \\\\ 2 \\end{bmatrix}\\).\na) Let \\(\\mathbf{A} = \\begin{bmatrix} 2 & 0 & 1 \\\\ 1 & -1 & 3 \\end{bmatrix}\\). Calculate \\(E[\\mathbf{A}\\mathbf{Y}]\\) using the linearity property.\nb) What would \\(E[\\mathbf{A}\\mathbf{Y} + \\mathbf{c}]\\) be if \\(\\mathbf{c} = \\begin{bmatrix} 5 \\\\ -2 \\end{bmatrix}\\)?",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 5: Gauss Markov Theorem"
+    ]
   },
   {
     "objectID": "ex/ex-5.html#problem-2-variance-covariance-matrix-calculations",
     "href": "ex/ex-5.html#problem-2-variance-covariance-matrix-calculations",
     "title": "Random Vectors and Gauss-Markov Theorem Problem Set",
     "section": "Problem 2: Variance-Covariance Matrix Calculations",
-    "text": "Problem 2: Variance-Covariance Matrix Calculations\nGiven the random vector \\(\\mathbf{Z} = \\begin{bmatrix} Z_1 \\\\ Z_2 \\end{bmatrix}\\) with variance-covariance matrix:\n\\[\\text{Var}(\\mathbf{Z}) = \\begin{bmatrix} 9 & 2 \\\\ 2 & 4 \\end{bmatrix}\\]\na) What are \\(\\text{Var}(Z_1)\\), \\(\\text{Var}(Z_2)\\), and \\(\\text{Cov}(Z_1, Z_2)\\)?\nb) Calculate \\(\\text{Var}(3Z_1 - 2Z_2)\\) using the matrix formula \\(\\text{Var}(\\mathbf{A}\\mathbf{Z}) = \\mathbf{A}\\text{Var}(\\mathbf{Z})\\mathbf{A}^T\\).\nc) Find \\(\\text{Var}\\begin{bmatrix} Z_1 + Z_2 \\\\ 2Z_1 - Z_2 \\end{bmatrix}\\). Show your matrix multiplication steps."
+    "text": "Problem 2: Variance-Covariance Matrix Calculations\nGiven the random vector \\(\\mathbf{Z} = \\begin{bmatrix} Z_1 \\\\ Z_2 \\end{bmatrix}\\) with variance-covariance matrix:\n\\[\\text{Var}(\\mathbf{Z}) = \\begin{bmatrix} 9 & 2 \\\\ 2 & 4 \\end{bmatrix}\\]\na) What are \\(\\text{Var}(Z_1)\\), \\(\\text{Var}(Z_2)\\), and \\(\\text{Cov}(Z_1, Z_2)\\)?\nb) Calculate \\(\\text{Var}(3Z_1 - 2Z_2)\\) using the matrix formula \\(\\text{Var}(\\mathbf{A}\\mathbf{Z}) = \\mathbf{A}\\text{Var}(\\mathbf{Z})\\mathbf{A}^T\\).\nc) Find \\(\\text{Var}\\begin{bmatrix} Z_1 + Z_2 \\\\ 2Z_1 - Z_2 \\end{bmatrix}\\). Show your matrix multiplication steps.",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 5: Gauss Markov Theorem"
+    ]
   },
   {
     "objectID": "ex/ex-5.html#problem-3-gauss-markov-assumptions",
     "href": "ex/ex-5.html#problem-3-gauss-markov-assumptions",
     "title": "Random Vectors and Gauss-Markov Theorem Problem Set",
     "section": "Problem 3: Gauss-Markov Assumptions",
-    "text": "Problem 3: Gauss-Markov Assumptions\nConsider the linear regression model \\(\\mathbf{y} = \\mathbf{X}\\boldsymbol{\\beta} + \\boldsymbol{\\varepsilon}\\) where:\n\n\\(\\mathbf{y}\\) is \\(n \\times 1\\)\n\n\\(\\mathbf{X}\\) is \\(n \\times p\\) with full column rank\n\n\\(\\boldsymbol{\\beta}\\) is \\(p \\times 1\\)\n\n\\(\\boldsymbol{\\varepsilon}\\) is \\(n \\times 1\\)\n\na) State the four Gauss-Markov assumptions clearly.\nb) Explain what \\(\\text{Var}(\\boldsymbol{\\varepsilon}) = \\sigma^2\\mathbf{I}\\) means in plain English. What two conditions does this impose on the error terms?\nc) If \\(\\text{Var}(\\varepsilon_1) = 4\\), \\(\\text{Var}(\\varepsilon_2) = 9\\), and \\(\\text{Cov}(\\varepsilon_1, \\varepsilon_2) = 1\\), do the errors satisfy the Gauss-Markov assumptions? Explain why or why not."
+    "text": "Problem 3: Gauss-Markov Assumptions\nConsider the linear regression model \\(\\mathbf{y} = \\mathbf{X}\\boldsymbol{\\beta} + \\boldsymbol{\\varepsilon}\\) where:\n\n\\(\\mathbf{y}\\) is \\(n \\times 1\\)\n\n\\(\\mathbf{X}\\) is \\(n \\times p\\) with full column rank\n\n\\(\\boldsymbol{\\beta}\\) is \\(p \\times 1\\)\n\n\\(\\boldsymbol{\\varepsilon}\\) is \\(n \\times 1\\)\n\na) State the four Gauss-Markov assumptions clearly.\nb) Explain what \\(\\text{Var}(\\boldsymbol{\\varepsilon}) = \\sigma^2\\mathbf{I}\\) means in plain English. What two conditions does this impose on the error terms?\nc) If \\(\\text{Var}(\\varepsilon_1) = 4\\), \\(\\text{Var}(\\varepsilon_2) = 9\\), and \\(\\text{Cov}(\\varepsilon_1, \\varepsilon_2) = 1\\), do the errors satisfy the Gauss-Markov assumptions? Explain why or why not.",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 5: Gauss Markov Theorem"
+    ]
   },
   {
     "objectID": "ex/ex-5.html#problem-4-proving-ols-unbiasedness",
     "href": "ex/ex-5.html#problem-4-proving-ols-unbiasedness",
     "title": "Random Vectors and Gauss-Markov Theorem Problem Set",
     "section": "Problem 4: Proving OLS Unbiasedness",
-    "text": "Problem 4: Proving OLS Unbiasedness\nFor the OLS estimator \\(\\hat{\\boldsymbol{\\beta}} = (\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\mathbf{y}\\):\na) Starting from \\(E[\\hat{\\boldsymbol{\\beta}}] = E[(\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\mathbf{y}]\\), show step-by-step that OLS is unbiased. Clearly indicate where you use each Gauss-Markov assumption.\nb) In your proof, you treat \\(\\boldsymbol{\\beta}\\) as a constant rather than a random variable. Explain why this is appropriate in the classical regression framework.\nc) What would happen to your proof if \\(E[\\boldsymbol{\\varepsilon}] = \\mathbf{c}\\) for some non-zero constant vector \\(\\mathbf{c}\\) instead of \\(E[\\boldsymbol{\\varepsilon}] = \\mathbf{0}\\)?"
+    "text": "Problem 4: Proving OLS Unbiasedness\nFor the OLS estimator \\(\\hat{\\boldsymbol{\\beta}} = (\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\mathbf{y}\\):\na) Starting from \\(E[\\hat{\\boldsymbol{\\beta}}] = E[(\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\mathbf{y}]\\), show step-by-step that OLS is unbiased. Clearly indicate where you use each Gauss-Markov assumption.\nb) In your proof, you treat \\(\\boldsymbol{\\beta}\\) as a constant rather than a random variable. Explain why this is appropriate in the classical regression framework.\nc) What would happen to your proof if \\(E[\\boldsymbol{\\varepsilon}] = \\mathbf{c}\\) for some non-zero constant vector \\(\\mathbf{c}\\) instead of \\(E[\\boldsymbol{\\varepsilon}] = \\mathbf{0}\\)?",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 5: Gauss Markov Theorem"
+    ]
   },
   {
     "objectID": "ex/ex-5.html#problem-5-ols-variance-derivation",
     "href": "ex/ex-5.html#problem-5-ols-variance-derivation",
     "title": "Random Vectors and Gauss-Markov Theorem Problem Set",
     "section": "Problem 5: OLS Variance Derivation",
-    "text": "Problem 5: OLS Variance Derivation\na) Derive \\(\\text{Var}(\\hat{\\boldsymbol{\\beta}})\\) starting from the result that \\(\\hat{\\boldsymbol{\\beta}} = \\boldsymbol{\\beta} + (\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\boldsymbol{\\varepsilon}\\). Show each step clearly.\nb) For the simple linear regression case with \\(\\mathbf{X} = \\begin{bmatrix} 1 & 1 & 1 \\\\ 2 & 4 & 6 \\end{bmatrix}^T\\), calculate \\((\\mathbf{X}^T\\mathbf{X})^{-1}\\) by hand.\nc) Using your result from part (b), what is \\(\\text{Var}(\\hat{\\boldsymbol{\\beta}})\\) in terms of \\(\\sigma^2\\)?"
+    "text": "Problem 5: OLS Variance Derivation\na) Derive \\(\\text{Var}(\\hat{\\boldsymbol{\\beta}})\\) starting from the result that \\(\\hat{\\boldsymbol{\\beta}} = \\boldsymbol{\\beta} + (\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\boldsymbol{\\varepsilon}\\). Show each step clearly.\nb) For the simple linear regression case with \\(\\mathbf{X} = \\begin{bmatrix} 1 & 1 & 1 \\\\ 2 & 4 & 6 \\end{bmatrix}^T\\), calculate \\((\\mathbf{X}^T\\mathbf{X})^{-1}\\) by hand.\nc) Using your result from part (b), what is \\(\\text{Var}(\\hat{\\boldsymbol{\\beta}})\\) in terms of \\(\\sigma^2\\)?",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 5: Gauss Markov Theorem"
+    ]
   },
   {
     "objectID": "ex/ex-5.html#problem-6-understanding-the-gauss-markov-proof",
     "href": "ex/ex-5.html#problem-6-understanding-the-gauss-markov-proof",
     "title": "Random Vectors and Gauss-Markov Theorem Problem Set",
     "section": "Problem 6: Understanding the Gauss-Markov Proof",
-    "text": "Problem 6: Understanding the Gauss-Markov Proof\nThe key step in proving OLS is BLUE involves writing any linear unbiased estimator as: \\[\\mathbf{C} = (\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T + \\mathbf{D}\\]\na) Explain in your own words why this decomposition is “clever” and what intuition it provides about comparing estimators.\nb) Show that if \\(\\mathbf{C}\\mathbf{X} = \\mathbf{I}\\) (the unbiasedness constraint), then \\(\\mathbf{D}\\mathbf{X} = \\mathbf{0}\\).\nc) In the final step of the proof, we use the fact that \\(\\mathbf{D}\\mathbf{D}^T\\) is positive semi-definite.\n\nDefine what “positive semi-definite” means\n\nExplain why any matrix of the form \\(\\mathbf{D}\\mathbf{D}^T\\) must be positive semi-definite\n\nHow does this property ensure that OLS has minimum variance?\n\nBonus: If \\(\\mathbf{D} = \\begin{bmatrix} 1 & 2 \\\\ 0 & -1 \\end{bmatrix}\\), calculate \\(\\mathbf{D}\\mathbf{D}^T\\) and verify that all eigenvalues are non-negative."
+    "text": "Problem 6: Understanding the Gauss-Markov Proof\nThe key step in proving OLS is BLUE involves writing any linear unbiased estimator as: \\[\\mathbf{C} = (\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T + \\mathbf{D}\\]\na) Explain in your own words why this decomposition is “clever” and what intuition it provides about comparing estimators.\nb) Show that if \\(\\mathbf{C}\\mathbf{X} = \\mathbf{I}\\) (the unbiasedness constraint), then \\(\\mathbf{D}\\mathbf{X} = \\mathbf{0}\\).\nc) In the final step of the proof, we use the fact that \\(\\mathbf{D}\\mathbf{D}^T\\) is positive semi-definite.\n\nDefine what “positive semi-definite” means\n\nExplain why any matrix of the form \\(\\mathbf{D}\\mathbf{D}^T\\) must be positive semi-definite\n\nHow does this property ensure that OLS has minimum variance?\n\nBonus: If \\(\\mathbf{D} = \\begin{bmatrix} 1 & 2 \\\\ 0 & -1 \\end{bmatrix}\\), calculate \\(\\mathbf{D}\\mathbf{D}^T\\) and verify that all eigenvalues are non-negative.",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 5: Gauss Markov Theorem"
+    ]
   },
   {
     "objectID": "help-quarto.html",
