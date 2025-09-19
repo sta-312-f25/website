@@ -478,6 +478,7 @@ window.Quarto = {
   <li><a href="#problem-4-proving-ols-unbiasedness" id="toc-problem-4-proving-ols-unbiasedness" class="nav-link" data-scroll-target="#problem-4-proving-ols-unbiasedness">Problem 4: Proving OLS Unbiasedness</a></li>
   <li><a href="#problem-5-ols-variance-derivation" id="toc-problem-5-ols-variance-derivation" class="nav-link" data-scroll-target="#problem-5-ols-variance-derivation">Problem 5: OLS Variance Derivation</a></li>
   <li><a href="#problem-6-understanding-the-gauss-markov-proof" id="toc-problem-6-understanding-the-gauss-markov-proof" class="nav-link" data-scroll-target="#problem-6-understanding-the-gauss-markov-proof">Problem 6: Understanding the Gauss-Markov Proof</a></li>
+  <li><a href="#bonus" id="toc-bonus" class="nav-link" data-scroll-target="#bonus">Bonus</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/sta-312-f25/website/edit/main/ex/ex-5.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sta-312-f25/website/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -534,7 +535,7 @@ window.Quarto = {
 </li>
 <li><span class="math inline">\(\boldsymbol{\varepsilon}\)</span> is <span class="math inline">\(n \times 1\)</span></li>
 </ul>
-<p><strong>a)</strong> State the four Gauss-Markov assumptions clearly.</p>
+<p><strong>a)</strong> State the Gauss-Markov assumptions clearly.</p>
 <p><strong>b)</strong> Explain what <span class="math inline">\(\text{Var}(\boldsymbol{\varepsilon}) = \sigma^2\mathbf{I}\)</span> means in plain English. What two conditions does this impose on the error terms?</p>
 <p><strong>c)</strong> If <span class="math inline">\(\text{Var}(\varepsilon_1) = 4\)</span>, <span class="math inline">\(\text{Var}(\varepsilon_2) = 9\)</span>, and <span class="math inline">\(\text{Cov}(\varepsilon_1, \varepsilon_2) = 1\)</span>, do the errors satisfy the Gauss-Markov assumptions? Explain why or why not.</p>
 </section>
@@ -542,14 +543,14 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="problem-4-proving-ols-unbiasedness">Problem 4: Proving OLS Unbiasedness</h2>
 <p>For the OLS estimator <span class="math inline">\(\hat{\boldsymbol{\beta}} = (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{y}\)</span>:</p>
 <p><strong>a)</strong> Starting from <span class="math inline">\(E[\hat{\boldsymbol{\beta}}] = E[(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{y}]\)</span>, show step-by-step that OLS is unbiased. Clearly indicate where you use each Gauss-Markov assumption.</p>
-<p><strong>b)</strong> In your proof, you treat <span class="math inline">\(\boldsymbol{\beta}\)</span> as a constant rather than a random variable. Explain why this is appropriate in the classical regression framework.</p>
+<p><strong>b)</strong> In the proof, we treat <span class="math inline">\(\boldsymbol{\beta}\)</span> as a constant rather than a random variable. Explain why this is appropriate in the classical regression framework.</p>
 <p><strong>c)</strong> What would happen to your proof if <span class="math inline">\(E[\boldsymbol{\varepsilon}] = \mathbf{c}\)</span> for some non-zero constant vector <span class="math inline">\(\mathbf{c}\)</span> instead of <span class="math inline">\(E[\boldsymbol{\varepsilon}] = \mathbf{0}\)</span>?</p>
 </section>
 <section id="problem-5-ols-variance-derivation" class="level2">
 <h2 class="anchored" data-anchor-id="problem-5-ols-variance-derivation">Problem 5: OLS Variance Derivation</h2>
 <p><strong>a)</strong> Derive <span class="math inline">\(\text{Var}(\hat{\boldsymbol{\beta}})\)</span> starting from the result that <span class="math inline">\(\hat{\boldsymbol{\beta}} = \boldsymbol{\beta} + (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\boldsymbol{\varepsilon}\)</span>. Show each step clearly.</p>
-<p><strong>b)</strong> For the simple linear regression case with <span class="math inline">\(\mathbf{X} = \begin{bmatrix} 1 &amp; 1 &amp; 1 \\ 2 &amp; 4 &amp; 6 \end{bmatrix}^T\)</span>, calculate <span class="math inline">\((\mathbf{X}^T\mathbf{X})^{-1}\)</span> by hand.</p>
-<p><strong>c)</strong> Using your result from part (b), what is <span class="math inline">\(\text{Var}(\hat{\boldsymbol{\beta}})\)</span> in terms of <span class="math inline">\(\sigma^2\)</span>?</p>
+<p><strong>b)</strong> For the simple linear regression case with <span class="math inline">\(\mathbf{X} = \begin{bmatrix} 1 &amp; 1  \\ 2 &amp; 4  \end{bmatrix}\)</span>, calculate <span class="math inline">\((\mathbf{X}^T\mathbf{X})^{-1}\)</span> by hand.</p>
+<p><strong>c)</strong> Using your result from part (b), what is <span class="math inline">\(\text{Var}(\hat{\boldsymbol{\beta}})\)</span> in terms of <span class="math inline">\(\sigma^2\)</span>? What is the variance of <span class="math inline">\(\hat\beta_0\)</span>? What is the variance of <span class="math inline">\(\hat\beta_1\)</span>?</p>
 </section>
 <section id="problem-6-understanding-the-gauss-markov-proof" class="level2">
 <h2 class="anchored" data-anchor-id="problem-6-understanding-the-gauss-markov-proof">Problem 6: Understanding the Gauss-Markov Proof</h2>
@@ -564,7 +565,11 @@ window.Quarto = {
 </li>
 <li>How does this property ensure that OLS has minimum variance?</li>
 </ul>
-<p><strong>Bonus:</strong> If <span class="math inline">\(\mathbf{D} = \begin{bmatrix} 1 &amp; 2 \\ 0 &amp; -1 \end{bmatrix}\)</span>, calculate <span class="math inline">\(\mathbf{D}\mathbf{D}^T\)</span> and verify that all eigenvalues are non-negative.</p>
+<p><strong>d)</strong> If <span class="math inline">\(\mathbf{D} = \begin{bmatrix} 1 &amp; 2 \\ 0 &amp; -1 \end{bmatrix}\)</span>, calculate <span class="math inline">\(\mathbf{D}\mathbf{D}^T\)</span> and verify that all eigenvalues are non-negative.</p>
+</section>
+<section id="bonus" class="level2">
+<h2 class="anchored" data-anchor-id="bonus">Bonus</h2>
+<p>Read this post on <a href="https://statisticalhorizons.com/is-ols-blue-or-bue/">Is OLS BLUE or BUE?</a> –</p>
 
 
 </section>
