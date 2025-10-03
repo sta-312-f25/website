@@ -60,7 +60,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../demo/least-squares.html" rel="next">
+<link href="../ex/keyterms.html" rel="next">
 <link href="../ex/ex-5.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -457,6 +457,12 @@ window.Quarto = {
  <span class="menu-text">Exercise 6: Sums of Squares and Hypothesis Testing</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ex/keyterms.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Key Terms</span></a>
+  </div>
+</li>
       </ul>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -570,10 +576,7 @@ window.Quarto = {
 <span>  <span class="co"># Create response variable: y = X * beta_true + epsilon</span></span>
 <span>  <span class="va">y</span> <span class="op">&lt;-</span> <span class="co"># YOUR CODE HERE</span></span>
 <span>  </span>
-<span>  <span class="co"># Fit linear model</span></span>
-<span>  <span class="va">fit</span> <span class="op">&lt;-</span> <span class="co"># YOUR CODE HERE</span></span>
-<span>  </span>
-<span>  <span class="co"># Extract coefficient and standard error for x1</span></span>
+<span>  <span class="co"># Calculate coefficient and standard error for x1</span></span>
 <span>  <span class="va">beta_hat</span> <span class="op">&lt;-</span> <span class="co"># YOUR CODE HERE (coefficient for x1)</span></span>
 <span>  <span class="va">se_beta</span> <span class="op">&lt;-</span> <span class="co"># YOUR CODE HERE (standard error for x1)</span></span>
 <span>  </span>
@@ -598,11 +601,10 @@ window.Quarto = {
 <span></span>
 <span><span class="co"># Create comparison plot</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">sim_data</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">t_statistic</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes_eval.html">after_stat</a></span><span class="op">(</span><span class="va">density</span><span class="op">)</span><span class="op">)</span>, bins <span class="op">=</span> <span class="fl">50</span>, </span>
-<span>                 fill <span class="op">=</span> <span class="st">"lightblue"</span>, alpha <span class="op">=</span> <span class="fl">0.7</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_function.html">stat_function</a></span><span class="op">(</span>fun <span class="op">=</span> <span class="va">dt</span>, args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>df <span class="op">=</span> <span class="va">dft</span><span class="op">)</span>, </span>
-<span>                color <span class="op">=</span> <span class="st">"red"</span>, linewidth <span class="op">=</span> <span class="fl">1.2</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"Simulated t-statistics vs Theoretical t-distribution (df ="</span>, <span class="va">dft</span>, <span class="st">")"</span><span class="op">)</span>,</span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes_eval.html">after_stat</a></span><span class="op">(</span><span class="va">density</span><span class="op">)</span><span class="op">)</span>, bins <span class="op">=</span> <span class="fl">50</span>, fill <span class="op">=</span> <span class="st">"lightblue"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_function.html">stat_function</a></span><span class="op">(</span>fun <span class="op">=</span> <span class="va">dt</span>, args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>df <span class="op">=</span> <span class="va">dft</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"red"</span>, linewidth <span class="op">=</span> <span class="fl">1.2</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> </span>
+<span>         <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"Simulated t-statistics vs Theoretical t-distribution (df ="</span>, <span class="va">dft</span>, <span class="st">")"</span><span class="op">)</span>,</span>
 <span>       subtitle <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"Based on"</span>, <span class="va">n_sims</span>, <span class="st">"simulations"</span><span class="op">)</span>,</span>
 <span>       x <span class="op">=</span> <span class="st">"t-statistic"</span>, </span>
 <span>       y <span class="op">=</span> <span class="st">"Density"</span><span class="op">)</span> <span class="op">+</span></span>
@@ -671,10 +673,8 @@ window.Quarto = {
 <span></span>
 <span><span class="co"># Create comparison plot</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">sim_data_f</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">f_statistic</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes_eval.html">after_stat</a></span><span class="op">(</span><span class="va">density</span><span class="op">)</span><span class="op">)</span>, bins <span class="op">=</span> <span class="fl">50</span>, </span>
-<span>                 fill <span class="op">=</span> <span class="st">"lightgreen"</span>, alpha <span class="op">=</span> <span class="fl">0.7</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_function.html">stat_function</a></span><span class="op">(</span>fun <span class="op">=</span> <span class="va">df</span>, args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>df1 <span class="op">=</span> <span class="va">df1</span>, df2 <span class="op">=</span> <span class="va">df2</span><span class="op">)</span>, </span>
-<span>                color <span class="op">=</span> <span class="st">"red"</span>, linewidth <span class="op">=</span> <span class="fl">1.2</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes_eval.html">after_stat</a></span><span class="op">(</span><span class="va">density</span><span class="op">)</span><span class="op">)</span>, bins <span class="op">=</span> <span class="fl">50</span>, fill <span class="op">=</span> <span class="st">"lightgreen"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_function.html">stat_function</a></span><span class="op">(</span>fun <span class="op">=</span> <span class="va">df</span>, args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>df1 <span class="op">=</span> <span class="va">df1</span>, df2 <span class="op">=</span> <span class="va">df2</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"red"</span>, linewidth <span class="op">=</span> <span class="fl">1.2</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/lims.html">xlim</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">f_stats</span>, <span class="fl">0.99</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>  <span class="co"># Trim extreme values </span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"Simulated F-statistics vs Theoretical F-distribution"</span><span class="op">)</span>,</span>
 <span>       subtitle <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"df1 ="</span>, <span class="va">df1</span>, <span class="st">", df2 ="</span>, <span class="va">df2</span>, <span class="st">"| Based on"</span>, <span class="va">n_sims</span>, <span class="st">"simulations"</span><span class="op">)</span>,</span>
@@ -1152,8 +1152,8 @@ window.Quarto = {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../demo/least-squares.html" class="pagination-link" aria-label="Least Squares Solution">
-        <span class="nav-page-text">Least Squares Solution</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../ex/keyterms.html" class="pagination-link" aria-label="Key Terms">
+        <span class="nav-page-text">Key Terms</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
