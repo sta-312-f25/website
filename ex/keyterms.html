@@ -471,6 +471,12 @@ window.Quarto = {
  <span class="menu-text">Hat Matrix Symmetry</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../demo/general-f-statistic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">General F Statistic Intuition</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -535,23 +541,23 @@ window.Quarto = {
 </li>
 <li>SS<span class="math inline">\(_{\text{Reg}}\)</span> = <span class="math inline">\(\mathbf{y}^T\mathbf{H}\mathbf{y} - n\bar{y}^2\)</span><br>
 </li>
-<li>RSS = <span class="math inline">\(\mathbf{y}^T(\mathbf{I}-\mathbf{H})\mathbf{y}\)</span><br>
+<li>SSE = <span class="math inline">\(\mathbf{y}^T(\mathbf{I}-\mathbf{H})\mathbf{y}\)</span><br>
 </li>
-<li><strong>Fundamental Identity:</strong> TSS = SS<span class="math inline">\(_{\text{Reg}}\)</span> + RSS</li>
+<li><strong>Fundamental Identity:</strong> TSS = SS<span class="math inline">\(_{\text{Reg}}\)</span> + SSE</li>
 </ul>
 <p><strong>Coefficient of Determination:</strong></p>
 <ul>
-<li><span class="math inline">\(R^2 = \frac{\text{SS}_{\text{Reg}}}{\text{TSS}} = 1 - \frac{\text{RSS}}{\text{TSS}}\)</span></li>
+<li><span class="math inline">\(R^2 = \frac{\text{SS}_{\text{Reg}}}{\text{TSS}} = 1 - \frac{\text{SSE}}{\text{TSS}}\)</span></li>
 </ul>
 <p><strong>Variance Estimation:</strong></p>
 <ul>
-<li><span class="math inline">\(\hat{\sigma}^2 = \frac{\text{RSS}}{n-p}\)</span> (MSE)</li>
+<li><span class="math inline">\(\hat{\sigma}^2 = \frac{\text{SSE}}{n-p}\)</span> (MSE)</li>
 </ul>
 <p><strong>Test Statistics:</strong></p>
 <ul>
 <li>t-statistic: <span class="math inline">\(t = \frac{\hat{\beta}_j}{\text{se}(\hat{\beta}_j)}\)</span> where <span class="math inline">\(\text{se}(\hat{\beta}_j) = \sqrt{\hat{\sigma}^2[(\mathbf{X}^T\mathbf{X})^{-1}]_{jj}}\)</span><br>
 </li>
-<li>F-statistic: <span class="math inline">\(F = \frac{\text{SS}_{\text{Reg}}/(p-1)}{\text{RSS}/(n-p)} = \frac{\text{MS}_{\text{Reg}}}{\text{MSE}}\)</span></li>
+<li>F-statistic: <span class="math inline">\(F = \frac{\text{SS}_{\text{Reg}}/(p-1)}{\text{SSE}/(n-p)} = \frac{\text{MS}_{\text{Reg}}}{\text{MSE}}\)</span></li>
 </ul>
 </section>
 <section id="random-vector-properties" class="level2">
@@ -589,6 +595,12 @@ window.Quarto = {
 <p><strong>Orthogonality Condition:</strong></p>
 <ul>
 <li><span class="math inline">\(\mathbf{X}^T\hat{\boldsymbol{\varepsilon}} = \mathbf{0}\)</span> (residuals perpendicular to column space)</li>
+</ul>
+<p><strong>QR Decomposition:</strong></p>
+<ul>
+<li><span class="math inline">\(\mathbf{R}\boldsymbol{\hat\beta} = \mathbf{Q}^T\mathbf{y}\)</span><br>
+</li>
+<li>How to backsolve to get <span class="math inline">\(\hat\beta\)</span></li>
 </ul>
 <p><strong>BLUE:</strong></p>
 <ul>

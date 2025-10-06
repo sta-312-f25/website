@@ -124,39 +124,39 @@
     "text": "You Try: Solution\n\nMethod 1 (definition): \\[\\text{TSS} = (-3)^2 + (-1)^2 + 1^2 + 3^2 = 9 + 1 + 1 + 9 = 20\\]\n\n\nMethod 2 (matrix form): \\[\\text{TSS} = 2^2 + 4^2 + 6^2 + 8^2 - 4(5^2) = 120 - 100 = 20\\]"
   },
   {
-    "objectID": "slides/06-slides.html#what-is-rss",
-    "href": "slides/06-slides.html#what-is-rss",
+    "objectID": "slides/06-slides.html#what-is-sse",
+    "href": "slides/06-slides.html#what-is-sse",
     "title": "Sums of Squares and Hypothesis Testing",
-    "section": "What is RSS?",
-    "text": "What is RSS?\n\nDefinition: Variation left unexplained by our model\n\n\nFormula: \\[\\text{RSS} = \\sum_{i=1}^n (y_i - \\hat{y}_i)^2 = \\sum_{i=1}^n \\hat{\\varepsilon}_i^2\\]"
+    "section": "What is SSE?",
+    "text": "What is SSE?\n\nDefinition: Variation left unexplained by our model\n\n\nFormula: \\[\\text{SSE} = \\sum_{i=1}^n (y_i - \\hat{y}_i)^2 = \\sum_{i=1}^n \\hat{\\varepsilon}_i^2\\]"
   },
   {
-    "objectID": "slides/06-slides.html#what-is-rss-1",
-    "href": "slides/06-slides.html#what-is-rss-1",
+    "objectID": "slides/06-slides.html#what-is-sse-1",
+    "href": "slides/06-slides.html#what-is-sse-1",
     "title": "Sums of Squares and Hypothesis Testing",
-    "section": "What is RSS?",
-    "text": "What is RSS?\nDefinition: Variation left unexplained by our model\nMatrix form: \\[\\text{RSS} = \\hat{\\boldsymbol{\\varepsilon}}^T\\hat{\\boldsymbol{\\varepsilon}} = (\\mathbf{y} - \\hat{\\mathbf{y}})^T(\\mathbf{y} - \\hat{\\mathbf{y}})\\]"
+    "section": "What is SSE?",
+    "text": "What is SSE?\nDefinition: Variation left unexplained by our model\nMatrix form: \\[\\text{SSE} = \\hat{\\boldsymbol{\\varepsilon}}^T\\hat{\\boldsymbol{\\varepsilon}} = (\\mathbf{y} - \\hat{\\mathbf{y}})^T(\\mathbf{y} - \\hat{\\mathbf{y}})\\]"
   },
   {
-    "objectID": "slides/06-slides.html#rss-with-hat-matrix",
-    "href": "slides/06-slides.html#rss-with-hat-matrix",
+    "objectID": "slides/06-slides.html#sse-with-hat-matrix",
+    "href": "slides/06-slides.html#sse-with-hat-matrix",
     "title": "Sums of Squares and Hypothesis Testing",
-    "section": "RSS with Hat Matrix",
-    "text": "RSS with Hat Matrix\n\nSince \\(\\hat{\\mathbf{y}} = \\mathbf{H}\\mathbf{y}\\): \\[\\text{RSS} = (\\mathbf{y} - \\mathbf{H}\\mathbf{y})^T(\\mathbf{y} - \\mathbf{H}\\mathbf{y})\\]\n\n\nFactor out \\(\\mathbf{y}\\): \\[= \\mathbf{y}^T(\\mathbf{I} - \\mathbf{H})^T(\\mathbf{I} - \\mathbf{H})\\mathbf{y}\\]"
+    "section": "SSE with Hat Matrix",
+    "text": "SSE with Hat Matrix\n\nSince \\(\\hat{\\mathbf{y}} = \\mathbf{H}\\mathbf{y}\\): \\[\\text{SSE} = (\\mathbf{y} - \\mathbf{H}\\mathbf{y})^T(\\mathbf{y} - \\mathbf{H}\\mathbf{y})\\]\n\n\nFactor out \\(\\mathbf{y}\\): \\[= \\mathbf{y}^T(\\mathbf{I} - \\mathbf{H})^T(\\mathbf{I} - \\mathbf{H})\\mathbf{y}\\]"
   },
   {
-    "objectID": "slides/06-slides.html#rss-with-hat-matrix-1",
-    "href": "slides/06-slides.html#rss-with-hat-matrix-1",
+    "objectID": "slides/06-slides.html#sse-with-hat-matrix-1",
+    "href": "slides/06-slides.html#sse-with-hat-matrix-1",
     "title": "Sums of Squares and Hypothesis Testing",
-    "section": "RSS with Hat Matrix",
-    "text": "RSS with Hat Matrix\nKey property: \\(\\mathbf{I} - \\mathbf{H}\\) is symmetric and idempotent\n\\[\\text{RSS} = \\mathbf{y}^T(\\mathbf{I} - \\mathbf{H})\\mathbf{y}\\]"
+    "section": "SSE with Hat Matrix",
+    "text": "SSE with Hat Matrix\nKey property: \\(\\mathbf{I} - \\mathbf{H}\\) is symmetric and idempotent\n\\[\\text{SSE} = \\mathbf{y}^T(\\mathbf{I} - \\mathbf{H})\\mathbf{y}\\]"
   },
   {
-    "objectID": "slides/06-slides.html#rss-intuition",
-    "href": "slides/06-slides.html#rss-intuition",
+    "objectID": "slides/06-slides.html#sse-intuition",
+    "href": "slides/06-slides.html#sse-intuition",
     "title": "Sums of Squares and Hypothesis Testing",
-    "section": "RSS Intuition",
-    "text": "RSS Intuition\n\nThink of RSS as: “How much did we miss with our model?”\n\n\nSmaller RSS = Better fit\nLarger RSS = Worse fit\n\n\nPerfect fit: RSS = 0 (model explains everything)"
+    "section": "SSE Intuition",
+    "text": "SSE Intuition\n\nThink of SSE as: “How much did we miss with our model?”\n\n\nSmaller SSE = Better fit\nLarger SSE = Worse fit\n\n\nPerfect fit: SSE = 0 (model explains everything)"
   },
   {
     "objectID": "slides/06-slides.html#what-is-regression-sum-of-squares",
@@ -198,7 +198,7 @@
     "href": "slides/06-slides.html#you-try-prove-the-identity",
     "title": "Sums of Squares and Hypothesis Testing",
     "section": "You Try: Prove the Identity",
-    "text": "You Try: Prove the Identity\n\nChallenge: Show that TSS = RSS + \\(\\textrm{SS}_\\textrm{Reg}\\) using matrix algebra\n\n\nHint: Start with the definitions and use properties of the hat matrix\n\n\n\n\n−+\n05:00"
+    "text": "You Try: Prove the Identity\n\nChallenge: Show that TSS = SSE + \\(\\textrm{SS}_\\textrm{Reg}\\) using matrix algebra\n\n\nHint: Start with the definitions and use properties of the hat matrix\n\n\n\n\n−+\n05:00"
   },
   {
     "objectID": "slides/06-slides.html#proof-strategy",
@@ -233,14 +233,14 @@
     "href": "slides/06-slides.html#final-identity",
     "title": "Sums of Squares and Hypothesis Testing",
     "section": "Final Identity",
-    "text": "Final Identity\n\nSubtract \\(n\\bar{y}^2\\) from both sides: \\[\\text{TSS} = \\text{SS}_{\\text{Reg}} + \\text{RSS}\\]\n\n\nBeautiful result: Total variation splits perfectly into explained and unexplained parts"
+    "text": "Final Identity\n\nSubtract \\(n\\bar{y}^2\\) from both sides: \\[\\text{TSS} = \\text{SS}_{\\text{Reg}} + \\text{SSE}\\]\n\n\nBeautiful result: Total variation splits perfectly into explained and unexplained parts"
   },
   {
     "objectID": "slides/06-slides.html#what-is-r²",
     "href": "slides/06-slides.html#what-is-r²",
     "title": "Sums of Squares and Hypothesis Testing",
     "section": "What is R²?",
-    "text": "What is R²?\n\nDefinition: Proportion of total variation explained by the model\n\n\nFormula: \\[R^2 = \\frac{\\text{SS}_{\\text{Reg}}}{\\text{TSS}} = 1 - \\frac{\\text{RSS}}{\\text{TSS}}\\]\n\n\nRange: \\(0 \\leq R^2 \\leq 1\\)"
+    "text": "What is R²?\n\nDefinition: Proportion of total variation explained by the model\n\n\nFormula: \\[R^2 = \\frac{\\text{SS}_{\\text{Reg}}}{\\text{TSS}} = 1 - \\frac{\\text{SSE}}{\\text{TSS}}\\]\n\n\nRange: \\(0 \\leq R^2 \\leq 1\\)"
   },
   {
     "objectID": "slides/06-slides.html#r²-interpretation",
@@ -254,14 +254,14 @@
     "href": "slides/06-slides.html#you-try-calculate-r²",
     "title": "Sums of Squares and Hypothesis Testing",
     "section": "You Try: Calculate R²",
-    "text": "You Try: Calculate R²\n\nGiven: TSS = 100, RSS = 25\n\n\nFind: R² and interpret the result\n\n\n\n\n−+\n02:00"
+    "text": "You Try: Calculate R²\n\nGiven: TSS = 100, SSE = 25\n\n\nFind: R² and interpret the result\n\n\n\n\n−+\n02:00"
   },
   {
     "objectID": "slides/06-slides.html#you-try-solution-1",
     "href": "slides/06-slides.html#you-try-solution-1",
     "title": "Sums of Squares and Hypothesis Testing",
     "section": "You Try: Solution",
-    "text": "You Try: Solution\n\nMethod 1: \\[R^2 = 1 - \\frac{\\text{RSS}}{\\text{TSS}} = 1 - \\frac{25}{100} = 0.75\\]\n\n\nMethod 2: \\[\\text{SS}_{\\text{Reg}} = \\text{TSS} - \\text{RSS} = 100 - 25 = 75\\] \\[R^2 = \\frac{75}{100} = 0.75\\]\n\n\nInterpretation: The model explains 75% of the variation in y"
+    "text": "You Try: Solution\n\nMethod 1: \\[R^2 = 1 - \\frac{\\text{SSE}}{\\text{TSS}} = 1 - \\frac{25}{100} = 0.75\\]\n\n\nMethod 2: \\[\\text{SS}_{\\text{Reg}} = \\text{TSS} - \\text{SSE} = 100 - 25 = 75\\] \\[R^2 = \\frac{75}{100} = 0.75\\]\n\n\nInterpretation: The model explains 75% of the variation in y"
   },
   {
     "objectID": "slides/06-slides.html#when-r²-misleads",
@@ -296,7 +296,7 @@
     "href": "slides/06-slides.html#where-does-the-standard-error-come-from",
     "title": "Sums of Squares and Hypothesis Testing",
     "section": "Where Does the Standard Error Come From?",
-    "text": "Where Does the Standard Error Come From?\n\nRecall: \\(\\text{Var}(\\hat{\\boldsymbol{\\beta}}) = \\sigma^2(\\mathbf{X}^T\\mathbf{X})^{-1}\\)\n\n\nFor individual coefficient j: \\[\\text{Var}(\\hat{\\beta}_j) = \\sigma^2[(\\mathbf{X}^T\\mathbf{X})^{-1}]_{jj}\\]\n\n\nEstimate \\(\\sigma^2\\): \\(\\hat{\\sigma}^2 = \\frac{\\text{RSS}}{n-p}\\) where p = number of parameters"
+    "text": "Where Does the Standard Error Come From?\n\nRecall: \\(\\text{Var}(\\hat{\\boldsymbol{\\beta}}) = \\sigma^2(\\mathbf{X}^T\\mathbf{X})^{-1}\\)\n\n\nFor individual coefficient j: \\[\\text{Var}(\\hat{\\beta}_j) = \\sigma^2[(\\mathbf{X}^T\\mathbf{X})^{-1}]_{jj}\\]\n\n\nEstimate \\(\\sigma^2\\): \\(\\hat{\\sigma}^2 = \\frac{\\text{SSE}}{n-p}\\) where p = number of parameters"
   },
   {
     "objectID": "slides/06-slides.html#t-distribution-result",
@@ -324,7 +324,7 @@
     "href": "slides/06-slides.html#f-test-statistic",
     "title": "Sums of Squares and Hypothesis Testing",
     "section": "F-Test Statistic",
-    "text": "F-Test Statistic\n\nTest statistic: \\[F = \\frac{\\text{SS}_{\\text{Reg}}/(p-1)}{\\text{RSS}/(n-p)} = \\frac{\\text{Mean Square Regression}}{\\text{Mean Square Error}}\\]\n\n\nUnder \\(H_0\\): \\(F \\sim F_{p-1, n-p}\\)"
+    "text": "F-Test Statistic\n\nTest statistic: \\[F = \\frac{\\text{SS}_{\\text{Reg}}/(p-1)}{\\text{SSE}/(n-p)} = \\frac{\\text{Mean Square Regression}}{\\text{Mean Square Error}}\\]\n\n\nUnder \\(H_0\\): \\(F \\sim F_{p-1, n-p}\\)"
   },
   {
     "objectID": "slides/06-slides.html#f-test-intuition",
@@ -359,7 +359,7 @@
     "href": "slides/06-slides.html#the-general-f-test",
     "title": "Sums of Squares and Hypothesis Testing",
     "section": "The General F-Test",
-    "text": "The General F-Test\n\nTest statistic: \\[F = \\frac{(\\mathbf{C}\\hat{\\boldsymbol{\\beta}} - \\mathbf{d})^T[\\mathbf{C}(\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{C}^T]^{-1}(\\mathbf{C}\\hat{\\boldsymbol{\\beta}} - \\mathbf{d})/q}{\\text{RSS}/(n-p)}\\]\n\n\nUnder \\(H_0\\): \\(F \\sim F_{q, n-p}\\)"
+    "text": "The General F-Test\n\nTest statistic: \\[F = \\frac{(\\mathbf{C}\\hat{\\boldsymbol{\\beta}} - \\mathbf{d})^T[\\mathbf{C}(\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{C}^T]^{-1}(\\mathbf{C}\\hat{\\boldsymbol{\\beta}} - \\mathbf{d})/q}{\\text{SSE}/(n-p)}\\]\n\n\nUnder \\(H_0\\): \\(F \\sim F_{q, n-p}\\)"
   },
   {
     "objectID": "slides/06-slides.html#you-try-set-up-hypothesis-test",
@@ -380,14 +380,14 @@
     "href": "slides/06-slides.html#the-anova-table",
     "title": "Sums of Squares and Hypothesis Testing",
     "section": "The ANOVA Table",
-    "text": "The ANOVA Table\n\n\n\n\n\n\n\n\n\n\n\nSource\ndf\nSum of Squares\nMean Square\nF\n\n\n\n\nRegression\np-1\n\\(\\textrm{SS}_\\textrm{Reg}\\)\n\\(\\textrm{MS}_\\textrm{Reg}\\)\n\\(\\textrm{MS}_\\textrm{Reg}\\)/MSE\n\n\nError\nn-p\nRSS\nMSE\n\n\n\nTotal\nn-1\nTSS"
+    "text": "The ANOVA Table\n\n\n\n\n\n\n\n\n\n\n\nSource\ndf\nSum of Squares\nMean Square\nF\n\n\n\n\nRegression\np-1\n\\(\\textrm{SS}_\\textrm{Reg}\\)\n\\(\\textrm{MS}_\\textrm{Reg}\\)\n\\(\\textrm{MS}_\\textrm{Reg}\\)/MSE\n\n\nError\nn-p\nSSE\nMSE\n\n\n\nTotal\nn-1\nTSS"
   },
   {
     "objectID": "slides/06-slides.html#matrix-summary",
     "href": "slides/06-slides.html#matrix-summary",
     "title": "Sums of Squares and Hypothesis Testing",
     "section": "Matrix Summary",
-    "text": "Matrix Summary\n\nKey relationships:\n- TSS = \\(\\mathbf{y}^T\\mathbf{y} - n\\bar{y}^2\\)\n- \\(\\textrm{SS}_\\textrm{Reg}\\) = \\(\\mathbf{y}^T\\mathbf{H}\\mathbf{y} - n\\bar{y}^2\\)\n- RSS = \\(\\mathbf{y}^T(\\mathbf{I} - \\mathbf{H})\\mathbf{y}\\)\n- TSS = \\(\\textrm{SS}_\\textrm{Reg}\\) + RSS\n\n\nR² = \\(\\textrm{SS}_\\textrm{Reg}\\)/TSS = 1 - RSS/TSS"
+    "text": "Matrix Summary\n\nKey relationships:\n- TSS = \\(\\mathbf{y}^T\\mathbf{y} - n\\bar{y}^2\\)\n- \\(\\textrm{SS}_\\textrm{Reg}\\) = \\(\\mathbf{y}^T\\mathbf{H}\\mathbf{y} - n\\bar{y}^2\\)\n- SSE = \\(\\mathbf{y}^T(\\mathbf{I} - \\mathbf{H})\\mathbf{y}\\)\n- TSS = \\(\\textrm{SS}_\\textrm{Reg}\\) + SSE\n\n\nR² = \\(\\textrm{SS}_\\textrm{Reg}\\)/TSS = 1 - SSE/TSS"
   },
   {
     "objectID": "slides/06-slides.html#testing-hierarchy",
@@ -415,7 +415,7 @@
     "href": "slides/06-slides.html#p-values-for-f-tests",
     "title": "Sums of Squares and Hypothesis Testing",
     "section": "P-values for F-tests",
-    "text": "P-values for F-tests\n\nFor overall test \\(H_0:\\) all slopes = 0:\n\n\nTest statistic: \\(F = \\frac{\\text{SS}_{\\text{Reg}}/(p-1)}{\\text{RSS}/(n-p)}\\)\n\n\nOne-sided p-value:\n\\[\\text{p-value} = P(F_{p-1,n-p} \\geq f)\\] where \\(f\\) is our observed F-statistic"
+    "text": "P-values for F-tests\n\nFor overall test \\(H_0:\\) all slopes = 0:\n\n\nTest statistic: \\(F = \\frac{\\text{SS}_{\\text{Reg}}/(p-1)}{\\text{SSE}/(n-p)}\\)\n\n\nOne-sided p-value:\n\\[\\text{p-value} = P(F_{p-1,n-p} \\geq f)\\] where \\(f\\) is our observed F-statistic"
   },
   {
     "objectID": "slides/06-slides.html#you-try-interpret-p-values",
@@ -499,14 +499,14 @@
     "href": "slides/06-slides.html#final-you-try-complete-analysis",
     "title": "Sums of Squares and Hypothesis Testing",
     "section": "Final You Try: Complete Analysis",
-    "text": "Final You Try: Complete Analysis\n\nGiven: n = 20, p = 4, TSS = 1000, RSS = 300\n\n\nCalculate:\n- R²\n- Overall F-statistic\n- Conclude at α = 0.05 level\n\n\n\n\n−+\n05:00"
+    "text": "Final You Try: Complete Analysis\n\nGiven: n = 20, p = 4, TSS = 1000, SSE = 300\n\n\nCalculate:\n- R²\n- Overall F-statistic\n- Conclude at α = 0.05 level\n\n\n\n\n−+\n05:00"
   },
   {
     "objectID": "slides/06-slides.html#final-solution",
     "href": "slides/06-slides.html#final-solution",
     "title": "Sums of Squares and Hypothesis Testing",
     "section": "Final Solution",
-    "text": "Final Solution\n\nR² calculation: \\[R^2 = 1 - \\frac{RSS}{TSS} = 1 - \\frac{300}{1000} = 0.7\\]\n\n\nF-statistic: \\[F = \\frac{SS_{Reg}/(p-1)}{RSS/(n-p)} = \\frac{700/3}{300/16} = \\frac{233.33}{18.75} = 12.44\\]\n\n\nCritical value: \\(F_{0.05, 3, 16} = 3.24\\)\n\n\nConclusion: Reject \\(H_0\\). The model is statistically significant."
+    "text": "Final Solution\n\nR² calculation: \\[R^2 = 1 - \\frac{SSE}{TSS} = 1 - \\frac{300}{1000} = 0.7\\]\n\n\nF-statistic: \\[F = \\frac{SS_{Reg}/(p-1)}{SSE/(n-p)} = \\frac{700/3}{300/16} = \\frac{233.33}{18.75} = 12.44\\]\n\n\nCritical value: \\(F_{0.05, 3, 16} = 3.24\\)\n\n\nConclusion: Reject \\(H_0\\). The model is statistically significant."
   },
   {
     "objectID": "slides/04-slides.html#the-sum-of-squared-errors",
@@ -1437,7 +1437,7 @@
     "href": "ex/ex-6.html",
     "title": "Sums of Squares and Hypothesis Testing",
     "section": "",
-    "text": "Given the following data:\n\\[\\mathbf{y} = \\begin{bmatrix}10\\\\13\\\\14\\\\16\\\\18\\end{bmatrix}\\]\n\\[\\mathbf{X} = \\begin{bmatrix}1&1\\\\1&2\\\\1&3\\\\1&4\\\\1&5\\end{bmatrix}\\]\na) Calculate TSS by hand using both the definition and the matrix form.\nb) Fit the linear model and calculate the RSS and \\(\\textrm{SS}_\\textrm{Reg}\\). Verify that TSS = RSS + SS_Reg.\nc) Calculate R² and interpret its meaning in context.",
+    "text": "Given the following data:\n\\[\\mathbf{y} = \\begin{bmatrix}10\\\\13\\\\14\\\\16\\\\18\\end{bmatrix}\\]\n\\[\\mathbf{X} = \\begin{bmatrix}1&1\\\\1&2\\\\1&3\\\\1&4\\\\1&5\\end{bmatrix}\\]\na) Calculate TSS by hand using both the definition and the matrix form.\nb) Fit the linear model and calculate the SSE and \\(\\textrm{SS}_\\textrm{Reg}\\). Verify that TSS = SSE + SS_Reg.\nc) Calculate R² and interpret its meaning in context.",
     "crumbs": [
       "{{< fa calendar >}} Schedule",
       "Exercises",
@@ -1449,7 +1449,7 @@
     "href": "ex/ex-6.html#problem-1-basic-sums-of-squares-calculation",
     "title": "Sums of Squares and Hypothesis Testing",
     "section": "",
-    "text": "Given the following data:\n\\[\\mathbf{y} = \\begin{bmatrix}10\\\\13\\\\14\\\\16\\\\18\\end{bmatrix}\\]\n\\[\\mathbf{X} = \\begin{bmatrix}1&1\\\\1&2\\\\1&3\\\\1&4\\\\1&5\\end{bmatrix}\\]\na) Calculate TSS by hand using both the definition and the matrix form.\nb) Fit the linear model and calculate the RSS and \\(\\textrm{SS}_\\textrm{Reg}\\). Verify that TSS = RSS + SS_Reg.\nc) Calculate R² and interpret its meaning in context.",
+    "text": "Given the following data:\n\\[\\mathbf{y} = \\begin{bmatrix}10\\\\13\\\\14\\\\16\\\\18\\end{bmatrix}\\]\n\\[\\mathbf{X} = \\begin{bmatrix}1&1\\\\1&2\\\\1&3\\\\1&4\\\\1&5\\end{bmatrix}\\]\na) Calculate TSS by hand using both the definition and the matrix form.\nb) Fit the linear model and calculate the SSE and \\(\\textrm{SS}_\\textrm{Reg}\\). Verify that TSS = SSE + SS_Reg.\nc) Calculate R² and interpret its meaning in context.",
     "crumbs": [
       "{{< fa calendar >}} Schedule",
       "Exercises",
@@ -1694,6 +1694,66 @@
       "{{< fa calendar >}} Schedule",
       "Demos",
       "Least Squares Solution"
+    ]
+  },
+  {
+    "objectID": "demo/general-f-statistic.html",
+    "href": "demo/general-f-statistic.html",
+    "title": "Building Intuition for the F-Statistic Numerator",
+    "section": "",
+    "text": "The general form of the F-statistic with constraint matrix \\(C\\) is:\n\\[F = \\frac{(C\\hat{\\beta} - d)^T [C(X^TX)^{-1}C^T]^{-1} (C\\hat{\\beta} - d) / q}{\\text{MSE}}\\]\nFor all our purposes, \\(d = 0\\) (we’re testing if parameters equal zero), so we can drop it!\n\\[F = \\frac{(C\\hat{\\beta})^T [C(X^TX)^{-1}C^T]^{-1} (C\\hat{\\beta}) / q}{\\text{MSE}}\\]\n\nDenominator (MSE): This is always the same - our estimate of \\(\\sigma^2\\)\nThe division by \\(q\\): This just adjusts for the number of restrictions we’re testing\nWhat we need intuition for: \\((C\\hat{\\beta})^T [C(X^TX)^{-1}C^T]^{-1} (C\\hat{\\beta})\\)\n\nLet’s focus JUST on this “numerator of the numerator” and build some intuition!",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Demos",
+      "General F Statistic Intuition"
+    ]
+  },
+  {
+    "objectID": "demo/general-f-statistic.html#the-general-f-test-formula",
+    "href": "demo/general-f-statistic.html#the-general-f-test-formula",
+    "title": "Building Intuition for the F-Statistic Numerator",
+    "section": "",
+    "text": "The general form of the F-statistic with constraint matrix \\(C\\) is:\n\\[F = \\frac{(C\\hat{\\beta} - d)^T [C(X^TX)^{-1}C^T]^{-1} (C\\hat{\\beta} - d) / q}{\\text{MSE}}\\]\nFor all our purposes, \\(d = 0\\) (we’re testing if parameters equal zero), so we can drop it!\n\\[F = \\frac{(C\\hat{\\beta})^T [C(X^TX)^{-1}C^T]^{-1} (C\\hat{\\beta}) / q}{\\text{MSE}}\\]\n\nDenominator (MSE): This is always the same - our estimate of \\(\\sigma^2\\)\nThe division by \\(q\\): This just adjusts for the number of restrictions we’re testing\nWhat we need intuition for: \\((C\\hat{\\beta})^T [C(X^TX)^{-1}C^T]^{-1} (C\\hat{\\beta})\\)\n\nLet’s focus JUST on this “numerator of the numerator” and build some intuition!",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Demos",
+      "General F Statistic Intuition"
+    ]
+  },
+  {
+    "objectID": "demo/general-f-statistic.html#understanding-three-pieces",
+    "href": "demo/general-f-statistic.html#understanding-three-pieces",
+    "title": "Building Intuition for the F-Statistic Numerator",
+    "section": "Understanding Three Pieces",
+    "text": "Understanding Three Pieces\n\n\\(C\\hat{\\beta}\\) - How far are we from 0?\nThis is a vector. For example, if we’re testing \\(\\beta_1 = \\beta_2 = 0\\), then:\n\\[C\\hat{\\beta} = \\begin{bmatrix} \\hat{\\beta}_1 \\\\ \\hat{\\beta}_2 \\end{bmatrix}\\]\nThis vector tells us: “How far from zero are the parameters we’re testing?”\n\n\n\\(C(X^TX)^{-1}C^T\\) - The Variance-Covariance Matrix\nThis is a \\(q \\times q\\) matrix that captures the joint uncertainty. The \\(C\\) matrices “extract” the relevant parts of the full variance-covariance matrix:\n\\(\\text{Var}(C\\hat{\\beta}) = \\sigma^2 \\cdot C(X^TX)^{-1}C^T\\)\nFor our example where \\(C\\) selects \\(\\beta_1\\) and \\(\\beta_2\\), this multiplication gives us:\n\\[= \\sigma^2 \\begin{bmatrix} \\text{Var}(\\hat{\\beta}_1) & \\text{Cov}(\\hat{\\beta}_1, \\hat{\\beta}_2) \\\\ \\text{Cov}(\\hat{\\beta}_1, \\hat{\\beta}_2) & \\text{Var}(\\hat{\\beta}_2) \\end{bmatrix}\\]\n\nDiagonal = how uncertain we are about each parameter\nOff-diagonal = whether parameters move together\n\nThe \\(C\\) matrices do the work of pulling out just the rows and columns we care about from the full \\((X^TX)^{-1}\\) matrix.\n\n\nThe Quadratic Form - A Standardized Distance\n\\[(C\\hat{\\beta})^T [C(X^TX)^{-1}C^T]^{-1} (C\\hat{\\beta})\\]\nThis combines everything into a single number that answers:\n\n“How far from zero are we, accounting for uncertainty and correlation?”\n\nIt’s the squared distance, which is like a correlation-adjusted measure of how extreme our estimates are. It is actually known as a Malahanobis distance.",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Demos",
+      "General F Statistic Intuition"
+    ]
+  },
+  {
+    "objectID": "demo/general-f-statistic.html#why-not-just-use-hatbeta",
+    "href": "demo/general-f-statistic.html#why-not-just-use-hatbeta",
+    "title": "Building Intuition for the F-Statistic Numerator",
+    "section": "Why Not Just Use \\(||\\hat{\\beta}||\\)?",
+    "text": "Why Not Just Use \\(||\\hat{\\beta}||\\)?\nIf we just computed \\(\\sqrt{\\hat{\\beta}_1^2 + \\hat{\\beta}_2^2}\\) (without the middle, \\([C(X^TX)^{-1}C^T]^{-1}\\)), we’d be treating all coefficients equally. But:\n\n\\(\\hat{\\beta}_1\\) might be estimated very precisely (small variance)\n\\(\\hat{\\beta}_2\\) might be estimated poorly (large variance)\nThey might be correlated!\n\nThe quadratic form weights by precision giving more importance to coefficients we estimated well.",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Demos",
+      "General F Statistic Intuition"
+    ]
+  },
+  {
+    "objectID": "demo/general-f-statistic.html#the-bottom-line",
+    "href": "demo/general-f-statistic.html#the-bottom-line",
+    "title": "Building Intuition for the F-Statistic Numerator",
+    "section": "The Bottom Line",
+    "text": "The Bottom Line\nThe numerator \\((C\\hat{\\beta})^T [C(X^TX)^{-1}C^T]^{-1} (C\\hat{\\beta})\\) is just:\n“How far are our estimates from zero, measured in a way that accounts for their precision and correlation?”\nFor the overall F-test (testing all slopes = 0), this exactly equals \\(SS_{reg}\\), the explained sum of squares.",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Demos",
+      "General F Statistic Intuition"
     ]
   },
   {
@@ -1977,7 +2037,7 @@
     "href": "ex/keyterms.html",
     "title": "Study List for Linear Models Exam",
     "section": "",
-    "text": "This list may not be exhaustive but should be a good start, I encourage you to go through our slides, exercises, and notes from the class to best prepare for the upcoming midterm.\n\n\nOLS Estimator:\n\n\\(\\hat{\\boldsymbol{\\beta}} = (\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\mathbf{y}\\)\n\nNormal Equations:\n\n\\(\\mathbf{X}^T\\mathbf{X}\\hat{\\boldsymbol{\\beta}} = \\mathbf{X}^T\\mathbf{y}\\)\n\nHat Matrix:\n\n\\(\\mathbf{H} = \\mathbf{X}(\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\)\n\n\\(\\hat{\\mathbf{y}} = \\mathbf{H}\\mathbf{y}\\)\n\nProperties: \\(\\mathbf{H}^T = \\mathbf{H}\\) (symmetric), \\(\\mathbf{H}^2 = \\mathbf{H}\\) (idempotent)\n\nVariance of OLS:\n\n\\(\\text{Var}(\\hat{\\boldsymbol{\\beta}}) = \\sigma^2(\\mathbf{X}^T\\mathbf{X})^{-1}\\)\n\n\\(\\text{Var}(\\hat{\\beta}_j) = \\sigma^2[(\\mathbf{X}^T\\mathbf{X})^{-1}]_{jj}\\)\n\nSums of Squares:\n\nTSS = \\(\\mathbf{y}^T\\mathbf{y} - n\\bar{y}^2\\) = \\(\\sum_{i=1}^n(y_i - \\bar{y})^2\\)\n\nSS\\(_{\\text{Reg}}\\) = \\(\\mathbf{y}^T\\mathbf{H}\\mathbf{y} - n\\bar{y}^2\\)\n\nRSS = \\(\\mathbf{y}^T(\\mathbf{I}-\\mathbf{H})\\mathbf{y}\\)\n\nFundamental Identity: TSS = SS\\(_{\\text{Reg}}\\) + RSS\n\nCoefficient of Determination:\n\n\\(R^2 = \\frac{\\text{SS}_{\\text{Reg}}}{\\text{TSS}} = 1 - \\frac{\\text{RSS}}{\\text{TSS}}\\)\n\nVariance Estimation:\n\n\\(\\hat{\\sigma}^2 = \\frac{\\text{RSS}}{n-p}\\) (MSE)\n\nTest Statistics:\n\nt-statistic: \\(t = \\frac{\\hat{\\beta}_j}{\\text{se}(\\hat{\\beta}_j)}\\) where \\(\\text{se}(\\hat{\\beta}_j) = \\sqrt{\\hat{\\sigma}^2[(\\mathbf{X}^T\\mathbf{X})^{-1}]_{jj}}\\)\n\nF-statistic: \\(F = \\frac{\\text{SS}_{\\text{Reg}}/(p-1)}{\\text{RSS}/(n-p)} = \\frac{\\text{MS}_{\\text{Reg}}}{\\text{MSE}}\\)\n\n\n\n\n\n\\(E[\\mathbf{A}\\mathbf{Y} + \\mathbf{b}] = \\mathbf{A}E[\\mathbf{Y}] + \\mathbf{b}\\)\n\n\\(\\text{Var}(\\mathbf{A}\\mathbf{Y} + \\mathbf{b}) = \\mathbf{A}\\text{Var}(\\mathbf{Y})\\mathbf{A}^T\\)\n\n\n\n\n\nLinearity: \\(\\mathbf{y} = \\mathbf{X}\\boldsymbol{\\beta} + \\boldsymbol{\\varepsilon}\\)\n\nZero mean errors: \\(E[\\boldsymbol{\\varepsilon}] = \\mathbf{0}\\)\n\nConstant variance & independence: \\(\\text{Var}(\\boldsymbol{\\varepsilon}) = \\sigma^2\\mathbf{I}\\)\n\nFull rank: \\(\\mathbf{X}\\) has full column rank\n\n\n\n\n\nError: \\(n - p\\)\n\nRegression: \\(p - 1\\)\n\nTotal: \\(n - 1\\)\n\n\n\n\nOrthogonality Condition:\n\n\\(\\mathbf{X}^T\\hat{\\boldsymbol{\\varepsilon}} = \\mathbf{0}\\) (residuals perpendicular to column space)\n\nBLUE:\n\nBest = minimum variance\n\nLinear = estimator is linear in \\(\\mathbf{y}\\)\n\nUnbiased = \\(E[\\hat{\\boldsymbol{\\beta}}] = \\boldsymbol{\\beta}\\)\n\nEstimator\n\nFor Unbiased Estimator \\(\\mathbf{C}\\mathbf{y}\\):\n\nMust satisfy: \\(\\mathbf{C}\\mathbf{X} = \\mathbf{I}\\)\n\nPositive Semi-Definite:\n\nMatrix \\(\\mathbf{A}\\) is PSD if \\(\\mathbf{x}^T\\mathbf{A}\\mathbf{x} \\geq 0\\) for all vectors \\(\\mathbf{x}\\)\n\n\\(\\mathbf{D}\\mathbf{D}^T\\) is always PSD\n\n\n\n\n\n\\((\\mathbf{AB})^T = \\mathbf{B}^T\\mathbf{A}^T\\)\n\n\\((\\mathbf{AB})^{-1} = \\mathbf{B}^{-1}\\mathbf{A}^{-1}\\)\n\n\\((\\mathbf{A}^T)^{-1} = (\\mathbf{A}^{-1})^T\\)",
+    "text": "This list may not be exhaustive but should be a good start, I encourage you to go through our slides, exercises, and notes from the class to best prepare for the upcoming midterm.\n\n\nOLS Estimator:\n\n\\(\\hat{\\boldsymbol{\\beta}} = (\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\mathbf{y}\\)\n\nNormal Equations:\n\n\\(\\mathbf{X}^T\\mathbf{X}\\hat{\\boldsymbol{\\beta}} = \\mathbf{X}^T\\mathbf{y}\\)\n\nHat Matrix:\n\n\\(\\mathbf{H} = \\mathbf{X}(\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\)\n\n\\(\\hat{\\mathbf{y}} = \\mathbf{H}\\mathbf{y}\\)\n\nProperties: \\(\\mathbf{H}^T = \\mathbf{H}\\) (symmetric), \\(\\mathbf{H}^2 = \\mathbf{H}\\) (idempotent)\n\nVariance of OLS:\n\n\\(\\text{Var}(\\hat{\\boldsymbol{\\beta}}) = \\sigma^2(\\mathbf{X}^T\\mathbf{X})^{-1}\\)\n\n\\(\\text{Var}(\\hat{\\beta}_j) = \\sigma^2[(\\mathbf{X}^T\\mathbf{X})^{-1}]_{jj}\\)\n\nSums of Squares:\n\nTSS = \\(\\mathbf{y}^T\\mathbf{y} - n\\bar{y}^2\\) = \\(\\sum_{i=1}^n(y_i - \\bar{y})^2\\)\n\nSS\\(_{\\text{Reg}}\\) = \\(\\mathbf{y}^T\\mathbf{H}\\mathbf{y} - n\\bar{y}^2\\)\n\nSSE = \\(\\mathbf{y}^T(\\mathbf{I}-\\mathbf{H})\\mathbf{y}\\)\n\nFundamental Identity: TSS = SS\\(_{\\text{Reg}}\\) + SSE\n\nCoefficient of Determination:\n\n\\(R^2 = \\frac{\\text{SS}_{\\text{Reg}}}{\\text{TSS}} = 1 - \\frac{\\text{SSE}}{\\text{TSS}}\\)\n\nVariance Estimation:\n\n\\(\\hat{\\sigma}^2 = \\frac{\\text{SSE}}{n-p}\\) (MSE)\n\nTest Statistics:\n\nt-statistic: \\(t = \\frac{\\hat{\\beta}_j}{\\text{se}(\\hat{\\beta}_j)}\\) where \\(\\text{se}(\\hat{\\beta}_j) = \\sqrt{\\hat{\\sigma}^2[(\\mathbf{X}^T\\mathbf{X})^{-1}]_{jj}}\\)\n\nF-statistic: \\(F = \\frac{\\text{SS}_{\\text{Reg}}/(p-1)}{\\text{SSE}/(n-p)} = \\frac{\\text{MS}_{\\text{Reg}}}{\\text{MSE}}\\)\n\n\n\n\n\n\\(E[\\mathbf{A}\\mathbf{Y} + \\mathbf{b}] = \\mathbf{A}E[\\mathbf{Y}] + \\mathbf{b}\\)\n\n\\(\\text{Var}(\\mathbf{A}\\mathbf{Y} + \\mathbf{b}) = \\mathbf{A}\\text{Var}(\\mathbf{Y})\\mathbf{A}^T\\)\n\n\n\n\n\nLinearity: \\(\\mathbf{y} = \\mathbf{X}\\boldsymbol{\\beta} + \\boldsymbol{\\varepsilon}\\)\n\nZero mean errors: \\(E[\\boldsymbol{\\varepsilon}] = \\mathbf{0}\\)\n\nConstant variance & independence: \\(\\text{Var}(\\boldsymbol{\\varepsilon}) = \\sigma^2\\mathbf{I}\\)\n\nFull rank: \\(\\mathbf{X}\\) has full column rank\n\n\n\n\n\nError: \\(n - p\\)\n\nRegression: \\(p - 1\\)\n\nTotal: \\(n - 1\\)\n\n\n\n\nOrthogonality Condition:\n\n\\(\\mathbf{X}^T\\hat{\\boldsymbol{\\varepsilon}} = \\mathbf{0}\\) (residuals perpendicular to column space)\n\nQR Decomposition:\n\n\\(\\mathbf{R}\\boldsymbol{\\hat\\beta} = \\mathbf{Q}^T\\mathbf{y}\\)\n\nHow to backsolve to get \\(\\hat\\beta\\)\n\nBLUE:\n\nBest = minimum variance\n\nLinear = estimator is linear in \\(\\mathbf{y}\\)\n\nUnbiased = \\(E[\\hat{\\boldsymbol{\\beta}}] = \\boldsymbol{\\beta}\\)\n\nEstimator\n\nFor Unbiased Estimator \\(\\mathbf{C}\\mathbf{y}\\):\n\nMust satisfy: \\(\\mathbf{C}\\mathbf{X} = \\mathbf{I}\\)\n\nPositive Semi-Definite:\n\nMatrix \\(\\mathbf{A}\\) is PSD if \\(\\mathbf{x}^T\\mathbf{A}\\mathbf{x} \\geq 0\\) for all vectors \\(\\mathbf{x}\\)\n\n\\(\\mathbf{D}\\mathbf{D}^T\\) is always PSD\n\n\n\n\n\n\\((\\mathbf{AB})^T = \\mathbf{B}^T\\mathbf{A}^T\\)\n\n\\((\\mathbf{AB})^{-1} = \\mathbf{B}^{-1}\\mathbf{A}^{-1}\\)\n\n\\((\\mathbf{A}^T)^{-1} = (\\mathbf{A}^{-1})^T\\)",
     "crumbs": [
       "{{< fa calendar >}} Schedule",
       "Exercises",
@@ -1989,7 +2049,7 @@
     "href": "ex/keyterms.html#key-formulas",
     "title": "Study List for Linear Models Exam",
     "section": "",
-    "text": "OLS Estimator:\n\n\\(\\hat{\\boldsymbol{\\beta}} = (\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\mathbf{y}\\)\n\nNormal Equations:\n\n\\(\\mathbf{X}^T\\mathbf{X}\\hat{\\boldsymbol{\\beta}} = \\mathbf{X}^T\\mathbf{y}\\)\n\nHat Matrix:\n\n\\(\\mathbf{H} = \\mathbf{X}(\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\)\n\n\\(\\hat{\\mathbf{y}} = \\mathbf{H}\\mathbf{y}\\)\n\nProperties: \\(\\mathbf{H}^T = \\mathbf{H}\\) (symmetric), \\(\\mathbf{H}^2 = \\mathbf{H}\\) (idempotent)\n\nVariance of OLS:\n\n\\(\\text{Var}(\\hat{\\boldsymbol{\\beta}}) = \\sigma^2(\\mathbf{X}^T\\mathbf{X})^{-1}\\)\n\n\\(\\text{Var}(\\hat{\\beta}_j) = \\sigma^2[(\\mathbf{X}^T\\mathbf{X})^{-1}]_{jj}\\)\n\nSums of Squares:\n\nTSS = \\(\\mathbf{y}^T\\mathbf{y} - n\\bar{y}^2\\) = \\(\\sum_{i=1}^n(y_i - \\bar{y})^2\\)\n\nSS\\(_{\\text{Reg}}\\) = \\(\\mathbf{y}^T\\mathbf{H}\\mathbf{y} - n\\bar{y}^2\\)\n\nRSS = \\(\\mathbf{y}^T(\\mathbf{I}-\\mathbf{H})\\mathbf{y}\\)\n\nFundamental Identity: TSS = SS\\(_{\\text{Reg}}\\) + RSS\n\nCoefficient of Determination:\n\n\\(R^2 = \\frac{\\text{SS}_{\\text{Reg}}}{\\text{TSS}} = 1 - \\frac{\\text{RSS}}{\\text{TSS}}\\)\n\nVariance Estimation:\n\n\\(\\hat{\\sigma}^2 = \\frac{\\text{RSS}}{n-p}\\) (MSE)\n\nTest Statistics:\n\nt-statistic: \\(t = \\frac{\\hat{\\beta}_j}{\\text{se}(\\hat{\\beta}_j)}\\) where \\(\\text{se}(\\hat{\\beta}_j) = \\sqrt{\\hat{\\sigma}^2[(\\mathbf{X}^T\\mathbf{X})^{-1}]_{jj}}\\)\n\nF-statistic: \\(F = \\frac{\\text{SS}_{\\text{Reg}}/(p-1)}{\\text{RSS}/(n-p)} = \\frac{\\text{MS}_{\\text{Reg}}}{\\text{MSE}}\\)",
+    "text": "OLS Estimator:\n\n\\(\\hat{\\boldsymbol{\\beta}} = (\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\mathbf{y}\\)\n\nNormal Equations:\n\n\\(\\mathbf{X}^T\\mathbf{X}\\hat{\\boldsymbol{\\beta}} = \\mathbf{X}^T\\mathbf{y}\\)\n\nHat Matrix:\n\n\\(\\mathbf{H} = \\mathbf{X}(\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\)\n\n\\(\\hat{\\mathbf{y}} = \\mathbf{H}\\mathbf{y}\\)\n\nProperties: \\(\\mathbf{H}^T = \\mathbf{H}\\) (symmetric), \\(\\mathbf{H}^2 = \\mathbf{H}\\) (idempotent)\n\nVariance of OLS:\n\n\\(\\text{Var}(\\hat{\\boldsymbol{\\beta}}) = \\sigma^2(\\mathbf{X}^T\\mathbf{X})^{-1}\\)\n\n\\(\\text{Var}(\\hat{\\beta}_j) = \\sigma^2[(\\mathbf{X}^T\\mathbf{X})^{-1}]_{jj}\\)\n\nSums of Squares:\n\nTSS = \\(\\mathbf{y}^T\\mathbf{y} - n\\bar{y}^2\\) = \\(\\sum_{i=1}^n(y_i - \\bar{y})^2\\)\n\nSS\\(_{\\text{Reg}}\\) = \\(\\mathbf{y}^T\\mathbf{H}\\mathbf{y} - n\\bar{y}^2\\)\n\nSSE = \\(\\mathbf{y}^T(\\mathbf{I}-\\mathbf{H})\\mathbf{y}\\)\n\nFundamental Identity: TSS = SS\\(_{\\text{Reg}}\\) + SSE\n\nCoefficient of Determination:\n\n\\(R^2 = \\frac{\\text{SS}_{\\text{Reg}}}{\\text{TSS}} = 1 - \\frac{\\text{SSE}}{\\text{TSS}}\\)\n\nVariance Estimation:\n\n\\(\\hat{\\sigma}^2 = \\frac{\\text{SSE}}{n-p}\\) (MSE)\n\nTest Statistics:\n\nt-statistic: \\(t = \\frac{\\hat{\\beta}_j}{\\text{se}(\\hat{\\beta}_j)}\\) where \\(\\text{se}(\\hat{\\beta}_j) = \\sqrt{\\hat{\\sigma}^2[(\\mathbf{X}^T\\mathbf{X})^{-1}]_{jj}}\\)\n\nF-statistic: \\(F = \\frac{\\text{SS}_{\\text{Reg}}/(p-1)}{\\text{SSE}/(n-p)} = \\frac{\\text{MS}_{\\text{Reg}}}{\\text{MSE}}\\)",
     "crumbs": [
       "{{< fa calendar >}} Schedule",
       "Exercises",
@@ -2037,7 +2097,7 @@
     "href": "ex/keyterms.html#key-conceptual-points",
     "title": "Study List for Linear Models Exam",
     "section": "",
-    "text": "Orthogonality Condition:\n\n\\(\\mathbf{X}^T\\hat{\\boldsymbol{\\varepsilon}} = \\mathbf{0}\\) (residuals perpendicular to column space)\n\nBLUE:\n\nBest = minimum variance\n\nLinear = estimator is linear in \\(\\mathbf{y}\\)\n\nUnbiased = \\(E[\\hat{\\boldsymbol{\\beta}}] = \\boldsymbol{\\beta}\\)\n\nEstimator\n\nFor Unbiased Estimator \\(\\mathbf{C}\\mathbf{y}\\):\n\nMust satisfy: \\(\\mathbf{C}\\mathbf{X} = \\mathbf{I}\\)\n\nPositive Semi-Definite:\n\nMatrix \\(\\mathbf{A}\\) is PSD if \\(\\mathbf{x}^T\\mathbf{A}\\mathbf{x} \\geq 0\\) for all vectors \\(\\mathbf{x}\\)\n\n\\(\\mathbf{D}\\mathbf{D}^T\\) is always PSD",
+    "text": "Orthogonality Condition:\n\n\\(\\mathbf{X}^T\\hat{\\boldsymbol{\\varepsilon}} = \\mathbf{0}\\) (residuals perpendicular to column space)\n\nQR Decomposition:\n\n\\(\\mathbf{R}\\boldsymbol{\\hat\\beta} = \\mathbf{Q}^T\\mathbf{y}\\)\n\nHow to backsolve to get \\(\\hat\\beta\\)\n\nBLUE:\n\nBest = minimum variance\n\nLinear = estimator is linear in \\(\\mathbf{y}\\)\n\nUnbiased = \\(E[\\hat{\\boldsymbol{\\beta}}] = \\boldsymbol{\\beta}\\)\n\nEstimator\n\nFor Unbiased Estimator \\(\\mathbf{C}\\mathbf{y}\\):\n\nMust satisfy: \\(\\mathbf{C}\\mathbf{X} = \\mathbf{I}\\)\n\nPositive Semi-Definite:\n\nMatrix \\(\\mathbf{A}\\) is PSD if \\(\\mathbf{x}^T\\mathbf{A}\\mathbf{x} \\geq 0\\) for all vectors \\(\\mathbf{x}\\)\n\n\\(\\mathbf{D}\\mathbf{D}^T\\) is always PSD",
     "crumbs": [
       "{{< fa calendar >}} Schedule",
       "Exercises",
@@ -2953,7 +3013,7 @@
     "href": "slides/07-slides.html#what-are-we-minimizing",
     "title": "Midterm Review",
     "section": "What Are We Minimizing?",
-    "text": "What Are We Minimizing?\nSum of squared errors:\n\\[\\text{SSE} = (\\mathbf{y}- \\mathbf{X}\\boldsymbol\\beta)^T(\\mathbf{y}- \\mathbf{X}\\boldsymbol\\beta)\\]"
+    "text": "What Are We Minimizing?\nSum of Squared Errors:\n\\[\\text{SSE} = (\\mathbf{y}- \\mathbf{X}\\boldsymbol\\beta)^T(\\mathbf{y}- \\mathbf{X}\\boldsymbol\\beta)\\]"
   },
   {
     "objectID": "slides/07-slides.html#deriving-the-ols-solution",
@@ -3086,35 +3146,35 @@
     "href": "slides/07-slides.html#the-three-key-quantities-2",
     "title": "Midterm Review",
     "section": "The Three Key Quantities",
-    "text": "The Three Key Quantities\nResidual Sum of Squares (RSS): \\[\\text{RSS} = \\sum_{i=1}^n (y_i - \\hat{y}_i)^2 = \\mathbf{y}^T(\\mathbf{I} - \\mathbf{H})\\mathbf{y}\\]"
+    "text": "The Three Key Quantities\nSum of Squared Errors (SSE): \\[\\text{SSE} = \\sum_{i=1}^n (y_i - \\hat{y}_i)^2 = \\mathbf{y}^T(\\mathbf{I} - \\mathbf{H})\\mathbf{y}\\]"
   },
   {
     "objectID": "slides/07-slides.html#interpreting-the-quantities",
     "href": "slides/07-slides.html#interpreting-the-quantities",
     "title": "Midterm Review",
     "section": "Interpreting the Quantities",
-    "text": "Interpreting the Quantities\nTSS: Total variation in the data\n“How spread out are my y-values?”\nSS\\(_{\\text{Reg}}\\): Variation explained by the model\n“How much variation did our model capture?”\nRSS: Variation left unexplained\n“How much did we miss with our model?”"
+    "text": "Interpreting the Quantities\nTSS: Total variation in the data\n“How spread out are my y-values?”\nSS\\(_{\\text{Reg}}\\): Variation explained by the model\n“How much variation did our model capture?”\nSSE: Variation left unexplained\n“How much did we miss with our model?”"
   },
   {
     "objectID": "slides/07-slides.html#the-fundamental-identity",
     "href": "slides/07-slides.html#the-fundamental-identity",
     "title": "Midterm Review",
     "section": "The Fundamental Identity",
-    "text": "The Fundamental Identity\nTotal variation = Explained + Unexplained\n\\[\\text{TSS} = \\text{SS}_{\\text{Reg}} + \\text{RSS}\\]"
+    "text": "The Fundamental Identity\nTotal variation = Explained + Unexplained\n\\[\\text{TSS} = \\text{SS}_{\\text{Reg}} + \\text{SSE}\\]"
   },
   {
     "objectID": "slides/07-slides.html#coefficient-of-determination-r²",
     "href": "slides/07-slides.html#coefficient-of-determination-r²",
     "title": "Midterm Review",
     "section": "Coefficient of Determination (R²)",
-    "text": "Coefficient of Determination (R²)\nDefinition: Proportion of variation explained by the model\n\\[R^2 = \\frac{\\text{SS}_{\\text{Reg}}}{\\text{TSS}} = 1 - \\frac{\\text{RSS}}{\\text{TSS}}\\]"
+    "text": "Coefficient of Determination (R²)\nDefinition: Proportion of variation explained by the model\n\\[R^2 = \\frac{\\text{SS}_{\\text{Reg}}}{\\text{TSS}} = 1 - \\frac{\\text{SSE}}{\\text{TSS}}\\]"
   },
   {
     "objectID": "slides/07-slides.html#estimating-sigma2",
     "href": "slides/07-slides.html#estimating-sigma2",
     "title": "Midterm Review",
     "section": "Estimating \\(\\sigma^2\\)",
-    "text": "Estimating \\(\\sigma^2\\)\nTrue error variance: \\[\\text{Var}(\\varepsilon_i) = \\sigma^2\\]\nUnbiased estimator: \\[\\hat{\\sigma}^2 = \\frac{\\text{RSS}}{n-p}\\]\nwhere \\(n-p\\) are the degrees of freedom (observations minus parameters)\nAlso called Mean Square Error (MSE)"
+    "text": "Estimating \\(\\sigma^2\\)\nTrue error variance: \\[\\text{Var}(\\varepsilon_i) = \\sigma^2\\]\nUnbiased estimator: \\[\\hat{\\sigma}^2 = \\frac{\\text{SSE}}{n-p}\\]\nwhere \\(n-p\\) are the degrees of freedom (observations minus parameters)\nAlso called Mean Square Error (MSE)"
   },
   {
     "objectID": "slides/07-slides.html#testing-single-coefficients",
@@ -3142,7 +3202,7 @@
     "href": "slides/07-slides.html#overall-f-test",
     "title": "Midterm Review",
     "section": "Overall F-Test",
-    "text": "Overall F-Test\nTests whether the model is useful at all\nNull: \\(H_0: \\beta_1 = \\beta_2 = \\cdots = \\beta_{p-1} = 0\\)\n(all slopes equal zero, only intercept remains)\nTest statistic: \\[F = \\frac{\\text{SS}_{\\text{Reg}}/(p-1)}{\\text{RSS}/(n-p)} \\sim F_{p-1, n-p}\\]"
+    "text": "Overall F-Test\nTests whether the model is useful at all\nNull: \\(H_0: \\beta_1 = \\beta_2 = \\cdots = \\beta_{p-1} = 0\\)\n(all slopes equal zero, only intercept remains)\nTest statistic: \\[F = \\frac{\\text{SS}_{\\text{Reg}}/(p-1)}{\\text{SSE}/(n-p)} \\sim F_{p-1, n-p}\\]"
   },
   {
     "objectID": "slides/07-slides.html#f-test-interpretation",
@@ -3170,7 +3230,7 @@
     "href": "slides/07-slides.html#general-linear-hypotheses-1",
     "title": "Midterm Review",
     "section": "General Linear Hypotheses",
-    "text": "General Linear Hypotheses\nTest statistic: \\[F = \\frac{(\\mathbf{C}\\hat{\\boldsymbol{\\beta}} - \\mathbf{d})^T[\\mathbf{C}(\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{C}^T]^{-1}(\\mathbf{C}\\hat{\\boldsymbol{\\beta}} - \\mathbf{d})/q}{\\text{RSS}/(n-p)}\\]\nUnder \\(H_0\\): \\(F \\sim F_{q, n-p}\\)"
+    "text": "General Linear Hypotheses\nTest statistic: \\[F = \\frac{(\\mathbf{C}\\hat{\\boldsymbol{\\beta}} - \\mathbf{d})^T[\\mathbf{C}(\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{C}^T]^{-1}(\\mathbf{C}\\hat{\\boldsymbol{\\beta}} - \\mathbf{d})/q}{\\text{SSE}/(n-p)}\\]\nUnder \\(H_0\\): \\(F \\sim F_{q, n-p}\\)"
   },
   {
     "objectID": "slides/07-slides.html#examples-of-linear-hypotheses",
@@ -3191,14 +3251,14 @@
     "href": "slides/07-slides.html#the-anova-table",
     "title": "Midterm Review",
     "section": "The ANOVA Table",
-    "text": "The ANOVA Table\n\n\n\n\n\n\n\n\n\n\nSource\ndf\nSum of Squares\nMean Square\nF\n\n\n\n\nRegression\n\\(p-1\\)\nSS\\(_{\\text{Reg}}\\)\nMS\\(_{\\text{Reg}}\\)\nMS\\(_{\\text{Reg}}\\)/MSE\n\n\nError\n\\(n-p\\)\nRSS\nMSE\n\n\n\nTotal\n\\(n-1\\)\nTSS"
+    "text": "The ANOVA Table\n\n\n\n\n\n\n\n\n\n\nSource\ndf\nSum of Squares\nMean Square\nF\n\n\n\n\nRegression\n\\(p-1\\)\nSS\\(_{\\text{Reg}}\\)\nMS\\(_{\\text{Reg}}\\)\nMS\\(_{\\text{Reg}}\\)/MSE\n\n\nError\n\\(n-p\\)\nSSE\nMSE\n\n\n\nTotal\n\\(n-1\\)\nTSS"
   },
   {
     "objectID": "slides/07-slides.html#mean-squares",
     "href": "slides/07-slides.html#mean-squares",
     "title": "Midterm Review",
     "section": "Mean Squares",
-    "text": "Mean Squares\n\nMS\\(_{\\text{Reg}}\\) = SS\\(_{\\text{Reg}}\\)/(p-1)\nMSE = RSS/(n-p) = \\(\\hat{\\sigma}^2\\)"
+    "text": "Mean Squares\n\nMS\\(_{\\text{Reg}}\\) = SS\\(_{\\text{Reg}}\\)/(p-1)\nMSE = SSE/(n-p) = \\(\\hat{\\sigma}^2\\)"
   },
   {
     "objectID": "slides/07-slides.html#understanding-p-values",
