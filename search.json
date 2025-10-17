@@ -1994,6 +1994,18 @@
     ]
   },
   {
+    "objectID": "ex/ex-7.html#bonus",
+    "href": "ex/ex-7.html#bonus",
+    "title": "Confidence Intervals and Coverage",
+    "section": "Bonus",
+    "text": "Bonus\nTry to come up with simulation scenarios that “break” 95% coverage. What assumptions did you make in these scenarios?",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 7: Confidence Intervals and Coverage"
+    ]
+  },
+  {
     "objectID": "help-project.html",
     "href": "help-project.html",
     "title": "Creating or Opening a Project",
