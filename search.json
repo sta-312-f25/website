@@ -1938,7 +1938,7 @@
     "href": "ex/ex-7.html#problem-2",
     "title": "Confidence Intervals and Coverage",
     "section": "Problem 2",
-    "text": "Problem 2\nUsing the same data from Problem 1:\na) Implement a residual bootstrap to construct a 95% confidence interval for \\(\\beta_1\\).\nb) Compare your bootstrap confidence interval to the parametric confidence interval from Problem 1. Are they similar? Why or why not?\nc) Create a histogram of your bootstrap distribution of \\(\\hat{\\beta}_1\\) and overlay the theoretical normal distribution (I’ll get you started:)",
+    "text": "Problem 2\nUsing the same data from Problem 1:\na) Implement a bootstrap to construct a 95% confidence interval for \\(\\beta_1\\).\nb) Compare your bootstrap confidence interval to the parametric confidence interval from Problem 1. Are they similar? Why or why not?\nc) Create a histogram of your bootstrap distribution of \\(\\hat{\\beta}_1\\) and overlay the theoretical normal distribution.",
     "crumbs": [
       "{{< fa calendar >}} Schedule",
       "Exercises",
