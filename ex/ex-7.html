@@ -608,9 +608,16 @@ window.Quarto = {
 </ul>
 <p>Write a simulation function that fits a misspecified model, omitting <span class="math inline">\(x_2\)</span> (i.e., the model should be <code>lm(y ~ x1)</code>) and then complete the same simulation as above, calculating the coverage probability for the interval for <span class="math inline">\(\beta_1\)</span>.</p>
 <p><strong>a)</strong> What coverage probability did you obtain? How does it compare to 95%?</p>
-<p><strong>b)</strong> In the simulation code, the true effect of <span class="math inline">\(x_1\)</span> on y is 1.5. When we fit the model omitting <span class="math inline">\(x_2\)</span>, what happens to our estimate of <span class="math inline">\(\beta_1\)</span>? Is it biased? In which direction?</p>
+<p><strong>b)</strong> In the simulation code, the true effect of <span class="math inline">\(x_1\)</span> on y is 1.5. When we fit the model omitting <span class="math inline">\(x_2\)</span>, what happens to our estimate of <span class="math inline">\(\beta_1\)</span>? Is it biased?</p>
 <p><strong>c)</strong> Calculate the average value of <span class="math inline">\(\hat{\beta}_1\)</span> across all simulations and compare it to the true value of 1.5. This is the bias in the coefficient estimate.</p>
-<p><strong>d)</strong> Explain why omitted variable bias affects confidence interval coverage. Even though the confidence intervals are correctly constructed for the model we fit, why don’t they have the correct coverage for the true parameter?</p>
+<p>Now fit this model:<br>
+- True model: <span class="math inline">\(y = 2 + 1.5x_1 + 2x_2+\varepsilon\)</span> where <span class="math inline">\(\varepsilon \sim N(0, 1)\)</span><br>
+- Sample size: n = 30<br>
+- Generate <span class="math inline">\(x_2\)</span> from <span class="math inline">\(N(0, 1)\)</span><br>
+- Generate <span class="math inline">\(x_1 = x_2 + \varepsilon_x\)</span> where <span class="math inline">\(\varepsilon_x~N(0, 1)\)</span><br>
+- Number of simulations: 5000</p>
+<p>Write a new simulation function using the above specifications that fits a misspecified model, omitting <span class="math inline">\(x_2\)</span> (i.e., the model should be <code>lm(y ~ x1)</code>) and then complete the same simulation as above, calculating the coverage probability for the interval for <span class="math inline">\(\beta_1\)</span>.</p>
+<p><strong>d)</strong> Explain how omitted variable bias could affect confidence interval coverage. Even though the confidence intervals are correctly constructed for the model we fit, why might they not have the correct coverage for the true parameter?</p>
 </section><section id="bonus" class="level2"><h2 class="anchored" data-anchor-id="bonus">Bonus</h2>
 <p>Try to come up with simulation scenarios that “break” 95% coverage. What assumptions did you make in these scenarios?</p>
 
