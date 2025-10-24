@@ -658,31 +658,49 @@ window.Quarto = {
 <p><strong>c)</strong> Implement Strategy 2. What is the Type I error rate when testing <span class="math inline">\(H_0\)</span> using this approach?</p>
 <p><strong>d)</strong> Reflect on the trade-off: Strategy 1 (test-then-add) inflates Type I error when the relationship is truly linear, but Strategy 2 (always use splines) might be overly complex. What would you recommend to a researcher in practice?</p>
 </section><section id="problem-7" class="level2"><h2 class="anchored" data-anchor-id="problem-7">Problem 7</h2>
-<p>When the constant variance assumption is violated OLS remains unbiased but is no longer the most efficient estimator. Weighted least squares (WLS) provides a solution.</p>
-<p>Instead of minimizing: <span class="math display">\[(\mathbf{y} - \mathbf{X}\boldsymbol{\beta})^T(\mathbf{y} - \mathbf{X}\boldsymbol{\beta})\]</span></p>
-<p>WLS minimizes: <span class="math display">\[(\mathbf{y} - \mathbf{X}\boldsymbol{\beta})^T\mathbf{W}(\mathbf{y} - \mathbf{X}\boldsymbol{\beta})\]</span></p>
-<p>where <span class="math inline">\(\mathbf{W} = \text{diag}(w_1, \ldots, w_n)\)</span> is a diagonal matrix of weights. This leads to the solution: <span class="math display">\[\hat{\boldsymbol{\beta}} = (\mathbf{X}^T\mathbf{W}\mathbf{X})^{-1}\mathbf{X}^T\mathbf{W}\mathbf{y}\]</span></p>
-<p>The theory says the optimal weights are <span class="math inline">\(w_i = 1/\sigma^2(x_i)\)</span>, where <span class="math inline">\(\sigma^2(x_i)\)</span> is the variance of the error at <span class="math inline">\(x_i\)</span>. But in practice, we don’t know these variances, we must estimate them from the data.</p>
-<p><strong>a)</strong></p>
-<p><strong>Generate data</strong> with <span class="math inline">\(n = 200\)</span> where: - <span class="math inline">\(x \sim \text{N}(0, 1)\)</span> - <span class="math inline">\(y = 3 + 1.5x + \varepsilon\)</span> where <span class="math inline">\(\varepsilon \sim N(0, (0.5x)^2)\)</span></p>
-<p>Note that the variance increases with <span class="math inline">\(x\)</span>: <span class="math inline">\(\text{Var}(\varepsilon_i) = (0.5x_i)^2\)</span>.</p>
-<p>Implement the following procedure to estimate weights:</p>
-<p><strong>Step 1:</strong> Fit an initial OLS model <code>lm(y ~ x)</code> and obtain the residuals <span class="math inline">\(\hat{\varepsilon}_i\)</span>.</p>
-<p><strong>Step 2:</strong> Regress the absolute residuals on <span class="math inline">\(x\)</span>: <code>lm(abs(resid) ~ x)</code>. Let <span class="math inline">\(\hat{s}_i\)</span> denote the fitted values from this regression. This gives you a smooth estimate of how the variance changes with <span class="math inline">\(x\)</span>.</p>
-<p><strong>Step 3:</strong> Construct weights <span class="math inline">\(w_i = 1/\hat{s}_i^2\)</span> and fit the WLS model: <code>lm(y ~ x, weights = w)</code>.</p>
-<p>Create a plot showing:</p>
+<p>A cubic spline with knots at <span class="math inline">\(k_1, k_2, \ldots, k_K\)</span> can be represented using the following basis functions:</p>
 <ul>
-<li>The original data points</li>
-<li>The OLS fitted line</li>
-<li>The WLS fitted line</li>
+<li>
+<span class="math inline">\(b_1(x) = 1\)</span> (intercept)</li>
+<li>
+<span class="math inline">\(b_2(x) = x\)</span><br>
+</li>
+<li><span class="math inline">\(b_3(x) = x^2\)</span></li>
+<li><span class="math inline">\(b_4(x) = x^3\)</span></li>
+<li>
+<span class="math inline">\(b_{4+j}(x) = (x - k_j)^3_+ = \begin{cases} (x - k_j)^3 &amp; \text{if } x &gt; k_j \\ 0 &amp; \text{otherwise} \end{cases}\)</span> for <span class="math inline">\(j = 1, \ldots, K\)</span>
+</li>
 </ul>
-<p><strong>b)</strong> Compare the standard error of <span class="math inline">\(\hat{\beta}_1\)</span> from OLS versus WLS. Which method gives a smaller standard error?</p>
-<p>Create residual plots (residuals vs.&nbsp;fitted values) for both models. Do the residuals from WLS look more homoskedastic than those from OLS?</p>
-<p><strong>c)</strong> Use the residuals from your WLS fit to re-estimate the variance function (repeat Steps 2-3 using WLS residuals instead of OLS residuals).</p>
-<p>Do the coefficient estimates <span class="math inline">\(\hat{\beta}_0\)</span> and <span class="math inline">\(\hat{\beta}_1\)</span> change substantially after this second iteration?</p>
-<p><strong>d)</strong> Generate a new dataset with <span class="math inline">\(n = 200\)</span> where: - <span class="math inline">\(x \sim N(0, 1)\)</span> - <span class="math inline">\(y = 3 + 1.5x + \varepsilon\)</span> where <span class="math inline">\(\varepsilon \sim N(0, 1)\)</span></p>
-<p>The variance is now <strong>constant</strong> (no heteroskedasticity).</p>
-<p>Apply the WLS procedure from part (a) to this homoskedastic data. Compare the standard error of <span class="math inline">\(\hat{\beta}_1\)</span> for OLS versus WLS. What happens when you apply WLS to data that doesn’t need it?</p>
+<p>The fitted model is: <span class="math inline">\(\hat{y} = \beta_0 + \beta_1 x + \beta_2 x^2 + \beta_3 x^3 + \sum_{j=1}^K \beta_{4+j}(x - k_j)^3_+\)</span></p>
+<p>Consider the following dataset with n = 10:</p>
+<div class="cell">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">5</span>, <span class="fl">6</span>, <span class="fl">7</span>, <span class="fl">8</span>, <span class="fl">9</span><span class="op">)</span></span>
+<span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">2.5</span>, <span class="fl">4</span>, <span class="fl">5</span>, <span class="fl">5.5</span>, <span class="fl">6</span>, <span class="fl">8</span>, <span class="fl">11</span>, <span class="fl">15</span>, <span class="fl">20</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We’ll place knots at <span class="math inline">\(k_1 = 3\)</span> and <span class="math inline">\(k_2 = 6\)</span>.</p>
+<p><strong>a)</strong> Manually construct the design matrix <span class="math inline">\(\mathbf{X}\)</span> for the cubic spline with these two knots. Your matrix should have 10 rows (one per observation) and 6 columns: <span class="math inline">\([1, x, x^2, x^3, (x-3)^3_+, (x-6)^3_+]\)</span>.</p>
+<p>Show the full <span class="math inline">\(10 \times 6\)</span> matrix with all values filled in.</p>
+<p><strong>b)</strong> Fit the cubic spline model in R using your basis functions.</p>
+<p>Report the estimated coefficients <span class="math inline">\(\hat{\beta}_0, \hat{\beta}_1, \hat{\beta}_2, \hat{\beta}_3, \hat{\beta}_4, \hat{\beta}_5\)</span>.</p>
+<p><strong>c)</strong> Using your fitted coefficients, manually calculate <span class="math inline">\(\hat{y}\)</span> for three observations: - At <span class="math inline">\(x = 2\)</span> (before the first knot) - At <span class="math inline">\(x = 4.5\)</span> (between the two knots)<br>
+- At <span class="math inline">\(x = 8\)</span> (after the second knot)</p>
+<p>For each, show which basis functions are “active” (non-zero) and write out the prediction formula explicitly.</p>
+<p><strong>d)</strong> Compare your manual cubic spline to R’s built-in <code><a href="https://rdrr.io/r/splines/bs.html">bs()</a></code> function:</p>
+<div class="cell">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">splines</span><span class="op">)</span></span>
+<span><span class="va">model_bs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">y</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/splines/bs.html">bs</a></span><span class="op">(</span><span class="va">x</span>, knots <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">6</span><span class="op">)</span>, degree <span class="op">=</span> <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Plot both fitted curves along with the data. They should be identical (or very close). Create a single plot showing:</p>
+<ul>
+<li>The original data points<br>
+</li>
+<li>Your manual cubic spline fit</li>
+<li>The <code><a href="https://rdrr.io/r/splines/bs.html">bs()</a></code> function fit (use a different color/style)<br>
+</li>
+<li>Vertical lines at the knot locations</li>
+</ul>
+<p><strong>e)</strong> Natural cubic splines add the additional constraint that the function is linear (not cubic) beyond the boundary knots. This means setting the second derivative to zero at the boundaries.</p>
+<p>Fit a natural cubic spline using <code>ns(x, knots = c(3, 6))</code> and compare it to your unconstrained cubic spline. Plot both curves. Do you notice any differences?</p>
 
 
 </section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
