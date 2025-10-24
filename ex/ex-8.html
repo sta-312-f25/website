@@ -554,34 +554,8 @@ window.Quarto = {
 <p><strong>b)</strong> Would any observations be considered influential using the rule of thumb <span class="math inline">\(D_i &gt; 4/n\)</span>?</p>
 <p><strong>c)</strong> Refit the model excluding the most influential point. How much do <span class="math inline">\(\hat{\beta}_0\)</span> and <span class="math inline">\(\hat{\beta}_1\)</span> change? Does this confirm the Cook’s distance calculation?</p>
 </section><section id="problem-3" class="level2"><h2 class="anchored" data-anchor-id="problem-3">Problem 3</h2>
-<p>In this problem, you’ll investigate the impact of non-constant variance on confidence interval coverage and how transformations can help.</p>
-<p><strong>Simulation setup:</strong> - Sample size: n = 30<br>
-- Generate x from <span class="math inline">\(N(0, 1)\)</span><br>
-- True model: <span class="math inline">\(y = 5 + 1.5x + \varepsilon\)</span> - Number of simulations: 5000</p>
-<p>Instead of generating your <span class="math inline">\(\varepsilon\sim N(0,1)\)</span> let’s have it depend on <span class="math inline">\(x\)</span> like this like in Problem 5 from the last exercise:</p>
-<div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sigma</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="va">x</span> <span class="op">/</span> <span class="fl">2</span><span class="op">)</span>  </span>
-<span><span class="va">epsilon</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n</span>, <span class="fl">0</span>, <span class="va">sigma</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>a)</strong> Write a simulation function that:</p>
-<ol type="1">
-<li>Generates data from the true model</li>
-<li>Fit <code>lm(y ~ x)</code>
-</li>
-<li>Constructs a 95% confidence interval for <span class="math inline">\(\beta_1\)</span>
-</li>
-<li>Checks whether the interval contains the true slope (1.5)</li>
-<li>Returns TRUE or FALSE</li>
-</ol>
-<p><strong>b)</strong> Calculate the coverage probability. What did you obtain? Is it close to 95%?</p>
-<p><strong>c)</strong> For one simulated dataset, create two plots side by side: - Left: Scatterplot of y vs.&nbsp;x with fitted line - Right: Residuals vs.&nbsp;fitted values plot</p>
-<p>Describe what you see. What assumption is violated?</p>
-<p><strong>d)</strong> Now repeat the simulation, but this time: 1. Generate the same data 2. Fit a model that transforms <span class="math inline">\(y\)</span> using the <code>log</code>. 3. Exponentiate your confidence interval and compare whether this contains 1.5 4. Calculate the 95% CI coverage for <span class="math inline">\(\beta_1\)</span></p>
-<p>What coverage probability do you obtain now? How does it compare to part (b)?</p>
-<p><strong>e)</strong> For the same simulated dataset from part (c), create the same two plots but using <code>log(y)</code> as the response. How do the diagnostics look now?</p>
-</section><section id="problem-4" class="level2"><h2 class="anchored" data-anchor-id="problem-4">Problem 4</h2>
-<p>Consider a dataset where the relationship between y and x is quadratic: <span class="math inline">\(y = 2 + 3x - 0.5x^2 + \varepsilon\)</span> where <span class="math inline">\(\varepsilon \sim N(0, 1)\)</span>.</p>
-<p>Generate data with n = 100 and x from uniform(0, 5).</p>
+<p>Consider a dataset where the relationship between y and x is quadratic: <span class="math inline">\(y = 2 + 3x - 0.5x^2 + \varepsilon\)</span> where <span class="math inline">\(\varepsilon \sim N(0, 2)\)</span>.</p>
+<p>Generate data with n = 100 and x from a standard normal distribution (<span class="math inline">\(N(0,1)\)</span>).</p>
 <p><strong>a)</strong> Fit a linear model <code>lm(y ~ x)</code> and create a partial regression plot. Since there’s only one predictor, this is just a scatterplot of y vs.&nbsp;x with the fitted line. Does the relationship look linear?</p>
 <p><strong>b)</strong> Create a residuals vs.&nbsp;fitted values plot. What pattern do you see? What does this suggest about the model specification?</p>
 <p><strong>c)</strong> Now fit a quadratic model <code>lm(y ~ x + I(x^2))</code>. Create the residuals vs.&nbsp;fitted values plot for this model. How does it compare to part (b)?</p>
@@ -594,9 +568,19 @@ window.Quarto = {
 <li>The change in predicted y for an IQR increase in x</li>
 </ul>
 <p><strong>e)</strong> Interpret this IQR change. Why is this more useful than trying to interpret individual coefficients in a polynomial model?</p>
-</section><section id="problem-5" class="level2"><h2 class="anchored" data-anchor-id="problem-5">Problem 5</h2>
+</section><section id="problem-4" class="level2"><h2 class="anchored" data-anchor-id="problem-4">Problem 4</h2>
 <p>Using the same data generation as Problem 4 (quadratic relationship):</p>
-<p><strong>a)</strong> Fit three models: 1. Linear: <code>lm(y ~ x)</code> 2. Quadratic: <code>lm(y ~ x + I(x^2))</code> 3. Natural spline with 4 df: <code>lm(y ~ ns(x, df = 4))</code></p>
+<p><strong>a)</strong> Fit four models:</p>
+<ol type="1">
+<li>Linear: <code>lm(y ~ x)</code><br>
+</li>
+<li>Quadratic: <code>lm(y ~ x + I(x^2))</code><br>
+</li>
+<li>Natural spline with 3 df: <code>lm(y ~ ns(x, df = 3))</code><br>
+</li>
+<li>10th order Polynomial: <code>lm(y ~ poly(x, 10))</code>
+</li>
+</ol>
 <p>Create a plot showing:</p>
 <ul>
 <li>The data points<br>
@@ -607,33 +591,98 @@ window.Quarto = {
 </ul>
 <p>Which model comes closest to the true relationship?</p>
 <p><strong>b)</strong> Calculate the <span class="math inline">\(R^2\)</span> for all three models. Which has the highest <span class="math inline">\(R^2\)</span>? Does this necessarily mean it’s the best model?</p>
-<p><strong>c)</strong> For the natural spline model, what are the knot locations? (Hint: use <code>attr(ns(x, df = 4), "knots")</code>)</p>
-<p><strong>d)</strong> Create a visualization showing the four spline basis functions. Describe how they differ from each other and note their behavior at the boundaries.</p>
+<p><strong>c)</strong> For the natural spline model, what are the knot locations? (Hint: use <code>attr(ns(x, df = 3), "knots")</code>)</p>
+</section><section id="problem-5" class="level2"><h2 class="anchored" data-anchor-id="problem-5">Problem 5</h2>
+<p>Suppose we fit a linear regression on the log scale: <code>log(y) ~ x</code>, obtaining estimates <span class="math inline">\(\hat{\beta}_0\)</span> and <span class="math inline">\(\hat{\beta}_1\)</span>.</p>
+<p><strong>a)</strong> Show that the naive back-transformation <span class="math inline">\(\hat{y} = \exp(\hat{\beta}_0 + \hat{\beta}_1 x)\)</span> is a <strong>biased</strong> estimator of <span class="math inline">\(E[y \mid x]\)</span>.</p>
+<p><em>Hint: Start by writing <span class="math inline">\(E[y \mid x]\)</span> in terms of <span class="math inline">\(\beta_0\)</span>, <span class="math inline">\(\beta_1\)</span>, and <span class="math inline">\(E[\exp(\varepsilon)]\)</span>. What is <span class="math inline">\(E[\exp(\varepsilon)]\)</span> when <span class="math inline">\(\varepsilon \sim N(0, \sigma^2)\)</span>?</em></p>
+<p><strong>b)</strong> Derive the correct formula for <span class="math inline">\(E[y \mid x]\)</span> that includes the necessary correction factor.</p>
+<p><strong>c)</strong> Write a simulation to verify your answer from part (b). We are going to generate data from the model <span class="math inline">\(y = \exp(2 + 1.5x + \varepsilon)\)</span> where <span class="math inline">\(x \sim N(0,1)\)</span>, <span class="math inline">\(\varepsilon \sim N(0, 0.25)\)</span>. First, let’s get the true <span class="math inline">\(E[y \mid x = 0]\)</span> by running:</p>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10000</span></span>
+<span><span class="va">e</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n</span>, <span class="fl">0</span>, <span class="fl">0.25</span><span class="op">)</span></span>
+<span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="fl">2</span> <span class="op">+</span> <span class="va">e</span><span class="op">)</span></span>
+<span><span class="va">true_y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now let’s simulate multiple data sets. Let’s have <span class="math inline">\(n = 200\)</span>. For each simulated dataset:</p>
+<ul>
+<li>Fit the model <code>log(y) ~ x</code><br>
+</li>
+<li>Compute a prediction at <span class="math inline">\(x = 0\)</span> using the naive back-transformation (i.e.&nbsp;just exponentiate the predicted values)<br>
+</li>
+<li>Compute a prediction at <span class="math inline">\(x = 0\)</span> using the corrected back-transformation from part (b)</li>
+</ul>
+<p>Repeat this process 5000 times and compare the average of each prediction method to the true value of <span class="math inline">\(E[y \mid x = 0]\)</span>. Which estimator is closer to the truth?</p>
+<p><strong>d)</strong> Based on your simulation results, approximately what percentage bias does the naive approach have? How does this relate to <span class="math inline">\(\sigma^2\)</span>?</p>
+<p><strong>e)</strong> Suppose <span class="math inline">\(\sigma^2\)</span> were much larger, say <span class="math inline">\(\sigma^2 = 1\)</span>. Without running a new simulation, predict approximately what the percentage bias would be for the naive approach in this case.</p>
+<p><strong>Mathematical fact you may use:</strong> If <span class="math inline">\(Z \sim N(\mu, \sigma^2)\)</span>, then <span class="math inline">\(E[\exp(Z)] = \exp(\mu + \sigma^2/2)\)</span>.</p>
 </section><section id="problem-6" class="level2"><h2 class="anchored" data-anchor-id="problem-6">Problem 6</h2>
-<p>In this problem, you’ll investigate what happens when we fit a linear model to data that requires a log transformation of the response.</p>
-<p><strong>Simulation setup:</strong> - True model: <span class="math inline">\(\log(y) = 1 + 2x + \varepsilon\)</span> where <span class="math inline">\(\varepsilon \sim N(0, 0.5)\)</span> - This means: <span class="math inline">\(y = \exp(1 + 2x + \varepsilon)\)</span> - Sample size: n = 60 - Generate x from uniform(0, 3) - Number of simulations: 2000</p>
-<p><strong>a)</strong> For a single simulated dataset, create a 2×2 grid of diagnostic plots: 1. Top left: y vs.&nbsp;x with fitted line from <code>lm(y ~ x)</code> 2. Top right: Residuals vs.&nbsp;fitted for <code>lm(y ~ x)</code> 3. Bottom left: log(y) vs.&nbsp;x with fitted line from <code>lm(log(y) ~ x)</code> 4. Bottom right: Residuals vs.&nbsp;fitted for <code>lm(log(y) ~ x)</code></p>
-<p>Describe what you observe about constant variance in each case.</p>
-<p><strong>b)</strong> Using the incorrect model <code>lm(y ~ x)</code>, create a Q-Q plot of the residuals. Do the residuals appear normally distributed? What pattern do you see?</p>
-<p><strong>c)</strong> Using the correct model <code>lm(log(y) ~ x)</code>, create a Q-Q plot of the residuals. How does this compare to part (b)?</p>
-<p><strong>d)</strong> The true model is <span class="math inline">\(\log(y) = 1 + 2x + \varepsilon\)</span>. When we fit <code>lm(log(y) ~ x)</code> and obtain coefficients <span class="math inline">\(\hat{\beta}_0\)</span> and <span class="math inline">\(\hat{\beta}_1\)</span>, we can back-transform to get predictions on the original scale: <span class="math display">\[\hat{y} = \exp(\hat{\beta}_0 + \hat{\beta}_1 x)\]</span></p>
-<p>For a single dataset, calculate the predicted y at x = 1.5 using: - The incorrect model: <code>lm(y ~ x)</code> - The correct model with back-transformation: <code>exp(predict(lm(log(y) ~ x)))</code> - The true expected value: <span class="math inline">\(E[y|x=1.5] = \exp(1 + 2(1.5) + 0.5^2/2) = \exp(4.125)\)</span></p>
-<p>(Note: The extra <span class="math inline">\(0.5^2/2\)</span> term appears because <span class="math inline">\(E[\exp(\varepsilon)] = \exp(\sigma^2/2)\)</span> when <span class="math inline">\(\varepsilon \sim N(0, \sigma^2)\)</span>)</p>
-<p>Which model’s prediction is closer to the truth?</p>
-</section><section id="problem-7" class="level2"><h2 class="anchored" data-anchor-id="problem-7">Problem 7</h2>
 <p>This problem explores Type I error inflation when we test for non-linearity and add terms based on significance tests, compared to using flexible modeling from the start.</p>
-<p><strong>Simulation setup:</strong> - True model: <span class="math inline">\(y = 2 + 3x + \varepsilon\)</span> where <span class="math inline">\(\varepsilon \sim N(0, 4)\)</span> (purely linear!) - Sample size: n = 50 - Generate x from uniform(0, 5) - Number of simulations: 3000</p>
-<p><strong>Strategy 1: Test-then-add approach</strong> 1. Fit <code>lm(y ~ x)</code> 2. Test if adding <span class="math inline">\(x^2\)</span> is significant at <span class="math inline">\(\alpha = 0.05\)</span> by fitting <code>lm(y ~ x + I(x^2))</code> and checking if the p-value for the <span class="math inline">\(x^2\)</span> coefficient is &lt; 0.05 3. If significant, use the quadratic model; otherwise use the linear model 4. Test <span class="math inline">\(H_0: \beta_1 = 3\)</span> (the true linear coefficient) at <span class="math inline">\(\alpha = 0.05\)</span> using the chosen model 5. Record if you reject <span class="math inline">\(H_0\)</span> (this is a Type I error since <span class="math inline">\(\beta_1 = 3\)</span> is true)</p>
-<p><strong>Strategy 2: Natural spline by default</strong> 1. Fit <code>lm(y ~ ns(x, df = 3))</code> (always use this flexible model) 2. To test if the linear coefficient equals 3, you need to be creative: fit <code>lm(y ~ x)</code> and test <span class="math inline">\(H_0: \beta_1 = 3\)</span> 3. Record if you reject <span class="math inline">\(H_0\)</span> at <span class="math inline">\(\alpha = 0.05\)</span></p>
-<p><strong>a)</strong> Implement Strategy 1. What proportion of the time do you: - Find the quadratic term “significant” (even though the true model is linear)? - Reject <span class="math inline">\(H_0: \beta_1 = 3\)</span> (Type I error)?</p>
+<p><strong>Simulation setup:</strong></p>
+<ul>
+<li>True model: <span class="math inline">\(y = \varepsilon\)</span> where <span class="math inline">\(\varepsilon \sim N(0, 1)\)</span> (there is no relationship between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>)</li>
+<li>Sample size: n = 50</li>
+<li>Generate x from <span class="math inline">\(N(0,1)\)</span>
+</li>
+<li>Number of simulations: 5000</li>
+</ul>
+<p><strong>Strategy 1: Test-then-add approach</strong></p>
+<ol type="1">
+<li>Fit <code>lm(y ~ x)</code><br>
+</li>
+<li>Test if adding <span class="math inline">\(x^2\)</span> is significant at <span class="math inline">\(\alpha = 0.05\)</span> by fitting <code>lm(y ~ x + I(x^2))</code> and checking if the p-value for the <span class="math inline">\(x^2\)</span> coefficient is &lt; 0.05<br>
+</li>
+<li>If significant, use the quadratic model; otherwise use the linear model<br>
+</li>
+<li>Perform an F-test to test whether the model with the predictor(s) is better than the intercept only model. Use <span class="math inline">\(\alpha = 0.05\)</span>.<br>
+</li>
+<li>Record if you reject <span class="math inline">\(H_0\)</span>
+</li>
+</ol>
+<p><strong>Strategy 2: Natural spline by default</strong></p>
+<ol type="1">
+<li>Fit <code>lm(y ~ ns(x, df = 3))</code> (always use this flexible model)<br>
+</li>
+<li>Perform an F-test to test whether the model with the predictor(s) is better than the intercept only model. Use <span class="math inline">\(\alpha = 0.05\)</span>.</li>
+<li>Record whether you reject <span class="math inline">\(H_0\)</span> at <span class="math inline">\(\alpha = 0.05\)</span>
+</li>
+</ol>
+<p><em>Please try to code up this simulation on your own! Stuck on getting the p-value out? See if you can look at the help files or use Google to figure it out; learning how to code like this is a great exercise! If you are still feeling stuck, <a href="https://livefreeordichotomize.com/posts/2017-02-18-the-dire-consequences-of-tests-for-linearity/index.html">here is a blog post</a> I wrote a few years ago that goes through this same exercise – I strongly encourage you to try it yourself first, though!</em></p>
+<p><strong>a)</strong> Implement Strategy 1. What proportion of the time do you:</p>
+<ul>
+<li>Find the quadratic term “significant” (even though the true model is linear)?<br>
+</li>
+<li>Reject <span class="math inline">\(H_0\)</span> of your F-test (this is called a <em>Type I error</em>)?</li>
+</ul>
 <p><strong>b)</strong> The nominal Type I error rate should be 5%. Is the Type I error rate from Strategy 1 close to 5%? If not, explain why testing for significance and then using that result to build your model inflates Type I error.</p>
-<p><strong>c)</strong> Implement Strategy 2. What is the Type I error rate when testing <span class="math inline">\(\beta_1 = 3\)</span> using this approach?</p>
-<p><strong>d)</strong> Create a visualization showing one simulated dataset with: - The data points - True linear relationship (as a line) - Fitted quadratic model from Strategy 1 (when it happens to be “significant”) - Fitted natural spline from Strategy 2</p>
-<p>Which estimated curve is closer to the truth?</p>
-<p><strong>e)</strong> Now repeat both strategies with the true model being: <span class="math inline">\(y = 2 + 3x + 0.2x^2 + \varepsilon\)</span> (slightly quadratic).</p>
-<p>Calculate for both strategies: - Power to detect that <span class="math inline">\(\beta_1 \neq 3\)</span> (now the linear model is wrong, so rejection is good!) - Average estimated value of <span class="math inline">\(\beta_1\)</span> from the linear model <code>lm(y ~ x)</code></p>
-<p>Which strategy performs better at detecting the model misspecification?</p>
-<p><strong>f)</strong> Reflect on the trade-off: Strategy 1 (test-then-add) inflates Type I error when the relationship is truly linear, but Strategy 2 (always use splines) might be overly complex. What would you recommend to a researcher in practice?</p>
+<p><strong>c)</strong> Implement Strategy 2. What is the Type I error rate when testing <span class="math inline">\(H_0\)</span> using this approach?</p>
+<p><strong>d)</strong> Reflect on the trade-off: Strategy 1 (test-then-add) inflates Type I error when the relationship is truly linear, but Strategy 2 (always use splines) might be overly complex. What would you recommend to a researcher in practice?</p>
+</section><section id="problem-7" class="level2"><h2 class="anchored" data-anchor-id="problem-7">Problem 7</h2>
+<p>When the constant variance assumption is violated OLS remains unbiased but is no longer the most efficient estimator. Weighted least squares (WLS) provides a solution.</p>
+<p>Instead of minimizing: <span class="math display">\[(\mathbf{y} - \mathbf{X}\boldsymbol{\beta})^T(\mathbf{y} - \mathbf{X}\boldsymbol{\beta})\]</span></p>
+<p>WLS minimizes: <span class="math display">\[(\mathbf{y} - \mathbf{X}\boldsymbol{\beta})^T\mathbf{W}(\mathbf{y} - \mathbf{X}\boldsymbol{\beta})\]</span></p>
+<p>where <span class="math inline">\(\mathbf{W} = \text{diag}(w_1, \ldots, w_n)\)</span> is a diagonal matrix of weights. This leads to the solution: <span class="math display">\[\hat{\boldsymbol{\beta}} = (\mathbf{X}^T\mathbf{W}\mathbf{X})^{-1}\mathbf{X}^T\mathbf{W}\mathbf{y}\]</span></p>
+<p>The theory says the optimal weights are <span class="math inline">\(w_i = 1/\sigma^2(x_i)\)</span>, where <span class="math inline">\(\sigma^2(x_i)\)</span> is the variance of the error at <span class="math inline">\(x_i\)</span>. But in practice, we don’t know these variances, we must estimate them from the data.</p>
+<p><strong>a)</strong></p>
+<p><strong>Generate data</strong> with <span class="math inline">\(n = 200\)</span> where: - <span class="math inline">\(x \sim \text{N}(0, 1)\)</span> - <span class="math inline">\(y = 3 + 1.5x + \varepsilon\)</span> where <span class="math inline">\(\varepsilon \sim N(0, (0.5x)^2)\)</span></p>
+<p>Note that the variance increases with <span class="math inline">\(x\)</span>: <span class="math inline">\(\text{Var}(\varepsilon_i) = (0.5x_i)^2\)</span>.</p>
+<p>Implement the following procedure to estimate weights:</p>
+<p><strong>Step 1:</strong> Fit an initial OLS model <code>lm(y ~ x)</code> and obtain the residuals <span class="math inline">\(\hat{\varepsilon}_i\)</span>.</p>
+<p><strong>Step 2:</strong> Regress the absolute residuals on <span class="math inline">\(x\)</span>: <code>lm(abs(resid) ~ x)</code>. Let <span class="math inline">\(\hat{s}_i\)</span> denote the fitted values from this regression. This gives you a smooth estimate of how the variance changes with <span class="math inline">\(x\)</span>.</p>
+<p><strong>Step 3:</strong> Construct weights <span class="math inline">\(w_i = 1/\hat{s}_i^2\)</span> and fit the WLS model: <code>lm(y ~ x, weights = w)</code>.</p>
+<p>Create a plot showing:</p>
+<ul>
+<li>The original data points</li>
+<li>The OLS fitted line</li>
+<li>The WLS fitted line</li>
+</ul>
+<p><strong>b)</strong> Compare the standard error of <span class="math inline">\(\hat{\beta}_1\)</span> from OLS versus WLS. Which method gives a smaller standard error?</p>
+<p>Create residual plots (residuals vs.&nbsp;fitted values) for both models. Do the residuals from WLS look more homoskedastic than those from OLS?</p>
+<p><strong>c)</strong> Use the residuals from your WLS fit to re-estimate the variance function (repeat Steps 2-3 using WLS residuals instead of OLS residuals).</p>
+<p>Do the coefficient estimates <span class="math inline">\(\hat{\beta}_0\)</span> and <span class="math inline">\(\hat{\beta}_1\)</span> change substantially after this second iteration?</p>
+<p><strong>d)</strong> Generate a new dataset with <span class="math inline">\(n = 200\)</span> where: - <span class="math inline">\(x \sim N(0, 1)\)</span> - <span class="math inline">\(y = 3 + 1.5x + \varepsilon\)</span> where <span class="math inline">\(\varepsilon \sim N(0, 1)\)</span></p>
+<p>The variance is now <strong>constant</strong> (no heteroskedasticity).</p>
+<p>Apply the WLS procedure from part (a) to this homoskedastic data. Compare the standard error of <span class="math inline">\(\hat{\beta}_1\)</span> for OLS versus WLS. What happens when you apply WLS to data that doesn’t need it?</p>
 
 
 </section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
