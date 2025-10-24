@@ -4,8 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.7.29">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<meta name="dcterms.date" content="2025-10-24">
-<title>Exercise 1 – STA 312</title>
+<title>Diagnostics and Transformations – STA 312</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -61,8 +60,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../ex/ex-2.html" rel="next">
-<link href="../troubleshooting.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -104,14 +101,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>
-<meta property="og:title" content="Exercise 1 – STA 312">
+}</script><script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+<meta property="og:title" content="Diagnostics and Transformations – STA 312">
 <meta property="og:description" content="STA 312 - Linear Models at Wake Forst University, Fall 2025.">
-<meta property="og:image" content="https://sta-312-f25.github.io/website/ex/ex-1_files/figure-html/unnamed-chunk-5-1.png">
 <meta property="og:site_name" content="STA 312">
-<meta property="og:image:height" content="960">
-<meta property="og:image:width" content="1344">
-<meta name="twitter:title" content="Exercise 1 – STA 312">
+<meta name="twitter:title" content="Diagnostics and Transformations – STA 312">
 <meta name="twitter:description" content="STA 312 - Linear Models at Wake Forst University, Fall 2025.">
 <meta name="twitter:image" content="https://sta-312-f25.github.io/website/ex/images/twitter-card.png">
 <meta name="twitter:creator" content="@lucystats">
@@ -319,7 +338,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../ex/ex-1.html">Exercises</a></li><li class="breadcrumb-item"><a href="../ex/ex-1.html">Exercise 1</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Diagnostics and Transformations</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -393,16 +412,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
  <span class="menu-text">Exercises</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../ex/ex-1.html" class="sidebar-item-text sidebar-link active">
+  <a href="../ex/ex-1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exercise 1</span></a>
   </div>
 </li>
@@ -487,17 +506,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
-<li><a href="#exercise-1-login-to-rstudio-pro" id="toc-exercise-1-login-to-rstudio-pro" class="nav-link active" data-scroll-target="#exercise-1-login-to-rstudio-pro">Exercise 1: Login to RStudio Pro</a></li>
-  <li><a href="#exercise-2-create-rstudio-project" id="toc-exercise-2-create-rstudio-project" class="nav-link" data-scroll-target="#exercise-2-create-rstudio-project">Exercise 2: Create RStudio Project</a></li>
-  <li><a href="#exercise-3-create-quarto-document" id="toc-exercise-3-create-quarto-document" class="nav-link" data-scroll-target="#exercise-3-create-quarto-document">Exercise 3: Create Quarto Document</a></li>
-  <li><a href="#exercise-4-install-faraway-package-and-load-data" id="toc-exercise-4-install-faraway-package-and-load-data" class="nav-link" data-scroll-target="#exercise-4-install-faraway-package-and-load-data">Exercise 4: Install faraway Package and Load Data</a></li>
-  <li><a href="#exercise-5-linear-model-and-plot" id="toc-exercise-5-linear-model-and-plot" class="nav-link" data-scroll-target="#exercise-5-linear-model-and-plot">Exercise 5: Linear Model and Plot</a></li>
-  <li><a href="#finish" id="toc-finish" class="nav-link" data-scroll-target="#finish">Finish</a></li>
-  </ul><div class="toc-actions"><ul><li><a href="https://github.com/sta-312-f25/website/edit/main/ex/ex-1.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sta-312-f25/website/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<li><a href="#problem-1" id="toc-problem-1" class="nav-link active" data-scroll-target="#problem-1">Problem 1</a></li>
+  <li><a href="#problem-2" id="toc-problem-2" class="nav-link" data-scroll-target="#problem-2">Problem 2</a></li>
+  <li><a href="#problem-3" id="toc-problem-3" class="nav-link" data-scroll-target="#problem-3">Problem 3</a></li>
+  <li><a href="#problem-4" id="toc-problem-4" class="nav-link" data-scroll-target="#problem-4">Problem 4</a></li>
+  <li><a href="#problem-5" id="toc-problem-5" class="nav-link" data-scroll-target="#problem-5">Problem 5</a></li>
+  <li><a href="#problem-6" id="toc-problem-6" class="nav-link" data-scroll-target="#problem-6">Problem 6</a></li>
+  <li><a href="#problem-7" id="toc-problem-7" class="nav-link" data-scroll-target="#problem-7">Problem 7</a></li>
+  </ul><div class="toc-actions"><ul><li><a href="https://github.com/sta-312-f25/website/edit/main/ex/ex-8.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sta-312-f25/website/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../ex/ex-1.html">Exercises</a></li><li class="breadcrumb-item"><a href="../ex/ex-1.html">Exercise 1</a></li></ol></nav><div class="quarto-title">
-<h1 class="title">Exercise 1</h1>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title">Diagnostics and Transformations</h1>
 </div>
 
 
@@ -505,119 +525,107 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="quarto-title-meta">
 
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">October 24, 2025</p>
-    </div>
-  </div>
   
     
   </div>
   
 
 
-</header><section id="exercise-1-login-to-rstudio-pro" class="level1"><h1>Exercise 1: Login to RStudio Pro</h1>
+</header><section id="problem-1" class="level2"><h2 class="anchored" data-anchor-id="problem-1">Problem 1</h2>
+<p>Given the following small dataset:</p>
+<p><span class="math display">\[\mathbf{y} = \begin{bmatrix}5\\8\\12\\20\\30\end{bmatrix}\]</span></p>
+<p><span class="math display">\[\mathbf{X} = \begin{bmatrix}1&amp;1\\1&amp;2\\1&amp;3\\1&amp;4\\1&amp;5\end{bmatrix}\]</span></p>
+<p><strong>a)</strong> Fit the linear regression model <span class="math inline">\(y = \beta_0 + \beta_1 x + \varepsilon\)</span> and calculate the residuals <span class="math inline">\(\hat{\varepsilon}_i\)</span> for each observation.</p>
+<p><strong>b)</strong> Calculate the leverage <span class="math inline">\(h_i\)</span> for each observation using the formula <span class="math inline">\(h_i = H_{ii}\)</span> where <span class="math inline">\(\mathbf{H} = \mathbf{X}(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\)</span>. You may use R for the matrix calculations.</p>
+<p><strong>c)</strong> Calculate the standardized residuals <span class="math inline">\(r_i = \frac{\hat{\varepsilon}_i}{\hat{\sigma}\sqrt{1-h_i}}\)</span> for each observation.</p>
+<p><strong>d)</strong> Calculate the studentized residuals <span class="math inline">\(t_i = \frac{\hat{\varepsilon}_i}{\hat{\sigma}_{(i)}\sqrt{1-h_i}}\)</span> for each observation. For this, you’ll need to fit the model 5 times, each time leaving out one observation, to get <span class="math inline">\(\hat{\sigma}_{(i)}\)</span>.</p>
+<p><strong>e)</strong> Which observation(s), if any, would you flag as potential outliers based on the studentized residuals?</p>
+</section><section id="problem-2" class="level2"><h2 class="anchored" data-anchor-id="problem-2">Problem 2</h2>
+<p>Using the same data from Problem 1:</p>
+<p><strong>a)</strong> Calculate Cook’s distance for each observation using the formula: <span class="math display">\[D_i = \frac{r_i^2}{p} \cdot \frac{h_i}{1-h_i}\]</span> where <span class="math inline">\(p = 2\)</span> (number of parameters) and <span class="math inline">\(r_i\)</span> are the standardized residuals from Problem 1.</p>
+<p><strong>b)</strong> Would any observations be considered influential using the rule of thumb <span class="math inline">\(D_i &gt; 4/n\)</span>?</p>
+<p><strong>c)</strong> Refit the model excluding the most influential point. How much do <span class="math inline">\(\hat{\beta}_0\)</span> and <span class="math inline">\(\hat{\beta}_1\)</span> change? Does this confirm the Cook’s distance calculation?</p>
+</section><section id="problem-3" class="level2"><h2 class="anchored" data-anchor-id="problem-3">Problem 3</h2>
+<p>In this problem, you’ll investigate the impact of non-constant variance on confidence interval coverage and how transformations can help.</p>
+<p><strong>Simulation setup:</strong> - Sample size: n = 30<br>
+- Generate x from <span class="math inline">\(N(0, 1)\)</span><br>
+- True model: <span class="math inline">\(y = 5 + 1.5x + \varepsilon\)</span> - Number of simulations: 5000</p>
+<p>Instead of generating your <span class="math inline">\(\varepsilon\sim N(0,1)\)</span> let’s have it depend on <span class="math inline">\(x\)</span> like this like in Problem 5 from the last exercise:</p>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sigma</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="va">x</span> <span class="op">/</span> <span class="fl">2</span><span class="op">)</span>  </span>
+<span><span class="va">epsilon</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n</span>, <span class="fl">0</span>, <span class="va">sigma</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>a)</strong> Write a simulation function that:</p>
 <ol type="1">
-<li>Go to course website → Computing → Using the RStudio Server</li>
-<li>Follow login instructions</li>
-<li>Log in with your credentials</li>
-</ol>
-<p><strong>Check:</strong> You should see the RStudio interface with 4 panes.</p>
-<hr></section><section id="exercise-2-create-rstudio-project" class="level1"><h1>Exercise 2: Create RStudio Project</h1>
-<ol type="1">
-<li>File → New Project → New Directory → New Project</li>
-<li>Name: <code>ex-1</code>
+<li>Generates data from the true model</li>
+<li>Fit <code>lm(y ~ x)</code>
 </li>
-<li>Click Create Project</li>
-</ol>
-<p><strong>Check:</strong> Project name appears in top-right corner.</p>
-<hr></section><section id="exercise-3-create-quarto-document" class="level1"><h1>Exercise 3: Create Quarto Document</h1>
-<ol type="1">
-<li>File → New File → Quarto Document</li>
-<li>Title: “My First Analysis”</li>
-<li>Save as <code>analysis.qmd</code>
+<li>Constructs a 95% confidence interval for <span class="math inline">\(\beta_1\)</span>
 </li>
+<li>Checks whether the interval contains the true slope (1.5)</li>
+<li>Returns TRUE or FALSE</li>
 </ol>
-<p><strong>Check:</strong> New .qmd file is open and saved.</p>
-<hr></section><section id="exercise-4-install-faraway-package-and-load-data" class="level1"><h1>Exercise 4: Install faraway Package and Load Data</h1>
-<p>Run this code in the console ONCE:</p>
-<div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"faraway"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Then run this:</p>
-<div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/julianfaraway/faraway">faraway</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Test it works</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">teengamb</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">teengamb</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  sex status income verbal gamble
-1   1     51   2.00      8    0.0
-2   1     28   2.50      8    0.0
-3   1     37   2.00      6    0.0
-4   1     28   7.00      4    7.3
-5   1     65   2.00      8   19.6
-6   1     61   3.47      6    0.1</code></pre>
-</div>
-</div>
-<p><strong>Check:</strong> You see the teengamb dataset.</p>
-<p>Now run this in the console:</p>
-<div class="cell">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="op">?</span><span class="va">teengamb</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>Question:</strong> What is in this dataset?</p>
-<p><strong>Action</strong>: Add the code below to your <code>.qmd</code> file along with a short description of the data.</p>
-<div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/julianfaraway/faraway">faraway</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">teengamb</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<hr></section><section id="exercise-5-linear-model-and-plot" class="level1"><h1>Exercise 5: Linear Model and Plot</h1>
-<p>Add the following code to your <code>.qmd</code> file. Try running it.</p>
-<div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Fit linear model</span></span>
-<span><span class="va">model1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">gamble</span> <span class="op">~</span> <span class="va">income</span>, data <span class="op">=</span> <span class="va">teengamb</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">model1</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Call:
-lm(formula = gamble ~ income, data = teengamb)
-
-Residuals:
-    Min      1Q  Median      3Q     Max 
--46.020 -11.874  -3.757  11.934 107.120 
-
-Coefficients:
-            Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)   -6.325      6.030  -1.049      0.3    
-income         5.520      1.036   5.330 3.05e-06 ***
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 24.95 on 45 degrees of freedom
-Multiple R-squared:  0.387, Adjusted R-squared:  0.3734 
-F-statistic: 28.41 on 1 and 45 DF,  p-value: 3.045e-06</code></pre>
-</div>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Create plot</span></span>
-<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">teengamb</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">income</span>, y <span class="op">=</span> <span class="va">gamble</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, formula <span class="op">=</span> <span class="st">"y ~ x"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Income vs Gambling"</span>,</span>
-<span>       x <span class="op">=</span> <span class="st">"Income"</span>, </span>
-<span>       y <span class="op">=</span> <span class="st">"Gambling"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="ex-1_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p><strong>Check:</strong> You have model output and a scatter plot with trend line.</p>
-<hr></section><section id="finish" class="level1"><h1>Finish</h1>
-<p>Click “Render” to create your HTML report. Upload your .html file in Canvas under <code>Exercise 1</code></p>
+<p><strong>b)</strong> Calculate the coverage probability. What did you obtain? Is it close to 95%?</p>
+<p><strong>c)</strong> For one simulated dataset, create two plots side by side: - Left: Scatterplot of y vs.&nbsp;x with fitted line - Right: Residuals vs.&nbsp;fitted values plot</p>
+<p>Describe what you see. What assumption is violated?</p>
+<p><strong>d)</strong> Now repeat the simulation, but this time: 1. Generate the same data 2. Fit a model that transforms <span class="math inline">\(y\)</span> using the <code>log</code>. 3. Exponentiate your confidence interval and compare whether this contains 1.5 4. Calculate the 95% CI coverage for <span class="math inline">\(\beta_1\)</span></p>
+<p>What coverage probability do you obtain now? How does it compare to part (b)?</p>
+<p><strong>e)</strong> For the same simulated dataset from part (c), create the same two plots but using <code>log(y)</code> as the response. How do the diagnostics look now?</p>
+</section><section id="problem-4" class="level2"><h2 class="anchored" data-anchor-id="problem-4">Problem 4</h2>
+<p>Consider a dataset where the relationship between y and x is quadratic: <span class="math inline">\(y = 2 + 3x - 0.5x^2 + \varepsilon\)</span> where <span class="math inline">\(\varepsilon \sim N(0, 1)\)</span>.</p>
+<p>Generate data with n = 100 and x from uniform(0, 5).</p>
+<p><strong>a)</strong> Fit a linear model <code>lm(y ~ x)</code> and create a partial regression plot. Since there’s only one predictor, this is just a scatterplot of y vs.&nbsp;x with the fitted line. Does the relationship look linear?</p>
+<p><strong>b)</strong> Create a residuals vs.&nbsp;fitted values plot. What pattern do you see? What does this suggest about the model specification?</p>
+<p><strong>c)</strong> Now fit a quadratic model <code>lm(y ~ x + I(x^2))</code>. Create the residuals vs.&nbsp;fitted values plot for this model. How does it compare to part (b)?</p>
+<p><strong>d)</strong> Calculate the IQR of x. Using the quadratic model, find:</p>
+<ul>
+<li>The predicted y at the 25th percentile of x<br>
+</li>
+<li>The predicted y at the 75th percentile of x<br>
+</li>
+<li>The change in predicted y for an IQR increase in x</li>
+</ul>
+<p><strong>e)</strong> Interpret this IQR change. Why is this more useful than trying to interpret individual coefficients in a polynomial model?</p>
+</section><section id="problem-5" class="level2"><h2 class="anchored" data-anchor-id="problem-5">Problem 5</h2>
+<p>Using the same data generation as Problem 4 (quadratic relationship):</p>
+<p><strong>a)</strong> Fit three models: 1. Linear: <code>lm(y ~ x)</code> 2. Quadratic: <code>lm(y ~ x + I(x^2))</code> 3. Natural spline with 4 df: <code>lm(y ~ ns(x, df = 4))</code></p>
+<p>Create a plot showing:</p>
+<ul>
+<li>The data points<br>
+</li>
+<li>All three fitted curves<br>
+</li>
+<li>The true relationship (generate a grid of x values and calculate the true y without error)</li>
+</ul>
+<p>Which model comes closest to the true relationship?</p>
+<p><strong>b)</strong> Calculate the <span class="math inline">\(R^2\)</span> for all three models. Which has the highest <span class="math inline">\(R^2\)</span>? Does this necessarily mean it’s the best model?</p>
+<p><strong>c)</strong> For the natural spline model, what are the knot locations? (Hint: use <code>attr(ns(x, df = 4), "knots")</code>)</p>
+<p><strong>d)</strong> Create a visualization showing the four spline basis functions. Describe how they differ from each other and note their behavior at the boundaries.</p>
+</section><section id="problem-6" class="level2"><h2 class="anchored" data-anchor-id="problem-6">Problem 6</h2>
+<p>In this problem, you’ll investigate what happens when we fit a linear model to data that requires a log transformation of the response.</p>
+<p><strong>Simulation setup:</strong> - True model: <span class="math inline">\(\log(y) = 1 + 2x + \varepsilon\)</span> where <span class="math inline">\(\varepsilon \sim N(0, 0.5)\)</span> - This means: <span class="math inline">\(y = \exp(1 + 2x + \varepsilon)\)</span> - Sample size: n = 60 - Generate x from uniform(0, 3) - Number of simulations: 2000</p>
+<p><strong>a)</strong> For a single simulated dataset, create a 2×2 grid of diagnostic plots: 1. Top left: y vs.&nbsp;x with fitted line from <code>lm(y ~ x)</code> 2. Top right: Residuals vs.&nbsp;fitted for <code>lm(y ~ x)</code> 3. Bottom left: log(y) vs.&nbsp;x with fitted line from <code>lm(log(y) ~ x)</code> 4. Bottom right: Residuals vs.&nbsp;fitted for <code>lm(log(y) ~ x)</code></p>
+<p>Describe what you observe about constant variance in each case.</p>
+<p><strong>b)</strong> Using the incorrect model <code>lm(y ~ x)</code>, create a Q-Q plot of the residuals. Do the residuals appear normally distributed? What pattern do you see?</p>
+<p><strong>c)</strong> Using the correct model <code>lm(log(y) ~ x)</code>, create a Q-Q plot of the residuals. How does this compare to part (b)?</p>
+<p><strong>d)</strong> The true model is <span class="math inline">\(\log(y) = 1 + 2x + \varepsilon\)</span>. When we fit <code>lm(log(y) ~ x)</code> and obtain coefficients <span class="math inline">\(\hat{\beta}_0\)</span> and <span class="math inline">\(\hat{\beta}_1\)</span>, we can back-transform to get predictions on the original scale: <span class="math display">\[\hat{y} = \exp(\hat{\beta}_0 + \hat{\beta}_1 x)\]</span></p>
+<p>For a single dataset, calculate the predicted y at x = 1.5 using: - The incorrect model: <code>lm(y ~ x)</code> - The correct model with back-transformation: <code>exp(predict(lm(log(y) ~ x)))</code> - The true expected value: <span class="math inline">\(E[y|x=1.5] = \exp(1 + 2(1.5) + 0.5^2/2) = \exp(4.125)\)</span></p>
+<p>(Note: The extra <span class="math inline">\(0.5^2/2\)</span> term appears because <span class="math inline">\(E[\exp(\varepsilon)] = \exp(\sigma^2/2)\)</span> when <span class="math inline">\(\varepsilon \sim N(0, \sigma^2)\)</span>)</p>
+<p>Which model’s prediction is closer to the truth?</p>
+</section><section id="problem-7" class="level2"><h2 class="anchored" data-anchor-id="problem-7">Problem 7</h2>
+<p>This problem explores Type I error inflation when we test for non-linearity and add terms based on significance tests, compared to using flexible modeling from the start.</p>
+<p><strong>Simulation setup:</strong> - True model: <span class="math inline">\(y = 2 + 3x + \varepsilon\)</span> where <span class="math inline">\(\varepsilon \sim N(0, 4)\)</span> (purely linear!) - Sample size: n = 50 - Generate x from uniform(0, 5) - Number of simulations: 3000</p>
+<p><strong>Strategy 1: Test-then-add approach</strong> 1. Fit <code>lm(y ~ x)</code> 2. Test if adding <span class="math inline">\(x^2\)</span> is significant at <span class="math inline">\(\alpha = 0.05\)</span> by fitting <code>lm(y ~ x + I(x^2))</code> and checking if the p-value for the <span class="math inline">\(x^2\)</span> coefficient is &lt; 0.05 3. If significant, use the quadratic model; otherwise use the linear model 4. Test <span class="math inline">\(H_0: \beta_1 = 3\)</span> (the true linear coefficient) at <span class="math inline">\(\alpha = 0.05\)</span> using the chosen model 5. Record if you reject <span class="math inline">\(H_0\)</span> (this is a Type I error since <span class="math inline">\(\beta_1 = 3\)</span> is true)</p>
+<p><strong>Strategy 2: Natural spline by default</strong> 1. Fit <code>lm(y ~ ns(x, df = 3))</code> (always use this flexible model) 2. To test if the linear coefficient equals 3, you need to be creative: fit <code>lm(y ~ x)</code> and test <span class="math inline">\(H_0: \beta_1 = 3\)</span> 3. Record if you reject <span class="math inline">\(H_0\)</span> at <span class="math inline">\(\alpha = 0.05\)</span></p>
+<p><strong>a)</strong> Implement Strategy 1. What proportion of the time do you: - Find the quadratic term “significant” (even though the true model is linear)? - Reject <span class="math inline">\(H_0: \beta_1 = 3\)</span> (Type I error)?</p>
+<p><strong>b)</strong> The nominal Type I error rate should be 5%. Is the Type I error rate from Strategy 1 close to 5%? If not, explain why testing for significance and then using that result to build your model inflates Type I error.</p>
+<p><strong>c)</strong> Implement Strategy 2. What is the Type I error rate when testing <span class="math inline">\(\beta_1 = 3\)</span> using this approach?</p>
+<p><strong>d)</strong> Create a visualization showing one simulated dataset with: - The data points - True linear relationship (as a line) - Fitted quadratic model from Strategy 1 (when it happens to be “significant”) - Fitted natural spline from Strategy 2</p>
+<p>Which estimated curve is closer to the truth?</p>
+<p><strong>e)</strong> Now repeat both strategies with the true model being: <span class="math inline">\(y = 2 + 3x + 0.2x^2 + \varepsilon\)</span> (slightly quadratic).</p>
+<p>Calculate for both strategies: - Power to detect that <span class="math inline">\(\beta_1 \neq 3\)</span> (now the linear model is wrong, so rejection is good!) - Average estimated value of <span class="math inline">\(\beta_1\)</span> from the linear model <code>lm(y ~ x)</code></p>
+<p>Which strategy performs better at detecting the model misspecification?</p>
+<p><strong>f)</strong> Reflect on the trade-off: Strategy 1 (test-then-add) inflates Type I error when the relationship is truly linear, but Strategy 2 (always use splines) might be overly complex. What would you recommend to a researcher in practice?</p>
 
 
 </section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
@@ -1031,17 +1039,7 @@ F-statistic: 28.41 on 1 and 45 DF,  p-value: 3.045e-06</code></pre>
       }
     }
   });
-  </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="../troubleshooting.html" class="pagination-link" aria-label="Troubleshooting">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Troubleshooting</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../ex/ex-2.html" class="pagination-link" aria-label="Exercise 2: Matrices">
-        <span class="nav-page-text">Exercise 2: Matrices</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
+  </script>
 </div> <!-- /content -->
 <footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
@@ -1049,7 +1047,7 @@ F-statistic: 28.41 on 1 and 45 DF,  p-value: 3.045e-06</code></pre>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/sta-312-f25/website/edit/main/ex/ex-1.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sta-312-f25/website/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/sta-312-f25/website/edit/main/ex/ex-8.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sta-312-f25/website/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Made with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <a href="https://quarto.org/">Quarto</a></p>
 </div>
