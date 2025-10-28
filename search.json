@@ -2317,7 +2317,7 @@
     "href": "ex/ex-8.html#problem-4",
     "title": "Diagnostics and Transformations",
     "section": "Problem 4",
-    "text": "Problem 4\nUsing the same data generation as Problem 4 (quadratic relationship):\na) Fit four models:\n\nLinear: lm(y ~ x)\n\nQuadratic: lm(y ~ x + I(x^2))\n\nNatural spline with 3 df: lm(y ~ ns(x, df = 3))\n\n10th order Polynomial: lm(y ~ poly(x, 10))\n\n\nCreate a plot showing:\n\nThe data points\n\nAll three fitted curves\n\nThe true relationship (generate a grid of x values and calculate the true y without error)\n\nWhich model comes closest to the true relationship?\nb) Calculate the \\(R^2\\) for all three models. Which has the highest \\(R^2\\)? Does this necessarily mean it’s the best model?\nc) For the natural spline model, what are the knot locations? (Hint: use attr(ns(x, df = 3), \"knots\"))",
+    "text": "Problem 4\nUsing the same data generation as Problem 4 (quadratic relationship):\na) Fit four models:\n\nLinear: lm(y ~ x)\n\nQuadratic: lm(y ~ x + I(x^2))\n\nNatural spline with 3 df: lm(y ~ ns(x, df = 3))\n\n10th order Polynomial: lm(y ~ poly(x, 10))\n\n\nCreate a plot showing:\n\nThe data points\n\nAll four fitted curves\n\nThe true relationship (generate a grid of x values and calculate the true y without error)\n\nWhich model comes closest to the true relationship?\nb) Calculate the \\(R^2\\) for all three models. Which has the highest \\(R^2\\)? Does this necessarily mean it’s the best model?\nc) For the natural spline model, what are the knot locations? (Hint: use attr(ns(x, df = 3), \"knots\"))",
     "crumbs": [
       "{{< fa calendar >}} Schedule",
       "Exercises",
