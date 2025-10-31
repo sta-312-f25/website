@@ -554,7 +554,7 @@ window.Quarto = {
 <p><strong>b)</strong> Would any observations be considered influential using the rule of thumb <span class="math inline">\(D_i &gt; 4/n\)</span>?</p>
 <p><strong>c)</strong> Refit the model excluding the most influential point. How much do <span class="math inline">\(\hat{\beta}_0\)</span> and <span class="math inline">\(\hat{\beta}_1\)</span> change? Does this confirm the Cook’s distance calculation?</p>
 </section><section id="problem-3" class="level2"><h2 class="anchored" data-anchor-id="problem-3">Problem 3</h2>
-<p>Consider a dataset where the relationship between y and x is quadratic: <span class="math inline">\(y = 2 + 3x - 0.5x^2 + \varepsilon\)</span> where <span class="math inline">\(\varepsilon \sim N(0, 2)\)</span>.</p>
+<p>Consider a dataset where the relationship between y and x is quadratic: <span class="math inline">\(y = 2 + 3x - x^2 + \varepsilon\)</span> where <span class="math inline">\(\varepsilon \sim N(0, 2)\)</span>.</p>
 <p>Generate data with n = 100 and x from a standard normal distribution (<span class="math inline">\(N(0,1)\)</span>).</p>
 <p><strong>a)</strong> Fit a linear model <code>lm(y ~ x)</code> and create a partial regression plot. Since there’s only one predictor, this is just a scatterplot of y vs.&nbsp;x with the fitted line. Does the relationship look linear?</p>
 <p><strong>b)</strong> Create a residuals vs.&nbsp;fitted values plot. What pattern do you see? What does this suggest about the model specification?</p>
