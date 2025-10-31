@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.7.29">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>Sums of Squares and Hypothesis Testing – STA 312</title>
+<title>Prediction and Model Selection – STA 312</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -60,8 +60,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../ex/keyterms.html" rel="next">
-<link href="../ex/ex-5.html" rel="prev">
+<link href="../demo/least-squares.html" rel="next">
+<link href="../ex/ex-8.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -129,10 +129,10 @@ window.Quarto = {
   typesetMath
 };
 </script>
-<meta property="og:title" content="Sums of Squares and Hypothesis Testing – STA 312">
+<meta property="og:title" content="Prediction and Model Selection – STA 312">
 <meta property="og:description" content="STA 312 - Linear Models at Wake Forst University, Fall 2025.">
 <meta property="og:site_name" content="STA 312">
-<meta name="twitter:title" content="Sums of Squares and Hypothesis Testing – STA 312">
+<meta name="twitter:title" content="Prediction and Model Selection – STA 312">
 <meta name="twitter:description" content="STA 312 - Linear Models at Wake Forst University, Fall 2025.">
 <meta name="twitter:image" content="https://sta-312-f25.github.io/website/ex/images/twitter-card.png">
 <meta name="twitter:creator" content="@lucystats">
@@ -340,7 +340,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../ex/ex-1.html">Exercises</a></li><li class="breadcrumb-item"><a href="../ex/ex-6.html">Exercise 6: Sums of Squares and Hypothesis Testing</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../ex/ex-1.html">Exercises</a></li><li class="breadcrumb-item"><a href="../ex/ex-9.html">Exercise 9: Prediction</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -453,7 +453,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../ex/ex-6.html" class="sidebar-item-text sidebar-link active">
+  <a href="../ex/ex-6.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exercise 6: Sums of Squares and Hypothesis Testing</span></a>
   </div>
 </li>
@@ -477,7 +477,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../ex/ex-9.html" class="sidebar-item-text sidebar-link">
+  <a href="../ex/ex-9.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Exercise 9: Prediction</span></a>
   </div>
 </li>
@@ -520,28 +520,17 @@ window.Quarto = {
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
-<li><a href="#problem-1-basic-sums-of-squares-calculation" id="toc-problem-1-basic-sums-of-squares-calculation" class="nav-link active" data-scroll-target="#problem-1-basic-sums-of-squares-calculation">Problem 1: Basic Sums of Squares Calculation</a></li>
-  <li><a href="#problem-2-matrix-algebra-proof" id="toc-problem-2-matrix-algebra-proof" class="nav-link" data-scroll-target="#problem-2-matrix-algebra-proof">Problem 2: Matrix Algebra Proof</a></li>
-  <li>
-<a href="#problem-3-simulation---t-distribution-of-coefficients" id="toc-problem-3-simulation---t-distribution-of-coefficients" class="nav-link" data-scroll-target="#problem-3-simulation---t-distribution-of-coefficients">Problem 3: Simulation - t-Distribution of Coefficients</a>
-  <ul class="collapse">
-<li><a href="#introduction-to-purrr" id="toc-introduction-to-purrr" class="nav-link" data-scroll-target="#introduction-to-purrr">Introduction to <code>purrr</code></a></li>
-  <li><a href="#step-by-step-simulation-guide" id="toc-step-by-step-simulation-guide" class="nav-link" data-scroll-target="#step-by-step-simulation-guide">Step-by-step simulation guide:</a></li>
-  </ul>
-</li>
-  <li>
-<a href="#problem-4-simulation---f-distribution-of-f-statistic" id="toc-problem-4-simulation---f-distribution-of-f-statistic" class="nav-link" data-scroll-target="#problem-4-simulation---f-distribution-of-f-statistic">Problem 4: Simulation - F-Distribution of F-Statistic</a>
-  <ul class="collapse">
-<li><a href="#simulation-setup" id="toc-simulation-setup" class="nav-link" data-scroll-target="#simulation-setup">Simulation setup:</a></li>
-  </ul>
-</li>
-  <li><a href="#problem-5-general-linear-hypothesis-testing" id="toc-problem-5-general-linear-hypothesis-testing" class="nav-link" data-scroll-target="#problem-5-general-linear-hypothesis-testing">Problem 5: General Linear Hypothesis Testing</a></li>
-  <li><a href="#problem-6-anova-table-construction" id="toc-problem-6-anova-table-construction" class="nav-link" data-scroll-target="#problem-6-anova-table-construction">Problem 6: ANOVA Table Construction</a></li>
-  </ul><div class="toc-actions"><ul><li><a href="https://github.com/sta-312-f25/website/edit/main/ex/ex-6.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sta-312-f25/website/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<li><a href="#problem-1" id="toc-problem-1" class="nav-link active" data-scroll-target="#problem-1">Problem 1</a></li>
+  <li><a href="#problem-2" id="toc-problem-2" class="nav-link" data-scroll-target="#problem-2">Problem 2</a></li>
+  <li><a href="#problem-3" id="toc-problem-3" class="nav-link" data-scroll-target="#problem-3">Problem 3</a></li>
+  <li><a href="#problem-4" id="toc-problem-4" class="nav-link" data-scroll-target="#problem-4">Problem 4</a></li>
+  <li><a href="#problem-5" id="toc-problem-5" class="nav-link" data-scroll-target="#problem-5">Problem 5</a></li>
+  <li><a href="#problem-6" id="toc-problem-6" class="nav-link" data-scroll-target="#problem-6">Problem 6</a></li>
+  </ul><div class="toc-actions"><ul><li><a href="https://github.com/sta-312-f25/website/edit/main/ex/ex-9.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sta-312-f25/website/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../ex/ex-1.html">Exercises</a></li><li class="breadcrumb-item"><a href="../ex/ex-6.html">Exercise 6: Sums of Squares and Hypothesis Testing</a></li></ol></nav><div class="quarto-title">
-<h1 class="title">Sums of Squares and Hypothesis Testing</h1>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../ex/ex-1.html">Exercises</a></li><li class="breadcrumb-item"><a href="../ex/ex-9.html">Exercise 9: Prediction</a></li></ol></nav><div class="quarto-title">
+<h1 class="title">Prediction and Model Selection</h1>
 </div>
 
 
@@ -555,208 +544,143 @@ window.Quarto = {
   
 
 
-</header><section id="problem-1-basic-sums-of-squares-calculation" class="level2"><h2 class="anchored" data-anchor-id="problem-1-basic-sums-of-squares-calculation">Problem 1: Basic Sums of Squares Calculation</h2>
-<p>Given the following data:</p>
-<p><span class="math display">\[\mathbf{y} = \begin{bmatrix}10\\13\\14\\16\\18\end{bmatrix}\]</span></p>
-<p><span class="math display">\[\mathbf{X} = \begin{bmatrix}1&amp;1\\1&amp;2\\1&amp;3\\1&amp;4\\1&amp;5\end{bmatrix}\]</span></p>
-<p><strong>a)</strong> Calculate TSS by hand using both the definition and the matrix form.</p>
-<p><strong>b)</strong> Fit the linear model and calculate the SSE and <span class="math inline">\(\textrm{SS}_\textrm{Reg}\)</span>. Verify that TSS = SSE + SS_Reg.</p>
-<p><strong>c)</strong> Calculate R² and interpret its meaning in context.</p>
-</section><section id="problem-2-matrix-algebra-proof" class="level2"><h2 class="anchored" data-anchor-id="problem-2-matrix-algebra-proof">Problem 2: Matrix Algebra Proof</h2>
-<p><strong>Prove algebraically that the F-statistic can be written in terms of R² as:</strong></p>
-<p><span class="math inline">\(F = \frac{R^2/(p-1)}{(1-R^2)/(n-p)}\)</span></p>
-<p>Show each algebraic step clearly.</p>
-</section><section id="problem-3-simulation---t-distribution-of-coefficients" class="level2"><h2 class="anchored" data-anchor-id="problem-3-simulation---t-distribution-of-coefficients">Problem 3: Simulation - t-Distribution of Coefficients</h2>
-<p>In this problem, you’ll verify through simulation that <span class="math inline">\(\frac{\hat{\beta}_j - \beta_j}{\text{se}(\hat{\beta}_j)} \sim t_{n-p}\)</span>.</p>
-<section id="introduction-to-purrr" class="level3"><h3 class="anchored" data-anchor-id="introduction-to-purrr">Introduction to <code>purrr</code>
-</h3>
-<p>Before we start, we’ll use the <code>purrr</code> package, which provides tools for functional programming in R. The key function we’ll use is <code><a href="https://purrr.tidyverse.org/reference/map.html">map_dbl()</a></code>, which applies a function to each element of a list or vector and outputs a numeric vector. Think of <code><a href="https://purrr.tidyverse.org/reference/map.html">map_dbl()</a></code> as a more elegant alternative to writing loops when you expect a numeric output.</p>
-<p>For example: - <code>map_dbl(1:5, sqrt)</code> applies the square root function to numbers 1 through 5 - <code>map_dbl(1:1000, my_simulation_function)</code> runs your simulation function 1000 times</p>
-<p>This approach is cleaner than loops and encourages you to think about your simulation as a function that gets repeated many times.</p>
-</section><section id="step-by-step-simulation-guide" class="level3"><h3 class="anchored" data-anchor-id="step-by-step-simulation-guide">Step-by-step simulation guide:</h3>
-<p><strong>Step 1:</strong> Set up simulation parameters and load libraries</p>
-<div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://purrr.tidyverse.org/">purrr</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Simulation parameters</span></span>
-<span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">50</span>          <span class="co"># sample size</span></span>
-<span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fl">3</span>           <span class="co"># number of parameters (intercept + 2 predictors)</span></span>
-<span><span class="va">n_sims</span> <span class="op">&lt;-</span> <span class="fl">10000</span>  <span class="co"># number of simulations</span></span>
-<span><span class="va">beta_true</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">1.5</span>, <span class="op">-</span><span class="fl">0.8</span><span class="op">)</span>  <span class="co"># true coefficients [intercept, x1, x2]</span></span>
-<span><span class="va">sigma_true</span> <span class="op">&lt;-</span> <span class="fl">2</span>  <span class="co"># true error standard deviation</span></span>
-<span></span>
-<span><span class="co"># Create design matrix (stays fixed across simulations)</span></span>
-<span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n</span>, <span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n</span>, <span class="fl">2</span>, <span class="fl">1.5</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>Step 2:</strong> Create a simulation function</p>
-<p>Fill in the function below. This function should: 1. Generate random errors 2. Create the response variable using the true model 3. Fit the linear model 4. Extract the coefficient and standard error for x1 (the second coefficient) 5. Calculate and return the t-statistic</p>
-<div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">simulate_t_stat</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">sim_number</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="co"># Generate random errors with a mean = 0 and sd = 1 </span></span>
-<span>  <span class="va">epsilon</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n</span>, <span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span></span>
-<span>  </span>
-<span>  <span class="co"># Create response variable: y = X * beta_true + epsilon</span></span>
-<span>  <span class="va">y</span> <span class="op">&lt;-</span> <span class="co"># YOUR CODE HERE</span></span>
-<span>  </span>
-<span>  <span class="co"># Calculate coefficient and standard error for x1</span></span>
-<span>  <span class="va">beta_hat</span> <span class="op">&lt;-</span> <span class="co"># YOUR CODE HERE (coefficient for x1)</span></span>
-<span>  <span class="va">se_beta</span> <span class="op">&lt;-</span> <span class="co"># YOUR CODE HERE (standard error for x1)</span></span>
-<span>  </span>
-<span>  <span class="co"># Calculate t-statistic: (beta_hat - true_beta) / se_beta</span></span>
-<span>  <span class="va">t_stat</span> <span class="op">&lt;-</span> <span class="co"># YOUR CODE HERE</span></span>
-<span>  </span>
-<span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">t_stat</span><span class="op">)</span></span>
-<span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>Step 3:</strong> Run simulation using <code><a href="https://purrr.tidyverse.org/reference/map.html">purrr::map_dbl()</a></code></p>
-<div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Use map to run simulation n_sims times</span></span>
-<span><span class="va">t_stats</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map_dbl</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="va">n_sims</span>, <span class="va">simulate_t_stat</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>Step 4:</strong> Analyze results</p>
-<div class="cell">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Calculate degrees of freedom</span></span>
-<span><span class="va">dft</span> <span class="op">&lt;-</span> <span class="va">n</span> <span class="op">-</span> <span class="va">p</span></span>
-<span></span>
-<span><span class="co"># Create data frame for ggplot</span></span>
-<span><span class="va">sim_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>t_statistic <span class="op">=</span> <span class="va">t_stats</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Create comparison plot</span></span>
-<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">sim_data</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">t_statistic</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes_eval.html">after_stat</a></span><span class="op">(</span><span class="va">density</span><span class="op">)</span><span class="op">)</span>, bins <span class="op">=</span> <span class="fl">50</span>, fill <span class="op">=</span> <span class="st">"lightblue"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_function.html">stat_function</a></span><span class="op">(</span>fun <span class="op">=</span> <span class="va">dt</span>, args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>df <span class="op">=</span> <span class="va">dft</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"red"</span>, linewidth <span class="op">=</span> <span class="fl">1.2</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> </span>
-<span>         <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"Simulated t-statistics vs Theoretical t-distribution (df ="</span>, <span class="va">dft</span>, <span class="st">")"</span><span class="op">)</span>,</span>
-<span>       subtitle <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"Based on"</span>, <span class="va">n_sims</span>, <span class="st">"simulations"</span><span class="op">)</span>,</span>
-<span>       x <span class="op">=</span> <span class="st">"t-statistic"</span>, </span>
-<span>       y <span class="op">=</span> <span class="st">"Density"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>Questions to answer:</strong></p>
+</header><section id="problem-1" class="level2"><h2 class="anchored" data-anchor-id="problem-1">Problem 1</h2>
+<p>Given the following small dataset: <span class="math display">\[\mathbf{y} = \begin{bmatrix}3\\5\\7\\11\\13\end{bmatrix}\]</span> <span class="math display">\[\mathbf{X} = \begin{bmatrix}1&amp;1\\1&amp;2\\1&amp;3\\1&amp;4\\1&amp;5\end{bmatrix}\]</span></p>
+<p><strong>a)</strong> Fit the linear regression model <span class="math inline">\(y = \beta_0 + \beta_1 x + \varepsilon\)</span> and calculate the fitted values <span class="math inline">\(\hat{y}_i\)</span> and residuals <span class="math inline">\(\hat{\varepsilon}_i\)</span> for each observation.</p>
+<p><strong>b)</strong> Calculate the hat matrix <span class="math inline">\(\mathbf{H} = \mathbf{X}(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\)</span> and extract the diagonal elements <span class="math inline">\(h_{ii}\)</span> (the leverages) for each observation. You may use R for the matrix calculations.</p>
+<p><strong>c)</strong> Calculate the LOOCV error using the shortcut formula: <span class="math display">\[\text{CV} = \frac{1}{n}\sum_{i=1}^n \left(\frac{y_i - \hat{y}_i}{1 - h_{ii}}\right)^2\]</span></p>
+<p><strong>d)</strong> To verify your answer, fit the model 5 times, each time leaving out one observation. For each left-out observation <span class="math inline">\(i\)</span>:</p>
 <ul>
-<li>What are the degrees of freedom for this t-distribution?<br>
+<li>Fit the model on the remaining <span class="math inline">\(n-1\)</span> observations<br>
 </li>
-<li>Do the simulated t-statistics follow the expected distribution?</li>
-</ul></section></section><section id="problem-4-simulation---f-distribution-of-f-statistic" class="level2"><h2 class="anchored" data-anchor-id="problem-4-simulation---f-distribution-of-f-statistic">Problem 4: Simulation - F-Distribution of F-Statistic</h2>
-<p>Now verify that the overall F-statistic follows an F-distribution under the null hypothesis.</p>
-<section id="simulation-setup" class="level3"><h3 class="anchored" data-anchor-id="simulation-setup">Simulation setup:</h3>
-<p><strong>Step 1:</strong> Set up parameters for testing under the null</p>
-<div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Simulation parameters</span></span>
-<span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">30</span></span>
-<span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fl">4</span>  <span class="co"># intercept + 3 predictors</span></span>
-<span><span class="va">n_sims</span> <span class="op">&lt;-</span> <span class="fl">5000</span></span>
-<span><span class="va">sigma_true</span> <span class="op">&lt;-</span> <span class="fl">1.5</span></span>
-<span></span>
-<span><span class="co"># Under null hypothesis: all slope coefficients are 0</span></span>
-<span><span class="va">beta_null</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span>  <span class="co"># only intercept is non-zero</span></span>
-<span></span>
-<span><span class="co"># Create design matrix (fixed across simulations)</span></span>
-<span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="fl">1</span>,</span>
-<span>           <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n</span>, <span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span>,</span>
-<span>           <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n</span>, <span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span>,</span>
-<span>           <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n</span>, <span class="op">-</span><span class="fl">1</span>, <span class="fl">1.2</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>Step 2:</strong> Create your F-statistic simulation function</p>
-<p>Fill in the function below. This function should: 1. Generate random errors 2. Create response variable under the null hypothesis 3. Fit the linear model 4. Extract the overall F-statistic 5. Return the F-statistic</p>
-<div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">simulate_f_stat</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">sim_number</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="co"># Generate random errors</span></span>
-<span>  <span class="va">epsilon</span> <span class="op">&lt;-</span> <span class="co"># YOUR CODE HERE</span></span>
-<span>  </span>
-<span>  <span class="co"># Create response under null: y = X * beta_null + epsilon</span></span>
-<span>  <span class="va">y</span> <span class="op">&lt;-</span> <span class="co"># YOUR CODE HERE</span></span>
-<span>  </span>
-<span>  <span class="co"># Fit the model (be careful about how you specify the predictors)</span></span>
-<span>  <span class="va">fit</span> <span class="op">&lt;-</span> <span class="co"># YOUR CODE HERE</span></span>
-<span>  </span>
-<span>  <span class="co"># Extract overall F-statistic from model summary</span></span>
-<span>  <span class="co"># Hint: summary(fit)$fstatistic[1] gives the F-statistic</span></span>
-<span>  <span class="va">f_stat</span> <span class="op">&lt;-</span> <span class="co"># YOUR CODE HERE</span></span>
-<span>  </span>
-<span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">f_stat</span><span class="op">)</span></span>
-<span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>Step 3:</strong> Run simulation using <code>purrr</code></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use map_dbl to get a numeric vector of F-statistics</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>f_stats <span class="ot">&lt;-</span> <span class="co"># YOUR CODE HERE (use map_dbl and your function)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>Step 4:</strong> Compare to theoretical F-distribution with improved visualizations</p>
-<div class="cell">
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Calculate degrees of freedom</span></span>
-<span><span class="va">df1</span> <span class="op">&lt;-</span> <span class="va">p</span> <span class="op">-</span> <span class="fl">1</span>  <span class="co"># numerator degrees of freedom (number of predictors excluding intercept)</span></span>
-<span><span class="va">df2</span> <span class="op">&lt;-</span> <span class="va">n</span> <span class="op">-</span> <span class="va">p</span>  <span class="co"># denominator degrees of freedom</span></span>
-<span></span>
-<span><span class="co"># Create data frame for ggplot</span></span>
-<span><span class="va">sim_data_f</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>f_statistic <span class="op">=</span> <span class="va">f_stats</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Create comparison plot</span></span>
-<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">sim_data_f</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">f_statistic</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes_eval.html">after_stat</a></span><span class="op">(</span><span class="va">density</span><span class="op">)</span><span class="op">)</span>, bins <span class="op">=</span> <span class="fl">50</span>, fill <span class="op">=</span> <span class="st">"lightgreen"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_function.html">stat_function</a></span><span class="op">(</span>fun <span class="op">=</span> <span class="va">df</span>, args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>df1 <span class="op">=</span> <span class="va">df1</span>, df2 <span class="op">=</span> <span class="va">df2</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"red"</span>, linewidth <span class="op">=</span> <span class="fl">1.2</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/lims.html">xlim</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">f_stats</span>, <span class="fl">0.99</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>  <span class="co"># Trim extreme values </span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"Simulated F-statistics vs Theoretical F-distribution"</span><span class="op">)</span>,</span>
-<span>       subtitle <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"df1 ="</span>, <span class="va">df1</span>, <span class="st">", df2 ="</span>, <span class="va">df2</span>, <span class="st">"| Based on"</span>, <span class="va">n_sims</span>, <span class="st">"simulations"</span><span class="op">)</span>,</span>
-<span>       x <span class="op">=</span> <span class="st">"F-statistic"</span>, </span>
-<span>       y <span class="op">=</span> <span class="st">"Density"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>Questions to answer:</strong> - What are the numerator and denominator degrees of freedom?<br>
-- Do the simulated F-statistics match the theoretical distribution?<br>
-- What would happen if the null hypothesis were false (i.e., if some slope coefficients were non-zero)?</p>
-</section></section><section id="problem-5-general-linear-hypothesis-testing" class="level2"><h2 class="anchored" data-anchor-id="problem-5-general-linear-hypothesis-testing">Problem 5: General Linear Hypothesis Testing</h2>
-<p>Consider the model: <span class="math inline">\(y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_3 + \beta_4 x_4 + \varepsilon\)</span></p>
-<p><strong>a)</strong> Set up the contrast matrix <span class="math inline">\(\mathbf{C}\)</span> and vector <span class="math inline">\(\mathbf{d}\)</span> to test the hypothesis: <span class="math inline">\(H_0: \beta_1 + \beta_2 = 0 \text{ and } \beta_3 = 2\beta_4\)</span></p>
-<p><strong>b)</strong> How many degrees of freedom would the F-test have? Explain your reasoning.</p>
-</section><section id="problem-6-anova-table-construction" class="level2"><h2 class="anchored" data-anchor-id="problem-6-anova-table-construction">Problem 6: ANOVA Table Construction</h2>
-<p>You are given the following information from a regression analysis:</p>
-<ul>
-<li>n = 25 (sample size)<br>
+<li>Predict the left-out observation to get <span class="math inline">\(\hat{y}_{-i}\)</span><br>
 </li>
-<li>p = 5 (number of parameters including intercept)<br>
+<li>Calculate <span class="math inline">\((y_i - \hat{y}_{-i})^2\)</span>
 </li>
-<li>TSS = 500<br>
-</li>
-<li>R² = 0.72</li>
 </ul>
-<p><strong>Complete the ANOVA table:</strong></p>
-<table class="caption-top table">
-<thead><tr class="header">
-<th>Source</th>
-<th>df</th>
-<th>Sum of Squares</th>
-<th>Mean Square</th>
-<th>F</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td>Regression</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>Error</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>Total</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
+<p>Calculate the LOOCV error as <span class="math inline">\(\frac{1}{5}\sum_{i=1}^5 (y_i - \hat{y}_{-i})^2\)</span>. Does this match your answer from part (c)?</p>
+<p><strong>e)</strong> Why is the shortcut formula useful? When would computing LOOCV by actually refitting the model <span class="math inline">\(n\)</span> times become computationally prohibitive?</p>
+</section><section id="problem-2" class="level2"><h2 class="anchored" data-anchor-id="problem-2">Problem 2</h2>
+<p>Consider a dataset where the true relationship is quadratic: <span class="math inline">\(y = 1 + 2x - 0.5x^2 + \varepsilon\)</span> where <span class="math inline">\(\varepsilon \sim N(0, 1)\)</span>.</p>
+<p>Generate data with <span class="math inline">\(n = 60\)</span> observations and <span class="math inline">\(x\)</span> uniformly distributed between 0 and 5.</p>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
+<span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">60</span></span>
+<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="va">n</span>, <span class="fl">0</span>, <span class="fl">5</span><span class="op">)</span></span>
+<span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fl">1</span> <span class="op">+</span> <span class="fl">2</span><span class="op">*</span><span class="va">x</span> <span class="op">-</span> <span class="fl">0.5</span><span class="op">*</span><span class="va">x</span><span class="op">^</span><span class="fl">2</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>a)</strong> Fit polynomial models of degrees 1 through 6:</p>
+<ul>
+<li>
+<code>model1 &lt;- lm(y ~ poly(x, 1))</code><br>
+</li>
+<li>
+<code>model2 &lt;- lm(y ~ poly(x, 2))</code><br>
+</li>
+<li>… and so on through degree 6</li>
+</ul>
+<p>For each model, calculate:</p>
+<ul>
+<li>AIC using <code>AIC(model)</code><br>
+</li>
+<li>LOOCV error using the shortcut formula<br>
+</li>
+<li>Adjusted <span class="math inline">\(R^2\)</span> from <code>summary(model)$adj.r.squared</code>
+</li>
+</ul>
+<p>Create a table showing all three criteria for each polynomial degree.</p>
+<p><strong>b)</strong> Which degree is selected by each criterion? Do they agree?</p>
+<p><strong>c)</strong> Create 3 plots showing how each criterion changes with polynomial degree.</p>
+<p><strong>d)</strong> The true model is quadratic (degree 2). Do the selection criteria correctly identify this? If any criterion selects a higher degree, explain why this might happen even when we know the true model.</p>
+<p><strong>e)</strong> Generate a test dataset of 100 new observations from the same true model. Calculate the true prediction error (MSE on test data) for each of the 6 models. Which degree predicts best on new data? How does this compare to what the selection criteria chose?</p>
+</section><section id="problem-3" class="level2"><h2 class="anchored" data-anchor-id="problem-3">Problem 3</h2>
+<p>The ridge regression objective function is:</p>
+<p><span class="math display">\[\min_{\beta} (\mathbf{y} - \mathbf{X}\beta)^T(\mathbf{y} - \mathbf{X}\beta) + \lambda\beta^T\beta\]</span></p>
+<p><strong>a)</strong> To find the minimum, take the derivative with respect to <span class="math inline">\(\beta\)</span> and set it equal to zero. Solve for <span class="math inline">\(\hat{\beta}_{\text{ridge}}\)</span>.</p>
+<p><strong>b)</strong> Derive the variance for <span class="math inline">\(\hat{\beta}_{\text{ridge}}\)</span>.</p>
+</section><section id="problem-4" class="level2"><h2 class="anchored" data-anchor-id="problem-4">Problem 4</h2>
+<p>Generate data with highly correlated predictors:</p>
+<div class="cell">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
+<span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">50</span></span>
+<span><span class="va">x1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span></span>
+<span><span class="va">x2</span> <span class="op">&lt;-</span> <span class="va">x1</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n</span>, sd <span class="op">=</span> <span class="fl">0.01</span><span class="op">)</span>  <span class="co"># Highly correlated with x1</span></span>
+<span><span class="va">x3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span>  <span class="co"># Independent</span></span>
+<span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/scale.html">scale</a></span><span class="op">(</span><span class="va">x1</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/scale.html">scale</a></span><span class="op">(</span><span class="va">x2</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/scale.html">scale</a></span><span class="op">(</span><span class="va">x3</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">beta_true</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="op">-</span><span class="fl">2</span>, <span class="fl">1.5</span><span class="op">)</span></span>
+<span><span class="va">y</span> <span class="op">&lt;-</span> <span class="va">X</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html">%*%</a></span> <span class="va">beta_true</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n</span>, sd <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>a)</strong> Calculate <span class="math inline">\(\hat\beta\)</span> using the OLS and examine the coefficients. Calculate the standard errors of the coefficient estimates. Do the coefficients have high standard errors? Why might this be?</p>
+<p><strong>b)</strong> Calculate the correlation matrix of the predictors. Which predictors are highly correlated?</p>
+<p><strong>c)</strong> Calculate the Variance Inflation Factor (VIF) for each predictor using:</p>
+<p><span class="math display">\[\text{VIF}_j = \frac{1}{1 - R^2_j}\]</span></p>
+<p>where <span class="math inline">\(R^2_j\)</span> is from regressing <span class="math inline">\(x_j\)</span> on all other predictors. Which predictor(s) have high VIF values?</p>
+<p><strong>d)</strong> Using <span class="math inline">\(\lambda=1\)</span> fit a ridge regression model using the same data. Calculate the standard errors of the coefficients – how do they compare to the OLS errors calculated in part (a)?</p>
+</section><section id="problem-5" class="level2"><h2 class="anchored" data-anchor-id="problem-5">Problem 5</h2>
+<p>Consider a regression setting where we observe data <span class="math inline">\((x_i, y_i)\)</span> for <span class="math inline">\(i = 1, \ldots, n\)</span> and the true relationship is:</p>
+<p><span class="math display">\[y_i = f(x_i) + \varepsilon_i\]</span></p>
+<p>where <span class="math inline">\(\varepsilon_i \sim N(0, \sigma^2)\)</span> are independent errors and <span class="math inline">\(f(x)\)</span> is the true regression function.</p>
+<p>Suppose we fit a model <span class="math inline">\(\hat{f}(x)\)</span> using our training data. For a new test point <span class="math inline">\(x_0\)</span>, the expected prediction error is:</p>
+<p><span class="math display">\[\text{EPE}(x_0) = E[(y_0 - \hat{f}(x_0))^2]\]</span></p>
+<p>where the expectation is over both the training data (which affects <span class="math inline">\(\hat{f}\)</span>) and the new observation <span class="math inline">\(y_0\)</span>.</p>
+<p><strong>a)</strong> Show that the expected prediction error can be decomposed as:</p>
+<p><span class="math display">\[\text{EPE}(x_0) = \sigma^2 + \text{Bias}^2[\hat{f}(x_0)] + \text{Var}[\hat{f}(x_0)]\]</span></p>
+<p>where: - <span class="math inline">\(\text{Bias}[\hat{f}(x_0)] = E[\hat{f}(x_0)] - f(x_0)\)</span> - <span class="math inline">\(\text{Var}[\hat{f}(x_0)] = E[(\hat{f}(x_0) - E[\hat{f}(x_0)])^2]\)</span></p>
+<p><em>Hint: Start by adding and subtracting <span class="math inline">\(E[\hat{f}(x_0)]\)</span> and <span class="math inline">\(f(x_0)\)</span> inside the squared term, then expand.</em></p>
+<p><strong>b)</strong> Generate data to illustrate this decomposition empirically:</p>
+<div class="cell">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Generate single test point</span></span>
+<span><span class="va">x0</span> <span class="op">&lt;-</span> <span class="fl">0.5</span></span>
+<span><span class="va">sigma</span> <span class="op">&lt;-</span> <span class="fl">1</span></span>
+<span></span>
+<span><span class="co"># Simulate 1000 training datasets</span></span>
+<span><span class="va">n_sims</span> <span class="op">&lt;-</span> <span class="fl">1000</span></span>
+<span><span class="va">n_train</span> <span class="op">&lt;-</span> <span class="fl">20</span></span>
+<span><span class="va">true_f</span> <span class="op">&lt;-</span> <span class="va">x0</span> <span class="op">+</span> <span class="va">x0</span><span class="op">^</span><span class="fl">2</span> <span class="op">+</span> <span class="va">x0</span><span class="op">^</span><span class="fl">3</span></span>
+<span></span>
+<span><span class="va">predictions</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">numeric</a></span><span class="op">(</span><span class="va">n_sims</span><span class="op">)</span></span>
+<span></span>
+<span><span class="kw">for</span><span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="va">n_sims</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">x_train</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="va">n_train</span>, <span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span></span>
+<span>  <span class="va">y_train</span> <span class="op">&lt;-</span> <span class="va">x_train</span> <span class="op">+</span> <span class="va">x_train</span><span class="op">^</span><span class="fl">2</span> <span class="op">+</span> <span class="va">x_train</span><span class="op">^</span><span class="fl">3</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n_train</span>, sd <span class="op">=</span> <span class="va">sigma</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="co"># Fit polynomial model of degree 9</span></span>
+<span>  <span class="va">model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">y_train</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/stats/poly.html">poly</a></span><span class="op">(</span><span class="va">x_train</span>, <span class="fl">9</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="va">predictions</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">model</span>, newdata <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>x_train <span class="op">=</span> <span class="va">x0</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Calculate the three components at <span class="math inline">\(x_0 = 0.5\)</span>:</p>
+<ul>
+<li>Irreducible error: <span class="math inline">\(\sigma^2\)</span><br>
+</li>
+<li>Squared bias: <span class="math inline">\((E[\hat{f}(x_0)] - f(x_0))^2\)</span> (estimate <span class="math inline">\(E[\hat{f}(x_0)]\)</span> as <code>mean(predictions)</code>)<br>
+</li>
+<li>Variance: <span class="math inline">\(\text{Var}[\hat{f}(x_0)]\)</span> (estimate as <code>var(predictions)</code>)</li>
+</ul>
+<p>Verify that their sum approximately equals the mean squared error: <span class="math inline">\(\frac{1}{1000}\sum_{i=1}^{1000}(y_0^{(i)} - \hat{f}^{(i)}(x_0))^2\)</span> where you generate new test observations.</p>
+<p><strong>c)</strong> Repeat part (b) for polynomial degrees 1, 2, 5, and 9 Create a plot showing how bias squared, variance, and total expected prediction error change with model complexity. Explain the bias-variance tradeoff you observe: why does bias decrease and variance increase as we add more polynomial terms? Which degree would you choose and why?</p>
+</section><section id="problem-6" class="level2"><h2 class="anchored" data-anchor-id="problem-6">Problem 6</h2>
+<p>Generate data from a simple linear model:</p>
+<div class="cell">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
+<span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">40</span></span>
+<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="va">n</span>, <span class="fl">0</span>, <span class="fl">10</span><span class="op">)</span></span>
+<span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fl">5</span> <span class="op">+</span> <span class="fl">2</span><span class="op">*</span><span class="va">x</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span></span>
+<span><span class="va">model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">y</span> <span class="op">~</span> <span class="va">x</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>a)</strong> For a new observation at <span class="math inline">\(x_{\text{new}} = 6\)</span>, calculate:</p>
+<ul>
+<li>The point prediction <span class="math inline">\(\hat{y}_{\text{new}}\)</span><br>
+</li>
+<li>A 95% confidence interval for <span class="math inline">\(E[y \mid x = 6]\)</span> (the mean response)<br>
+</li>
+<li>A 95% prediction interval for a new observation <span class="math inline">\(y_{\text{new}}\)</span> at <span class="math inline">\(x = 6\)</span>.</li>
+</ul>
+<p><strong>b)</strong> Explain the difference between these two intervals. Why is the prediction interval wider than the confidence interval?</p>
+<p><strong>c)</strong> The variance of the prediction error is: <span class="math display">\[\text{Var}(y_{\text{new}}-\hat{y}_{\text{new}}) = \sigma^2\left(1 + x_{\text{new}}^T(\mathbf{X}^T\mathbf{X})^{-1}x_{\text{new}}\right)\]</span></p>
+<p>Show your work to derive why this is true.</p>
 
 
 </section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
@@ -1171,13 +1095,13 @@ window.Quarto = {
     }
   });
   </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="../ex/ex-5.html" class="pagination-link" aria-label="Exercise 5: Gauss Markov Theorem">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Exercise 5: Gauss Markov Theorem</span>
+      <a href="../ex/ex-8.html" class="pagination-link" aria-label="Exercise 8: Diagnostics and Transformations">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Exercise 8: Diagnostics and Transformations</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../ex/keyterms.html" class="pagination-link" aria-label="Key Terms">
-        <span class="nav-page-text">Key Terms</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../demo/least-squares.html" class="pagination-link" aria-label="Least Squares Solution">
+        <span class="nav-page-text">Least Squares Solution</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1188,7 +1112,7 @@ window.Quarto = {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/sta-312-f25/website/edit/main/ex/ex-6.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sta-312-f25/website/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/sta-312-f25/website/edit/main/ex/ex-9.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sta-312-f25/website/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Made with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <a href="https://quarto.org/">Quarto</a></p>
 </div>
