@@ -4528,7 +4528,7 @@
     "href": "slides/11-slides.html#ridge-regression-with-cv",
     "title": "Prediction and Model Selection",
     "section": "Ridge Regression with CV",
-    "text": "Ridge Regression with CV\n\nlibrary(glmnet)\n\n# Use previous data\n# alpha = 0 means ridge (alpha = 1 would be lasso)\nridge_cv &lt;- cv.glmnet(X_scaled, y, alpha = 0)\n\n# Plot CV error\nplot(ridge_cv, main = \"Cross-Validation for Ridge Regression\")\n\n\n\n\n# Best lambda\ncat(\"Optimal λ:\", round(ridge_cv$lambda.min, 4))\n\nOptimal λ: 0.2178"
+    "text": "Ridge Regression with CV\n\nlibrary(glmnet)\n\n# Use previous data\n# alpha = 0 means ridge (alpha = 1 would be lasso)\nridge_cv &lt;- cv.glmnet(X_scaled, y, alpha = 0)\n\n# Plot CV error\nplot(ridge_cv, main = \"Cross-Validation for Ridge Regression\")"
   },
   {
     "objectID": "slides/11-slides.html#loocv-shortcut-for-ridge",
