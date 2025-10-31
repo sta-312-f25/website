@@ -1880,15 +1880,19 @@ x 3.875929  6.406189  8.987506 11.596810
 </section>
 <section id="qr-solution-1" class="slide level2">
 <h2>QR Solution</h2>
-<p><strong>So:</strong> <span class="math display">\[
+<p><strong>So:</strong></p>
+<p><span class="math display">\[
 \begin{align}
 \hat{\boldsymbol{\beta}} &amp;= (\mathbf{R}^T\mathbf{R})^{-1}\mathbf{R}^T\mathbf{Q}^T\mathbf{y}
 \end{align}
-\]</span> ::: fragment Note that <span class="math inline">\((\mathbf{AB})^{-1}=\mathbf{B}^{-1}\mathbf{A}^{-1}\)</span> as long as both <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> are invertible (so if <span class="math inline">\(\mathbf{R}\)</span> is invertible then <span class="math inline">\((\mathbf{R}^T\mathbf{R})^{-1} = \mathbf{R}^{-1}(\mathbf{R}^T)^{-1}\)</span>) :::</p>
+\]</span> ::: {.fragment}</p>
+<p>Note that <span class="math inline">\((\mathbf{AB})^{-1}=\mathbf{B}^{-1}\mathbf{A}^{-1}\)</span> as long as both <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> are invertible (so if <span class="math inline">\(\mathbf{R}\)</span> is invertible then <span class="math inline">\((\mathbf{R}^T\mathbf{R})^{-1} = \mathbf{R}^{-1}(\mathbf{R}^T)^{-1}\)</span>)</p>
+<p>:::</p>
 </section>
 <section id="qr-solution-2" class="slide level2">
 <h2>QR Solution</h2>
-<p><strong>So:</strong> <span class="math display">\[
+<p><strong>So:</strong></p>
+<p><span class="math display">\[
 \begin{align}
 \hat{\boldsymbol{\beta}} &amp;= (\mathbf{R}^T\mathbf{R})^{-1}\mathbf{R}^T\mathbf{Q}^T\mathbf{y} \\&amp;= \mathbf{R}^{-1}(\mathbf{R}^T)^{-1}\mathbf{R}^T\mathbf{Q}^T\mathbf{y}\\&amp; = \mathbf{R}^{-1}\mathbf{Q}^T\mathbf{y}
 \end{align}
@@ -1921,14 +1925,18 @@ x 3.875929  6.406189  8.987506 11.596810
 <section id="step-by-step-backsolve-1" class="slide level2">
 <h2>Step-by-Step Backsolve</h2>
 <div class="small">
-<p><span class="math display">\[\begin{bmatrix} 2 &amp; 1 &amp; 3 \\ 0 &amp; 4 &amp; 2 \\ 0 &amp; 0 &amp; 5 \end{bmatrix} \begin{bmatrix} \hat\beta_1 \\ \hat\beta_2 \\ \hat\beta_3 \end{bmatrix} = \begin{bmatrix} 8 \\ 12 \\ 15 \end{bmatrix}\]</span></p>
+<p><span class="math display">\[
+\begin{bmatrix} 2 &amp; 1 &amp; 3 \\ 0 &amp; 4 &amp; 2 \\ 0 &amp; 0 &amp; 5 \end{bmatrix} \begin{bmatrix} \hat\beta_1 \\ \hat\beta_2 \\ \hat\beta_3 \end{bmatrix} = \begin{bmatrix} 8 \\ 12 \\ 15 \end{bmatrix}
+\]</span></p>
 </div>
 <p><strong>Step 2:</strong> Substitute into second row <span class="math display">\[4\beta_2 + 2(3) = 12 \implies 4\beta_2 = 6 \implies \beta_2 = 1.5\]</span></p>
 </section>
 <section id="step-by-step-backsolve-2" class="slide level2">
 <h2>Step-by-Step Backsolve</h2>
 <div class="small">
-<p><span class="math display">\[\begin{bmatrix} 2 &amp; 1 &amp; 3 \\ 0 &amp; 4 &amp; 2 \\ 0 &amp; 0 &amp; 5 \end{bmatrix} \begin{bmatrix} \hat\beta_1 \\ \hat\beta_2 \\ \hat\beta_3 \end{bmatrix} = \begin{bmatrix} 8 \\ 12 \\ 15 \end{bmatrix}\]</span></p>
+<p><span class="math display">\[
+\begin{bmatrix} 2 &amp; 1 &amp; 3 \\ 0 &amp; 4 &amp; 2 \\ 0 &amp; 0 &amp; 5 \end{bmatrix} \begin{bmatrix} \hat\beta_1 \\ \hat\beta_2 \\ \hat\beta_3 \end{bmatrix} = \begin{bmatrix} 8 \\ 12 \\ 15 \end{bmatrix}
+\]</span></p>
 </div>
 <p><strong>Step 3:</strong> Substitute into first row <span class="math display">\[2\beta_1 + 1(1.5) + 3(3) = 8 \implies 2\beta_1 = -2.5 \implies \beta_1 = -1.25\]</span></p>
 </section>
@@ -1949,7 +1957,7 @@ x 3.875929  6.406189  8.987506 11.596810
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_f0961488" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_6ae4c7fe" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1991,7 +1999,7 @@ x 3.875929  6.406189  8.987506 11.596810
 <p>Calculate <span class="math inline">\(\hat{y}\)</span> using the QR elements.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_2e6e3b40" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_76087a62" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
