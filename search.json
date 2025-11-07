@@ -4682,14 +4682,21 @@
     "href": "slides/12-slides.html#multiple-regression",
     "title": "The Frisch–Waugh–Lovell Theorem",
     "section": "Multiple Regression",
-    "text": "Multiple Regression\n\nConsider a regression with two sets of predictors: \\[y = X_1\\beta_1 + X_2\\beta_2 + \\epsilon\\]\n\n\nQuestion: What does \\(\\hat{\\beta}_1\\) represent?\n\n\nAnswer: The effect of \\(X_1\\) after controlling for \\(X_2\\)"
+    "text": "Multiple Regression\n\nConsider a regression with two sets of predictors: \\[y = X_1\\beta_1 + X_2\\beta_2 + \\varepsilon\\]\n\n\nQuestion: What does \\(\\hat{\\beta}_1\\) represent?\n\n\nAnswer: The effect of \\(X_1\\) after controlling for \\(X_2\\)"
   },
   {
     "objectID": "slides/12-slides.html#the-fwl-theorem-statement",
     "href": "slides/12-slides.html#the-fwl-theorem-statement",
     "title": "The Frisch–Waugh–Lovell Theorem",
     "section": "The FWL Theorem Statement",
-    "text": "The FWL Theorem Statement\n\nTheorem: The OLS estimate \\(\\hat{\\beta}_1\\) from the full regression \\[y = X_1\\beta_1 + X_2\\beta_2 + \\epsilon\\]\n\n\nis identical to the OLS estimate from the regression \\[\\tilde{y} = \\tilde{X}_1\\beta_1 + \\nu\\]\n\n\nwhere:\n\n\\(\\tilde{y}\\) are the residuals from regressing \\(y\\) on \\(X_2\\)\n\\(\\tilde{X}_1\\) are the residuals from regressing \\(X_1\\) on \\(X_2\\)"
+    "text": "The FWL Theorem Statement\n\nTheorem: The OLS estimate \\(\\hat{\\beta}_1\\) from the full regression \\[y = X_1\\beta_1 + X_2\\beta_2 + \\varepsilon\\]\n\n\nis identical to the OLS estimate from the regression \\[\\tilde{y} = \\tilde{X}_1\\beta_1 + \\nu\\]"
+  },
+  {
+    "objectID": "slides/12-slides.html#the-fwl-theorem-statement-1",
+    "href": "slides/12-slides.html#the-fwl-theorem-statement-1",
+    "title": "The Frisch–Waugh–Lovell Theorem",
+    "section": "The FWL Theorem Statement",
+    "text": "The FWL Theorem Statement\n\n\n\\(\\tilde{y}\\) are the residuals from regressing \\(y\\) on \\(X_2\\)\n\n\\(\\tilde{X}_1\\) are the residuals from regressing \\(X_1\\) on \\(X_2\\)"
   },
   {
     "objectID": "slides/12-slides.html#why-does-this-matter",
@@ -4741,32 +4748,74 @@
     "text": "Visualizing FWL\n\n\nThe slope in Step 3 equals \\(\\hat{\\beta}_1\\) from the full regression"
   },
   {
-    "objectID": "slides/12-slides.html#notation",
-    "href": "slides/12-slides.html#notation",
+    "objectID": "slides/12-slides.html#the-residual-maker-matrix",
+    "href": "slides/12-slides.html#the-residual-maker-matrix",
     "title": "The Frisch–Waugh–Lovell Theorem",
-    "section": "Notation",
-    "text": "Notation\n\nPartition the design matrix: \\[X = [X_1 \\mid X_2]\\]\n\n\nFull regression coefficient for \\(X_1\\): \\[\\hat{\\beta}_1 = [(X_1^TX_1)^{-1}X_1^T - (X_1^TX_1)^{-1}X_1^TX_2(X_2^TX_2)^{-1}X_2^T]y\\]\n\n\nThis looks complicated, but FWL gives us a simpler path"
+    "section": "The Residual Maker Matrix",
+    "text": "The Residual Maker Matrix\n\nDefinition: \\[M_2 = I - X_2(X_2^TX_2)^{-1}X_2^T\\]\n\n\nThis is the matrix that creates residuals when you regress something on \\(X_2\\)"
   },
   {
-    "objectID": "slides/12-slides.html#residual-makers",
-    "href": "slides/12-slides.html#residual-makers",
+    "objectID": "slides/12-slides.html#what-does-m_2-do",
+    "href": "slides/12-slides.html#what-does-m_2-do",
     "title": "The Frisch–Waugh–Lovell Theorem",
-    "section": "Residual Makers",
-    "text": "Residual Makers\n\nDefine the residual maker matrix for \\(X_2\\): \\[M_2 = I - X_2(X_2^TX_2)^{-1}X_2^T\\]\n\n\nProperty: \\(M_2\\) projects onto the space orthogonal to \\(X_2\\)\n\n\n\\[M_2X_2 = 0, \\quad M_2y = \\tilde{y}, \\quad M_2X_1 = \\tilde{X}_1\\]"
+    "section": "What Does \\(M_2\\) Do?",
+    "text": "What Does \\(M_2\\) Do?\n\nWhen you regress any variable \\(z\\) on \\(X_2\\), the residuals are: \\[\\text{residuals} = z - X_2(X_2^TX_2)^{-1}X_2^Tz = M_2z\\]\n\n\nExamples: - \\(\\tilde{y} = M_2 y\\) (residuals from regressing \\(y\\) on \\(X_2\\)) - \\(\\tilde{X}_1 = M_2 X_1\\) (residuals from regressing \\(X_1\\) on \\(X_2\\))"
   },
   {
-    "objectID": "slides/12-slides.html#the-fwl-proof",
-    "href": "slides/12-slides.html#the-fwl-proof",
+    "objectID": "slides/12-slides.html#understanding-the-residual-maker",
+    "href": "slides/12-slides.html#understanding-the-residual-maker",
     "title": "The Frisch–Waugh–Lovell Theorem",
-    "section": "The FWL Proof",
-    "text": "The FWL Proof\n\nFWL regression: Regress \\(\\tilde{y}\\) on \\(\\tilde{X}_1\\) \\[\\hat{\\beta}_1^{\\text{FWL}} = (\\tilde{X}_1^T\\tilde{X}_1)^{-1}\\tilde{X}_1^T\\tilde{y}\\]\n\n\nSubstitute \\(\\tilde{X}_1 = M_2X_1\\) and \\(\\tilde{y} = M_2y\\): \\[\\hat{\\beta}_1^{\\text{FWL}} = (X_1^TM_2^TM_2X_1)^{-1}X_1^TM_2^TM_2y\\]"
+    "section": "Understanding the Residual Maker",
+    "text": "Understanding the Residual Maker\n\nGeometric interpretation: \\(M_2\\) projects onto the space orthogonal to \\(X_2\\)\n\n\n\\(M_2\\) removes the part of any variable that can be explained by \\(X_2\\), leaving only the part that is uncorrelated with \\(X_2\\)"
   },
   {
-    "objectID": "slides/12-slides.html#the-fwl-proof-1",
-    "href": "slides/12-slides.html#the-fwl-proof-1",
+    "objectID": "slides/12-slides.html#properties-of-m_2",
+    "href": "slides/12-slides.html#properties-of-m_2",
     "title": "The Frisch–Waugh–Lovell Theorem",
-    "section": "The FWL Proof",
-    "text": "The FWL Proof\n\nKey property: \\(M_2\\) is symmetric and idempotent, so \\(M_2^TM_2 = M_2\\) \\[\\hat{\\beta}_1^{\\text{FWL}} = (X_1^TM_2X_1)^{-1}X_1^TM_2y\\]\n\n\nThis exactly equals \\(\\hat{\\beta}_1\\) from the partitioned regression formula!\n\n\nConclusion: FWL and full regression give identical estimates"
+    "section": "Properties of \\(M_2\\)",
+    "text": "Properties of \\(M_2\\)\n\nSymmetric: \\(M_2^T = M_2\\)\n\n\nIdempotent: \\(M_2^2 = M_2\\)\nGetting residuals from residuals gives the same residuals"
+  },
+  {
+    "objectID": "slides/12-slides.html#the-fwl-coefficient",
+    "href": "slides/12-slides.html#the-fwl-coefficient",
+    "title": "The Frisch–Waugh–Lovell Theorem",
+    "section": "The FWL Coefficient",
+    "text": "The FWL Coefficient\n\nRegress \\(\\tilde{y}\\) on \\(\\tilde{X}_1\\): \\[\\hat{\\beta}_1^{FWL} = (\\tilde{X}_1^T\\tilde{X}_1)^{-1}\\tilde{X}_1^T\\tilde{y}\\]\n\n\nSubstitute \\(\\tilde{X}_1 = M_2X_1\\) and \\(\\tilde{y} = M_2y\\): \\[\\hat{\\beta}_1^{FWL} = [(M_2X_1)^T(M_2X_1)]^{-1}(M_2X_1)^T(M_2y)\\]"
+  },
+  {
+    "objectID": "slides/12-slides.html#simplify-using-m_2t-m_2",
+    "href": "slides/12-slides.html#simplify-using-m_2t-m_2",
+    "title": "The Frisch–Waugh–Lovell Theorem",
+    "section": "Simplify Using \\(M_2^T = M_2\\)",
+    "text": "Simplify Using \\(M_2^T = M_2\\)\n\nExpand the transpose: \\[\\hat{\\beta}_1^{FWL} = (X_1^TM_2^TM_2X_1)^{-1}X_1^TM_2^TM_2y\\]\n\n\nSince \\(M_2\\) is symmetric, \\(M_2^T = M_2\\): \\[\\hat{\\beta}_1^{FWL} = (X_1^TM_2M_2X_1)^{-1}X_1^TM_2M_2y\\]"
+  },
+  {
+    "objectID": "slides/12-slides.html#simplify-using-m_22-m_2",
+    "href": "slides/12-slides.html#simplify-using-m_22-m_2",
+    "title": "The Frisch–Waugh–Lovell Theorem",
+    "section": "Simplify Using \\(M_2^2 = M_2\\)",
+    "text": "Simplify Using \\(M_2^2 = M_2\\)\n\n\\[\\hat{\\beta}_1^{FWL} = (X_1^TM_2M_2X_1)^{-1}X_1^TM_2M_2y\\]\n\n\nSince \\(M_2\\) is idempotent, \\(M_2M_2 = M_2\\): \\[\\hat{\\beta}_1^{FWL} = (X_1^TM_2X_1)^{-1}X_1^TM_2y\\]"
+  },
+  {
+    "objectID": "slides/12-slides.html#the-full-regression-coefficient",
+    "href": "slides/12-slides.html#the-full-regression-coefficient",
+    "title": "The Frisch–Waugh–Lovell Theorem",
+    "section": "The Full Regression Coefficient",
+    "text": "The Full Regression Coefficient\n\nFrom the partitioned regression formula (normal equations): \\[\\hat{\\beta}_1 = (X_1^TM_2X_1)^{-1}X_1^TM_2y\\]\n\n\nThe formulas are identical! \\[\\hat{\\beta}_1^{FWL} = \\hat{\\beta}_1 \\quad \\checkmark\\]"
+  },
+  {
+    "objectID": "slides/12-slides.html#intuition-what-this-means",
+    "href": "slides/12-slides.html#intuition-what-this-means",
+    "title": "The Frisch–Waugh–Lovell Theorem",
+    "section": "Intuition: What This Means",
+    "text": "Intuition: What This Means\n\nBoth procedures measure the same thing: the relationship between \\(X_1\\) and \\(y\\) after accounting for \\(X_2\\)\n\n\nFWL approach: Remove \\(X_2\\)’s influence first, then find relationship\nFull regression: Find all relationships simultaneously"
+  },
+  {
+    "objectID": "slides/12-slides.html#intuition-partial-effects",
+    "href": "slides/12-slides.html#intuition-partial-effects",
+    "title": "The Frisch–Waugh–Lovell Theorem",
+    "section": "Intuition: Partial Effects",
+    "text": "Intuition: Partial Effects\n\n\\(\\hat{\\beta}_1\\) = effect of \\(X_1\\) on \\(y\\) holding \\(X_2\\) constant\n\n\nFWL shows this equals: correlation between parts of \\(X_1\\) and \\(y\\) that are uncorrelated with \\(X_2\\)"
   },
   {
     "objectID": "slides/12-slides.html#application-1-interpreting-controls",
@@ -4787,14 +4836,21 @@
     "href": "slides/12-slides.html#added-variable-plot-example",
     "title": "The Frisch–Waugh–Lovell Theorem",
     "section": "Added Variable Plot Example",
-    "text": "Added Variable Plot Example\n\n# Generate data with three predictors\nset.seed(123)\nn &lt;- 100\nx1 &lt;- rnorm(n)\nx2 &lt;- rnorm(n)\nx3 &lt;- 0.5*x1 + 0.3*x2 + rnorm(n, sd = 0.8)\ny &lt;- 2 + 3*x1 + 2*x2 + 1.5*x3 + rnorm(n, sd = 2)\n\n# Full model\nfull_model &lt;- lm(y ~ x1 + x2 + x3)\n\n# Added variable plot for x3\nmodel_y_on_others &lt;- lm(y ~ x1 + x2)\nmodel_x3_on_others &lt;- lm(x3 ~ x1 + x2)\n\ny_resid &lt;- residuals(model_y_on_others)\nx3_resid &lt;- residuals(model_x3_on_others)\n\n# Plot\nggplot(data.frame(x3_resid = x3_resid, y_resid = y_resid),\n       aes(x = x3_resid, y = y_resid)) +\n  geom_point(alpha = 0.6, color = \"#d5008f\", size = 2) +\n  geom_smooth(method = \"lm\", se = FALSE, color = \"blue\") +\n  labs(title = \"Added Variable Plot for x₃\",\n       subtitle = paste(\"Slope =\", round(coef(full_model)[4], 3),\n                       \"(coefficient from full model)\"),\n       x = \"x₃ | others\",\n       y = \"y | others\") +\n  theme_minimal()"
+    "text": "Added Variable Plot Example"
   },
   {
     "objectID": "slides/12-slides.html#application-3-fixed-effects",
     "href": "slides/12-slides.html#application-3-fixed-effects",
     "title": "The Frisch–Waugh–Lovell Theorem",
     "section": "Application 3: Fixed Effects",
-    "text": "Application 3: Fixed Effects\n\nFixed effects models are a direct application of FWL\n\n\nModel with individual fixed effects: \\[y_{it} = \\alpha_i + X_{it}\\beta + \\epsilon_{it}\\]\n\n\nFWL approach: Demean everything within each individual \\[\\tilde{y}_{it} = y_{it} - \\bar{y}_i, \\quad \\tilde{X}_{it} = X_{it} - \\bar{X}_i\\]\n\n\nThen regress \\(\\tilde{y}\\) on \\(\\tilde{X}\\) to get \\(\\hat{\\beta}\\)"
+    "text": "Application 3: Fixed Effects\n\nFixed effects models are a direct application of FWL\n\n\nModel with individual fixed effects: \\[y_{it} = \\alpha_i + X_{it}\\beta + \\varepsilon_{it}\\]\n\n\nFWL approach: Demean everything within each individual \\[\\tilde{y}_{it} = y_{it} - \\bar{y}_i, \\quad \\tilde{X}_{it} = X_{it} - \\bar{X}_i\\]"
+  },
+  {
+    "objectID": "slides/12-slides.html#application-3-fixed-effects-1",
+    "href": "slides/12-slides.html#application-3-fixed-effects-1",
+    "title": "The Frisch–Waugh–Lovell Theorem",
+    "section": "Application 3: Fixed Effects",
+    "text": "Application 3: Fixed Effects\n\nThen regress \\(\\tilde{y}\\) on \\(\\tilde{X}\\) to get \\(\\hat{\\beta}\\)"
   },
   {
     "objectID": "slides/12-slides.html#fixed-effects-example",
@@ -4808,14 +4864,21 @@
     "href": "slides/12-slides.html#application-4-omitted-variable-bias",
     "title": "The Frisch–Waugh–Lovell Theorem",
     "section": "Application 4: Omitted Variable Bias",
-    "text": "Application 4: Omitted Variable Bias\n\nFWL helps us understand omitted variable bias\n\n\nSuppose the true model is: \\[y = X_1\\beta_1 + X_2\\beta_2 + \\epsilon\\]\n\n\nBut we only estimate: \\[y = X_1\\beta_1 + u\\]"
+    "text": "Application 4: Omitted Variable Bias\n\nFWL helps us understand omitted variable bias\n\n\nSuppose the true model is: \\[y = X_1\\beta_1 + X_2\\beta_2 + \\varepsilon\\]\n\n\nBut we only estimate: \\[y = X_1\\beta_1 + u\\]"
   },
   {
     "objectID": "slides/12-slides.html#omitted-variable-bias-formula",
     "href": "slides/12-slides.html#omitted-variable-bias-formula",
     "title": "The Frisch–Waugh–Lovell Theorem",
     "section": "Omitted Variable Bias Formula",
-    "text": "Omitted Variable Bias Formula\n\nShort regression estimate: \\[\\hat{\\beta}_1^{\\text{short}} = (X_1^TX_1)^{-1}X_1^Ty\\]\n\n\nBias: \\[E[\\hat{\\beta}_1^{\\text{short}}] = \\beta_1 + (X_1^TX_1)^{-1}X_1^TX_2\\beta_2\\]\n\n\nFWL insight: The bias depends on:\n\nHow \\(X_1\\) and \\(X_2\\) are related: \\((X_1^TX_1)^{-1}X_1^TX_2\\)\nThe true effect of the omitted variable: \\(\\beta_2\\)"
+    "text": "Omitted Variable Bias Formula\n\nBiased regression estimate: \\[\\hat{\\beta}_1^{\\text{bias}} = (X_1^TX_1)^{-1}X_1^Ty\\]\n\n\nBias: \\[E[\\hat{\\beta}_1^{\\text{bias}}] = \\beta_1 + (X_1^TX_1)^{-1}X_1^TX_2\\beta_2\\]"
+  },
+  {
+    "objectID": "slides/12-slides.html#omitted-variable-bias-formula-1",
+    "href": "slides/12-slides.html#omitted-variable-bias-formula-1",
+    "title": "The Frisch–Waugh–Lovell Theorem",
+    "section": "Omitted Variable Bias Formula",
+    "text": "Omitted Variable Bias Formula\n\nFWL insight: The bias depends on:\n\nHow \\(X_1\\) and \\(X_2\\) are related: \\((X_1^TX_1)^{-1}X_1^TX_2\\)\nThe true effect of the omitted variable: \\(\\beta_2\\)"
   },
   {
     "objectID": "slides/12-slides.html#visualizing-omitted-variable-bias",
@@ -4829,14 +4892,28 @@
     "href": "slides/12-slides.html#application-5-computational-efficiency",
     "title": "The Frisch–Waugh–Lovell Theorem",
     "section": "Application 5: Computational Efficiency",
-    "text": "Application 5: Computational Efficiency\n\nProblem: Large number of controls (e.g., many fixed effects)\n\n\nSolution: Use FWL to avoid inverting huge matrices\n\n\nInstead of: \\[\\hat{\\beta} = (X^TX)^{-1}X^Ty\\] where \\(X\\) has many columns\n\n\nUse FWL to focus on the variables of interest after partialing out the controls"
+    "text": "Application 5: Computational Efficiency\n\nProblem: Large number of controls (e.g., many fixed effects)\n\n\nSolution: Use FWL to avoid inverting huge matrices"
+  },
+  {
+    "objectID": "slides/12-slides.html#application-5-computational-efficiency-1",
+    "href": "slides/12-slides.html#application-5-computational-efficiency-1",
+    "title": "The Frisch–Waugh–Lovell Theorem",
+    "section": "Application 5: Computational Efficiency",
+    "text": "Application 5: Computational Efficiency\n\nInstead of: \\[\\hat{\\beta} = (X^TX)^{-1}X^Ty\\] where \\(X\\) has many columns\n\n\nUse FWL to focus on the variables of interest after partialing out the controls"
   },
   {
     "objectID": "slides/12-slides.html#fwl-works-for-multiple-variables",
     "href": "slides/12-slides.html#fwl-works-for-multiple-variables",
     "title": "The Frisch–Waugh–Lovell Theorem",
     "section": "FWL Works for Multiple Variables",
-    "text": "FWL Works for Multiple Variables\n\nGeneralization: FWL works when \\(X_1\\) contains multiple variables\n\n\nIf we want coefficients on several variables after controlling for others: \\[y = X_1\\beta_1 + X_2\\beta_2 + \\epsilon\\]\n\n\nAll of \\(\\hat{\\beta}_1\\) can be obtained by:\n\nResidualize \\(y\\) on \\(X_2\\)\nResidualize each column of \\(X_1\\) on \\(X_2\\)\nRegress residualized \\(y\\) on residualized \\(X_1\\)"
+    "text": "FWL Works for Multiple Variables\n\nGeneralization: FWL works when \\(X_1\\) contains multiple variables\n\n\nIf we want coefficients on several variables after controlling for others: \\[y = X_1\\beta_1 + X_2\\beta_2 + \\varepsilon\\]"
+  },
+  {
+    "objectID": "slides/12-slides.html#fwl-works-for-multiple-variables-1",
+    "href": "slides/12-slides.html#fwl-works-for-multiple-variables-1",
+    "title": "The Frisch–Waugh–Lovell Theorem",
+    "section": "FWL Works for Multiple Variables",
+    "text": "FWL Works for Multiple Variables\n\nAll of \\(\\hat{\\beta}_1\\) can be obtained by:\n\nResidualize \\(y\\) on \\(X_2\\)\nResidualize each column of \\(X_1\\) on \\(X_2\\)\nRegress residualized \\(y\\) on residualized \\(X_1\\)"
   },
   {
     "objectID": "slides/12-slides.html#fwl-and-orthogonality",
@@ -4858,20 +4935,6 @@
     "title": "The Frisch–Waugh–Lovell Theorem",
     "section": "Standard Error Example",
     "text": "Standard Error Example\n\n# Full regression\nfull &lt;- lm(y ~ x1 + x2)\n\n# FWL regression\ny_resid &lt;- residuals(lm(y ~ x2))\nx1_resid &lt;- residuals(lm(x1 ~ x2))\nfwl &lt;- lm(y_resid ~ x1_resid)\n\n# Compare\ndata.frame(\n  Method = c(\"Full\", \"FWL\"),\n  Coefficient = c(coef(full)[2], coef(fwl)[2]),\n  SE = c(summary(full)$coefficients[2, 2],\n         summary(fwl)$coefficients[2, 2])\n)\n\n         Method Coefficient        SE\nx1         Full  -0.2498421 0.6392861\nx1_resid    FWL  -0.2498421 0.6360161\n\n\n\nCoefficient is identical, but SE differs!"
-  },
-  {
-    "objectID": "slides/12-slides.html#complete-example-wage-regression",
-    "href": "slides/12-slides.html#complete-example-wage-regression",
-    "title": "The Frisch–Waugh–Lovell Theorem",
-    "section": "Complete Example: Wage Regression",
-    "text": "Complete Example: Wage Regression\n\n# Simulate wage data\nset.seed(2024)\nn &lt;- 200\n\neducation &lt;- rnorm(n, mean = 14, sd = 2)\nexperience &lt;- rnorm(n, mean = 10, sd = 5)\nability &lt;- rnorm(n, mean = 0, sd = 1)\n\n# Wages depend on all three, education correlated with ability\neducation &lt;- education + 0.5*ability\nlog_wage &lt;- 1.5 + 0.08*education + 0.03*experience + \n            0.2*ability + rnorm(n, sd = 0.3)\n\n# Full regression\nfull_model &lt;- lm(log_wage ~ education + experience + ability)\n\n# FWL approach: what's the effect of education controlling for the others?\nresid_wage &lt;- residuals(lm(log_wage ~ experience + ability))\nresid_educ &lt;- residuals(lm(education ~ experience + ability))\nfwl_model &lt;- lm(resid_wage ~ resid_educ)\n\n# Results\ncat(\"Full regression coefficient on education:\",\n    round(coef(full_model)[2], 4), \"\\n\")\n\nFull regression coefficient on education: 0.069 \n\ncat(\"FWL coefficient:\", round(coef(fwl_model)[2], 4), \"\\n\")\n\nFWL coefficient: 0.069"
-  },
-  {
-    "objectID": "slides/12-slides.html#visualizing-the-wage-effect",
-    "href": "slides/12-slides.html#visualizing-the-wage-effect",
-    "title": "The Frisch–Waugh–Lovell Theorem",
-    "section": "Visualizing the Wage Effect",
-    "text": "Visualizing the Wage Effect\n\n\nLeft: Confounded by ability\nRight: Pure effect of education after controlling for experience and ability"
   },
   {
     "objectID": "syllabus.html",
