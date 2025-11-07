@@ -481,6 +481,12 @@ window.Quarto = {
  <span class="menu-text">Exercise 9: Prediction</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ex/ex-10.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exercise 10: FWL</span></a>
+  </div>
+</li>
       </ul>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -563,8 +569,8 @@ window.Quarto = {
 <p>Consider a dataset where the relationship between y and x is quadratic: <span class="math inline">\(y = 2 + 3x - x^2 + \varepsilon\)</span> where <span class="math inline">\(\varepsilon \sim N(0, 2)\)</span>.</p>
 <p>Generate data with n = 100 and x from a standard normal distribution (<span class="math inline">\(N(0,1)\)</span>).</p>
 <p><strong>a)</strong> Fit a linear model <code>lm(y ~ x)</code> and create a partial regression plot. Since there’s only one predictor, this is just a scatterplot of y vs.&nbsp;x with the fitted line. Does the relationship look linear?</p>
-<p><strong>b)</strong> Create a residuals vs.&nbsp;fitted values plot. What pattern do you see? What does this suggest about the model specification?</p>
-<p><strong>c)</strong> Now fit a quadratic model <code>lm(y ~ x + I(x^2))</code>. Create the residuals vs.&nbsp;fitted values plot for this model. How does it compare to part (b)?</p>
+<p><strong>b)</strong> Create a partial regression plot for <code>x</code> (here there are not any other predictors so you can just plot <code>x</code> on the x-axis and the residuals for the model on the y-axis). What pattern do you see? What does this suggest about the model specification?</p>
+<p><strong>c)</strong> Now fit a quadratic model <code>lm(y ~ x + I(x^2))</code>. Create the partial regression plot for this model. How does it compare to part (b)?</p>
 <p><strong>d)</strong> Calculate the IQR of x. Using the quadratic model, find:</p>
 <ul>
 <li>The predicted y at the 25th percentile of x<br>
