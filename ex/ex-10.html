@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Creating or Opening a Project – STA 312</title>
+<title>Frisch-Waugh-Lovell Theorem – STA 312</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,33 +20,68 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./help-quarto.html" rel="next">
-<link href="./rstudio-pro.html" rel="prev">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-0815c480559380816a4d1ea211a47e91.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-748b535e376f14d4692bf2b2e5fd6380.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-0815c480559380816a4d1ea211a47e91.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-a7e6113796b8c3db958f69260a338b6c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-9dd73ef0fac4bb670ac33ce005cbdd27.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-a7e6113796b8c3db958f69260a338b6c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
-<link href="site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../demo/least-squares.html" rel="next">
+<link href="../ex/ex-9.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-0815c480559380816a4d1ea211a47e91.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-748b535e376f14d4692bf2b2e5fd6380.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-0815c480559380816a4d1ea211a47e91.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-a7e6113796b8c3db958f69260a338b6c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-9dd73ef0fac4bb670ac33ce005cbdd27.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-a7e6113796b8c3db958f69260a338b6c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -75,13 +110,42 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta property="og:title" content="Creating or Opening a Project – STA 312">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="Frisch-Waugh-Lovell Theorem – STA 312">
 <meta property="og:description" content="STA 312 - Linear Models at Wake Forst University, Fall 2025.">
 <meta property="og:site_name" content="STA 312">
-<meta name="twitter:title" content="Creating or Opening a Project – STA 312">
+<meta name="twitter:title" content="Frisch-Waugh-Lovell Theorem – STA 312">
 <meta name="twitter:description" content="STA 312 - Linear Models at Wake Forst University, Fall 2025.">
-<meta name="twitter:image" content="https://sta-312-f25.github.io/website/images/twitter-card.png">
+<meta name="twitter:image" content="https://sta-312-f25.github.io/website/ex/images/twitter-card.png">
 <meta name="twitter:creator" content="@lucystats">
 <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -254,7 +318,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">STA 312</span>
     </a>
   </div>
@@ -265,15 +329,15 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./schedule.html" aria-current="page"> 
+    <a class="nav-link active" href="../schedule.html" aria-current="page"> 
 <span class="menu-text"><i class="fa-solid fa-calendar" aria-label="calendar"></i> Schedule</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./syllabus.html"> 
+    <a class="nav-link" href="../syllabus.html"> 
 <span class="menu-text"><i class="fa-solid fa-gavel" aria-label="gavel"></i> Policies</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./help.html"> 
+    <a class="nav-link" href="../help.html"> 
 <span class="menu-text"><i class="fa-solid fa-question-circle" aria-label="question-circle"></i> Help</span></a>
   </li>  
   <li class="nav-item">
@@ -292,7 +356,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./rstudio-pro.html">Computing</a></li><li class="breadcrumb-item"><a href="./help-project.html">Creating an RStudio Project</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../ex/ex-1.html">Exercises</a></li><li class="breadcrumb-item"><a href="../ex/ex-10.html">Exercise 10: FWL</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -315,13 +379,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./schedule.html" class="sidebar-item-text sidebar-link">
+  <a href="../schedule.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Schedule</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./syllabus.html" class="sidebar-item-text sidebar-link">
+  <a href="../syllabus.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Course Policies</span></a>
   </div>
 </li>
@@ -329,40 +393,40 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
  <span class="menu-text">Computing</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./rstudio-pro.html" class="sidebar-item-text sidebar-link">
+  <a href="../rstudio-pro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Using the RStudio Pro Server</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./help-project.html" class="sidebar-item-text sidebar-link active">
+  <a href="../help-project.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Creating an RStudio Project</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./help-quarto.html" class="sidebar-item-text sidebar-link">
+  <a href="../help-quarto.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Creating a Quarto Document</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./quarto-quick-guide.html" class="sidebar-item-text sidebar-link">
+  <a href="../quarto-quick-guide.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Quarto Quick Guide</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./troubleshooting.html" class="sidebar-item-text sidebar-link">
+  <a href="../troubleshooting.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Troubleshooting</span></a>
   </div>
 </li>
@@ -370,76 +434,76 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
  <span class="menu-text">Exercises</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ex/ex-1.html" class="sidebar-item-text sidebar-link">
+  <a href="../ex/ex-1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exercise 1</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ex/ex-2.html" class="sidebar-item-text sidebar-link">
+  <a href="../ex/ex-2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exercise 2: Matrices</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ex/ex-3.html" class="sidebar-item-text sidebar-link">
+  <a href="../ex/ex-3.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exercise 3: Linear Regression Fundamentals</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ex/ex-4.html" class="sidebar-item-text sidebar-link">
+  <a href="../ex/ex-4.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exercise 4: It’s Just a Linear Model!</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ex/ex-5.html" class="sidebar-item-text sidebar-link">
+  <a href="../ex/ex-5.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exercise 5: Gauss Markov Theorem</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ex/ex-6.html" class="sidebar-item-text sidebar-link">
+  <a href="../ex/ex-6.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exercise 6: Sums of Squares and Hypothesis Testing</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ex/keyterms.html" class="sidebar-item-text sidebar-link">
+  <a href="../ex/keyterms.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Key Terms</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ex/ex-7.html" class="sidebar-item-text sidebar-link">
+  <a href="../ex/ex-7.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exercise 7: Confidence Intervals and Coverage</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ex/ex-8.html" class="sidebar-item-text sidebar-link">
+  <a href="../ex/ex-8.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exercise 8: Diagnostics and Transformations</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ex/ex-9.html" class="sidebar-item-text sidebar-link">
+  <a href="../ex/ex-9.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exercise 9: Prediction</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ex/ex-10.html" class="sidebar-item-text sidebar-link">
+  <a href="../ex/ex-10.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Exercise 10: FWL</span></a>
   </div>
 </li>
@@ -456,19 +520,19 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./demo/least-squares.html" class="sidebar-item-text sidebar-link">
+  <a href="../demo/least-squares.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Least Squares Solution</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./demo/hat-matrix-symmetry.html" class="sidebar-item-text sidebar-link">
+  <a href="../demo/hat-matrix-symmetry.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Hat Matrix Symmetry</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./demo/general-f-statistic.html" class="sidebar-item-text sidebar-link">
+  <a href="../demo/general-f-statistic.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">General F Statistic Intuition</span></a>
   </div>
 </li>
@@ -479,16 +543,27 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#problem-1" id="toc-problem-1" class="nav-link active" data-scroll-target="#problem-1">Problem 1</a></li>
+  <li><a href="#problem-2" id="toc-problem-2" class="nav-link" data-scroll-target="#problem-2">Problem 2</a></li>
+  <li><a href="#problem-3" id="toc-problem-3" class="nav-link" data-scroll-target="#problem-3">Problem 3</a></li>
+  <li><a href="#problem-4" id="toc-problem-4" class="nav-link" data-scroll-target="#problem-4">Problem 4</a></li>
+  <li><a href="#problem-5" id="toc-problem-5" class="nav-link" data-scroll-target="#problem-5">Problem 5</a></li>
+  <li><a href="#problem-6" id="toc-problem-6" class="nav-link" data-scroll-target="#problem-6">Problem 6</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/sta-312-f25/website/edit/main/ex/ex-10.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sta-312-f25/website/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./rstudio-pro.html">Computing</a></li><li class="breadcrumb-item"><a href="./help-project.html">Creating an RStudio Project</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../ex/ex-1.html">Exercises</a></li><li class="breadcrumb-item"><a href="../ex/ex-10.html">Exercise 10: FWL</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Creating or Opening a Project</h1>
+<h1 class="title">Frisch-Waugh-Lovell Theorem</h1>
 </div>
 
 
@@ -505,25 +580,75 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Before starting an assignment or exercise, always create or open a project:</p>
-<ul>
-<li><strong>To create a new project:</strong>
-<ol type="1">
-<li>In RStudio, go to <strong>File &gt; New Project</strong>.</li>
-<li>Choose whether to create a project in a new directory or within an existing directory.</li>
-<li>Navigate to the folder where you want your project</li>
-<li>Click <strong>Create Project</strong>.</li>
-</ol></li>
-<li><strong>To open an existing project:</strong>
-<ol type="1">
-<li>In RStudio, go to <strong>File &gt; Open Project</strong>.</li>
-<li>Browse to the <code>.Rproj</code> file of the project you want to open.</li>
-<li>Select it and click <strong>Open</strong>.</li>
-</ol></li>
-</ul>
-<p>This ensures all your files and settings are organized within the correct project environment.</p>
+<section id="problem-1" class="level2">
+<h2 class="anchored" data-anchor-id="problem-1">Problem 1</h2>
+<p>Consider the following small dataset:</p>
+<p><span class="math display">\[\mathbf{y} = \begin{bmatrix}2\\5\\8\\11\\14\end{bmatrix}, \quad \mathbf{X}_1 = \begin{bmatrix}1\\2\\3\\4\\5\end{bmatrix}, \quad \mathbf{X}_2 = \begin{bmatrix}1\\1\\2\\2\\3\end{bmatrix}\]</span></p>
+<p><strong>a)</strong> Fit the full regression model <span class="math inline">\(y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \varepsilon\)</span> and report <span class="math inline">\(\hat{\beta}_1\)</span>.</p>
+<p><strong>b)</strong> Now apply the FWL procedure: - Regress <span class="math inline">\(y\)</span> on <span class="math inline">\(x_2\)</span> (including an intercept) and save the residuals <span class="math inline">\(\tilde{y}\)</span> - Regress <span class="math inline">\(x_1\)</span> on <span class="math inline">\(x_2\)</span> (including an intercept) and save the residuals <span class="math inline">\(\tilde{x}_1\)</span> - Regress <span class="math inline">\(\tilde{y}\)</span> on <span class="math inline">\(\tilde{x}_1\)</span> (without an intercept)</p>
+<p>Report the coefficient from this final regression. Does it match <span class="math inline">\(\hat{\beta}_1\)</span> from part (a)?</p>
+</section>
+<section id="problem-2" class="level2">
+<h2 class="anchored" data-anchor-id="problem-2">Problem 2</h2>
+<p>Generate data with three predictors:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>x3 <span class="ot">&lt;-</span> <span class="fl">0.6</span><span class="sc">*</span>x1 <span class="sc">+</span> <span class="fl">0.4</span><span class="sc">*</span>x2 <span class="sc">+</span> <span class="fu">rnorm</span>(n)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="sc">+</span> <span class="dv">2</span><span class="sc">*</span>x1 <span class="sc">+</span> <span class="fl">1.5</span><span class="sc">*</span>x2 <span class="sc">+</span> <span class="fl">2.5</span><span class="sc">*</span>x3 <span class="sc">+</span> <span class="fu">rnorm</span>(n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>a)</strong> Fit the full model <code>lm(y ~ x1 + x2 + x3)</code> and report the coefficient on <code>x3</code>.</p>
+<p><strong>b)</strong> Create an added variable plot for <code>x3</code>: - Regress <code>y</code> on <code>x1</code> and <code>x2</code>, save residuals - Regress <code>x3</code> on <code>x1</code> and <code>x2</code>, save residuals - Plot these residuals against each other and add a regression line</p>
+<p><strong>c)</strong> What is the slope of the line in your added variable plot? How does it compare to the coefficient from part (a)?</p>
+<p><strong>d)</strong> Explain what this plot shows: what variation in <code>y</code> and <code>x3</code> are we visualizing?</p>
+</section>
+<section id="problem-3" class="level2">
+<h2 class="anchored" data-anchor-id="problem-3">Problem 3</h2>
+<p>For a simple case with <span class="math inline">\(\mathbf{X}_2 = \begin{bmatrix}1\\1\\1\end{bmatrix}\)</span> (just an intercept):</p>
+<p><strong>a)</strong> Write out the <span class="math inline">\(3 \times 3\)</span> residual maker matrix <span class="math inline">\(\mathbf{M}_2 = \mathbf{I} - \mathbf{X}_2(\mathbf{X}_2^T\mathbf{X}_2)^{-1}\mathbf{X}_2^T\)</span>.</p>
+<p><strong>b)</strong> Verify that <span class="math inline">\(\mathbf{M}_2\)</span> is symmetric: <span class="math inline">\(\mathbf{M}_2^T = \mathbf{M}_2\)</span>.</p>
+<p><strong>c)</strong> Verify that <span class="math inline">\(\mathbf{M}_2\)</span> is idempotent: <span class="math inline">\(\mathbf{M}_2^2 = \mathbf{M}_2\)</span>.</p>
+<p><strong>d)</strong> Apply <span class="math inline">\(\mathbf{M}_2\)</span> to the vector <span class="math inline">\(\mathbf{z} = \begin{bmatrix}5\\8\\11\end{bmatrix}\)</span>. What operation does this perform? (Hint: what is the mean of the resulting vector?)</p>
+</section>
+<section id="problem-4" class="level2">
+<h2 class="anchored" data-anchor-id="problem-4">Problem 4</h2>
+<p>Generate data where an important variable is omitted:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">200</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fl">0.8</span><span class="sc">*</span>x1 <span class="sc">+</span> <span class="fu">rnorm</span>(n) </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span><span class="sc">*</span>x1 <span class="sc">+</span> <span class="dv">4</span><span class="sc">*</span>x2 <span class="sc">+</span> <span class="fu">rnorm</span>(n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>a)</strong> Fit the “short” regression <code>lm(y ~ x1)</code> that omits <code>x2</code>. Report <span class="math inline">\(\hat{\beta}_1^{\text{short}}\)</span>.</p>
+<p><strong>b)</strong> Fit the “full” regression <code>lm(y ~ x1 + x2)</code>. Report <span class="math inline">\(\hat{\beta}_1^{\text{full}}\)</span>.</p>
+<p><strong>c)</strong> Calculate the auxiliary regression coefficient: fit <code>lm(x2 ~ x1)</code> and report the slope <span class="math inline">\(\hat{\delta}\)</span>.</p>
+<p><strong>d)</strong> Verify the omitted variable bias formula: <span class="math display">\[\hat{\beta}_1^{\text{short}} \approx \hat{\beta}_1^{\text{full}} + \hat{\delta} \cdot \hat{\beta}_2^{\text{full}}\]</span></p>
+<p>Explain intuitively why the bias has this form using FWL reasoning.</p>
+</section>
+<section id="problem-5" class="level2">
+<h2 class="anchored" data-anchor-id="problem-5">Problem 5</h2>
+<p>Consider panel data with individuals observed over time:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>id <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">each =</span> <span class="dv">5</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>time <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">times =</span> <span class="dv">10</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>alpha_i <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="at">mean =</span> <span class="dv">5</span>), <span class="at">each =</span> <span class="dv">5</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">50</span>, <span class="at">mean =</span> <span class="dv">10</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> alpha_i <span class="sc">+</span> <span class="fl">2.5</span><span class="sc">*</span>x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>a)</strong> Fit a model with individual fixed effects using dummy variables:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>model_fe <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x <span class="sc">+</span> <span class="fu">factor</span>(id))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Report the coefficient on <code>x</code>.</p>
+<p><strong>b)</strong> Now use the FWL/demeaning approach: - Calculate within-individual means: <span class="math inline">\(\bar{y}_i\)</span> and <span class="math inline">\(\bar{x}_i\)</span> for each individual - Create demeaned variables: <span class="math inline">\(\tilde{y}_{it} = y_{it} - \bar{y}_i\)</span> and <span class="math inline">\(\tilde{x}_{it} = x_{it} - \bar{x}_i\)</span> - Regress the demeaned outcome on the demeaned predictor (no intercept)</p>
+<p>Does this coefficient match part (a)?</p>
+<p><strong>c)</strong> Explain why demeaning is equivalent to including fixed effects, using the FWL theorem.</p>
+</section>
+<section id="problem-6" class="level2">
+<h2 class="anchored" data-anchor-id="problem-6">Problem 6</h2>
+<p>Using the data from Problem 1:</p>
+<p><strong>a)</strong> Compare the standard errors for <span class="math inline">\(\hat{\beta}_1\)</span> from: - The full regression <code>lm(y ~ x1 + x2)</code> - The FWL residualized regression <code>lm(y_resid ~ x1_resid)</code></p>
+<p>Why do they differ?</p>
+<p><strong>b)</strong> How many degrees of freedom are used in each regression? Explain how this affects the standard error calculation.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -940,13 +1065,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./rstudio-pro.html" class="pagination-link" aria-label="Using the RStudio Pro Server">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Using the RStudio Pro Server</span>
+      <a href="../ex/ex-9.html" class="pagination-link" aria-label="Exercise 9: Prediction">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Exercise 9: Prediction</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./help-quarto.html" class="pagination-link" aria-label="Creating a Quarto Document">
-        <span class="nav-page-text">Creating a Quarto Document</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../demo/least-squares.html" class="pagination-link" aria-label="Least Squares Solution">
+        <span class="nav-page-text">Least Squares Solution</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -958,7 +1083,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/sta-312-f25/website/edit/main/help-project.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sta-312-f25/website/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/sta-312-f25/website/edit/main/ex/ex-10.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sta-312-f25/website/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Made with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <a href="https://quarto.org/">Quarto</a></p>
 </div>
