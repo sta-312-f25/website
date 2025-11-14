@@ -2552,6 +2552,258 @@
     ]
   },
   {
+    "objectID": "ex/ex-11.html",
+    "href": "ex/ex-11.html",
+    "title": "Causal Inference Problem Set",
+    "section": "",
+    "text": "Consider a study of the effect of college tutoring programs (X) on final exam scores (Y). Students self-select into tutoring, and prior GPA (C) affects both whether students seek tutoring and their exam performance.\na) Generate data reflecting this structure:\n\nset.seed(1)\nn &lt;- 300\nprior_gpa &lt;- rnorm(n, mean = 3.0, sd = 0.5)\ntutoring &lt;- rbinom(n, 1, plogis(-2 + 1.5 * prior_gpa))\nexam_score &lt;- 65 + 8 * tutoring + 10 * prior_gpa + rnorm(n, sd = 5)\n\nDraw the DAG for this scenario. What is the true average treatment effect?\nb) Compute and compare two estimates: the naive comparison of means and a regression adjusting for prior GPA. Which is unbiased and why?\nc) Explain what “controlling for prior GPA” means. What would happen if prior GPA was actually caused by tutoring instead?",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 11: Causal Inference"
+    ]
+  },
+  {
+    "objectID": "ex/ex-11.html#problem-1",
+    "href": "ex/ex-11.html#problem-1",
+    "title": "Causal Inference Problem Set",
+    "section": "",
+    "text": "Consider a study of the effect of college tutoring programs (X) on final exam scores (Y). Students self-select into tutoring, and prior GPA (C) affects both whether students seek tutoring and their exam performance.\na) Generate data reflecting this structure:\n\nset.seed(1)\nn &lt;- 300\nprior_gpa &lt;- rnorm(n, mean = 3.0, sd = 0.5)\ntutoring &lt;- rbinom(n, 1, plogis(-2 + 1.5 * prior_gpa))\nexam_score &lt;- 65 + 8 * tutoring + 10 * prior_gpa + rnorm(n, sd = 5)\n\nDraw the DAG for this scenario. What is the true average treatment effect?\nb) Compute and compare two estimates: the naive comparison of means and a regression adjusting for prior GPA. Which is unbiased and why?\nc) Explain what “controlling for prior GPA” means. What would happen if prior GPA was actually caused by tutoring instead?",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 11: Causal Inference"
+    ]
+  },
+  {
+    "objectID": "ex/ex-11.html#problem-2",
+    "href": "ex/ex-11.html#problem-2",
+    "title": "Causal Inference Problem Set",
+    "section": "Problem 2",
+    "text": "Problem 2\nA tech company analyzes employee performance data. They want to understand if coding skills (X) and communication skills (Y) are related. However, they only have data on employees who were hired (M), and hiring depends on both skills.\na) Generate data where coding and communication skills are independent in the full applicant pool:\n\nset.seed(1)\nn &lt;- 1000\ncoding_skill &lt;- rnorm(n, mean = 70, sd = 15)\ncommunication_skill &lt;- rnorm(n, mean = 70, sd = 15)\nhire_score &lt;- 0.4 * coding_skill + 0.4 * communication_skill + rnorm(n, sd = 10)\nhired &lt;- as.numeric(hire_score &gt; quantile(hire_score, 0.6))\n\nDraw the DAG. What type of variable is hired?\nb) Analyze the relationship between coding and communication skills separately for all applicants and for hired employees only. Create two visualizations, one in the whole population and one in just the hired population.\nc) Explain the mechanism behind what you observe. What would happen if you ran a regression of communication on coding using only the hired sample?",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 11: Causal Inference"
+    ]
+  },
+  {
+    "objectID": "ex/ex-11.html#problem-3",
+    "href": "ex/ex-11.html#problem-3",
+    "title": "Causal Inference Problem Set",
+    "section": "Problem 3",
+    "text": "Problem 3\nYou want to estimate the effect of online course format (X) on student satisfaction (Y):\n\nlibrary(ggdag)\n\n\nAttaching package: 'ggdag'\n\n\nThe following object is masked from 'package:stats':\n\n    filter\n\nlibrary(dagitty)\n\ncourse_dag &lt;- dagify(\n  X ~ instructor_experience + class_size,\n  Y ~ X + instructor_experience + engagement,\n  engagement ~ class_size,\n  exposure = \"X\",\n  outcome = \"Y\"\n)\n\na) Visualize this DAG and identify all paths from X to Y. Which paths must be blocked to estimate the causal effect?\nb) Determine all valid adjustment sets. Is there more than one? Which would you prefer and why?\nc) Generate data consistent with this DAG (choose your own coefficients, with true effect = 5). Verify that different valid adjustment sets give similar estimates of the causal effect.",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 11: Causal Inference"
+    ]
+  },
+  {
+    "objectID": "ex/ex-11.html#problem-4",
+    "href": "ex/ex-11.html#problem-4",
+    "title": "Causal Inference Problem Set",
+    "section": "Problem 4",
+    "text": "Problem 4\nA software company tests whether code review requirements (exposure) improve code quality (outcome). The effect varies by developer experience level:\n\nset.seed(1)\nn &lt;- 500\nexperience_years &lt;- rnorm(n, mean = 5, sd = 3)\nexperience_years &lt;- pmax(experience_years, 0)\ncode_review &lt;- rbinom(n, 1, plogis(-1 + 0.2 * experience_years))\ncode_quality &lt;- 70 + 8 * code_review + 3 * experience_years + \n                0.6 * code_review * experience_years + rnorm(n, sd = 6)\n\na) Fit an appropriate model and interpret all coefficients. At what experience level is the treatment effect equal to 10?\nb) Implement g-computation to estimate the ATE.\nc) Why does g-computation give a different answer than the main effect coefficient? Create a visualization showing how the treatment effect varies with experience and how g-computation accounts for the distribution of experience in your sample.\nd) What would happen to your ATE estimate if you recruited more junior developers? More senior developers? Explain using your visualization.",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 11: Causal Inference"
+    ]
+  },
+  {
+    "objectID": "ex/ex-11.html#problem-5",
+    "href": "ex/ex-11.html#problem-5",
+    "title": "Causal Inference Problem Set",
+    "section": "Problem 5",
+    "text": "Problem 5\nA university studies the effect of study group participation (X) on exam scores (Y). They measure high school GPA but fail to measure intrinsic motivation (U).\na) Generate data with an unmeasured confounder:\n\nset.seed(1)\nn &lt;- 400\nhigh_school_gpa &lt;- rnorm(n, mean = 3.2, sd = 0.5)\nmotivation &lt;- rnorm(n, mean = 50, sd = 10)\nstudy_group &lt;- rbinom(n, 1, plogis(-2 + 0.8 * high_school_gpa + 0.04 * motivation))\nexam_score &lt;- 50 + 6 * study_group + 8 * high_school_gpa + \n              0.3 * motivation + rnorm(n, sd = 5)\n\nDraw the complete DAG (including the unmeasured confounder).\nb) Estimate the effect of study groups three ways: (1) no controls, (2) controlling for high school GPA only, (3) controlling for both (pretend you could measure motivation). Which estimates are biased?\nc) Using the omitted variable bias formula, predict the bias in estimate (2). Verify your prediction matches the actual bias.\nd) How strong would the effect of motivation need to be (on either study group participation or exam scores) for your partially adjusted estimate to be unbiased? What does this tell you about sensitivity to unmeasured confounding?",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 11: Causal Inference"
+    ]
+  },
+  {
+    "objectID": "ex/ex-11.html#problem-6",
+    "href": "ex/ex-11.html#problem-6",
+    "title": "Causal Inference Problem Set",
+    "section": "Problem 6",
+    "text": "Problem 6\nA research team studies the effect of remote work policy (X) on employee productivity (Y). They have data on:\n\nset.seed(1)\nn &lt;- 600\njob_autonomy &lt;- rnorm(n, mean = 50, sd = 12)\nhome_environment &lt;- rnorm(n, mean = 60, sd = 15)\npersonality_fit &lt;- 0.3 * job_autonomy + 0.2 * home_environment + rnorm(n, sd = 10)\nremote_work &lt;- rbinom(n, 1, plogis(-2 + 0.04 * job_autonomy + 0.03 * home_environment + 0.02 * personality_fit))\nproductivity &lt;- 70 + 5 * remote_work + 0.3 * job_autonomy + 0.2 * home_environment + 0.25 * personality_fit + rnorm(n, sd = 8)\n\na) Draw the DAG for this data generating process. Identify all confounders of the relationship between remote work and productivity.\nb) List all backdoor paths from X to Y. For each path, explain whether it is open or closed by default.\nc) Find all valid adjustment sets using adjustmentSets(). Compare estimates using: (1) no controls, (2) each individual valid adjustment set, and (3) all variables. Do the valid adjustment sets give similar answers?\nd) Suppose personality_fit was actually unmeasured. Using the omitted variable bias formula, quantify how much bias this would introduce when adjusting only for job_autonomy and home_environment. Would your conclusions about remote work change?",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 11: Causal Inference"
+    ]
+  },
+  {
+    "objectID": "ex/ex-1.html",
+    "href": "ex/ex-1.html",
+    "title": "Exercise 1",
+    "section": "",
+    "text": "Exercise 1: Login to RStudio Pro\n\nGo to course website → Computing → Using the RStudio Server\nFollow login instructions\nLog in with your credentials\n\nCheck: You should see the RStudio interface with 4 panes.\nExercise 2: Create RStudio Project\n\nFile → New Project → New Directory → New Project\nName: ex-1\n\nClick Create Project\n\nCheck: Project name appears in top-right corner.\nExercise 3: Create Quarto Document\n\nFile → New File → Quarto Document\nTitle: “My First Analysis”\nSave as analysis.qmd\n\n\nCheck: New .qmd file is open and saved.\nExercise 4: Install faraway Package and Load Data\nRun this code in the console ONCE:\n\ninstall.packages(\"faraway\")\n\nThen run this:\n\nlibrary(faraway)\nlibrary(ggplot2)\n\n# Test it works\ndata(teengamb)\nhead(teengamb)\n\n  sex status income verbal gamble\n1   1     51   2.00      8    0.0\n2   1     28   2.50      8    0.0\n3   1     37   2.00      6    0.0\n4   1     28   7.00      4    7.3\n5   1     65   2.00      8   19.6\n6   1     61   3.47      6    0.1\n\n\nCheck: You see the teengamb dataset.\nNow run this in the console:\n\n?teengamb\n\nQuestion: What is in this dataset?\nAction: Add the code below to your .qmd file along with a short description of the data.\n\nlibrary(faraway)\nlibrary(ggplot2)\ndata(teengamb)\n\nExercise 5: Linear Model and Plot\nAdd the following code to your .qmd file. Try running it.\n\n# Fit linear model\nmodel1 &lt;- lm(gamble ~ income, data = teengamb)\nsummary(model1)\n\n\nCall:\nlm(formula = gamble ~ income, data = teengamb)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-46.020 -11.874  -3.757  11.934 107.120 \n\nCoefficients:\n            Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)   -6.325      6.030  -1.049      0.3    \nincome         5.520      1.036   5.330 3.05e-06 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 24.95 on 45 degrees of freedom\nMultiple R-squared:  0.387, Adjusted R-squared:  0.3734 \nF-statistic: 28.41 on 1 and 45 DF,  p-value: 3.045e-06\n\n# Create plot\nggplot(teengamb, aes(x = income, y = gamble)) +\n  geom_point() +\n  geom_smooth(method = \"lm\", formula = \"y ~ x\") +\n  labs(title = \"Income vs Gambling\",\n       x = \"Income\", \n       y = \"Gambling\")\n\n\n\n\n\n\n\nCheck: You have model output and a scatter plot with trend line.\nFinish\nClick “Render” to create your HTML report. Upload your .html file in Canvas under Exercise 1",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 1"
+    ]
+  },
+  {
+    "objectID": "demo/hat-matrix-symmetry.html",
+    "href": "demo/hat-matrix-symmetry.html",
+    "title": "Hat Matrix Symmetry Visualization",
+    "section": "",
+    "text": "Point 1 X:  1.0\n\n\nPoint 2 X:  2.0\n\n\nPoint 3 X:  -1.0\n\n\nRandomize Points",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Demos",
+      "Hat Matrix Symmetry"
+    ]
+  },
+  {
+    "objectID": "demo/hat-matrix-symmetry.html#interactive-linear-regression-example",
+    "href": "demo/hat-matrix-symmetry.html#interactive-linear-regression-example",
+    "title": "Hat Matrix Symmetry Visualization",
+    "section": "",
+    "text": "Point 1 X:  1.0\n\n\nPoint 2 X:  2.0\n\n\nPoint 3 X:  -1.0\n\n\nRandomize Points",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Demos",
+      "Hat Matrix Symmetry"
+    ]
+  },
+  {
+    "objectID": "demo/hat-matrix-symmetry.html#hat-matrix-h",
+    "href": "demo/hat-matrix-symmetry.html#hat-matrix-h",
+    "title": "Hat Matrix Symmetry Visualization",
+    "section": "Hat Matrix H",
+    "text": "Hat Matrix H",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Demos",
+      "Hat Matrix Symmetry"
+    ]
+  },
+  {
+    "objectID": "demo/hat-matrix-symmetry.html#what-symmetry-means",
+    "href": "demo/hat-matrix-symmetry.html#what-symmetry-means",
+    "title": "Hat Matrix Symmetry Visualization",
+    "section": "What Symmetry Means:",
+    "text": "What Symmetry Means:\nHij = Hji means:\n\nHow much point i influences point j’s fitted value = How much point j influences point i’s fitted value\n\nThis reciprocal relationship holds for ALL pairs of points\nReciprocal influence is a geometric consequence of orthogonal projection",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Demos",
+      "Hat Matrix Symmetry"
+    ]
+  },
+  {
+    "objectID": "demo/hat-matrix-symmetry.html#key-observations",
+    "href": "demo/hat-matrix-symmetry.html#key-observations",
+    "title": "Hat Matrix Symmetry Visualization",
+    "section": "Key Observations",
+    "text": "Key Observations",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Demos",
+      "Hat Matrix Symmetry"
+    ]
+  },
+  {
+    "objectID": "demo/general-f-statistic.html",
+    "href": "demo/general-f-statistic.html",
+    "title": "Building Intuition for the F-Statistic Numerator",
+    "section": "",
+    "text": "The general form of the F-statistic with constraint matrix \\(C\\) is:\n\\[F = \\frac{(C\\hat{\\beta} - d)^T [C(X^TX)^{-1}C^T]^{-1} (C\\hat{\\beta} - d) / q}{\\text{MSE}}\\]\nFor all our purposes, \\(d = 0\\) (we’re testing if parameters equal zero), so we can drop it!\n\\[F = \\frac{(C\\hat{\\beta})^T [C(X^TX)^{-1}C^T]^{-1} (C\\hat{\\beta}) / q}{\\text{MSE}}\\]\n\nDenominator (MSE): This is always the same - our estimate of \\(\\sigma^2\\)\nThe division by \\(q\\): This just adjusts for the number of restrictions we’re testing\nWhat we need intuition for: \\((C\\hat{\\beta})^T [C(X^TX)^{-1}C^T]^{-1} (C\\hat{\\beta})\\)\n\nLet’s focus JUST on this “numerator of the numerator” and build some intuition!",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Demos",
+      "General F Statistic Intuition"
+    ]
+  },
+  {
+    "objectID": "demo/general-f-statistic.html#the-general-f-test-formula",
+    "href": "demo/general-f-statistic.html#the-general-f-test-formula",
+    "title": "Building Intuition for the F-Statistic Numerator",
+    "section": "",
+    "text": "The general form of the F-statistic with constraint matrix \\(C\\) is:\n\\[F = \\frac{(C\\hat{\\beta} - d)^T [C(X^TX)^{-1}C^T]^{-1} (C\\hat{\\beta} - d) / q}{\\text{MSE}}\\]\nFor all our purposes, \\(d = 0\\) (we’re testing if parameters equal zero), so we can drop it!\n\\[F = \\frac{(C\\hat{\\beta})^T [C(X^TX)^{-1}C^T]^{-1} (C\\hat{\\beta}) / q}{\\text{MSE}}\\]\n\nDenominator (MSE): This is always the same - our estimate of \\(\\sigma^2\\)\nThe division by \\(q\\): This just adjusts for the number of restrictions we’re testing\nWhat we need intuition for: \\((C\\hat{\\beta})^T [C(X^TX)^{-1}C^T]^{-1} (C\\hat{\\beta})\\)\n\nLet’s focus JUST on this “numerator of the numerator” and build some intuition!",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Demos",
+      "General F Statistic Intuition"
+    ]
+  },
+  {
+    "objectID": "demo/general-f-statistic.html#understanding-three-pieces",
+    "href": "demo/general-f-statistic.html#understanding-three-pieces",
+    "title": "Building Intuition for the F-Statistic Numerator",
+    "section": "Understanding Three Pieces",
+    "text": "Understanding Three Pieces\n\n\\(C\\hat{\\beta}\\) - How far are we from 0?\nThis is a vector. For example, if we’re testing \\(\\beta_1 = \\beta_2 = 0\\), then:\n\\[C\\hat{\\beta} = \\begin{bmatrix} \\hat{\\beta}_1 \\\\ \\hat{\\beta}_2 \\end{bmatrix}\\]\nThis vector tells us: “How far from zero are the parameters we’re testing?”\n\n\n\\(C(X^TX)^{-1}C^T\\) - The Variance-Covariance Matrix\nThis is a \\(q \\times q\\) matrix that captures the joint uncertainty. The \\(C\\) matrices “extract” the relevant parts of the full variance-covariance matrix:\n\\(\\text{Var}(C\\hat{\\beta}) = \\sigma^2 \\cdot C(X^TX)^{-1}C^T\\)\nFor our example where \\(C\\) selects \\(\\beta_1\\) and \\(\\beta_2\\), this multiplication gives us:\n\\[= \\sigma^2 \\begin{bmatrix} \\text{Var}(\\hat{\\beta}_1) & \\text{Cov}(\\hat{\\beta}_1, \\hat{\\beta}_2) \\\\ \\text{Cov}(\\hat{\\beta}_1, \\hat{\\beta}_2) & \\text{Var}(\\hat{\\beta}_2) \\end{bmatrix}\\]\n\nDiagonal = how uncertain we are about each parameter\nOff-diagonal = whether parameters move together\n\nThe \\(C\\) matrices do the work of pulling out just the rows and columns we care about from the full \\((X^TX)^{-1}\\) matrix.\n\n\nThe Quadratic Form - A Standardized Distance\n\\[(C\\hat{\\beta})^T [C(X^TX)^{-1}C^T]^{-1} (C\\hat{\\beta})\\]\nThis combines everything into a single number that answers:\n\n“How far from zero are we, accounting for uncertainty and correlation?”\n\nIt’s the squared distance, which is like a correlation-adjusted measure of how extreme our estimates are. It is actually known as a Malahanobis distance.",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Demos",
+      "General F Statistic Intuition"
+    ]
+  },
+  {
+    "objectID": "demo/general-f-statistic.html#why-not-just-use-hatbeta",
+    "href": "demo/general-f-statistic.html#why-not-just-use-hatbeta",
+    "title": "Building Intuition for the F-Statistic Numerator",
+    "section": "Why Not Just Use \\(||\\hat{\\beta}||\\)?",
+    "text": "Why Not Just Use \\(||\\hat{\\beta}||\\)?\nIf we just computed \\(\\sqrt{\\hat{\\beta}_1^2 + \\hat{\\beta}_2^2}\\) (without the middle, \\([C(X^TX)^{-1}C^T]^{-1}\\)), we’d be treating all coefficients equally. But:\n\n\\(\\hat{\\beta}_1\\) might be estimated very precisely (small variance)\n\\(\\hat{\\beta}_2\\) might be estimated poorly (large variance)\nThey might be correlated!\n\nThe quadratic form weights by precision giving more importance to coefficients we estimated well.",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Demos",
+      "General F Statistic Intuition"
+    ]
+  },
+  {
+    "objectID": "demo/general-f-statistic.html#the-bottom-line",
+    "href": "demo/general-f-statistic.html#the-bottom-line",
+    "title": "Building Intuition for the F-Statistic Numerator",
+    "section": "The Bottom Line",
+    "text": "The Bottom Line\nThe numerator \\((C\\hat{\\beta})^T [C(X^TX)^{-1}C^T]^{-1} (C\\hat{\\beta})\\) is just:\n“How far are our estimates from zero, measured in a way that accounts for their precision and correlation?”\nFor the overall F-test (testing all slopes = 0), this exactly equals \\(SS_{reg}\\), the explained sum of squares.",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Demos",
+      "General F Statistic Intuition"
+    ]
+  },
+  {
+    "objectID": "demo/least-squares.html",
+    "href": "demo/least-squares.html",
+    "title": "Interactive Least Squares Visualization",
+    "section": "",
+    "text": "Adjust the red line using the sliders below to try to minimize the sum of squared errors. The blue squares show the squared residuals!\n\n\nIntercept \\(\\hat\\beta_0\\)\n\n1.5\n\n\nSlope \\(\\hat\\beta_1\\)\n\n1\n\n\nShow Optimal\n\n\n\n\n\n\nYour Line\ny = 1.50 + 1.00x\n\n\nOptimal Least Squares\ny = 1.50 + 1.00x\n\n\n\n\nYour SSE\n0.00\n\n\nOptimal SSE\n0.00",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Demos",
+      "Least Squares Solution"
+    ]
+  },
+  {
+    "objectID": "demo/least-squares.html#interactive-least-squares-learning-tool",
+    "href": "demo/least-squares.html#interactive-least-squares-learning-tool",
+    "title": "Interactive Least Squares Visualization",
+    "section": "",
+    "text": "Adjust the red line using the sliders below to try to minimize the sum of squared errors. The blue squares show the squared residuals!\n\n\nIntercept \\(\\hat\\beta_0\\)\n\n1.5\n\n\nSlope \\(\\hat\\beta_1\\)\n\n1\n\n\nShow Optimal\n\n\n\n\n\n\nYour Line\ny = 1.50 + 1.00x\n\n\nOptimal Least Squares\ny = 1.50 + 1.00x\n\n\n\n\nYour SSE\n0.00\n\n\nOptimal SSE\n0.00",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Demos",
+      "Least Squares Solution"
+    ]
+  },
+  {
+    "objectID": "demo/least-squares.html#key-concepts",
+    "href": "demo/least-squares.html#key-concepts",
+    "title": "Interactive Least Squares Visualization",
+    "section": "Key Concepts",
+    "text": "Key Concepts\nGoal: Find the line \\(\\hat{y} = \\hat\\beta_0 + \\hat\\beta_1x\\) that minimizes the Sum of Squared Errors (SSE)\nThe blue squares show the squared residuals - their total area equals the SSE!\nWhat to Try:\n\nAdjust the sliders to minimize the total area of blue squares\n\nTry to match the optimal (green) line\n\nNotice how the squares get smaller as you approach the optimal solution",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Demos",
+      "Least Squares Solution"
+    ]
+  },
+  {
     "objectID": "ex/ex-10.html",
     "href": "ex/ex-10.html",
     "title": "Frisch-Waugh-Lovell Theorem",
@@ -2633,174 +2885,6 @@
       "{{< fa calendar >}} Schedule",
       "Exercises",
       "Exercise 10: FWL"
-    ]
-  },
-  {
-    "objectID": "demo/least-squares.html",
-    "href": "demo/least-squares.html",
-    "title": "Interactive Least Squares Visualization",
-    "section": "",
-    "text": "Adjust the red line using the sliders below to try to minimize the sum of squared errors. The blue squares show the squared residuals!\n\n\nIntercept \\(\\hat\\beta_0\\)\n\n1.5\n\n\nSlope \\(\\hat\\beta_1\\)\n\n1\n\n\nShow Optimal\n\n\n\n\n\n\nYour Line\ny = 1.50 + 1.00x\n\n\nOptimal Least Squares\ny = 1.50 + 1.00x\n\n\n\n\nYour SSE\n0.00\n\n\nOptimal SSE\n0.00",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Demos",
-      "Least Squares Solution"
-    ]
-  },
-  {
-    "objectID": "demo/least-squares.html#interactive-least-squares-learning-tool",
-    "href": "demo/least-squares.html#interactive-least-squares-learning-tool",
-    "title": "Interactive Least Squares Visualization",
-    "section": "",
-    "text": "Adjust the red line using the sliders below to try to minimize the sum of squared errors. The blue squares show the squared residuals!\n\n\nIntercept \\(\\hat\\beta_0\\)\n\n1.5\n\n\nSlope \\(\\hat\\beta_1\\)\n\n1\n\n\nShow Optimal\n\n\n\n\n\n\nYour Line\ny = 1.50 + 1.00x\n\n\nOptimal Least Squares\ny = 1.50 + 1.00x\n\n\n\n\nYour SSE\n0.00\n\n\nOptimal SSE\n0.00",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Demos",
-      "Least Squares Solution"
-    ]
-  },
-  {
-    "objectID": "demo/least-squares.html#key-concepts",
-    "href": "demo/least-squares.html#key-concepts",
-    "title": "Interactive Least Squares Visualization",
-    "section": "Key Concepts",
-    "text": "Key Concepts\nGoal: Find the line \\(\\hat{y} = \\hat\\beta_0 + \\hat\\beta_1x\\) that minimizes the Sum of Squared Errors (SSE)\nThe blue squares show the squared residuals - their total area equals the SSE!\nWhat to Try:\n\nAdjust the sliders to minimize the total area of blue squares\n\nTry to match the optimal (green) line\n\nNotice how the squares get smaller as you approach the optimal solution",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Demos",
-      "Least Squares Solution"
-    ]
-  },
-  {
-    "objectID": "demo/general-f-statistic.html",
-    "href": "demo/general-f-statistic.html",
-    "title": "Building Intuition for the F-Statistic Numerator",
-    "section": "",
-    "text": "The general form of the F-statistic with constraint matrix \\(C\\) is:\n\\[F = \\frac{(C\\hat{\\beta} - d)^T [C(X^TX)^{-1}C^T]^{-1} (C\\hat{\\beta} - d) / q}{\\text{MSE}}\\]\nFor all our purposes, \\(d = 0\\) (we’re testing if parameters equal zero), so we can drop it!\n\\[F = \\frac{(C\\hat{\\beta})^T [C(X^TX)^{-1}C^T]^{-1} (C\\hat{\\beta}) / q}{\\text{MSE}}\\]\n\nDenominator (MSE): This is always the same - our estimate of \\(\\sigma^2\\)\nThe division by \\(q\\): This just adjusts for the number of restrictions we’re testing\nWhat we need intuition for: \\((C\\hat{\\beta})^T [C(X^TX)^{-1}C^T]^{-1} (C\\hat{\\beta})\\)\n\nLet’s focus JUST on this “numerator of the numerator” and build some intuition!",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Demos",
-      "General F Statistic Intuition"
-    ]
-  },
-  {
-    "objectID": "demo/general-f-statistic.html#the-general-f-test-formula",
-    "href": "demo/general-f-statistic.html#the-general-f-test-formula",
-    "title": "Building Intuition for the F-Statistic Numerator",
-    "section": "",
-    "text": "The general form of the F-statistic with constraint matrix \\(C\\) is:\n\\[F = \\frac{(C\\hat{\\beta} - d)^T [C(X^TX)^{-1}C^T]^{-1} (C\\hat{\\beta} - d) / q}{\\text{MSE}}\\]\nFor all our purposes, \\(d = 0\\) (we’re testing if parameters equal zero), so we can drop it!\n\\[F = \\frac{(C\\hat{\\beta})^T [C(X^TX)^{-1}C^T]^{-1} (C\\hat{\\beta}) / q}{\\text{MSE}}\\]\n\nDenominator (MSE): This is always the same - our estimate of \\(\\sigma^2\\)\nThe division by \\(q\\): This just adjusts for the number of restrictions we’re testing\nWhat we need intuition for: \\((C\\hat{\\beta})^T [C(X^TX)^{-1}C^T]^{-1} (C\\hat{\\beta})\\)\n\nLet’s focus JUST on this “numerator of the numerator” and build some intuition!",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Demos",
-      "General F Statistic Intuition"
-    ]
-  },
-  {
-    "objectID": "demo/general-f-statistic.html#understanding-three-pieces",
-    "href": "demo/general-f-statistic.html#understanding-three-pieces",
-    "title": "Building Intuition for the F-Statistic Numerator",
-    "section": "Understanding Three Pieces",
-    "text": "Understanding Three Pieces\n\n\\(C\\hat{\\beta}\\) - How far are we from 0?\nThis is a vector. For example, if we’re testing \\(\\beta_1 = \\beta_2 = 0\\), then:\n\\[C\\hat{\\beta} = \\begin{bmatrix} \\hat{\\beta}_1 \\\\ \\hat{\\beta}_2 \\end{bmatrix}\\]\nThis vector tells us: “How far from zero are the parameters we’re testing?”\n\n\n\\(C(X^TX)^{-1}C^T\\) - The Variance-Covariance Matrix\nThis is a \\(q \\times q\\) matrix that captures the joint uncertainty. The \\(C\\) matrices “extract” the relevant parts of the full variance-covariance matrix:\n\\(\\text{Var}(C\\hat{\\beta}) = \\sigma^2 \\cdot C(X^TX)^{-1}C^T\\)\nFor our example where \\(C\\) selects \\(\\beta_1\\) and \\(\\beta_2\\), this multiplication gives us:\n\\[= \\sigma^2 \\begin{bmatrix} \\text{Var}(\\hat{\\beta}_1) & \\text{Cov}(\\hat{\\beta}_1, \\hat{\\beta}_2) \\\\ \\text{Cov}(\\hat{\\beta}_1, \\hat{\\beta}_2) & \\text{Var}(\\hat{\\beta}_2) \\end{bmatrix}\\]\n\nDiagonal = how uncertain we are about each parameter\nOff-diagonal = whether parameters move together\n\nThe \\(C\\) matrices do the work of pulling out just the rows and columns we care about from the full \\((X^TX)^{-1}\\) matrix.\n\n\nThe Quadratic Form - A Standardized Distance\n\\[(C\\hat{\\beta})^T [C(X^TX)^{-1}C^T]^{-1} (C\\hat{\\beta})\\]\nThis combines everything into a single number that answers:\n\n“How far from zero are we, accounting for uncertainty and correlation?”\n\nIt’s the squared distance, which is like a correlation-adjusted measure of how extreme our estimates are. It is actually known as a Malahanobis distance.",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Demos",
-      "General F Statistic Intuition"
-    ]
-  },
-  {
-    "objectID": "demo/general-f-statistic.html#why-not-just-use-hatbeta",
-    "href": "demo/general-f-statistic.html#why-not-just-use-hatbeta",
-    "title": "Building Intuition for the F-Statistic Numerator",
-    "section": "Why Not Just Use \\(||\\hat{\\beta}||\\)?",
-    "text": "Why Not Just Use \\(||\\hat{\\beta}||\\)?\nIf we just computed \\(\\sqrt{\\hat{\\beta}_1^2 + \\hat{\\beta}_2^2}\\) (without the middle, \\([C(X^TX)^{-1}C^T]^{-1}\\)), we’d be treating all coefficients equally. But:\n\n\\(\\hat{\\beta}_1\\) might be estimated very precisely (small variance)\n\\(\\hat{\\beta}_2\\) might be estimated poorly (large variance)\nThey might be correlated!\n\nThe quadratic form weights by precision giving more importance to coefficients we estimated well.",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Demos",
-      "General F Statistic Intuition"
-    ]
-  },
-  {
-    "objectID": "demo/general-f-statistic.html#the-bottom-line",
-    "href": "demo/general-f-statistic.html#the-bottom-line",
-    "title": "Building Intuition for the F-Statistic Numerator",
-    "section": "The Bottom Line",
-    "text": "The Bottom Line\nThe numerator \\((C\\hat{\\beta})^T [C(X^TX)^{-1}C^T]^{-1} (C\\hat{\\beta})\\) is just:\n“How far are our estimates from zero, measured in a way that accounts for their precision and correlation?”\nFor the overall F-test (testing all slopes = 0), this exactly equals \\(SS_{reg}\\), the explained sum of squares.",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Demos",
-      "General F Statistic Intuition"
-    ]
-  },
-  {
-    "objectID": "demo/hat-matrix-symmetry.html",
-    "href": "demo/hat-matrix-symmetry.html",
-    "title": "Hat Matrix Symmetry Visualization",
-    "section": "",
-    "text": "Point 1 X:  1.0\n\n\nPoint 2 X:  2.0\n\n\nPoint 3 X:  -1.0\n\n\nRandomize Points",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Demos",
-      "Hat Matrix Symmetry"
-    ]
-  },
-  {
-    "objectID": "demo/hat-matrix-symmetry.html#interactive-linear-regression-example",
-    "href": "demo/hat-matrix-symmetry.html#interactive-linear-regression-example",
-    "title": "Hat Matrix Symmetry Visualization",
-    "section": "",
-    "text": "Point 1 X:  1.0\n\n\nPoint 2 X:  2.0\n\n\nPoint 3 X:  -1.0\n\n\nRandomize Points",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Demos",
-      "Hat Matrix Symmetry"
-    ]
-  },
-  {
-    "objectID": "demo/hat-matrix-symmetry.html#hat-matrix-h",
-    "href": "demo/hat-matrix-symmetry.html#hat-matrix-h",
-    "title": "Hat Matrix Symmetry Visualization",
-    "section": "Hat Matrix H",
-    "text": "Hat Matrix H",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Demos",
-      "Hat Matrix Symmetry"
-    ]
-  },
-  {
-    "objectID": "demo/hat-matrix-symmetry.html#what-symmetry-means",
-    "href": "demo/hat-matrix-symmetry.html#what-symmetry-means",
-    "title": "Hat Matrix Symmetry Visualization",
-    "section": "What Symmetry Means:",
-    "text": "What Symmetry Means:\nHij = Hji means:\n\nHow much point i influences point j’s fitted value = How much point j influences point i’s fitted value\n\nThis reciprocal relationship holds for ALL pairs of points\nReciprocal influence is a geometric consequence of orthogonal projection",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Demos",
-      "Hat Matrix Symmetry"
-    ]
-  },
-  {
-    "objectID": "demo/hat-matrix-symmetry.html#key-observations",
-    "href": "demo/hat-matrix-symmetry.html#key-observations",
-    "title": "Hat Matrix Symmetry Visualization",
-    "section": "Key Observations",
-    "text": "Key Observations",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Demos",
-      "Hat Matrix Symmetry"
-    ]
-  },
-  {
-    "objectID": "ex/ex-1.html",
-    "href": "ex/ex-1.html",
-    "title": "Exercise 1",
-    "section": "",
-    "text": "Exercise 1: Login to RStudio Pro\n\nGo to course website → Computing → Using the RStudio Server\nFollow login instructions\nLog in with your credentials\n\nCheck: You should see the RStudio interface with 4 panes.\nExercise 2: Create RStudio Project\n\nFile → New Project → New Directory → New Project\nName: ex-1\n\nClick Create Project\n\nCheck: Project name appears in top-right corner.\nExercise 3: Create Quarto Document\n\nFile → New File → Quarto Document\nTitle: “My First Analysis”\nSave as analysis.qmd\n\n\nCheck: New .qmd file is open and saved.\nExercise 4: Install faraway Package and Load Data\nRun this code in the console ONCE:\n\ninstall.packages(\"faraway\")\n\nThen run this:\n\nlibrary(faraway)\nlibrary(ggplot2)\n\n# Test it works\ndata(teengamb)\nhead(teengamb)\n\n  sex status income verbal gamble\n1   1     51   2.00      8    0.0\n2   1     28   2.50      8    0.0\n3   1     37   2.00      6    0.0\n4   1     28   7.00      4    7.3\n5   1     65   2.00      8   19.6\n6   1     61   3.47      6    0.1\n\n\nCheck: You see the teengamb dataset.\nNow run this in the console:\n\n?teengamb\n\nQuestion: What is in this dataset?\nAction: Add the code below to your .qmd file along with a short description of the data.\n\nlibrary(faraway)\nlibrary(ggplot2)\ndata(teengamb)\n\nExercise 5: Linear Model and Plot\nAdd the following code to your .qmd file. Try running it.\n\n# Fit linear model\nmodel1 &lt;- lm(gamble ~ income, data = teengamb)\nsummary(model1)\n\n\nCall:\nlm(formula = gamble ~ income, data = teengamb)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-46.020 -11.874  -3.757  11.934 107.120 \n\nCoefficients:\n            Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)   -6.325      6.030  -1.049      0.3    \nincome         5.520      1.036   5.330 3.05e-06 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 24.95 on 45 degrees of freedom\nMultiple R-squared:  0.387, Adjusted R-squared:  0.3734 \nF-statistic: 28.41 on 1 and 45 DF,  p-value: 3.045e-06\n\n# Create plot\nggplot(teengamb, aes(x = income, y = gamble)) +\n  geom_point() +\n  geom_smooth(method = \"lm\", formula = \"y ~ x\") +\n  labs(title = \"Income vs Gambling\",\n       x = \"Income\", \n       y = \"Gambling\")\n\n\n\n\n\n\n\nCheck: You have model output and a scatter plot with trend line.\nFinish\nClick “Render” to create your HTML report. Upload your .html file in Canvas under Exercise 1",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Exercises",
-      "Exercise 1"
     ]
   },
   {
