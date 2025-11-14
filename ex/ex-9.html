@@ -631,7 +631,13 @@ window.Quarto = {
 <p>where the expectation is over both the training data (which affects <span class="math inline">\(\hat{f}\)</span>) and the new observation <span class="math inline">\(y_0\)</span>.</p>
 <p><strong>a)</strong> Show that the expected prediction error can be decomposed as:</p>
 <p><span class="math display">\[\text{EPE}(x_0) = \sigma^2 + \text{Bias}^2[\hat{f}(x_0)] + \text{Var}[\hat{f}(x_0)]\]</span></p>
-<p>where: - <span class="math inline">\(\text{Bias}[\hat{f}(x_0)] = E[\hat{f}(x_0)] - f(x_0)\)</span> - <span class="math inline">\(\text{Var}[\hat{f}(x_0)] = E[(\hat{f}(x_0) - E[\hat{f}(x_0)])^2]\)</span></p>
+<p>where:</p>
+<ul>
+<li>
+<span class="math inline">\(\text{Bias}[\hat{f}(x_0)] = E[\hat{f}(x_0)] - f(x_0)\)</span><br>
+</li>
+<li><span class="math inline">\(\text{Var}[\hat{f}(x_0)] = E[(\hat{f}(x_0) - E[\hat{f}(x_0)])^2]\)</span></li>
+</ul>
 <p><em>Hint: Start by adding and subtracting <span class="math inline">\(E[\hat{f}(x_0)]\)</span> and <span class="math inline">\(f(x_0)\)</span> inside the squared term, then expand.</em></p>
 <p><strong>b)</strong> Generate data to illustrate this decomposition empirically:</p>
 <div class="cell">
