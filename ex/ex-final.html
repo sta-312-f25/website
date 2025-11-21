@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.7.29">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>Prediction and Model Selection – STA 312</title>
+
+
+<title>Final – STA 312</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -17,42 +20,8 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
+
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
@@ -60,8 +29,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../ex/ex-10.html" rel="next">
-<link href="../ex/ex-8.html" rel="prev">
+<link href="../demo/least-squares.html" rel="next">
+<link href="../ex/ex-11.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -77,7 +46,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/bootstrap/bootstrap-dark-9dd73ef0fac4bb670ac33ce005cbdd27.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/bootstrap/bootstrap-a7e6113796b8c3db958f69260a338b6c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
-<link href="../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
+<link href="../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -103,7 +73,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script><script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
 const typesetMath = (el) => {
   if (window.MathJax) {
     // MathJax Typeset
@@ -129,15 +104,17 @@ window.Quarto = {
   typesetMath
 };
 </script>
-<meta property="og:title" content="Prediction and Model Selection – STA 312">
+
+<meta property="og:title" content="Final – STA 312">
 <meta property="og:description" content="STA 312 - Linear Models at Wake Forst University, Fall 2025.">
 <meta property="og:site_name" content="STA 312">
-<meta name="twitter:title" content="Prediction and Model Selection – STA 312">
+<meta name="twitter:title" content="Final – STA 312">
 <meta name="twitter:description" content="STA 312 - Linear Models at Wake Forst University, Fall 2025.">
 <meta name="twitter:image" content="https://sta-312-f25.github.io/website/ex/images/twitter-card.png">
 <meta name="twitter:creator" content="@lucystats">
 <meta name="twitter:card" content="summary_large_image">
 </head>
+
 <body class="nav-sidebar docked nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
@@ -302,7 +279,9 @@ window.Quarto = {
   </script>
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">STA 312</span>
@@ -314,7 +293,7 @@ window.Quarto = {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
-<li class="nav-item">
+  <li class="nav-item">
     <a class="nav-link active" href="../schedule.html" aria-current="page"> 
 <span class="menu-text"><i class="fa-solid fa-calendar" aria-label="calendar"></i> Schedule</span></a>
   </li>  
@@ -331,24 +310,30 @@ window.Quarto = {
 <span class="menu-text"><i class="fa-solid fa-cloud" aria-label="cloud"></i> RStudio Pro</span></a>
   </li>  
 </ul>
-</div> <!-- /navcollapse -->
+          </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
-    </nav><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../ex/ex-1.html">Exercises</a></li><li class="breadcrumb-item"><a href="../ex/ex-9.html">Exercise 9: Prediction</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../ex/ex-1.html">Exercises</a></li><li class="breadcrumb-item"><a href="../ex/ex-final.html">Final Problem Set</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
-  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="sidebar-menu-container"> 
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-<li class="sidebar-item sidebar-item-section">
+        <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
  <span class="menu-text">Course Details</span></a>
@@ -356,8 +341,8 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../schedule.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Schedule</span></a>
@@ -370,7 +355,7 @@ window.Quarto = {
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
@@ -379,8 +364,8 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../rstudio-pro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Using the RStudio Pro Server</span></a>
@@ -411,7 +396,7 @@ window.Quarto = {
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
@@ -420,8 +405,8 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../ex/ex-1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exercise 1</span></a>
@@ -477,7 +462,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../ex/ex-9.html" class="sidebar-item-text sidebar-link active">
+  <a href="../ex/ex-9.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exercise 9: Prediction</span></a>
   </div>
 </li>
@@ -495,12 +480,12 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../ex/ex-final.html" class="sidebar-item-text sidebar-link">
+  <a href="../ex/ex-final.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Final Problem Set</span></a>
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
@@ -509,8 +494,8 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../demo/least-squares.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Least Squares Solution</span></a>
@@ -529,26 +514,31 @@ window.Quarto = {
   </div>
 </li>
       </ul>
-</li>
+  </li>
     </ul>
-</div>
-</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
    
   <ul>
-<li><a href="#problem-1" id="toc-problem-1" class="nav-link active" data-scroll-target="#problem-1">Problem 1</a></li>
+  <li><a href="#problem-1" id="toc-problem-1" class="nav-link active" data-scroll-target="#problem-1">Problem 1</a></li>
   <li><a href="#problem-2" id="toc-problem-2" class="nav-link" data-scroll-target="#problem-2">Problem 2</a></li>
   <li><a href="#problem-3" id="toc-problem-3" class="nav-link" data-scroll-target="#problem-3">Problem 3</a></li>
   <li><a href="#problem-4" id="toc-problem-4" class="nav-link" data-scroll-target="#problem-4">Problem 4</a></li>
-  <li><a href="#problem-5" id="toc-problem-5" class="nav-link" data-scroll-target="#problem-5">Problem 5</a></li>
-  <li><a href="#problem-6" id="toc-problem-6" class="nav-link" data-scroll-target="#problem-6">Problem 6</a></li>
-  </ul><div class="toc-actions"><ul><li><a href="https://github.com/sta-312-f25/website/edit/main/ex/ex-9.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sta-312-f25/website/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/sta-312-f25/website/edit/main/ex/ex-final.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sta-312-f25/website/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../ex/ex-1.html">Exercises</a></li><li class="breadcrumb-item"><a href="../ex/ex-9.html">Exercise 9: Prediction</a></li></ol></nav><div class="quarto-title">
-<h1 class="title">Prediction and Model Selection</h1>
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../ex/ex-1.html">Exercises</a></li><li class="breadcrumb-item"><a href="../ex/ex-final.html">Final Problem Set</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Final</h1>
 </div>
 
 
@@ -562,152 +552,64 @@ window.Quarto = {
   
 
 
-</header><section id="problem-1" class="level2"><h2 class="anchored" data-anchor-id="problem-1">Problem 1</h2>
-<p>Given the following small dataset: <span class="math display">\[\mathbf{y} = \begin{bmatrix}3\\5\\7\\11\\13\end{bmatrix}\]</span> <span class="math display">\[\mathbf{X} = \begin{bmatrix}1&amp;1\\1&amp;2\\1&amp;3\\1&amp;4\\1&amp;5\end{bmatrix}\]</span></p>
-<p><strong>a)</strong> Fit the linear regression model <span class="math inline">\(y = \beta_0 + \beta_1 x + \varepsilon\)</span> and calculate the fitted values <span class="math inline">\(\hat{y}_i\)</span> and residuals <span class="math inline">\(\hat{\varepsilon}_i\)</span> for each observation.</p>
-<p><strong>b)</strong> Calculate the hat matrix <span class="math inline">\(\mathbf{H} = \mathbf{X}(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\)</span> and extract the diagonal elements <span class="math inline">\(h_{ii}\)</span> (the leverages) for each observation. You may use R for the matrix calculations.</p>
-<p><strong>c)</strong> Calculate the LOOCV error using the shortcut formula: <span class="math display">\[\text{CV} = \frac{1}{n}\sum_{i=1}^n \left(\frac{y_i - \hat{y}_i}{1 - h_{ii}}\right)^2\]</span></p>
-<p><strong>d)</strong> To verify your answer, fit the model 5 times, each time leaving out one observation. For each left-out observation <span class="math inline">\(i\)</span>:</p>
-<ul>
-<li>Fit the model on the remaining <span class="math inline">\(n-1\)</span> observations<br>
-</li>
-<li>Predict the left-out observation to get <span class="math inline">\(\hat{y}_{-i}\)</span><br>
-</li>
-<li>Calculate <span class="math inline">\((y_i - \hat{y}_{-i})^2\)</span>
-</li>
-</ul>
-<p>Calculate the LOOCV error as <span class="math inline">\(\frac{1}{5}\sum_{i=1}^5 (y_i - \hat{y}_{-i})^2\)</span>. Does this match your answer from part (c)?</p>
-<p><strong>e)</strong> Why is the shortcut formula useful? When would computing LOOCV by actually refitting the model <span class="math inline">\(n\)</span> times become computationally prohibitive?</p>
-</section><section id="problem-2" class="level2"><h2 class="anchored" data-anchor-id="problem-2">Problem 2</h2>
-<p>Consider a dataset where the true relationship is quadratic: <span class="math inline">\(y = 1 + 2x - 0.5x^2 + \varepsilon\)</span> where <span class="math inline">\(\varepsilon \sim N(0, 1)\)</span>.</p>
-<p>Generate data with <span class="math inline">\(n = 60\)</span> observations and <span class="math inline">\(x\)</span> uniformly distributed between 0 and 5.</p>
-<div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
-<span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">60</span></span>
-<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="va">n</span>, <span class="fl">0</span>, <span class="fl">5</span><span class="op">)</span></span>
-<span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fl">1</span> <span class="op">+</span> <span class="fl">2</span><span class="op">*</span><span class="va">x</span> <span class="op">-</span> <span class="fl">0.5</span><span class="op">*</span><span class="va">x</span><span class="op">^</span><span class="fl">2</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>a)</strong> Fit polynomial models of degrees 1 through 6:</p>
-<ul>
-<li>
-<code>model1 &lt;- lm(y ~ poly(x, 1))</code><br>
-</li>
-<li>
-<code>model2 &lt;- lm(y ~ poly(x, 2))</code><br>
-</li>
-<li>… and so on through degree 6</li>
-</ul>
-<p>For each model, calculate:</p>
-<ul>
-<li>AIC using <code>AIC(model)</code><br>
-</li>
-<li>LOOCV error using the shortcut formula<br>
-</li>
-<li>Adjusted <span class="math inline">\(R^2\)</span> from <code>summary(model)$adj.r.squared</code>
-</li>
-</ul>
-<p>Create a table showing all three criteria for each polynomial degree.</p>
-<p><strong>b)</strong> Which degree is selected by each criterion? Do they agree?</p>
-<p><strong>c)</strong> Create 3 plots showing how each criterion changes with polynomial degree.</p>
-<p><strong>d)</strong> The true model is quadratic (degree 2). Do the selection criteria correctly identify this? If any criterion selects a higher degree, explain why this might happen even when we know the true model.</p>
-<p><strong>e)</strong> Generate a test dataset of 100 new observations from the same true model. Calculate the true prediction error (MSE on test data) for each of the 6 models. Which degree predicts best on new data? How does this compare to what the selection criteria chose?</p>
-</section><section id="problem-3" class="level2"><h2 class="anchored" data-anchor-id="problem-3">Problem 3</h2>
-<p>The ridge regression objective function is:</p>
-<p><span class="math display">\[\min_{\beta} (\mathbf{y} - \mathbf{X}\beta)^T(\mathbf{y} - \mathbf{X}\beta) + \lambda\beta^T\beta\]</span></p>
-<p><strong>a)</strong> To find the minimum, take the derivative with respect to <span class="math inline">\(\beta\)</span> and set it equal to zero. Solve for <span class="math inline">\(\hat{\beta}_{\text{ridge}}\)</span>.</p>
-<p><strong>b)</strong> Derive the variance for <span class="math inline">\(\hat{\beta}_{\text{ridge}}\)</span>.</p>
-</section><section id="problem-4" class="level2"><h2 class="anchored" data-anchor-id="problem-4">Problem 4</h2>
-<p>Generate data with highly correlated predictors:</p>
-<div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
-<span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">50</span></span>
-<span><span class="va">x1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span></span>
-<span><span class="va">x2</span> <span class="op">&lt;-</span> <span class="va">x1</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n</span>, sd <span class="op">=</span> <span class="fl">0.01</span><span class="op">)</span>  <span class="co"># Highly correlated with x1</span></span>
-<span><span class="va">x3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span>  <span class="co"># Independent</span></span>
-<span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/scale.html">scale</a></span><span class="op">(</span><span class="va">x1</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/scale.html">scale</a></span><span class="op">(</span><span class="va">x2</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/scale.html">scale</a></span><span class="op">(</span><span class="va">x3</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">beta_true</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="op">-</span><span class="fl">2</span>, <span class="fl">1.5</span><span class="op">)</span></span>
-<span><span class="va">y</span> <span class="op">&lt;-</span> <span class="va">X</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html">%*%</a></span> <span class="va">beta_true</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n</span>, sd <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>a)</strong> Calculate <span class="math inline">\(\hat\beta\)</span> using the OLS and examine the coefficients. Calculate the standard errors of the coefficient estimates. Do the coefficients have high standard errors? Why might this be?</p>
-<p><strong>b)</strong> Calculate the correlation matrix of the predictors. Which predictors are highly correlated?</p>
-<p><strong>c)</strong> Calculate the Variance Inflation Factor (VIF) for each predictor using:</p>
-<p><span class="math display">\[\text{VIF}_j = \frac{1}{1 - R^2_j}\]</span></p>
-<p>where <span class="math inline">\(R^2_j\)</span> is from regressing <span class="math inline">\(x_j\)</span> on all other predictors. Which predictor(s) have high VIF values?</p>
-<p><strong>d)</strong> Using <span class="math inline">\(\lambda=1\)</span> fit a ridge regression model using the same data. Calculate the standard errors of the coefficients – how do they compare to the OLS errors calculated in part (a)?</p>
-</section><section id="problem-5" class="level2"><h2 class="anchored" data-anchor-id="problem-5">Problem 5</h2>
-<p>Consider a regression setting where we observe data <span class="math inline">\((x_i, y_i)\)</span> for <span class="math inline">\(i = 1, \ldots, n\)</span> and the true relationship is:</p>
-<p><span class="math display">\[y_i = f(x_i) + \varepsilon_i\]</span></p>
-<p>where <span class="math inline">\(\varepsilon_i \sim N(0, \sigma^2)\)</span> are independent errors and <span class="math inline">\(f(x)\)</span> is the true regression function.</p>
-<p>Suppose we fit a model <span class="math inline">\(\hat{f}(x)\)</span> using our training data. For a new test point <span class="math inline">\(x_0\)</span>, the expected prediction error is:</p>
-<p><span class="math display">\[\text{EPE}(x_0) = E[(y_0 - \hat{f}(x_0))^2]\]</span></p>
-<p>where the expectation is over both the training data (which affects <span class="math inline">\(\hat{f}\)</span>) and the new observation <span class="math inline">\(y_0\)</span>.</p>
-<p><strong>a)</strong> Show that the expected prediction error can be decomposed as:</p>
-<p><span class="math display">\[\text{EPE}(x_0) = \sigma^2 + \text{Bias}^2[\hat{f}(x_0)] + \text{Var}[\hat{f}(x_0)]\]</span></p>
-<p>where:</p>
-<ul>
-<li>
-<span class="math inline">\(\text{Bias}[\hat{f}(x_0)] = E[\hat{f}(x_0)] - f(x_0)\)</span><br>
-</li>
-<li><span class="math inline">\(\text{Var}[\hat{f}(x_0)] = E[(\hat{f}(x_0) - E[\hat{f}(x_0)])^2]\)</span></li>
-</ul>
-<p><em>Hint: Start by adding and subtracting <span class="math inline">\(E[\hat{f}(x_0)]\)</span> and <span class="math inline">\(f(x_0)\)</span> inside the squared term, then expand.</em></p>
-<p><strong>b)</strong> Generate data to illustrate this decomposition empirically:</p>
-<div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Generate single test point</span></span>
-<span><span class="va">x0</span> <span class="op">&lt;-</span> <span class="fl">0.5</span></span>
-<span><span class="va">sigma</span> <span class="op">&lt;-</span> <span class="fl">1</span></span>
-<span></span>
-<span><span class="co"># Simulate 1000 training datasets</span></span>
-<span><span class="va">n_sims</span> <span class="op">&lt;-</span> <span class="fl">1000</span></span>
-<span><span class="va">n_train</span> <span class="op">&lt;-</span> <span class="fl">20</span></span>
-<span><span class="va">true_f</span> <span class="op">&lt;-</span> <span class="va">x0</span> <span class="op">+</span> <span class="va">x0</span><span class="op">^</span><span class="fl">2</span> <span class="op">+</span> <span class="va">x0</span><span class="op">^</span><span class="fl">3</span></span>
-<span></span>
-<span><span class="va">predictions</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">numeric</a></span><span class="op">(</span><span class="va">n_sims</span><span class="op">)</span></span>
-<span></span>
-<span><span class="kw">for</span><span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="va">n_sims</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">x_train</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="va">n_train</span>, <span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span></span>
-<span>  <span class="va">y_train</span> <span class="op">&lt;-</span> <span class="va">x_train</span> <span class="op">+</span> <span class="va">x_train</span><span class="op">^</span><span class="fl">2</span> <span class="op">+</span> <span class="va">x_train</span><span class="op">^</span><span class="fl">3</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n_train</span>, sd <span class="op">=</span> <span class="va">sigma</span><span class="op">)</span></span>
-<span>  </span>
-<span>  <span class="co"># Fit polynomial model of degree 9</span></span>
-<span>  <span class="va">model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">y_train</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/stats/poly.html">poly</a></span><span class="op">(</span><span class="va">x_train</span>, <span class="fl">9</span><span class="op">)</span><span class="op">)</span></span>
-<span>  <span class="va">predictions</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">model</span>, newdata <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>x_train <span class="op">=</span> <span class="va">x0</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Calculate the three components at <span class="math inline">\(x_0 = 0.5\)</span>:</p>
-<ul>
-<li>Irreducible error: <span class="math inline">\(\sigma^2\)</span><br>
-</li>
-<li>Squared bias: <span class="math inline">\((E[\hat{f}(x_0)] - f(x_0))^2\)</span> (estimate <span class="math inline">\(E[\hat{f}(x_0)]\)</span> as <code>mean(predictions)</code>)<br>
-</li>
-<li>Variance: <span class="math inline">\(\text{Var}[\hat{f}(x_0)]\)</span> (estimate as <code>var(predictions)</code>)</li>
-</ul>
-<p>Verify that their sum approximately equals the mean squared error: <span class="math inline">\(\frac{1}{1000}\sum_{i=1}^{1000}(y_0^{(i)} - \hat{f}^{(i)}(x_0))^2\)</span> where you generate new test observations.</p>
-<p><strong>c)</strong> Repeat part (b) for polynomial degrees 1, 2, 5, and 9 Create a plot showing how bias squared, variance, and total expected prediction error change with model complexity. Explain the bias-variance tradeoff you observe: why does bias decrease and variance increase as we add more polynomial terms? Which degree would you choose and why?</p>
-</section><section id="problem-6" class="level2"><h2 class="anchored" data-anchor-id="problem-6">Problem 6</h2>
-<p>Generate data from a simple linear model:</p>
-<div class="cell">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
-<span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">40</span></span>
-<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="va">n</span>, <span class="fl">0</span>, <span class="fl">10</span><span class="op">)</span></span>
-<span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fl">5</span> <span class="op">+</span> <span class="fl">2</span><span class="op">*</span><span class="va">x</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span></span>
-<span><span class="va">model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">y</span> <span class="op">~</span> <span class="va">x</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>a)</strong> For a new observation at <span class="math inline">\(x_{\text{new}} = 6\)</span>, calculate:</p>
-<ul>
-<li>The point prediction <span class="math inline">\(\hat{y}_{\text{new}}\)</span><br>
-</li>
-<li>A 95% confidence interval for <span class="math inline">\(E[y \mid x = 6]\)</span> (the mean response)<br>
-</li>
-<li>A 95% prediction interval for a new observation <span class="math inline">\(y_{\text{new}}\)</span> at <span class="math inline">\(x = 6\)</span>.</li>
-</ul>
-<p><strong>b)</strong> Explain the difference between these two intervals. Why is the prediction interval wider than the confidence interval?</p>
-<p><strong>c)</strong> The variance of the prediction error is: <span class="math display">\[\text{Var}(y_{\text{new}}-\hat{y}_{\text{new}}) = \sigma^2\left(1 + x_{\text{new}}^T(\mathbf{X}^T\mathbf{X})^{-1}x_{\text{new}}\right)\]</span></p>
-<p>Show your work to derive why this is true.</p>
+</header>
 
 
-</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+<section id="problem-1" class="level2">
+<h2 class="anchored" data-anchor-id="problem-1">Problem 1</h2>
+<p>Consider <span class="math inline">\(y = X\beta + \varepsilon\)</span> with <span class="math inline">\(E[\varepsilon]=0\)</span>, <span class="math inline">\(\operatorname{Var}(\varepsilon)=\sigma^2I\)</span>.</p>
+<p><strong>(a)</strong> Suppose someone proposes a different estimator: <span class="math inline">\(\tilde{\beta} = (X^{T}X)^{-1}X^{T}y + c\)</span> where <span class="math inline">\(c\)</span> is any fixed vector. This represents adding a “correction term” to OLS. Under what condition on <span class="math inline">\(c\)</span> is this estimator unbiased? Now compute <span class="math inline">\(\operatorname{Var}(\tilde{\beta})\)</span> and show it’s always at least as large as <span class="math inline">\(\operatorname{Var}(\hat{\beta}_{\text{OLS}})\)</span>. What does this reveal about why we project onto <span class="math inline">\(\operatorname{col}(X)\)</span>?</p>
+<p><strong>(b)</strong> You fit two nested models with design matrices <span class="math inline">\(X_1 \subset X_2\)</span> (meaning <span class="math inline">\(X_1\)</span> columns are a subset of <span class="math inline">\(X_2\)</span> columns). Your colleague claims: “The residuals from model 2 must be strictly smaller in squared length than residuals from model 1, because we have more parameters to fit with.” Is this always true? Prove it or give a counterexample. When does equality occur?</p>
+<p><strong>(c)</strong> In the full model <span class="math inline">\(y = X\beta + \varepsilon\)</span>, we get fitted values <span class="math inline">\(\hat{y}\)</span> and residuals <span class="math inline">\(e\)</span>. Your colleague asks: “Why can’t we improve the fit by using <span class="math inline">\(\hat{y} + 0.1e\)</span> instead? We’d be closer to <span class="math inline">\(y\)</span>.” Explain precisely why this doesn’t work - what goes wrong with the properties we care about?</p>
+</section>
+<section id="problem-2" class="level2">
+<h2 class="anchored" data-anchor-id="problem-2">Problem 2</h2>
+<p>Consider <span class="math inline">\(y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \varepsilon\)</span>.</p>
+<p><strong>(a)</strong> You run two regressions:</p>
+<ul>
+<li>Regression A: <span class="math inline">\(y = \alpha_0 + \alpha_1 x_1 + \varepsilon\)</span><br>
+</li>
+<li>Regression B: <span class="math inline">\(y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \varepsilon\)</span></li>
+</ul>
+<p>Your colleague notices <span class="math inline">\(\hat{\alpha}_1 \neq \hat{\beta}_1\)</span> and says: “The relationship between <span class="math inline">\(y\)</span> and <span class="math inline">\(x_1\)</span> changed when we added <span class="math inline">\(x_2\)</span>. The model must be wrong.” Use the Frisch-Waugh-Lovell theorem to explain exactly what <span class="math inline">\(\hat{\alpha}_1\)</span> measures versus what <span class="math inline">\(\hat{\beta}_1\)</span> measures. When are they equal?</p>
+<p><strong>(b)</strong> For the model <span class="math inline">\(y = \beta_0 + \beta_1 x + \beta_2 x^2 + \varepsilon\)</span>, someone interprets <span class="math inline">\(\hat{\beta}_1\)</span> as “the linear effect of <span class="math inline">\(x\)</span>.” Use FWL to show that <span class="math inline">\(\hat{\beta}_1\)</span> does NOT equal the slope from simple regression of <span class="math inline">\(y\)</span> on <span class="math inline">\(x\)</span>. What does <span class="math inline">\(\hat{\beta}_1\)</span> actually measure?</p>
+<p><strong>(c)</strong> Suppose <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span> are uncorrelated in your sample (and both regressions include an intercept). Does this mean <span class="math inline">\(\hat{\beta}_1\)</span> from the multiple regression equals <span class="math inline">\(\hat{\alpha}_1\)</span> from the simple regression? Prove your answer.</p>
+</section>
+<section id="problem-3" class="level2">
+<h2 class="anchored" data-anchor-id="problem-3">Problem 3</h2>
+<p>Consider <span class="math inline">\(y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_3 + \varepsilon\)</span> with <span class="math inline">\(\varepsilon \sim N(0,\sigma^2 I)\)</span>.</p>
+<p><strong>(a)</strong> You test <span class="math inline">\(H_0: \beta_2 = 0\)</span> and get <span class="math inline">\(p = 0.30\)</span> (fail to reject). You test <span class="math inline">\(H_0: \beta_3 = 0\)</span> and get <span class="math inline">\(p = 0.25\)</span> (fail to reject). Then you test <span class="math inline">\(H_0: \beta_2 = \beta_3 = 0\)</span> and get <span class="math inline">\(p = 0.01\)</span> (reject). Your colleague says this is impossible: “How can both coefficients be jointly significant when neither is individually significant?” Explain how this can happen using the geometry of <span class="math inline">\(F\)</span>-tests.</p>
+<p><strong>(b)</strong> Describe the relationship between <span class="math inline">\(x_2\)</span> and <span class="math inline">\(x_3\)</span> that would produce the pattern in part (a). Why does high collinearity between <span class="math inline">\(x_2\)</span> and <span class="math inline">\(x_3\)</span> lead to this phenomenon? (Optional: if you wish, construct a concrete numerical example with <span class="math inline">\(n=20\)</span> observations demonstrating this pattern.)</p>
+<p><strong>(c)</strong> In the model from part (a), you fit the full model and get <span class="math inline">\(SSE_{\text{full}} = 100\)</span>. You test dropping <span class="math inline">\(x_3\)</span> and get <span class="math inline">\(SSE = 120\)</span>. Then you test dropping <span class="math inline">\(x_2\)</span> and get <span class="math inline">\(SSE = 115\)</span>. Your colleague predicts: “If we drop both <span class="math inline">\(x_2\)</span> and <span class="math inline">\(x_3\)</span>, we’ll get <span class="math inline">\(SSE = 135\)</span>.” Is this correct? What’s the actual range of possible values for <span class="math inline">\(SSE\)</span> when dropping both?</p>
+</section>
+<section id="problem-4" class="level2">
+<h2 class="anchored" data-anchor-id="problem-4">Problem 4</h2>
+<p>True model: <span class="math inline">\(y_i = \beta_0 + \beta_1 x_i + \varepsilon_i\)</span> where <span class="math inline">\(\operatorname{Var}(\varepsilon_i) = \sigma^2 w_i\)</span>.</p>
+<p><strong>(a)</strong> You suspect heteroskedasticity and decide to use weights. But you get the direction wrong: instead of using weight matrix <span class="math inline">\(W = \text{diag}(1/w_1, \ldots, 1/w_n)\)</span>, you use <span class="math inline">\(W = \text{diag}(w_1, \ldots, w_n)\)</span>. So your estimator is:</p>
+<p><span class="math display">\[\tilde{\beta} = (X^{T}WX)^{-1}X^{T}Wy\]</span></p>
+<p>instead of the correct <span class="math inline">\(\hat{\beta}_{\text{WLS}} = (X^{T}W^{-1}X)^{-1}X^{T}W^{-1}y\)</span>. Is <span class="math inline">\(\tilde{\beta}\)</span> still unbiased? Compare <span class="math inline">\(\operatorname{Var}(\tilde{\beta})\)</span> to <span class="math inline">\(\operatorname{Var}(\hat{\beta}_{\text{OLS}})\)</span> — can using the wrong weights make things worse than doing nothing?</p>
+<p><strong>(b)</strong> Suppose the true variances follow <span class="math inline">\(w_i = (\beta_0 + \beta_1 x_i)^2\)</span> (variance proportional to the squared mean). You don’t know <span class="math inline">\(\beta\)</span>, so you:</p>
+<ul>
+<li>Step 1: Run OLS to get <span class="math inline">\(\hat{\beta}_0, \hat{\beta}_1\)</span><br>
+</li>
+<li>Step 2: Use weights <span class="math inline">\(\hat{w}_i = (\hat{\beta}_0 + \hat{\beta}_1 x_i)^2\)</span><br>
+</li>
+<li>Step 3: Run WLS with these estimated weights</li>
+</ul>
+<p>Is this procedure valid for inference? Under what conditions would <span class="math inline">\(E[\tilde{\beta}] \approx \beta\)</span> hold in large samples? What new issues arise from estimating the weights rather than knowing them?</p>
+<p><strong>(c)</strong> Your colleague suggests: “Let’s use robust standard errors instead of WLS. Then we don’t need to know the weights.” Compare these two approaches:</p>
+<ul>
+<li>Approach 1: Use WLS with correct weights <span class="math inline">\(1/w_i\)</span><br>
+</li>
+<li>Approach 2: Use OLS with robust standard errors</li>
+</ul>
+<p>Which estimator has smaller variance? Under what conditions is inference valid for each approach? Give at least two reasons why you might prefer Approach 2 even though it’s less efficient.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
     if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -1118,30 +1020,35 @@ window.Quarto = {
       }
     }
   });
-  </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="../ex/ex-8.html" class="pagination-link" aria-label="Exercise 8: Diagnostics and Transformations">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Exercise 8: Diagnostics and Transformations</span>
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../ex/ex-11.html" class="pagination-link" aria-label="Exercise 11: Causal Inference">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Exercise 11: Causal Inference</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../ex/ex-10.html" class="pagination-link" aria-label="Exercise 10: FWL">
-        <span class="nav-page-text">Exercise 10: FWL</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../demo/least-squares.html" class="pagination-link" aria-label="Least Squares Solution">
+        <span class="nav-page-text">Least Squares Solution</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
-<footer class="footer"><div class="nav-footer">
+<footer class="footer">
+  <div class="nav-footer">
     <div class="nav-footer-left">
 <p>© 2025, Lucy D’Agostino McGowan</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/sta-312-f25/website/edit/main/ex/ex-9.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sta-312-f25/website/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/sta-312-f25/website/edit/main/ex/ex-final.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sta-312-f25/website/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Made with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <a href="https://quarto.org/">Quarto</a></p>
 </div>
   </div>
 </footer>
+
+
 
 
 </body></html>

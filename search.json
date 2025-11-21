@@ -2168,723 +2168,267 @@
     ]
   },
   {
-    "objectID": "ex/ex-9.html",
-    "href": "ex/ex-9.html",
-    "title": "Prediction and Model Selection",
+    "objectID": "ex/ex-final.html",
+    "href": "ex/ex-final.html",
+    "title": "Final",
     "section": "",
-    "text": "Given the following small dataset: \\[\\mathbf{y} = \\begin{bmatrix}3\\\\5\\\\7\\\\11\\\\13\\end{bmatrix}\\] \\[\\mathbf{X} = \\begin{bmatrix}1&1\\\\1&2\\\\1&3\\\\1&4\\\\1&5\\end{bmatrix}\\]\na) Fit the linear regression model \\(y = \\beta_0 + \\beta_1 x + \\varepsilon\\) and calculate the fitted values \\(\\hat{y}_i\\) and residuals \\(\\hat{\\varepsilon}_i\\) for each observation.\nb) Calculate the hat matrix \\(\\mathbf{H} = \\mathbf{X}(\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\) and extract the diagonal elements \\(h_{ii}\\) (the leverages) for each observation. You may use R for the matrix calculations.\nc) Calculate the LOOCV error using the shortcut formula: \\[\\text{CV} = \\frac{1}{n}\\sum_{i=1}^n \\left(\\frac{y_i - \\hat{y}_i}{1 - h_{ii}}\\right)^2\\]\nd) To verify your answer, fit the model 5 times, each time leaving out one observation. For each left-out observation \\(i\\):\n\nFit the model on the remaining \\(n-1\\) observations\n\nPredict the left-out observation to get \\(\\hat{y}_{-i}\\)\n\nCalculate \\((y_i - \\hat{y}_{-i})^2\\)\n\n\nCalculate the LOOCV error as \\(\\frac{1}{5}\\sum_{i=1}^5 (y_i - \\hat{y}_{-i})^2\\). Does this match your answer from part (c)?\ne) Why is the shortcut formula useful? When would computing LOOCV by actually refitting the model \\(n\\) times become computationally prohibitive?",
+    "text": "Consider \\(y = X\\beta + \\varepsilon\\) with \\(E[\\varepsilon]=0\\), \\(\\operatorname{Var}(\\varepsilon)=\\sigma^2I\\).\n(a) Suppose someone proposes a different estimator: \\(\\tilde{\\beta} = (X^{T}X)^{-1}X^{T}y + c\\) where \\(c\\) is any fixed vector. This represents adding a “correction term” to OLS. Under what condition on \\(c\\) is this estimator unbiased? Now compute \\(\\operatorname{Var}(\\tilde{\\beta})\\) and show it’s always at least as large as \\(\\operatorname{Var}(\\hat{\\beta}_{\\text{OLS}})\\). What does this reveal about why we project onto \\(\\operatorname{col}(X)\\)?\n(b) You fit two nested models with design matrices \\(X_1 \\subset X_2\\) (meaning \\(X_1\\) columns are a subset of \\(X_2\\) columns). Your colleague claims: “The residuals from model 2 must be strictly smaller in squared length than residuals from model 1, because we have more parameters to fit with.” Is this always true? Prove it or give a counterexample. When does equality occur?\n(c) In the full model \\(y = X\\beta + \\varepsilon\\), we get fitted values \\(\\hat{y}\\) and residuals \\(e\\). Your colleague asks: “Why can’t we improve the fit by using \\(\\hat{y} + 0.1e\\) instead? We’d be closer to \\(y\\).” Explain precisely why this doesn’t work - what goes wrong with the properties we care about?",
     "crumbs": [
       "{{< fa calendar >}} Schedule",
       "Exercises",
-      "Exercise 9: Prediction"
+      "Final Problem Set"
     ]
   },
   {
-    "objectID": "ex/ex-9.html#problem-1",
-    "href": "ex/ex-9.html#problem-1",
-    "title": "Prediction and Model Selection",
+    "objectID": "ex/ex-final.html#problem-1",
+    "href": "ex/ex-final.html#problem-1",
+    "title": "Final",
     "section": "",
-    "text": "Given the following small dataset: \\[\\mathbf{y} = \\begin{bmatrix}3\\\\5\\\\7\\\\11\\\\13\\end{bmatrix}\\] \\[\\mathbf{X} = \\begin{bmatrix}1&1\\\\1&2\\\\1&3\\\\1&4\\\\1&5\\end{bmatrix}\\]\na) Fit the linear regression model \\(y = \\beta_0 + \\beta_1 x + \\varepsilon\\) and calculate the fitted values \\(\\hat{y}_i\\) and residuals \\(\\hat{\\varepsilon}_i\\) for each observation.\nb) Calculate the hat matrix \\(\\mathbf{H} = \\mathbf{X}(\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\) and extract the diagonal elements \\(h_{ii}\\) (the leverages) for each observation. You may use R for the matrix calculations.\nc) Calculate the LOOCV error using the shortcut formula: \\[\\text{CV} = \\frac{1}{n}\\sum_{i=1}^n \\left(\\frac{y_i - \\hat{y}_i}{1 - h_{ii}}\\right)^2\\]\nd) To verify your answer, fit the model 5 times, each time leaving out one observation. For each left-out observation \\(i\\):\n\nFit the model on the remaining \\(n-1\\) observations\n\nPredict the left-out observation to get \\(\\hat{y}_{-i}\\)\n\nCalculate \\((y_i - \\hat{y}_{-i})^2\\)\n\n\nCalculate the LOOCV error as \\(\\frac{1}{5}\\sum_{i=1}^5 (y_i - \\hat{y}_{-i})^2\\). Does this match your answer from part (c)?\ne) Why is the shortcut formula useful? When would computing LOOCV by actually refitting the model \\(n\\) times become computationally prohibitive?",
+    "text": "Consider \\(y = X\\beta + \\varepsilon\\) with \\(E[\\varepsilon]=0\\), \\(\\operatorname{Var}(\\varepsilon)=\\sigma^2I\\).\n(a) Suppose someone proposes a different estimator: \\(\\tilde{\\beta} = (X^{T}X)^{-1}X^{T}y + c\\) where \\(c\\) is any fixed vector. This represents adding a “correction term” to OLS. Under what condition on \\(c\\) is this estimator unbiased? Now compute \\(\\operatorname{Var}(\\tilde{\\beta})\\) and show it’s always at least as large as \\(\\operatorname{Var}(\\hat{\\beta}_{\\text{OLS}})\\). What does this reveal about why we project onto \\(\\operatorname{col}(X)\\)?\n(b) You fit two nested models with design matrices \\(X_1 \\subset X_2\\) (meaning \\(X_1\\) columns are a subset of \\(X_2\\) columns). Your colleague claims: “The residuals from model 2 must be strictly smaller in squared length than residuals from model 1, because we have more parameters to fit with.” Is this always true? Prove it or give a counterexample. When does equality occur?\n(c) In the full model \\(y = X\\beta + \\varepsilon\\), we get fitted values \\(\\hat{y}\\) and residuals \\(e\\). Your colleague asks: “Why can’t we improve the fit by using \\(\\hat{y} + 0.1e\\) instead? We’d be closer to \\(y\\).” Explain precisely why this doesn’t work - what goes wrong with the properties we care about?",
     "crumbs": [
       "{{< fa calendar >}} Schedule",
       "Exercises",
-      "Exercise 9: Prediction"
+      "Final Problem Set"
     ]
   },
   {
-    "objectID": "ex/ex-9.html#problem-2",
-    "href": "ex/ex-9.html#problem-2",
-    "title": "Prediction and Model Selection",
+    "objectID": "ex/ex-final.html#problem-2",
+    "href": "ex/ex-final.html#problem-2",
+    "title": "Final",
     "section": "Problem 2",
-    "text": "Problem 2\nConsider a dataset where the true relationship is quadratic: \\(y = 1 + 2x - 0.5x^2 + \\varepsilon\\) where \\(\\varepsilon \\sim N(0, 1)\\).\nGenerate data with \\(n = 60\\) observations and \\(x\\) uniformly distributed between 0 and 5.\n\nset.seed(1)\nn &lt;- 60\nx &lt;- runif(n, 0, 5)\ny &lt;- 1 + 2*x - 0.5*x^2 + rnorm(n)\n\na) Fit polynomial models of degrees 1 through 6:\n\n\nmodel1 &lt;- lm(y ~ poly(x, 1))\n\n\nmodel2 &lt;- lm(y ~ poly(x, 2))\n\n… and so on through degree 6\n\nFor each model, calculate:\n\nAIC using AIC(model)\n\nLOOCV error using the shortcut formula\n\nAdjusted \\(R^2\\) from summary(model)$adj.r.squared\n\n\nCreate a table showing all three criteria for each polynomial degree.\nb) Which degree is selected by each criterion? Do they agree?\nc) Create 3 plots showing how each criterion changes with polynomial degree.\nd) The true model is quadratic (degree 2). Do the selection criteria correctly identify this? If any criterion selects a higher degree, explain why this might happen even when we know the true model.\ne) Generate a test dataset of 100 new observations from the same true model. Calculate the true prediction error (MSE on test data) for each of the 6 models. Which degree predicts best on new data? How does this compare to what the selection criteria chose?",
+    "text": "Problem 2\nConsider \\(y = \\beta_0 + \\beta_1 x_1 + \\beta_2 x_2 + \\varepsilon\\).\n(a) You run two regressions:\n\nRegression A: \\(y = \\alpha_0 + \\alpha_1 x_1 + \\varepsilon\\)\n\nRegression B: \\(y = \\beta_0 + \\beta_1 x_1 + \\beta_2 x_2 + \\varepsilon\\)\n\nYour colleague notices \\(\\hat{\\alpha}_1 \\neq \\hat{\\beta}_1\\) and says: “The relationship between \\(y\\) and \\(x_1\\) changed when we added \\(x_2\\). The model must be wrong.” Use the Frisch-Waugh-Lovell theorem to explain exactly what \\(\\hat{\\alpha}_1\\) measures versus what \\(\\hat{\\beta}_1\\) measures. When are they equal?\n(b) For the model \\(y = \\beta_0 + \\beta_1 x + \\beta_2 x^2 + \\varepsilon\\), someone interprets \\(\\hat{\\beta}_1\\) as “the linear effect of \\(x\\).” Use FWL to show that \\(\\hat{\\beta}_1\\) does NOT equal the slope from simple regression of \\(y\\) on \\(x\\). What does \\(\\hat{\\beta}_1\\) actually measure?\n(c) Suppose \\(x_1\\) and \\(x_2\\) are uncorrelated in your sample (and both regressions include an intercept). Does this mean \\(\\hat{\\beta}_1\\) from the multiple regression equals \\(\\hat{\\alpha}_1\\) from the simple regression? Prove your answer.",
     "crumbs": [
       "{{< fa calendar >}} Schedule",
       "Exercises",
-      "Exercise 9: Prediction"
+      "Final Problem Set"
     ]
   },
   {
-    "objectID": "ex/ex-9.html#problem-3",
-    "href": "ex/ex-9.html#problem-3",
-    "title": "Prediction and Model Selection",
+    "objectID": "ex/ex-final.html#problem-3",
+    "href": "ex/ex-final.html#problem-3",
+    "title": "Final",
     "section": "Problem 3",
-    "text": "Problem 3\nThe ridge regression objective function is:\n\\[\\min_{\\beta} (\\mathbf{y} - \\mathbf{X}\\beta)^T(\\mathbf{y} - \\mathbf{X}\\beta) + \\lambda\\beta^T\\beta\\]\na) To find the minimum, take the derivative with respect to \\(\\beta\\) and set it equal to zero. Solve for \\(\\hat{\\beta}_{\\text{ridge}}\\).\nb) Derive the variance for \\(\\hat{\\beta}_{\\text{ridge}}\\).",
+    "text": "Problem 3\nConsider \\(y = \\beta_0 + \\beta_1 x_1 + \\beta_2 x_2 + \\beta_3 x_3 + \\varepsilon\\) with \\(\\varepsilon \\sim N(0,\\sigma^2 I)\\).\n(a) You test \\(H_0: \\beta_2 = 0\\) and get \\(p = 0.30\\) (fail to reject). You test \\(H_0: \\beta_3 = 0\\) and get \\(p = 0.25\\) (fail to reject). Then you test \\(H_0: \\beta_2 = \\beta_3 = 0\\) and get \\(p = 0.01\\) (reject). Your colleague says this is impossible: “How can both coefficients be jointly significant when neither is individually significant?” Explain how this can happen using the geometry of \\(F\\)-tests.\n(b) Describe the relationship between \\(x_2\\) and \\(x_3\\) that would produce the pattern in part (a). Why does high collinearity between \\(x_2\\) and \\(x_3\\) lead to this phenomenon? (Optional: if you wish, construct a concrete numerical example with \\(n=20\\) observations demonstrating this pattern.)\n(c) In the model from part (a), you fit the full model and get \\(SSE_{\\text{full}} = 100\\). You test dropping \\(x_3\\) and get \\(SSE = 120\\). Then you test dropping \\(x_2\\) and get \\(SSE = 115\\). Your colleague predicts: “If we drop both \\(x_2\\) and \\(x_3\\), we’ll get \\(SSE = 135\\).” Is this correct? What’s the actual range of possible values for \\(SSE\\) when dropping both?",
     "crumbs": [
       "{{< fa calendar >}} Schedule",
       "Exercises",
-      "Exercise 9: Prediction"
+      "Final Problem Set"
     ]
   },
   {
-    "objectID": "ex/ex-9.html#problem-4",
-    "href": "ex/ex-9.html#problem-4",
-    "title": "Prediction and Model Selection",
+    "objectID": "ex/ex-final.html#problem-4",
+    "href": "ex/ex-final.html#problem-4",
+    "title": "Final",
     "section": "Problem 4",
-    "text": "Problem 4\nGenerate data with highly correlated predictors:\n\nset.seed(1)\nn &lt;- 50\nx1 &lt;- rnorm(n)\nx2 &lt;- x1 + rnorm(n, sd = 0.01)  # Highly correlated with x1\nx3 &lt;- rnorm(n)  # Independent\nX &lt;- cbind(scale(x1), scale(x2), scale(x3))\nbeta_true &lt;- c(3, -2, 1.5)\ny &lt;- X %*% beta_true + rnorm(n, sd = 1)\n\na) Calculate \\(\\hat\\beta\\) using the OLS and examine the coefficients. Calculate the standard errors of the coefficient estimates. Do the coefficients have high standard errors? Why might this be?\nb) Calculate the correlation matrix of the predictors. Which predictors are highly correlated?\nc) Calculate the Variance Inflation Factor (VIF) for each predictor using:\n\\[\\text{VIF}_j = \\frac{1}{1 - R^2_j}\\]\nwhere \\(R^2_j\\) is from regressing \\(x_j\\) on all other predictors. Which predictor(s) have high VIF values?\nd) Using \\(\\lambda=1\\) fit a ridge regression model using the same data. Calculate the standard errors of the coefficients – how do they compare to the OLS errors calculated in part (a)?",
+    "text": "Problem 4\nTrue model: \\(y_i = \\beta_0 + \\beta_1 x_i + \\varepsilon_i\\) where \\(\\operatorname{Var}(\\varepsilon_i) = \\sigma^2 w_i\\).\n(a) You suspect heteroskedasticity and decide to use weights. But you get the direction wrong: instead of using weight matrix \\(W = \\text{diag}(1/w_1, \\ldots, 1/w_n)\\), you use \\(W = \\text{diag}(w_1, \\ldots, w_n)\\). So your estimator is:\n\\[\\tilde{\\beta} = (X^{T}WX)^{-1}X^{T}Wy\\]\ninstead of the correct \\(\\hat{\\beta}_{\\text{WLS}} = (X^{T}W^{-1}X)^{-1}X^{T}W^{-1}y\\). Is \\(\\tilde{\\beta}\\) still unbiased? Compare \\(\\operatorname{Var}(\\tilde{\\beta})\\) to \\(\\operatorname{Var}(\\hat{\\beta}_{\\text{OLS}})\\) — can using the wrong weights make things worse than doing nothing?\n(b) Suppose the true variances follow \\(w_i = (\\beta_0 + \\beta_1 x_i)^2\\) (variance proportional to the squared mean). You don’t know \\(\\beta\\), so you:\n\nStep 1: Run OLS to get \\(\\hat{\\beta}_0, \\hat{\\beta}_1\\)\n\nStep 2: Use weights \\(\\hat{w}_i = (\\hat{\\beta}_0 + \\hat{\\beta}_1 x_i)^2\\)\n\nStep 3: Run WLS with these estimated weights\n\nIs this procedure valid for inference? Under what conditions would \\(E[\\tilde{\\beta}] \\approx \\beta\\) hold in large samples? What new issues arise from estimating the weights rather than knowing them?\n(c) Your colleague suggests: “Let’s use robust standard errors instead of WLS. Then we don’t need to know the weights.” Compare these two approaches:\n\nApproach 1: Use WLS with correct weights \\(1/w_i\\)\n\nApproach 2: Use OLS with robust standard errors\n\nWhich estimator has smaller variance? Under what conditions is inference valid for each approach? Give at least two reasons why you might prefer Approach 2 even though it’s less efficient.",
     "crumbs": [
       "{{< fa calendar >}} Schedule",
       "Exercises",
-      "Exercise 9: Prediction"
+      "Final Problem Set"
     ]
   },
   {
-    "objectID": "ex/ex-9.html#problem-5",
-    "href": "ex/ex-9.html#problem-5",
-    "title": "Prediction and Model Selection",
-    "section": "Problem 5",
-    "text": "Problem 5\nConsider a regression setting where we observe data \\((x_i, y_i)\\) for \\(i = 1, \\ldots, n\\) and the true relationship is:\n\\[y_i = f(x_i) + \\varepsilon_i\\]\nwhere \\(\\varepsilon_i \\sim N(0, \\sigma^2)\\) are independent errors and \\(f(x)\\) is the true regression function.\nSuppose we fit a model \\(\\hat{f}(x)\\) using our training data. For a new test point \\(x_0\\), the expected prediction error is:\n\\[\\text{EPE}(x_0) = E[(y_0 - \\hat{f}(x_0))^2]\\]\nwhere the expectation is over both the training data (which affects \\(\\hat{f}\\)) and the new observation \\(y_0\\).\na) Show that the expected prediction error can be decomposed as:\n\\[\\text{EPE}(x_0) = \\sigma^2 + \\text{Bias}^2[\\hat{f}(x_0)] + \\text{Var}[\\hat{f}(x_0)]\\]\nwhere:\n\n\n\\(\\text{Bias}[\\hat{f}(x_0)] = E[\\hat{f}(x_0)] - f(x_0)\\)\n\n\\(\\text{Var}[\\hat{f}(x_0)] = E[(\\hat{f}(x_0) - E[\\hat{f}(x_0)])^2]\\)\n\nHint: Start by adding and subtracting \\(E[\\hat{f}(x_0)]\\) and \\(f(x_0)\\) inside the squared term, then expand.\nb) Generate data to illustrate this decomposition empirically:\n\nset.seed(1)\n\n# Generate single test point\nx0 &lt;- 0.5\nsigma &lt;- 1\n\n# Simulate 1000 training datasets\nn_sims &lt;- 1000\nn_train &lt;- 20\ntrue_f &lt;- x0 + x0^2 + x0^3\n\npredictions &lt;- numeric(n_sims)\n\nfor(i in 1:n_sims) {\n  x_train &lt;- runif(n_train, 0, 1)\n  y_train &lt;- x_train + x_train^2 + x_train^3 + rnorm(n_train, sd = sigma)\n  \n  # Fit polynomial model of degree 9\n  model &lt;- lm(y_train ~ poly(x_train, 9))\n  predictions[i] &lt;- predict(model, newdata = data.frame(x_train = x0))\n}\n\nCalculate the three components at \\(x_0 = 0.5\\):\n\nIrreducible error: \\(\\sigma^2\\)\n\nSquared bias: \\((E[\\hat{f}(x_0)] - f(x_0))^2\\) (estimate \\(E[\\hat{f}(x_0)]\\) as mean(predictions))\n\nVariance: \\(\\text{Var}[\\hat{f}(x_0)]\\) (estimate as var(predictions))\n\nVerify that their sum approximately equals the mean squared error: \\(\\frac{1}{1000}\\sum_{i=1}^{1000}(y_0^{(i)} - \\hat{f}^{(i)}(x_0))^2\\) where you generate new test observations.\nc) Repeat part (b) for polynomial degrees 1, 2, 5, and 9 Create a plot showing how bias squared, variance, and total expected prediction error change with model complexity. Explain the bias-variance tradeoff you observe: why does bias decrease and variance increase as we add more polynomial terms? Which degree would you choose and why?",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Exercises",
-      "Exercise 9: Prediction"
-    ]
-  },
-  {
-    "objectID": "ex/ex-9.html#problem-6",
-    "href": "ex/ex-9.html#problem-6",
-    "title": "Prediction and Model Selection",
-    "section": "Problem 6",
-    "text": "Problem 6\nGenerate data from a simple linear model:\n\nset.seed(1)\nn &lt;- 40\nx &lt;- runif(n, 0, 10)\ny &lt;- 5 + 2*x + rnorm(n)\nmodel &lt;- lm(y ~ x)\n\na) For a new observation at \\(x_{\\text{new}} = 6\\), calculate:\n\nThe point prediction \\(\\hat{y}_{\\text{new}}\\)\n\nA 95% confidence interval for \\(E[y \\mid x = 6]\\) (the mean response)\n\nA 95% prediction interval for a new observation \\(y_{\\text{new}}\\) at \\(x = 6\\).\n\nb) Explain the difference between these two intervals. Why is the prediction interval wider than the confidence interval?\nc) The variance of the prediction error is: \\[\\text{Var}(y_{\\text{new}}-\\hat{y}_{\\text{new}}) = \\sigma^2\\left(1 + x_{\\text{new}}^T(\\mathbf{X}^T\\mathbf{X})^{-1}x_{\\text{new}}\\right)\\]\nShow your work to derive why this is true.",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Exercises",
-      "Exercise 9: Prediction"
-    ]
-  },
-  {
-    "objectID": "ex/ex-7.html",
-    "href": "ex/ex-7.html",
-    "title": "Confidence Intervals and Coverage",
+    "objectID": "ex/ex-8.html",
+    "href": "ex/ex-8.html",
+    "title": "Diagnostics and Transformations",
     "section": "",
-    "text": "Given the following data:\n\\[\\mathbf{y} = \\begin{bmatrix}12\\\\15\\\\18\\\\22\\\\25\\\\28\\end{bmatrix}\\]\n\\[\\mathbf{X} = \\begin{bmatrix}1&2\\\\1&4\\\\1&6\\\\1&8\\\\1&10\\\\1&12\\end{bmatrix}\\]\na) Fit the linear regression model \\(y = \\beta_0 + \\beta_1 x + \\varepsilon\\) and construct a 95% confidence interval for \\(\\beta_1\\) using the standard OLS approach.\nb) Interpret the confidence interval in context.\nc) Calculate a 90% confidence interval for \\(\\beta_1\\). How does it compare to the 95% interval?",
+    "text": "Given the following small dataset:\n\\[\\mathbf{y} = \\begin{bmatrix}5\\\\8\\\\12\\\\20\\\\30\\end{bmatrix}\\]\n\\[\\mathbf{X} = \\begin{bmatrix}1&1\\\\1&2\\\\1&3\\\\1&4\\\\1&5\\end{bmatrix}\\]\na) Fit the linear regression model \\(y = \\beta_0 + \\beta_1 x + \\varepsilon\\) and calculate the residuals \\(\\hat{\\varepsilon}_i\\) for each observation.\nb) Calculate the leverage \\(h_i\\) for each observation using the formula \\(h_i = H_{ii}\\) where \\(\\mathbf{H} = \\mathbf{X}(\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\). You may use R for the matrix calculations.\nc) Calculate the standardized residuals \\(r_i = \\frac{\\hat{\\varepsilon}_i}{\\hat{\\sigma}\\sqrt{1-h_i}}\\) for each observation.\nd) Calculate the studentized residuals \\(t_i = \\frac{\\hat{\\varepsilon}_i}{\\hat{\\sigma}_{(i)}\\sqrt{1-h_i}}\\) for each observation. For this, you’ll need to fit the model 5 times, each time leaving out one observation, to get \\(\\hat{\\sigma}_{(i)}\\).\ne) Which observation(s), if any, would you flag as potential outliers based on the studentized residuals?",
     "crumbs": [
       "{{< fa calendar >}} Schedule",
       "Exercises",
-      "Exercise 7: Confidence Intervals and Coverage"
+      "Exercise 8: Diagnostics and Transformations"
     ]
   },
   {
-    "objectID": "ex/ex-7.html#problem-1",
-    "href": "ex/ex-7.html#problem-1",
-    "title": "Confidence Intervals and Coverage",
+    "objectID": "ex/ex-8.html#problem-1",
+    "href": "ex/ex-8.html#problem-1",
+    "title": "Diagnostics and Transformations",
     "section": "",
-    "text": "Given the following data:\n\\[\\mathbf{y} = \\begin{bmatrix}12\\\\15\\\\18\\\\22\\\\25\\\\28\\end{bmatrix}\\]\n\\[\\mathbf{X} = \\begin{bmatrix}1&2\\\\1&4\\\\1&6\\\\1&8\\\\1&10\\\\1&12\\end{bmatrix}\\]\na) Fit the linear regression model \\(y = \\beta_0 + \\beta_1 x + \\varepsilon\\) and construct a 95% confidence interval for \\(\\beta_1\\) using the standard OLS approach.\nb) Interpret the confidence interval in context.\nc) Calculate a 90% confidence interval for \\(\\beta_1\\). How does it compare to the 95% interval?",
+    "text": "Given the following small dataset:\n\\[\\mathbf{y} = \\begin{bmatrix}5\\\\8\\\\12\\\\20\\\\30\\end{bmatrix}\\]\n\\[\\mathbf{X} = \\begin{bmatrix}1&1\\\\1&2\\\\1&3\\\\1&4\\\\1&5\\end{bmatrix}\\]\na) Fit the linear regression model \\(y = \\beta_0 + \\beta_1 x + \\varepsilon\\) and calculate the residuals \\(\\hat{\\varepsilon}_i\\) for each observation.\nb) Calculate the leverage \\(h_i\\) for each observation using the formula \\(h_i = H_{ii}\\) where \\(\\mathbf{H} = \\mathbf{X}(\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\). You may use R for the matrix calculations.\nc) Calculate the standardized residuals \\(r_i = \\frac{\\hat{\\varepsilon}_i}{\\hat{\\sigma}\\sqrt{1-h_i}}\\) for each observation.\nd) Calculate the studentized residuals \\(t_i = \\frac{\\hat{\\varepsilon}_i}{\\hat{\\sigma}_{(i)}\\sqrt{1-h_i}}\\) for each observation. For this, you’ll need to fit the model 5 times, each time leaving out one observation, to get \\(\\hat{\\sigma}_{(i)}\\).\ne) Which observation(s), if any, would you flag as potential outliers based on the studentized residuals?",
     "crumbs": [
       "{{< fa calendar >}} Schedule",
       "Exercises",
-      "Exercise 7: Confidence Intervals and Coverage"
+      "Exercise 8: Diagnostics and Transformations"
     ]
   },
   {
-    "objectID": "ex/ex-7.html#problem-2",
-    "href": "ex/ex-7.html#problem-2",
-    "title": "Confidence Intervals and Coverage",
+    "objectID": "ex/ex-8.html#problem-2",
+    "href": "ex/ex-8.html#problem-2",
+    "title": "Diagnostics and Transformations",
     "section": "Problem 2",
-    "text": "Problem 2\nUsing the same data from Problem 1:\na) Implement a bootstrap to construct a 95% confidence interval for \\(\\beta_1\\).\nb) Compare your bootstrap confidence interval to the parametric confidence interval from Problem 1. Are they similar? Why or why not?\nc) Create a histogram of your bootstrap distribution of \\(\\hat{\\beta}_1\\) and overlay the theoretical normal distribution.",
+    "text": "Problem 2\nUsing the same data from Problem 1:\na) Calculate Cook’s distance for each observation using the formula: \\[D_i = \\frac{r_i^2}{p} \\cdot \\frac{h_i}{1-h_i}\\] where \\(p = 2\\) (number of parameters) and \\(r_i\\) are the standardized residuals from Problem 1.\nb) Would any observations be considered influential using the rule of thumb \\(D_i &gt; 4/n\\)?\nc) Refit the model excluding the most influential point. How much do \\(\\hat{\\beta}_0\\) and \\(\\hat{\\beta}_1\\) change? Does this confirm the Cook’s distance calculation?",
     "crumbs": [
       "{{< fa calendar >}} Schedule",
       "Exercises",
-      "Exercise 7: Confidence Intervals and Coverage"
+      "Exercise 8: Diagnostics and Transformations"
     ]
   },
   {
-    "objectID": "ex/ex-7.html#problem-3",
-    "href": "ex/ex-7.html#problem-3",
-    "title": "Confidence Intervals and Coverage",
+    "objectID": "ex/ex-8.html#problem-3",
+    "href": "ex/ex-8.html#problem-3",
+    "title": "Diagnostics and Transformations",
     "section": "Problem 3",
-    "text": "Problem 3\nIn this problem, you’ll verify that under correct model assumptions, 95% confidence intervals actually contain the true parameter 95% of the time.\nSimulation setup:\n\nTrue model: \\(y = 2 + 1.5x + \\varepsilon\\) where \\(\\varepsilon \\sim N(0, 1)\\)\n\nSample size: n = 30\n\nGenerate x from \\(N(0, 1)\\)\n\nNumber of simulations: 5000\n\na) Write a simulation function that:\n\nGenerates data from the true model\n\nFits OLS regression\n\nConstructs a 95% confidence interval for \\(\\beta_1\\)\n\nChecks whether the true value (1.5) is contained in the interval\n\nReturns TRUE or FALSE.\n\nb) Run the simulation 5000 times and calculate the coverage probability (proportion of intervals containing the true value).\nc) What coverage probability did you obtain? Is it close to 95%? Explain why this makes sense given that all assumptions are satisfied.",
+    "text": "Problem 3\nConsider a dataset where the relationship between y and x is quadratic: \\(y = 2 + 3x - x^2 + \\varepsilon\\) where \\(\\varepsilon \\sim N(0, 2)\\).\nGenerate data with n = 100 and x from a standard normal distribution (\\(N(0,1)\\)).\na) Fit a linear model lm(y ~ x) and create a partial regression plot. Since there’s only one predictor, this is just a scatterplot of y vs. x with the fitted line. Does the relationship look linear?\nb) Create a partial regression plot for x (here there are not any other predictors so you can just plot x on the x-axis and the residuals for the model on the y-axis). What pattern do you see? What does this suggest about the model specification?\nc) Now fit a quadratic model lm(y ~ x + I(x^2)). Create the partial regression plot for this model. How does it compare to part (b)?\nd) Calculate the IQR of x. Using the quadratic model, find:\n\nThe predicted y at the 25th percentile of x\n\nThe predicted y at the 75th percentile of x\n\nThe change in predicted y for an IQR increase in x\n\ne) Interpret this IQR change. Why is this more useful than trying to interpret individual coefficients in a polynomial model?",
     "crumbs": [
       "{{< fa calendar >}} Schedule",
       "Exercises",
-      "Exercise 7: Confidence Intervals and Coverage"
+      "Exercise 8: Diagnostics and Transformations"
     ]
   },
   {
-    "objectID": "ex/ex-7.html#problem-4",
-    "href": "ex/ex-7.html#problem-4",
-    "title": "Confidence Intervals and Coverage",
+    "objectID": "ex/ex-8.html#problem-4",
+    "href": "ex/ex-8.html#problem-4",
+    "title": "Diagnostics and Transformations",
     "section": "Problem 4",
-    "text": "Problem 4\nNow investigate what happens when errors are not normally distributed.\nInstead of \\(\\varepsilon \\sim N(0,1)\\), let’s try a skewed distribution. Use this for your epsilon generation to make it lognormally distributed:\n\nepsilon &lt;- exp(rnorm(n)) - exp(0.5)\n\nand then complete the same simulation as above, calculating the coverage probability for the interval for \\(\\beta_1\\).\na) What coverage probability did you obtain?\nb) Create a histogram of your simulated \\(\\varepsilon\\) and describe their distribution. How does this violate OLS assumptions?\nc) Despite the non-normal errors, does the CI coverage seem reasonably close to nominal? Why might this be the case?",
+    "text": "Problem 4\nUsing the same data generation as Problem 3 (quadratic relationship):\na) Fit four models:\n\nLinear: lm(y ~ x)\n\nQuadratic: lm(y ~ x + I(x^2))\n\nNatural spline with 3 df: lm(y ~ ns(x, df = 3))\n\n10th order Polynomial: lm(y ~ poly(x, 10))\n\n\nCreate a plot showing:\n\nThe data points\n\nAll four fitted curves\n\nThe true relationship (generate a grid of x values and calculate the true y without error)\n\nWhich model comes closest to the true relationship?\nb) Calculate the \\(R^2\\) for all three models. Which has the highest \\(R^2\\)? Does this necessarily mean it’s the best model?\nc) For the natural spline model, what are the knot locations? (Hint: use attr(ns(x, df = 3), \"knots\"))",
     "crumbs": [
       "{{< fa calendar >}} Schedule",
       "Exercises",
-      "Exercise 7: Confidence Intervals and Coverage"
+      "Exercise 8: Diagnostics and Transformations"
     ]
   },
   {
-    "objectID": "ex/ex-7.html#problem-5",
-    "href": "ex/ex-7.html#problem-5",
-    "title": "Confidence Intervals and Coverage",
+    "objectID": "ex/ex-8.html#problem-5",
+    "href": "ex/ex-8.html#problem-5",
+    "title": "Diagnostics and Transformations",
     "section": "Problem 5",
-    "text": "Problem 5\nNow let’s investigate what happens with severe non-constant variance. Instead of generating your \\(\\varepsilon\\sim N(0,1)\\) let’s have it depend on \\(x\\) like this:\n\nsigma &lt;- exp(x / 2)  \nepsilon &lt;- rnorm(n, 0, sigma)\n\nSuch that the standard deviation of your errors increases expondentially with \\(x\\) and then complete the same simulation as above, calculating the coverage probability for the interval for \\(\\beta_1\\).\na) What coverage probability did you obtain? How does it compare to the nominal 95% level?\nb) Create a scatterplot showing one simulated dataset with x on the horizontal axis and y on the vertical axis. Add the true regression line. Describe how the variability changes across the range of x.\nc) Explain why heteroskedasticity affects confidence interval coverage. What aspect of the standard error calculation is violated?\nd) What could you do to obtain valid confidence intervals in the presence of heteroskedasticity?",
+    "text": "Problem 5\nSuppose we fit a linear regression on the log scale: log(y) ~ x, obtaining estimates \\(\\hat{\\beta}_0\\) and \\(\\hat{\\beta}_1\\).\na) Show that the naive back-transformation \\(\\hat{y} = \\exp(\\hat{\\beta}_0 + \\hat{\\beta}_1 x)\\) is a biased estimator of \\(E[y \\mid x]\\).\nHint: Start by writing \\(E[y \\mid x]\\) in terms of \\(\\beta_0\\), \\(\\beta_1\\), and \\(E[\\exp(\\varepsilon)]\\). What is \\(E[\\exp(\\varepsilon)]\\) when \\(\\varepsilon \\sim N(0, \\sigma^2)\\)?\nb) Derive the correct formula for \\(E[y \\mid x]\\) that includes the necessary correction factor.\nc) Write a simulation to verify your answer from part (b). We are going to generate data from the model \\(y = \\exp(2 + 1.5x + \\varepsilon)\\) where \\(x \\sim N(0,1)\\), \\(\\varepsilon \\sim N(0, 0.25)\\). First, let’s get the true \\(E[y \\mid x = 0]\\) by running:\n\nn &lt;- 10000\ne &lt;- rnorm(n, 0, 0.25)\ny &lt;- exp(2 + e)\ntrue_y &lt;- mean(y)\n\nNow let’s simulate multiple data sets. Let’s have \\(n = 200\\). For each simulated dataset:\n\nFit the model log(y) ~ x\n\nCompute a prediction at \\(x = 0\\) using the naive back-transformation (i.e. just exponentiate the predicted values)\n\nCompute a prediction at \\(x = 0\\) using the corrected back-transformation from part (b)\n\nRepeat this process 5000 times and compare the average of each prediction method to the true value of \\(E[y \\mid x = 0]\\). Which estimator is closer to the truth?\nd) Based on your simulation results, approximately what percentage bias does the naive approach have? How does this relate to \\(\\sigma^2\\)?\ne) Suppose \\(\\sigma^2\\) were much larger, say \\(\\sigma^2 = 1\\). Without running a new simulation, predict approximately what the percentage bias would be for the naive approach in this case.\nMathematical fact you may use: If \\(Z \\sim N(\\mu, \\sigma^2)\\), then \\(E[\\exp(Z)] = \\exp(\\mu + \\sigma^2/2)\\).",
     "crumbs": [
       "{{< fa calendar >}} Schedule",
       "Exercises",
-      "Exercise 7: Confidence Intervals and Coverage"
+      "Exercise 8: Diagnostics and Transformations"
     ]
   },
   {
-    "objectID": "ex/ex-7.html#problem-6",
-    "href": "ex/ex-7.html#problem-6",
-    "title": "Confidence Intervals and Coverage",
+    "objectID": "ex/ex-8.html#problem-6",
+    "href": "ex/ex-8.html#problem-6",
+    "title": "Diagnostics and Transformations",
     "section": "Problem 6",
-    "text": "Problem 6\nLet’s now investigate what happens when the model is misspecified due to an omitted variable.\nSimulation setup:\n\nTrue model: \\(y = 2 + 1.5x_1 + 2x_2+\\varepsilon\\) where \\(\\varepsilon \\sim N(0, 1)\\)\n\nSample size: n = 30\n\nGenerate \\(x_1\\) from \\(N(0, 1)\\)\n\nGenerate \\(x_2\\) from \\(N(0, 1)\\)\n\nNumber of simulations: 5000\n\nWrite a simulation function that fits a misspecified model, omitting \\(x_2\\) (i.e., the model should be lm(y ~ x1)) and then complete the same simulation as above, calculating the coverage probability for the interval for \\(\\beta_1\\).\na) What coverage probability did you obtain? How does it compare to 95%?\nb) In the simulation code, the true effect of \\(x_1\\) on y is 1.5. When we fit the model omitting \\(x_2\\), what happens to our estimate of \\(\\beta_1\\)? Is it biased?\nc) Calculate the average value of \\(\\hat{\\beta}_1\\) across all simulations and compare it to the true value of 1.5. This is the bias in the coefficient estimate.\nNow fit this model:\n- True model: \\(y = 2 + 1.5x_1 + 2x_2+\\varepsilon\\) where \\(\\varepsilon \\sim N(0, 1)\\)\n- Sample size: n = 30\n- Generate \\(x_2\\) from \\(N(0, 1)\\)\n- Generate \\(x_1 = x_2 + \\varepsilon_x\\) where \\(\\varepsilon_x\\sim N(0, 1)\\)\n- Number of simulations: 5000\nWrite a new simulation function using the above specifications that fits a misspecified model, omitting \\(x_2\\) (i.e., the model should be lm(y ~ x1)) and then complete the same simulation as above, calculating the coverage probability for the interval for \\(\\beta_1\\).\nd) Explain how omitted variable bias could affect confidence interval coverage. Even though the confidence intervals are correctly constructed for the model we fit, why might they not have the correct coverage for the true parameter?",
+    "text": "Problem 6\nThis problem explores Type I error inflation when we test for non-linearity and add terms based on significance tests, compared to using flexible modeling from the start.\nSimulation setup:\n\nTrue model: \\(y = \\varepsilon\\) where \\(\\varepsilon \\sim N(0, 1)\\) (there is no relationship between \\(x\\) and \\(y\\))\nSample size: n = 50\nGenerate x from \\(N(0,1)\\)\n\nNumber of simulations: 5000\n\nStrategy 1: Test-then-add approach\n\nFit lm(y ~ x)\n\nTest if adding \\(x^2\\) is significant at \\(\\alpha = 0.05\\) by fitting lm(y ~ x + I(x^2)) and checking if the p-value for the \\(x^2\\) coefficient is &lt; 0.05\n\nIf significant, use the quadratic model; otherwise use the linear model\n\nPerform an F-test to test whether the model with the predictor(s) is better than the intercept only model. Use \\(\\alpha = 0.05\\).\n\nRecord if you reject \\(H_0\\)\n\n\nStrategy 2: Natural spline by default\n\nFit lm(y ~ ns(x, df = 3)) (always use this flexible model)\n\nPerform an F-test to test whether the model with the predictor(s) is better than the intercept only model. Use \\(\\alpha = 0.05\\).\nRecord whether you reject \\(H_0\\) at \\(\\alpha = 0.05\\)\n\n\nPlease try to code up this simulation on your own! Stuck on getting the p-value out? See if you can look at the help files or use Google to figure it out; learning how to code like this is a great exercise! If you are still feeling stuck, here is a blog post I wrote a few years ago that goes through this same exercise – I strongly encourage you to try it yourself first, though!\na) Implement Strategy 1. What proportion of the time do you:\n\nFind the quadratic term “significant” (even though the true model is linear)?\n\nReject \\(H_0\\) of your F-test (this is called a Type I error)?\n\nb) The nominal Type I error rate should be 5%. Is the Type I error rate from Strategy 1 close to 5%? If not, explain why testing for significance and then using that result to build your model inflates Type I error.\nc) Implement Strategy 2. What is the Type I error rate when testing \\(H_0\\) using this approach?\nd) Reflect on the trade-off: Strategy 1 (test-then-add) inflates Type I error when the relationship is truly linear, but Strategy 2 (always use splines) might be overly complex. What would you recommend to a researcher in practice?",
     "crumbs": [
       "{{< fa calendar >}} Schedule",
       "Exercises",
-      "Exercise 7: Confidence Intervals and Coverage"
+      "Exercise 8: Diagnostics and Transformations"
     ]
   },
   {
-    "objectID": "ex/ex-7.html#bonus",
-    "href": "ex/ex-7.html#bonus",
-    "title": "Confidence Intervals and Coverage",
-    "section": "Bonus",
-    "text": "Bonus\nTry to come up with simulation scenarios that “break” 95% coverage. What assumptions did you make in these scenarios?",
+    "objectID": "ex/ex-8.html#problem-7",
+    "href": "ex/ex-8.html#problem-7",
+    "title": "Diagnostics and Transformations",
+    "section": "Problem 7",
+    "text": "Problem 7\nA cubic spline with knots at \\(k_1, k_2, \\ldots, k_K\\) can be represented using the following basis functions:\n\n\n\\(b_1(x) = 1\\) (intercept)\n\n\\(b_2(x) = x\\)\n\n\\(b_3(x) = x^2\\)\n\\(b_4(x) = x^3\\)\n\n\\(b_{4+j}(x) = (x - k_j)^3_+ = \\begin{cases} (x - k_j)^3 & \\text{if } x &gt; k_j \\\\ 0 & \\text{otherwise} \\end{cases}\\) for \\(j = 1, \\ldots, K\\)\n\n\nThe fitted model is: \\(\\hat{y} = \\beta_0 + \\beta_1 x + \\beta_2 x^2 + \\beta_3 x^3 + \\sum_{j=1}^K \\beta_{4+j}(x - k_j)^3_+\\)\nConsider the following dataset with n = 10:\n\nx &lt;- c(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)\ny &lt;- c(2, 2.5, 4, 5, 5.5, 6, 8, 11, 15, 20)\n\nWe’ll place knots at \\(k_1 = 3\\) and \\(k_2 = 6\\).\na) Manually construct the design matrix \\(\\mathbf{X}\\) for the cubic spline with these two knots. Your matrix should have 10 rows (one per observation) and 6 columns: \\([1, x, x^2, x^3, (x-3)^3_+, (x-6)^3_+]\\).\nShow the full \\(10 \\times 6\\) matrix with all values filled in.\nb) Fit the cubic spline model in R using your basis functions.\nReport the estimated coefficients \\(\\hat{\\beta}_0, \\hat{\\beta}_1, \\hat{\\beta}_2, \\hat{\\beta}_3, \\hat{\\beta}_4, \\hat{\\beta}_5\\).\nc) Using your fitted coefficients, manually calculate \\(\\hat{y}\\) for three observations: - At \\(x = 2\\) (before the first knot) - At \\(x = 4.5\\) (between the two knots)\n- At \\(x = 8\\) (after the second knot)\nFor each, show which basis functions are “active” (non-zero) and write out the prediction formula explicitly.\nd) Compare your manual cubic spline to R’s built-in bs() function:\n\nlibrary(splines)\nmodel_bs &lt;- lm(y ~ bs(x, knots = c(3, 6), degree = 3))\n\nPlot both fitted curves along with the data. They should be identical (or very close). Create a single plot showing:\n\nThe original data points\n\nYour manual cubic spline fit\nThe bs() function fit (use a different color/style)\n\nVertical lines at the knot locations\n\ne) Natural cubic splines add the additional constraint that the function is linear (not cubic) beyond the boundary knots. This means setting the second derivative to zero at the boundaries.\nFit a natural cubic spline using ns(x, knots = c(3, 6)) and compare it to your unconstrained cubic spline. Plot both curves. Do you notice any differences?",
     "crumbs": [
       "{{< fa calendar >}} Schedule",
       "Exercises",
-      "Exercise 7: Confidence Intervals and Coverage"
+      "Exercise 8: Diagnostics and Transformations"
     ]
   },
   {
-    "objectID": "ex/ex-5.html",
-    "href": "ex/ex-5.html",
-    "title": "Random Vectors and Gauss-Markov Theorem Problem Set",
+    "objectID": "ex/ex-6.html",
+    "href": "ex/ex-6.html",
+    "title": "Sums of Squares and Hypothesis Testing",
     "section": "",
-    "text": "This problem set covers random vector properties, variance-covariance matrices, and the Gauss-Markov theorem. Show all work and provide clear explanations for your reasoning. For computational problems, you may verify your answers using R, but show the mathematical work first.",
+    "text": "Given the following data:\n\\[\\mathbf{y} = \\begin{bmatrix}10\\\\13\\\\14\\\\16\\\\18\\end{bmatrix}\\]\n\\[\\mathbf{X} = \\begin{bmatrix}1&1\\\\1&2\\\\1&3\\\\1&4\\\\1&5\\end{bmatrix}\\]\na) Calculate TSS by hand using both the definition and the matrix form.\nb) Fit the linear model and calculate the SSE and \\(\\textrm{SS}_\\textrm{Reg}\\). Verify that TSS = SSE + SS_Reg.\nc) Calculate R² and interpret its meaning in context.",
     "crumbs": [
       "{{< fa calendar >}} Schedule",
       "Exercises",
-      "Exercise 5: Gauss Markov Theorem"
+      "Exercise 6: Sums of Squares and Hypothesis Testing"
     ]
   },
   {
-    "objectID": "ex/ex-5.html#instructions",
-    "href": "ex/ex-5.html#instructions",
-    "title": "Random Vectors and Gauss-Markov Theorem Problem Set",
+    "objectID": "ex/ex-6.html#problem-1",
+    "href": "ex/ex-6.html#problem-1",
+    "title": "Sums of Squares and Hypothesis Testing",
     "section": "",
-    "text": "This problem set covers random vector properties, variance-covariance matrices, and the Gauss-Markov theorem. Show all work and provide clear explanations for your reasoning. For computational problems, you may verify your answers using R, but show the mathematical work first.",
+    "text": "Given the following data:\n\\[\\mathbf{y} = \\begin{bmatrix}10\\\\13\\\\14\\\\16\\\\18\\end{bmatrix}\\]\n\\[\\mathbf{X} = \\begin{bmatrix}1&1\\\\1&2\\\\1&3\\\\1&4\\\\1&5\\end{bmatrix}\\]\na) Calculate TSS by hand using both the definition and the matrix form.\nb) Fit the linear model and calculate the SSE and \\(\\textrm{SS}_\\textrm{Reg}\\). Verify that TSS = SSE + SS_Reg.\nc) Calculate R² and interpret its meaning in context.",
     "crumbs": [
       "{{< fa calendar >}} Schedule",
       "Exercises",
-      "Exercise 5: Gauss Markov Theorem"
+      "Exercise 6: Sums of Squares and Hypothesis Testing"
     ]
   },
   {
-    "objectID": "ex/ex-5.html#problem-1-random-vector-expected-values",
-    "href": "ex/ex-5.html#problem-1-random-vector-expected-values",
-    "title": "Random Vectors and Gauss-Markov Theorem Problem Set",
-    "section": "Problem 1: Random Vector Expected Values",
-    "text": "Problem 1: Random Vector Expected Values\nConsider the random vector \\(\\mathbf{Y} = \\begin{bmatrix} Y_1 \\\\ Y_2 \\\\ Y_3 \\end{bmatrix}\\) where \\(E[\\mathbf{Y}] = \\begin{bmatrix} 3 \\\\ -1 \\\\ 2 \\end{bmatrix}\\).\na) Let \\(\\mathbf{A} = \\begin{bmatrix} 2 & 0 & 1 \\\\ 1 & -1 & 3 \\end{bmatrix}\\). Calculate \\(E[\\mathbf{A}\\mathbf{Y}]\\) using the linearity property.\nb) What would \\(E[\\mathbf{A}\\mathbf{Y} + \\mathbf{c}]\\) be if \\(\\mathbf{c} = \\begin{bmatrix} 5 \\\\ -2 \\end{bmatrix}\\)?",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Exercises",
-      "Exercise 5: Gauss Markov Theorem"
-    ]
-  },
-  {
-    "objectID": "ex/ex-5.html#problem-2-variance-covariance-matrix-calculations",
-    "href": "ex/ex-5.html#problem-2-variance-covariance-matrix-calculations",
-    "title": "Random Vectors and Gauss-Markov Theorem Problem Set",
-    "section": "Problem 2: Variance-Covariance Matrix Calculations",
-    "text": "Problem 2: Variance-Covariance Matrix Calculations\nGiven the random vector \\(\\mathbf{Z} = \\begin{bmatrix} Z_1 \\\\ Z_2 \\end{bmatrix}\\) with variance-covariance matrix:\n\\[\\text{Var}(\\mathbf{Z}) = \\begin{bmatrix} 9 & 2 \\\\ 2 & 4 \\end{bmatrix}\\]\na) What are \\(\\text{Var}(Z_1)\\), \\(\\text{Var}(Z_2)\\), and \\(\\text{Cov}(Z_1, Z_2)\\)?\nb) Calculate \\(\\text{Var}(3Z_1 - 2Z_2)\\) using the matrix formula \\(\\text{Var}(\\mathbf{A}\\mathbf{Z}) = \\mathbf{A}\\text{Var}(\\mathbf{Z})\\mathbf{A}^T\\).\nc) Find \\(\\text{Var}\\begin{bmatrix} Z_1 + Z_2 \\\\ 2Z_1 - Z_2 \\end{bmatrix}\\). Show your matrix multiplication steps.",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Exercises",
-      "Exercise 5: Gauss Markov Theorem"
-    ]
-  },
-  {
-    "objectID": "ex/ex-5.html#problem-3-gauss-markov-assumptions",
-    "href": "ex/ex-5.html#problem-3-gauss-markov-assumptions",
-    "title": "Random Vectors and Gauss-Markov Theorem Problem Set",
-    "section": "Problem 3: Gauss-Markov Assumptions",
-    "text": "Problem 3: Gauss-Markov Assumptions\nConsider the linear regression model \\(\\mathbf{y} = \\mathbf{X}\\boldsymbol{\\beta} + \\boldsymbol{\\varepsilon}\\) where:\n\n\\(\\mathbf{y}\\) is \\(n \\times 1\\)\n\n\\(\\mathbf{X}\\) is \\(n \\times p\\) with full column rank\n\n\\(\\boldsymbol{\\beta}\\) is \\(p \\times 1\\)\n\n\\(\\boldsymbol{\\varepsilon}\\) is \\(n \\times 1\\)\n\na) State the Gauss-Markov assumptions clearly.\nb) Explain what \\(\\text{Var}(\\boldsymbol{\\varepsilon}) = \\sigma^2\\mathbf{I}\\) means in plain English. What two conditions does this impose on the error terms?\nc) If \\(\\text{Var}(\\varepsilon_1) = 4\\), \\(\\text{Var}(\\varepsilon_2) = 9\\), and \\(\\text{Cov}(\\varepsilon_1, \\varepsilon_2) = 1\\), do the errors satisfy the Gauss-Markov assumptions? Explain why or why not.",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Exercises",
-      "Exercise 5: Gauss Markov Theorem"
-    ]
-  },
-  {
-    "objectID": "ex/ex-5.html#problem-4-proving-ols-unbiasedness",
-    "href": "ex/ex-5.html#problem-4-proving-ols-unbiasedness",
-    "title": "Random Vectors and Gauss-Markov Theorem Problem Set",
-    "section": "Problem 4: Proving OLS Unbiasedness",
-    "text": "Problem 4: Proving OLS Unbiasedness\nFor the OLS estimator \\(\\hat{\\boldsymbol{\\beta}} = (\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\mathbf{y}\\):\na) Starting from \\(E[\\hat{\\boldsymbol{\\beta}}] = E[(\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\mathbf{y}]\\), show step-by-step that OLS is unbiased. Clearly indicate where you use each Gauss-Markov assumption.\nb) In the proof, we treat \\(\\boldsymbol{\\beta}\\) as a constant rather than a random variable. Explain why this is appropriate in the classical regression framework.\nc) What would happen to your proof if \\(E[\\boldsymbol{\\varepsilon}] = \\mathbf{c}\\) for some non-zero constant vector \\(\\mathbf{c}\\) instead of \\(E[\\boldsymbol{\\varepsilon}] = \\mathbf{0}\\)?",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Exercises",
-      "Exercise 5: Gauss Markov Theorem"
-    ]
-  },
-  {
-    "objectID": "ex/ex-5.html#problem-5-ols-variance-derivation",
-    "href": "ex/ex-5.html#problem-5-ols-variance-derivation",
-    "title": "Random Vectors and Gauss-Markov Theorem Problem Set",
-    "section": "Problem 5: OLS Variance Derivation",
-    "text": "Problem 5: OLS Variance Derivation\na) Derive \\(\\text{Var}(\\hat{\\boldsymbol{\\beta}})\\) starting from the result that \\(\\hat{\\boldsymbol{\\beta}} = \\boldsymbol{\\beta} + (\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\boldsymbol{\\varepsilon}\\). Show each step clearly.\nb) For the simple linear regression case with \\(\\mathbf{X} = \\begin{bmatrix} 1 & 1  \\\\ 2 & 4  \\end{bmatrix}\\), calculate \\((\\mathbf{X}^T\\mathbf{X})^{-1}\\) by hand.\nc) Using your result from part (b), what is \\(\\text{Var}(\\hat{\\boldsymbol{\\beta}})\\) in terms of \\(\\sigma^2\\)? What is the variance of \\(\\hat\\beta_0\\)? What is the variance of \\(\\hat\\beta_1\\)?",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Exercises",
-      "Exercise 5: Gauss Markov Theorem"
-    ]
-  },
-  {
-    "objectID": "ex/ex-5.html#problem-6-understanding-the-gauss-markov-proof",
-    "href": "ex/ex-5.html#problem-6-understanding-the-gauss-markov-proof",
-    "title": "Random Vectors and Gauss-Markov Theorem Problem Set",
-    "section": "Problem 6: Understanding the Gauss-Markov Proof",
-    "text": "Problem 6: Understanding the Gauss-Markov Proof\nThe key step in proving OLS is BLUE involves writing any linear unbiased estimator as: \\[\\mathbf{C} = (\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T + \\mathbf{D}\\]\na) Explain in your own words why this decomposition is “clever” and what intuition it provides about comparing estimators.\nb) Show that if \\(\\mathbf{C}\\mathbf{X} = \\mathbf{I}\\) (the unbiasedness constraint), then \\(\\mathbf{D}\\mathbf{X} = \\mathbf{0}\\).\nc) In the final step of the proof, we use the fact that \\(\\mathbf{D}\\mathbf{D}^T\\) is positive semi-definite.\n\nDefine what “positive semi-definite” means\n\nExplain why any matrix of the form \\(\\mathbf{D}\\mathbf{D}^T\\) must be positive semi-definite\n\nHow does this property ensure that OLS has minimum variance?\n\nd) If \\(\\mathbf{D} = \\begin{bmatrix} 1 & 2 \\\\ 0 & -1 \\end{bmatrix}\\), calculate \\(\\mathbf{D}\\mathbf{D}^T\\) and verify that all eigenvalues are non-negative.",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Exercises",
-      "Exercise 5: Gauss Markov Theorem"
-    ]
-  },
-  {
-    "objectID": "ex/ex-5.html#bonus",
-    "href": "ex/ex-5.html#bonus",
-    "title": "Random Vectors and Gauss-Markov Theorem Problem Set",
-    "section": "Bonus",
-    "text": "Bonus\nRead this post on Is OLS BLUE or BUE?",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Exercises",
-      "Exercise 5: Gauss Markov Theorem"
-    ]
-  },
-  {
-    "objectID": "ex/ex-3.html",
-    "href": "ex/ex-3.html",
-    "title": "Linear Regression Fundamentals Problem Set",
-    "section": "",
-    "text": "This problem set covers the fundamental concepts of linear regression, including matrix formulations, geometric interpretations, and computational methods. Show all work and provide clear explanations for your reasoning.",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Exercises",
-      "Exercise 3: Linear Regression Fundamentals"
-    ]
-  },
-  {
-    "objectID": "ex/ex-3.html#instructions",
-    "href": "ex/ex-3.html#instructions",
-    "title": "Linear Regression Fundamentals Problem Set",
-    "section": "",
-    "text": "This problem set covers the fundamental concepts of linear regression, including matrix formulations, geometric interpretations, and computational methods. Show all work and provide clear explanations for your reasoning.",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Exercises",
-      "Exercise 3: Linear Regression Fundamentals"
-    ]
-  },
-  {
-    "objectID": "ex/ex-3.html#problem-1",
-    "href": "ex/ex-3.html#problem-1",
-    "title": "Linear Regression Fundamentals Problem Set",
-    "section": "Problem 1",
-    "text": "Problem 1\nConsider the following dataset with two predictors:\n\n\nObservation\nx1\nx2\ny\n\n\n\n1\n2\n1\n5.2\n\n\n2\n3\n4\n8.1\n\n\n3\n1\n2\n4.8\n\n\n4\n4\n3\n9.5\n\n\n\na) Write out the design matrix X for the multiple regression model with intercept term.\nb) Calculate \\(\\mathbf{X}^T\\mathbf{X}\\) and \\(\\mathbf{X}^T\\mathbf{y}\\) by hand. Show your matrix multiplication steps.\nc) Using your results from Part B, set up the normal equations \\(\\mathbf{X}^T\\mathbf{X}\\hat\\beta=\\mathbf{X}^T\\mathbf{y}\\) and solve for the coefficient vector \\(\\hat\\beta\\). (You can use R if you need to take an inverse).\nd) Verify your answer using R’s built-in functions.",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Exercises",
-      "Exercise 3: Linear Regression Fundamentals"
-    ]
-  },
-  {
-    "objectID": "ex/ex-3.html#problem-2",
-    "href": "ex/ex-3.html#problem-2",
-    "title": "Linear Regression Fundamentals Problem Set",
+    "objectID": "ex/ex-6.html#problem-2",
+    "href": "ex/ex-6.html#problem-2",
+    "title": "Sums of Squares and Hypothesis Testing",
     "section": "Problem 2",
-    "text": "Problem 2\nUsing the data from Problem 1 and your estimated coefficients:\na) Calculate the predicted values \\(\\hat{y}_i\\) for each observation by hand.\nb) Calculate the residuals \\(\\hat\\varepsilon=y_i-\\hat{y}_i\\) for each observation.\nc) Compute the sum of squared errors (SSE) using both formulations:\n\nIndividual terms: SSE \\(= \\sum(y_i - \\hat{y}_i)^2\\)\n\nMatrix form: SSE \\(=  (\\mathbf{y}-\\mathbf{X}\\hat\\beta)^T(\\mathbf{y}-\\mathbf{X}\\hat\\beta)\\)\n\n\nd) Verify that your residuals sum to approximately zero and explain why this should be true geometrically.",
+    "text": "Problem 2\nProve algebraically that the F-statistic can be written in terms of R² as:\n\\(F = \\frac{R^2/(p-1)}{(1-R^2)/(n-p)}\\)\nShow each algebraic step clearly.",
     "crumbs": [
       "{{< fa calendar >}} Schedule",
       "Exercises",
-      "Exercise 3: Linear Regression Fundamentals"
+      "Exercise 6: Sums of Squares and Hypothesis Testing"
     ]
   },
   {
-    "objectID": "ex/ex-3.html#problem-3",
-    "href": "ex/ex-3.html#problem-3",
-    "title": "Linear Regression Fundamentals Problem Set",
+    "objectID": "ex/ex-6.html#problem-3",
+    "href": "ex/ex-6.html#problem-3",
+    "title": "Sums of Squares and Hypothesis Testing",
     "section": "Problem 3",
-    "text": "Problem 3\na) For simple linear regression with n = 3 observations and design matrix:\n\\[\\mathbf{X} = \\begin{bmatrix}1 & 2\\\\1 & 4\\\\1&6\\end{bmatrix}\\]\nCalculate the hat matrix (\\(\\mathbf{H}\\)) by hand (you can use R if you need to take an inverse).\nb) Verify that \\(\\mathbf{H}\\) is idempotent.\nc) Show that \\(\\mathbf{H}\\) is symmetric and interpret what this property means geometrically.",
+    "text": "Problem 3\nIn this problem, you’ll verify through simulation that \\(\\frac{\\hat{\\beta}_j - \\beta_j}{\\text{se}(\\hat{\\beta}_j)} \\sim t_{n-p}\\).\nIntroduction to purrr\n\nBefore we start, we’ll use the purrr package, which provides tools for functional programming in R. The key function we’ll use is map_dbl(), which applies a function to each element of a list or vector and outputs a numeric vector. Think of map_dbl() as a more elegant alternative to writing loops when you expect a numeric output.\nFor example: - map_dbl(1:5, sqrt) applies the square root function to numbers 1 through 5 - map_dbl(1:1000, my_simulation_function) runs your simulation function 1000 times\nThis approach is cleaner than loops and encourages you to think about your simulation as a function that gets repeated many times.\nStep-by-step simulation guide:\nStep 1: Set up simulation parameters and load libraries\n\nlibrary(purrr)\nlibrary(ggplot2)\nset.seed(1)\n\n# Simulation parameters\nn &lt;- 50          # sample size\np &lt;- 3           # number of parameters (intercept + 2 predictors)\nn_sims &lt;- 10000  # number of simulations\nbeta_true &lt;- c(2, 1.5, -0.8)  # true coefficients [intercept, x1, x2]\nsigma_true &lt;- 2  # true error standard deviation\n\n# Create design matrix (stays fixed across simulations)\nX &lt;- cbind(1, rnorm(n, 0, 1), rnorm(n, 2, 1.5))\n\nStep 2: Create a simulation function\nFill in the function below. This function should: 1. Generate random errors 2. Create the response variable using the true model 3. Fit the linear model 4. Extract the coefficient and standard error for x1 (the second coefficient) 5. Calculate and return the t-statistic\n\nsimulate_t_stat &lt;- function(sim_number) {\n  # Generate random errors with a mean = 0 and sd = 1 \n  epsilon &lt;- rnorm(n, 0, 1)\n  \n  # Create response variable: y = X * beta_true + epsilon\n  y &lt;- # YOUR CODE HERE\n  \n  # Calculate coefficient and standard error for x1\n  beta_hat &lt;- # YOUR CODE HERE (coefficient for x1)\n  se_beta &lt;- # YOUR CODE HERE (standard error for x1)\n  \n  # Calculate t-statistic: (beta_hat - true_beta) / se_beta\n  t_stat &lt;- # YOUR CODE HERE\n  \n  return(t_stat)\n}\n\nStep 3: Run simulation using purrr::map_dbl()\n\n# Use map to run simulation n_sims times\nt_stats &lt;- map_dbl(1:n_sims, simulate_t_stat)\n\nStep 4: Analyze results\n\n# Calculate degrees of freedom\ndft &lt;- n - p\n\n# Create data frame for ggplot\nsim_data &lt;- data.frame(t_statistic = t_stats)\n\n# Create comparison plot\nggplot(sim_data, aes(x = t_statistic)) +\n  geom_histogram(aes(y = after_stat(density)), bins = 50, fill = \"lightblue\") +\n  stat_function(fun = dt, args = list(df = dft), color = \"red\", linewidth = 1.2) +\n  labs(title = \n         paste(\"Simulated t-statistics vs Theoretical t-distribution (df =\", dft, \")\"),\n       subtitle = paste(\"Based on\", n_sims, \"simulations\"),\n       x = \"t-statistic\", \n       y = \"Density\") +\n  theme_minimal()\n\nQuestions to answer:\n\nWhat are the degrees of freedom for this t-distribution?\n\nDo the simulated t-statistics follow the expected distribution?",
     "crumbs": [
       "{{< fa calendar >}} Schedule",
       "Exercises",
-      "Exercise 3: Linear Regression Fundamentals"
+      "Exercise 6: Sums of Squares and Hypothesis Testing"
     ]
   },
   {
-    "objectID": "ex/ex-3.html#problem-4",
-    "href": "ex/ex-3.html#problem-4",
-    "title": "Linear Regression Fundamentals Problem Set",
+    "objectID": "ex/ex-6.html#problem-4",
+    "href": "ex/ex-6.html#problem-4",
+    "title": "Sums of Squares and Hypothesis Testing",
     "section": "Problem 4",
-    "text": "Problem 4\nConsider the simple linear regression case with the design matrix from Problem 3.\na) Write out two specific vectors that lie in the column space of \\(\\mathbf{X}\\). Explain what these vectors represent in terms of the regression model.\nb) If the observed response vector is \\(\\mathbf{y} = \\begin{bmatrix}3\\\\7\\\\12\\end{bmatrix}\\), explain why this vector likely does NOT lie exactly in the column space of \\(\\mathbf{X}\\). What does this mean practically?\nc) Calculate the projection of \\(\\mathbf{y}\\) onto the column space (i.e., \\(\\mathbf{\\hat{y}} = \\mathbf{Hy}\\)) and show that the residual vector is orthogonal to the column space by verifying \\(\\mathbf{X}^T\\hat\\varepsilon=0\\).",
+    "text": "Problem 4\nNow verify that the overall F-statistic follows an F-distribution under the null hypothesis.\nSimulation setup:\nStep 1: Set up parameters for testing under the null\n\nset.seed(1)\n\n# Simulation parameters\nn &lt;- 30\np &lt;- 4  # intercept + 3 predictors\nn_sims &lt;- 5000\nsigma_true &lt;- 1.5\n\n# Under null hypothesis: all slope coefficients are 0\nbeta_null &lt;- c(5, 0, 0, 0)  # only intercept is non-zero\n\n# Create design matrix (fixed across simulations)\nX &lt;- cbind(1,\n           rnorm(n, 0, 1),\n           rnorm(n, 1, 2),\n           rnorm(n, -1, 1.2))\n\nStep 2: Create your F-statistic simulation function\nFill in the function below. This function should: 1. Generate random errors 2. Create response variable under the null hypothesis 3. Fit the linear model 4. Extract the overall F-statistic 5. Return the F-statistic\n\nsimulate_f_stat &lt;- function(sim_number) {\n  # Generate random errors\n  epsilon &lt;- # YOUR CODE HERE\n  \n  # Create response under null: y = X * beta_null + epsilon\n  y &lt;- # YOUR CODE HERE\n  \n  # Fit the model (be careful about how you specify the predictors)\n  fit &lt;- # YOUR CODE HERE\n  \n  # Extract overall F-statistic from model summary\n  # Hint: summary(fit)$fstatistic[1] gives the F-statistic\n  f_stat &lt;- # YOUR CODE HERE\n  \n  return(f_stat)\n}\n\nStep 3: Run simulation using purrr\n\n# Use map_dbl to get a numeric vector of F-statistics\nf_stats &lt;- # YOUR CODE HERE (use map_dbl and your function)\n\nStep 4: Compare to theoretical F-distribution with improved visualizations\n\n# Calculate degrees of freedom\ndf1 &lt;- p - 1  # numerator degrees of freedom (number of predictors excluding intercept)\ndf2 &lt;- n - p  # denominator degrees of freedom\n\n# Create data frame for ggplot\nsim_data_f &lt;- data.frame(f_statistic = f_stats)\n\n# Create comparison plot\nggplot(sim_data_f, aes(x = f_statistic)) +\n  geom_histogram(aes(y = after_stat(density)), bins = 50, fill = \"lightgreen\") +\n  stat_function(fun = df, args = list(df1 = df1, df2 = df2), color = \"red\", linewidth = 1.2) +\n  xlim(0, quantile(f_stats, 0.99)) +  # Trim extreme values \n  labs(title = paste(\"Simulated F-statistics vs Theoretical F-distribution\"),\n       subtitle = paste(\"df1 =\", df1, \", df2 =\", df2, \"| Based on\", n_sims, \"simulations\"),\n       x = \"F-statistic\", \n       y = \"Density\") +\n  theme_minimal()\n\nQuestions to answer: - What are the numerator and denominator degrees of freedom?\n- Do the simulated F-statistics match the theoretical distribution?\n- What would happen if the null hypothesis were false (i.e., if some slope coefficients were non-zero)?",
     "crumbs": [
       "{{< fa calendar >}} Schedule",
       "Exercises",
-      "Exercise 3: Linear Regression Fundamentals"
+      "Exercise 6: Sums of Squares and Hypothesis Testing"
     ]
   },
   {
-    "objectID": "ex/ex-3.html#problem-5",
-    "href": "ex/ex-3.html#problem-5",
-    "title": "Linear Regression Fundamentals Problem Set",
+    "objectID": "ex/ex-6.html#problem-5",
+    "href": "ex/ex-6.html#problem-5",
+    "title": "Sums of Squares and Hypothesis Testing",
     "section": "Problem 5",
-    "text": "Problem 5\na) Starting from the geometric principle that residuals must be orthogonal to the column space of \\(\\mathbf{X}\\), derive the normal equations step by step. Begin with the condition \\(\\mathbf{X}^T\\hat\\varepsilon = 0\\) and show all algebraic steps to arrive at \\(\\mathbf{X}^T\\mathbf{X}\\hat\\beta=\\mathbf{X}^T\\mathbf{y}\\).\nb) Explain why we multiply both sides by \\((\\mathbf{X}^T\\mathbf{X})^{-1}\\) to solve for \\(\\hat\\beta\\), and under what conditions this inverse might not exist.\nc) Show that the least squares estimator \\(\\hat\\beta = (\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\mathbf{y}\\) minimizes the sum of squared errors by demonstrating that this solution satisfies the orthogonality condition.",
+    "text": "Problem 5\nConsider the model: \\(y = \\beta_0 + \\beta_1 x_1 + \\beta_2 x_2 + \\beta_3 x_3 + \\beta_4 x_4 + \\varepsilon\\)\na) Set up the contrast matrix \\(\\mathbf{C}\\) and vector \\(\\mathbf{d}\\) to test the hypothesis: \\(H_0: \\beta_1 + \\beta_2 = 0 \\text{ and } \\beta_3 = 2\\beta_4\\)\nb) How many degrees of freedom would the F-test have? Explain your reasoning.",
     "crumbs": [
       "{{< fa calendar >}} Schedule",
       "Exercises",
-      "Exercise 3: Linear Regression Fundamentals"
+      "Exercise 6: Sums of Squares and Hypothesis Testing"
     ]
   },
   {
-    "objectID": "ex/ex-3.html#problem-6",
-    "href": "ex/ex-3.html#problem-6",
-    "title": "Linear Regression Fundamentals Problem Set",
+    "objectID": "ex/ex-6.html#problem-6",
+    "href": "ex/ex-6.html#problem-6",
+    "title": "Sums of Squares and Hypothesis Testing",
     "section": "Problem 6",
-    "text": "Problem 6\nYou are given the following dataset with 10 observations:\n\n\nx\ny\n\n\n\n1\n4.8\n\n\n2\n6.2\n\n\n3\n8.1\n\n\n4\n9.9\n\n\n5\n11.5\n\n\n6\n13.8\n\n\n7\n15.2\n\n\n8\n17.1\n\n\n9\n18.9\n\n\n10\n21.3\n\n\n\na) Implement the least squares solution in R using matrix operations. Calculate \\(\\hat\\beta\\) without using lm().\nb) Compare your results with R’s lm() function and verify they match.\nc) Using the grid below, hand-draw the following elements:\n\nPlot the 10 data points from the table above\n\nDraw the true regression line: y = 3.5 + 1.8x (shown as a dashed line)\nDraw your fitted regression line from Part A (shown as a solid line)\nLabel both lines clearly in your plot\n\n\n\n\n\n\n\n\n\n(You don’t have to upload this drawing on Canvas, but make sure you do it and understand it, we will do it during the board work portion in class.)\nd) Based on your plot, comment on how well the fitted line approximates the true relationship. What does this tell you about the effectiveness of least squares estimation?",
+    "text": "Problem 6\nYou are given the following information from a regression analysis:\n\nn = 25 (sample size)\n\np = 5 (number of parameters including intercept)\n\nTSS = 500\n\nR² = 0.72\n\nComplete the ANOVA table:\n\n\nSource\ndf\nSum of Squares\nMean Square\nF\n\n\n\nRegression\n\n\n\n\n\n\nError\n\n\n\n\n\n\nTotal",
     "crumbs": [
       "{{< fa calendar >}} Schedule",
       "Exercises",
-      "Exercise 3: Linear Regression Fundamentals"
+      "Exercise 6: Sums of Squares and Hypothesis Testing"
     ]
   },
   {
-    "objectID": "ex/ex-11.html",
-    "href": "ex/ex-11.html",
-    "title": "Causal Inference Problem Set",
+    "objectID": "ex/ex-4.html",
+    "href": "ex/ex-4.html",
+    "title": "It’s Just a Linear Model",
     "section": "",
-    "text": "Consider a study of the effect of college tutoring programs (X) on final exam scores (Y). Students self-select into tutoring, and prior GPA (C) affects both whether students seek tutoring and their exam performance.\na) Generate data reflecting this structure:\n\nset.seed(1)\nn &lt;- 300\nprior_gpa &lt;- rnorm(n, mean = 3.0, sd = 0.5)\ntutoring &lt;- rbinom(n, 1, plogis(-2 + 1.5 * prior_gpa))\nexam_score &lt;- 65 + 8 * tutoring + 10 * prior_gpa + rnorm(n, sd = 5)\n\nDraw the DAG for this scenario. What is the true average treatment effect?\nb) Compute and compare two estimates: the naive comparison of means and a regression adjusting for prior GPA. Which is unbiased and why?\nc) Explain what “controlling for prior GPA” means. What would happen if prior GPA was actually caused by tutoring instead?",
+    "text": "Background Reading: Lindeløv, J. K. “Common statistical tests are linear models”URL: https://lindeloev.github.io/tests-as-linear/",
     "crumbs": [
       "{{< fa calendar >}} Schedule",
       "Exercises",
-      "Exercise 11: Causal Inference"
+      "Exercise 4: It's Just a Linear Model!"
     ]
   },
   {
-    "objectID": "ex/ex-11.html#problem-1",
-    "href": "ex/ex-11.html#problem-1",
-    "title": "Causal Inference Problem Set",
-    "section": "",
-    "text": "Consider a study of the effect of college tutoring programs (X) on final exam scores (Y). Students self-select into tutoring, and prior GPA (C) affects both whether students seek tutoring and their exam performance.\na) Generate data reflecting this structure:\n\nset.seed(1)\nn &lt;- 300\nprior_gpa &lt;- rnorm(n, mean = 3.0, sd = 0.5)\ntutoring &lt;- rbinom(n, 1, plogis(-2 + 1.5 * prior_gpa))\nexam_score &lt;- 65 + 8 * tutoring + 10 * prior_gpa + rnorm(n, sd = 5)\n\nDraw the DAG for this scenario. What is the true average treatment effect?\nb) Compute and compare two estimates: the naive comparison of means and a regression adjusting for prior GPA. Which is unbiased and why?\nc) Explain what “controlling for prior GPA” means. What would happen if prior GPA was actually caused by tutoring instead?",
+    "objectID": "ex/ex-4.html#instructions",
+    "href": "ex/ex-4.html#instructions",
+    "title": "It’s Just a Linear Model",
+    "section": "Instructions",
+    "text": "Instructions\nRead through Lindeløv’s resource to understand how common statistical tests are special cases of linear models. Then complete the matrix-based exercises below using the provided data. I’ll do the first one (one-sample t-test) so you can see what I mean.\nQuestion 1: t-tests\na) One-sample t-test\nData: \\(\\mathbf{y} = \\begin{bmatrix} 2.1 \\\\ 1.8 \\\\ 2.3 \\\\ 1.9 \\\\ 2.0 \\end{bmatrix}\\)\n\nConstruct design matrix \\(\\mathbf{X}\\) and \\(\\mathbf{y}\\) such that \\(\\boldsymbol{\\beta}\\) gives the one-sample t-test result\n\nCompare your matrix setup to t.test(y) in R\n\n\nX &lt;- c(1, 1, 1, 1, 1)\ny &lt;- c(2.1, 1.8, 2.3, 1.9, 2.0)\n\n## these should give me the same answer\nsolve(crossprod(X)) %*% crossprod(X, y)\n\n     [,1]\n[1,] 2.02\n\nt.test(y)\n\n\n    One Sample t-test\n\ndata:  y\nt = 23.482, df = 4, p-value = 1.95e-05\nalternative hypothesis: true mean is not equal to 0\n95 percent confidence interval:\n 1.781161 2.258839\nsample estimates:\nmean of x \n     2.02 \n\n\nb) Independent two-sample t-test\n\nGroup 1: \\(\\begin{bmatrix} 1.2 \\\\ 1.5 \\\\ 1.1 \\\\ 1.4 \\end{bmatrix}\\)\n\nGroup 2: \\(\\begin{bmatrix} 2.1 \\\\ 2.3 \\\\ 2.0 \\end{bmatrix}\\)\n\n\nCombined: \\(\\mathbf{y} = \\begin{bmatrix} 1.2 \\\\ 1.5 \\\\ 1.1 \\\\ 1.4 \\\\ 2.1 \\\\ 2.3 \\\\ 2.0 \\end{bmatrix}\\)\n\nConstruct design matrix \\(\\mathbf{X}\\) (using dummy coding) and \\(\\mathbf{y}\\) such that \\(\\boldsymbol{\\beta}\\) gives the two-sample t-test result\n\nCompare to t.test(group1, group2, var.equal = TRUE) in R\n\nc) Paired t-test\n\nBefore: \\(\\begin{bmatrix} 3.2 \\\\ 2.8 \\\\ 3.1 \\\\ 2.9 \\end{bmatrix}\\), After: \\(\\begin{bmatrix} 3.0 \\\\ 2.5 \\\\ 2.8 \\\\ 2.6 \\end{bmatrix}\\)\n\n\nDifferences: \\(\\mathbf{y} = \\begin{bmatrix} -0.2 \\\\ -0.3 \\\\ -0.3 \\\\ -0.3 \\end{bmatrix}\\)\n\nConstruct design matrix \\(\\mathbf{X}\\) and \\(\\mathbf{y}\\) such that \\(\\boldsymbol{\\beta}\\) gives the paired t-test result\n\nCompare to t.test(before, after, paired = TRUE) in R\nQuestion 2: ANOVA\na) One-way ANOVA\n\nGroup A: \\(\\begin{bmatrix} 1.1 \\\\ 1.3 \\\\ 1.2 \\end{bmatrix}\\)\n\nGroup B: \\(\\begin{bmatrix} 2.0 \\\\ 2.2 \\\\ 1.9 \\\\ 2.1 \\end{bmatrix}\\)\n\nGroup C: \\(\\begin{bmatrix} 2.8 \\\\ 2.9 \\end{bmatrix}\\)\n\n\nCombined: \\(\\mathbf{y} = \\begin{bmatrix} 1.1 \\\\ 1.3 \\\\ 1.2 \\\\ 2.0 \\\\ 2.2 \\\\ 1.9 \\\\ 2.1 \\\\ 2.8 \\\\ 2.9 \\end{bmatrix}\\)\n\nConstruct design matrix \\(\\mathbf{X}\\) (using dummy coding) and \\(\\mathbf{y}\\) such that \\(\\boldsymbol{\\beta}\\) gives the one-way ANOVA result\nCompare to aov(y ~ group) in R\n\nb) Two-way ANOVA (2×2 design)\nFactors: A (Low/High), B (Control/Treatment)\n\nLow-Control: \\(\\begin{bmatrix} 1.0 \\\\ 1.2 \\end{bmatrix}\\)\n\nLow-Treatment: \\(\\begin{bmatrix} 1.5 \\\\ 1.7 \\end{bmatrix}\\)\n\nHigh-Control: \\(\\begin{bmatrix} 2.0 \\\\ 2.1 \\end{bmatrix}\\)\n\nHigh-Treatment: \\(\\begin{bmatrix} 3.0 \\\\ 3.2 \\end{bmatrix}\\)\n\n\nCombined: \\(\\mathbf{y} = \\begin{bmatrix} 1.0 \\\\ 1.2 \\\\ 1.5 \\\\ 1.7 \\\\ 2.0 \\\\ 2.1 \\\\ 3.0 \\\\ 3.2 \\end{bmatrix}\\)\n\nConstruct \\(\\mathbf{X}\\) with main effects and interaction and \\(\\mathbf{y}\\) such that \\(\\boldsymbol{\\beta}\\) gives the two-way ANOVA result\nCompare to aov(y ~ A * B) in R\nQuestion 3: Correlation/Regression\na) Simple linear regression\n\\(\\mathbf{x} = \\begin{bmatrix} 1 \\\\ 2 \\\\ 3 \\\\ 4 \\end{bmatrix}\\), \\(\\mathbf{y} = \\begin{bmatrix} 2.1 \\\\ 3.9 \\\\ 6.1 \\\\ 7.8 \\end{bmatrix}\\)\n\nConstruct design matrix \\(\\mathbf{X}\\) and \\(\\mathbf{y}\\) to calculate Pearson Correlation\n\nCompare to cor.test(x, y) in R\n\nb) Spearman correlation - Using same data as (a), construct \\(\\mathbf{X}\\) and \\(\\mathbf{y}\\) for rank-based analysis - Compare to cor.test(x, y, method = \"spearman\") in R",
     "crumbs": [
       "{{< fa calendar >}} Schedule",
       "Exercises",
-      "Exercise 11: Causal Inference"
-    ]
-  },
-  {
-    "objectID": "ex/ex-11.html#problem-2",
-    "href": "ex/ex-11.html#problem-2",
-    "title": "Causal Inference Problem Set",
-    "section": "Problem 2",
-    "text": "Problem 2\nA tech company analyzes employee performance data. They want to understand if coding skills (X) and communication skills (Y) are related. However, they only have data on employees who were hired (M), and hiring depends on both skills.\na) Generate data where coding and communication skills are independent in the full applicant pool:\n\nset.seed(1)\nn &lt;- 1000\ncoding_skill &lt;- rnorm(n, mean = 70, sd = 15)\ncommunication_skill &lt;- rnorm(n, mean = 70, sd = 15)\nhire_score &lt;- 0.4 * coding_skill + 0.4 * communication_skill + rnorm(n, sd = 10)\nhired &lt;- as.numeric(hire_score &gt; quantile(hire_score, 0.6))\n\nDraw the DAG. What type of variable is hired?\nb) Analyze the relationship between coding and communication skills separately for all applicants and for hired employees only. Create two visualizations, one in the whole population and one in just the hired population.\nc) Explain the mechanism behind what you observe. What would happen if you ran a regression of communication on coding using only the hired sample?",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Exercises",
-      "Exercise 11: Causal Inference"
-    ]
-  },
-  {
-    "objectID": "ex/ex-11.html#problem-3",
-    "href": "ex/ex-11.html#problem-3",
-    "title": "Causal Inference Problem Set",
-    "section": "Problem 3",
-    "text": "Problem 3\nYou want to estimate the effect of online course format (X) on student satisfaction (Y):\n\nlibrary(ggdag)\n\n\nAttaching package: 'ggdag'\n\n\nThe following object is masked from 'package:stats':\n\n    filter\n\nlibrary(dagitty)\n\ncourse_dag &lt;- dagify(\n  X ~ instructor_experience + class_size,\n  Y ~ X + instructor_experience + engagement,\n  engagement ~ class_size,\n  exposure = \"X\",\n  outcome = \"Y\"\n)\n\na) Visualize this DAG and identify all paths from X to Y. Which paths must be blocked to estimate the causal effect?\nb) Determine all valid adjustment sets. Is there more than one? Which would you prefer and why?\nc) Generate data consistent with this DAG (choose your own coefficients, with true effect = 5). Verify that different valid adjustment sets give similar estimates of the causal effect.",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Exercises",
-      "Exercise 11: Causal Inference"
-    ]
-  },
-  {
-    "objectID": "ex/ex-11.html#problem-4",
-    "href": "ex/ex-11.html#problem-4",
-    "title": "Causal Inference Problem Set",
-    "section": "Problem 4",
-    "text": "Problem 4\nA software company tests whether code review requirements (exposure) improve code quality (outcome). The effect varies by developer experience level:\n\nset.seed(1)\nn &lt;- 500\nexperience_years &lt;- rnorm(n, mean = 5, sd = 3)\nexperience_years &lt;- pmax(experience_years, 0)\ncode_review &lt;- rbinom(n, 1, plogis(-1 + 0.2 * experience_years))\ncode_quality &lt;- 70 + 8 * code_review + 3 * experience_years + \n                0.6 * code_review * experience_years + rnorm(n, sd = 6)\n\na) Fit an appropriate model and interpret all coefficients. At what experience level is the treatment effect equal to 10?\nb) Implement g-computation to estimate the ATE.\nc) Why does g-computation give a different answer than the main effect coefficient? Create a visualization showing how the treatment effect varies with experience and how g-computation accounts for the distribution of experience in your sample.\nd) What would happen to your ATE estimate if you recruited more junior developers? More senior developers? Explain using your visualization.",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Exercises",
-      "Exercise 11: Causal Inference"
-    ]
-  },
-  {
-    "objectID": "ex/ex-11.html#problem-5",
-    "href": "ex/ex-11.html#problem-5",
-    "title": "Causal Inference Problem Set",
-    "section": "Problem 5",
-    "text": "Problem 5\nA university studies the effect of study group participation (X) on exam scores (Y). They measure high school GPA but fail to measure intrinsic motivation (U).\na) Generate data with an unmeasured confounder:\n\nset.seed(1)\nn &lt;- 400\nhigh_school_gpa &lt;- rnorm(n, mean = 3.2, sd = 0.5)\nmotivation &lt;- rnorm(n, mean = 50, sd = 10)\nstudy_group &lt;- rbinom(n, 1, plogis(-2 + 0.8 * high_school_gpa + 0.04 * motivation))\nexam_score &lt;- 50 + 6 * study_group + 8 * high_school_gpa + \n              0.3 * motivation + rnorm(n, sd = 5)\n\nDraw the complete DAG (including the unmeasured confounder).\nb) Estimate the effect of study groups three ways: (1) no controls, (2) controlling for high school GPA only, (3) controlling for both (pretend you could measure motivation). Which estimates are biased?\nc) Using the omitted variable bias formula, predict the bias in estimate (2). Verify your prediction matches the actual bias.\nd) How strong would the effect of motivation need to be (on either study group participation or exam scores) for your partially adjusted estimate to be unbiased? What does this tell you about sensitivity to unmeasured confounding?",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Exercises",
-      "Exercise 11: Causal Inference"
-    ]
-  },
-  {
-    "objectID": "ex/ex-11.html#problem-6",
-    "href": "ex/ex-11.html#problem-6",
-    "title": "Causal Inference Problem Set",
-    "section": "Problem 6",
-    "text": "Problem 6\nA research team studies the effect of remote work policy (X) on employee productivity (Y). They have data on:\n\nset.seed(1)\nn &lt;- 600\njob_autonomy &lt;- rnorm(n, mean = 50, sd = 12)\nhome_environment &lt;- rnorm(n, mean = 60, sd = 15)\npersonality_fit &lt;- 0.3 * job_autonomy + 0.2 * home_environment + rnorm(n, sd = 10)\nremote_work &lt;- rbinom(n, 1, plogis(-2 + 0.04 * job_autonomy + 0.03 * home_environment + 0.02 * personality_fit))\nproductivity &lt;- 70 + 5 * remote_work + 0.3 * job_autonomy + 0.2 * home_environment + 0.25 * personality_fit + rnorm(n, sd = 8)\n\na) Draw the DAG for this data generating process. Identify all confounders of the relationship between remote work and productivity.\nb) List all backdoor paths from X to Y. For each path, explain whether it is open or closed by default.\nc) Find all valid adjustment sets using adjustmentSets(). Compare estimates using: (1) no controls, (2) each individual valid adjustment set, and (3) all variables. Do the valid adjustment sets give similar answers?\nd) Suppose personality_fit was actually unmeasured. Using the omitted variable bias formula, quantify how much bias this would introduce when adjusting only for job_autonomy and home_environment. Would your conclusions about remote work change?",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Exercises",
-      "Exercise 11: Causal Inference"
-    ]
-  },
-  {
-    "objectID": "ex/ex-1.html",
-    "href": "ex/ex-1.html",
-    "title": "Exercise 1",
-    "section": "",
-    "text": "Exercise 1: Login to RStudio Pro\n\nGo to course website → Computing → Using the RStudio Server\nFollow login instructions\nLog in with your credentials\n\nCheck: You should see the RStudio interface with 4 panes.\nExercise 2: Create RStudio Project\n\nFile → New Project → New Directory → New Project\nName: ex-1\n\nClick Create Project\n\nCheck: Project name appears in top-right corner.\nExercise 3: Create Quarto Document\n\nFile → New File → Quarto Document\nTitle: “My First Analysis”\nSave as analysis.qmd\n\n\nCheck: New .qmd file is open and saved.\nExercise 4: Install faraway Package and Load Data\nRun this code in the console ONCE:\n\ninstall.packages(\"faraway\")\n\nThen run this:\n\nlibrary(faraway)\nlibrary(ggplot2)\n\n# Test it works\ndata(teengamb)\nhead(teengamb)\n\n  sex status income verbal gamble\n1   1     51   2.00      8    0.0\n2   1     28   2.50      8    0.0\n3   1     37   2.00      6    0.0\n4   1     28   7.00      4    7.3\n5   1     65   2.00      8   19.6\n6   1     61   3.47      6    0.1\n\n\nCheck: You see the teengamb dataset.\nNow run this in the console:\n\n?teengamb\n\nQuestion: What is in this dataset?\nAction: Add the code below to your .qmd file along with a short description of the data.\n\nlibrary(faraway)\nlibrary(ggplot2)\ndata(teengamb)\n\nExercise 5: Linear Model and Plot\nAdd the following code to your .qmd file. Try running it.\n\n# Fit linear model\nmodel1 &lt;- lm(gamble ~ income, data = teengamb)\nsummary(model1)\n\n\nCall:\nlm(formula = gamble ~ income, data = teengamb)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-46.020 -11.874  -3.757  11.934 107.120 \n\nCoefficients:\n            Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)   -6.325      6.030  -1.049      0.3    \nincome         5.520      1.036   5.330 3.05e-06 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 24.95 on 45 degrees of freedom\nMultiple R-squared:  0.387, Adjusted R-squared:  0.3734 \nF-statistic: 28.41 on 1 and 45 DF,  p-value: 3.045e-06\n\n# Create plot\nggplot(teengamb, aes(x = income, y = gamble)) +\n  geom_point() +\n  geom_smooth(method = \"lm\", formula = \"y ~ x\") +\n  labs(title = \"Income vs Gambling\",\n       x = \"Income\", \n       y = \"Gambling\")\n\n\n\n\n\n\n\nCheck: You have model output and a scatter plot with trend line.\nFinish\nClick “Render” to create your HTML report. Upload your .html file in Canvas under Exercise 1",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Exercises",
-      "Exercise 1"
-    ]
-  },
-  {
-    "objectID": "demo/hat-matrix-symmetry.html",
-    "href": "demo/hat-matrix-symmetry.html",
-    "title": "Hat Matrix Symmetry Visualization",
-    "section": "",
-    "text": "Point 1 X:  1.0\n\n\nPoint 2 X:  2.0\n\n\nPoint 3 X:  -1.0\n\n\nRandomize Points",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Demos",
-      "Hat Matrix Symmetry"
-    ]
-  },
-  {
-    "objectID": "demo/hat-matrix-symmetry.html#interactive-linear-regression-example",
-    "href": "demo/hat-matrix-symmetry.html#interactive-linear-regression-example",
-    "title": "Hat Matrix Symmetry Visualization",
-    "section": "",
-    "text": "Point 1 X:  1.0\n\n\nPoint 2 X:  2.0\n\n\nPoint 3 X:  -1.0\n\n\nRandomize Points",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Demos",
-      "Hat Matrix Symmetry"
-    ]
-  },
-  {
-    "objectID": "demo/hat-matrix-symmetry.html#hat-matrix-h",
-    "href": "demo/hat-matrix-symmetry.html#hat-matrix-h",
-    "title": "Hat Matrix Symmetry Visualization",
-    "section": "Hat Matrix H",
-    "text": "Hat Matrix H",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Demos",
-      "Hat Matrix Symmetry"
-    ]
-  },
-  {
-    "objectID": "demo/hat-matrix-symmetry.html#what-symmetry-means",
-    "href": "demo/hat-matrix-symmetry.html#what-symmetry-means",
-    "title": "Hat Matrix Symmetry Visualization",
-    "section": "What Symmetry Means:",
-    "text": "What Symmetry Means:\nHij = Hji means:\n\nHow much point i influences point j’s fitted value = How much point j influences point i’s fitted value\n\nThis reciprocal relationship holds for ALL pairs of points\nReciprocal influence is a geometric consequence of orthogonal projection",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Demos",
-      "Hat Matrix Symmetry"
-    ]
-  },
-  {
-    "objectID": "demo/hat-matrix-symmetry.html#key-observations",
-    "href": "demo/hat-matrix-symmetry.html#key-observations",
-    "title": "Hat Matrix Symmetry Visualization",
-    "section": "Key Observations",
-    "text": "Key Observations",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Demos",
-      "Hat Matrix Symmetry"
-    ]
-  },
-  {
-    "objectID": "demo/general-f-statistic.html",
-    "href": "demo/general-f-statistic.html",
-    "title": "Building Intuition for the F-Statistic Numerator",
-    "section": "",
-    "text": "The general form of the F-statistic with constraint matrix \\(C\\) is:\n\\[F = \\frac{(C\\hat{\\beta} - d)^T [C(X^TX)^{-1}C^T]^{-1} (C\\hat{\\beta} - d) / q}{\\text{MSE}}\\]\nFor all our purposes, \\(d = 0\\) (we’re testing if parameters equal zero), so we can drop it!\n\\[F = \\frac{(C\\hat{\\beta})^T [C(X^TX)^{-1}C^T]^{-1} (C\\hat{\\beta}) / q}{\\text{MSE}}\\]\n\nDenominator (MSE): This is always the same - our estimate of \\(\\sigma^2\\)\nThe division by \\(q\\): This just adjusts for the number of restrictions we’re testing\nWhat we need intuition for: \\((C\\hat{\\beta})^T [C(X^TX)^{-1}C^T]^{-1} (C\\hat{\\beta})\\)\n\nLet’s focus JUST on this “numerator of the numerator” and build some intuition!",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Demos",
-      "General F Statistic Intuition"
-    ]
-  },
-  {
-    "objectID": "demo/general-f-statistic.html#the-general-f-test-formula",
-    "href": "demo/general-f-statistic.html#the-general-f-test-formula",
-    "title": "Building Intuition for the F-Statistic Numerator",
-    "section": "",
-    "text": "The general form of the F-statistic with constraint matrix \\(C\\) is:\n\\[F = \\frac{(C\\hat{\\beta} - d)^T [C(X^TX)^{-1}C^T]^{-1} (C\\hat{\\beta} - d) / q}{\\text{MSE}}\\]\nFor all our purposes, \\(d = 0\\) (we’re testing if parameters equal zero), so we can drop it!\n\\[F = \\frac{(C\\hat{\\beta})^T [C(X^TX)^{-1}C^T]^{-1} (C\\hat{\\beta}) / q}{\\text{MSE}}\\]\n\nDenominator (MSE): This is always the same - our estimate of \\(\\sigma^2\\)\nThe division by \\(q\\): This just adjusts for the number of restrictions we’re testing\nWhat we need intuition for: \\((C\\hat{\\beta})^T [C(X^TX)^{-1}C^T]^{-1} (C\\hat{\\beta})\\)\n\nLet’s focus JUST on this “numerator of the numerator” and build some intuition!",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Demos",
-      "General F Statistic Intuition"
-    ]
-  },
-  {
-    "objectID": "demo/general-f-statistic.html#understanding-three-pieces",
-    "href": "demo/general-f-statistic.html#understanding-three-pieces",
-    "title": "Building Intuition for the F-Statistic Numerator",
-    "section": "Understanding Three Pieces",
-    "text": "Understanding Three Pieces\n\n\\(C\\hat{\\beta}\\) - How far are we from 0?\nThis is a vector. For example, if we’re testing \\(\\beta_1 = \\beta_2 = 0\\), then:\n\\[C\\hat{\\beta} = \\begin{bmatrix} \\hat{\\beta}_1 \\\\ \\hat{\\beta}_2 \\end{bmatrix}\\]\nThis vector tells us: “How far from zero are the parameters we’re testing?”\n\n\n\\(C(X^TX)^{-1}C^T\\) - The Variance-Covariance Matrix\nThis is a \\(q \\times q\\) matrix that captures the joint uncertainty. The \\(C\\) matrices “extract” the relevant parts of the full variance-covariance matrix:\n\\(\\text{Var}(C\\hat{\\beta}) = \\sigma^2 \\cdot C(X^TX)^{-1}C^T\\)\nFor our example where \\(C\\) selects \\(\\beta_1\\) and \\(\\beta_2\\), this multiplication gives us:\n\\[= \\sigma^2 \\begin{bmatrix} \\text{Var}(\\hat{\\beta}_1) & \\text{Cov}(\\hat{\\beta}_1, \\hat{\\beta}_2) \\\\ \\text{Cov}(\\hat{\\beta}_1, \\hat{\\beta}_2) & \\text{Var}(\\hat{\\beta}_2) \\end{bmatrix}\\]\n\nDiagonal = how uncertain we are about each parameter\nOff-diagonal = whether parameters move together\n\nThe \\(C\\) matrices do the work of pulling out just the rows and columns we care about from the full \\((X^TX)^{-1}\\) matrix.\n\n\nThe Quadratic Form - A Standardized Distance\n\\[(C\\hat{\\beta})^T [C(X^TX)^{-1}C^T]^{-1} (C\\hat{\\beta})\\]\nThis combines everything into a single number that answers:\n\n“How far from zero are we, accounting for uncertainty and correlation?”\n\nIt’s the squared distance, which is like a correlation-adjusted measure of how extreme our estimates are. It is actually known as a Malahanobis distance.",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Demos",
-      "General F Statistic Intuition"
-    ]
-  },
-  {
-    "objectID": "demo/general-f-statistic.html#why-not-just-use-hatbeta",
-    "href": "demo/general-f-statistic.html#why-not-just-use-hatbeta",
-    "title": "Building Intuition for the F-Statistic Numerator",
-    "section": "Why Not Just Use \\(||\\hat{\\beta}||\\)?",
-    "text": "Why Not Just Use \\(||\\hat{\\beta}||\\)?\nIf we just computed \\(\\sqrt{\\hat{\\beta}_1^2 + \\hat{\\beta}_2^2}\\) (without the middle, \\([C(X^TX)^{-1}C^T]^{-1}\\)), we’d be treating all coefficients equally. But:\n\n\\(\\hat{\\beta}_1\\) might be estimated very precisely (small variance)\n\\(\\hat{\\beta}_2\\) might be estimated poorly (large variance)\nThey might be correlated!\n\nThe quadratic form weights by precision giving more importance to coefficients we estimated well.",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Demos",
-      "General F Statistic Intuition"
-    ]
-  },
-  {
-    "objectID": "demo/general-f-statistic.html#the-bottom-line",
-    "href": "demo/general-f-statistic.html#the-bottom-line",
-    "title": "Building Intuition for the F-Statistic Numerator",
-    "section": "The Bottom Line",
-    "text": "The Bottom Line\nThe numerator \\((C\\hat{\\beta})^T [C(X^TX)^{-1}C^T]^{-1} (C\\hat{\\beta})\\) is just:\n“How far are our estimates from zero, measured in a way that accounts for their precision and correlation?”\nFor the overall F-test (testing all slopes = 0), this exactly equals \\(SS_{reg}\\), the explained sum of squares.",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Demos",
-      "General F Statistic Intuition"
-    ]
-  },
-  {
-    "objectID": "demo/least-squares.html",
-    "href": "demo/least-squares.html",
-    "title": "Interactive Least Squares Visualization",
-    "section": "",
-    "text": "Adjust the red line using the sliders below to try to minimize the sum of squared errors. The blue squares show the squared residuals!\n\n\nIntercept \\(\\hat\\beta_0\\)\n\n1.5\n\n\nSlope \\(\\hat\\beta_1\\)\n\n1\n\n\nShow Optimal\n\n\n\n\n\n\nYour Line\ny = 1.50 + 1.00x\n\n\nOptimal Least Squares\ny = 1.50 + 1.00x\n\n\n\n\nYour SSE\n0.00\n\n\nOptimal SSE\n0.00",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Demos",
-      "Least Squares Solution"
-    ]
-  },
-  {
-    "objectID": "demo/least-squares.html#interactive-least-squares-learning-tool",
-    "href": "demo/least-squares.html#interactive-least-squares-learning-tool",
-    "title": "Interactive Least Squares Visualization",
-    "section": "",
-    "text": "Adjust the red line using the sliders below to try to minimize the sum of squared errors. The blue squares show the squared residuals!\n\n\nIntercept \\(\\hat\\beta_0\\)\n\n1.5\n\n\nSlope \\(\\hat\\beta_1\\)\n\n1\n\n\nShow Optimal\n\n\n\n\n\n\nYour Line\ny = 1.50 + 1.00x\n\n\nOptimal Least Squares\ny = 1.50 + 1.00x\n\n\n\n\nYour SSE\n0.00\n\n\nOptimal SSE\n0.00",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Demos",
-      "Least Squares Solution"
-    ]
-  },
-  {
-    "objectID": "demo/least-squares.html#key-concepts",
-    "href": "demo/least-squares.html#key-concepts",
-    "title": "Interactive Least Squares Visualization",
-    "section": "Key Concepts",
-    "text": "Key Concepts\nGoal: Find the line \\(\\hat{y} = \\hat\\beta_0 + \\hat\\beta_1x\\) that minimizes the Sum of Squared Errors (SSE)\nThe blue squares show the squared residuals - their total area equals the SSE!\nWhat to Try:\n\nAdjust the sliders to minimize the total area of blue squares\n\nTry to match the optimal (green) line\n\nNotice how the squares get smaller as you approach the optimal solution",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Demos",
-      "Least Squares Solution"
-    ]
-  },
-  {
-    "objectID": "ex/ex-10.html",
-    "href": "ex/ex-10.html",
-    "title": "Frisch-Waugh-Lovell Theorem",
-    "section": "",
-    "text": "Consider the following small dataset:\n\\[\\mathbf{y} = \\begin{bmatrix}2\\\\5\\\\8\\\\11\\\\14\\end{bmatrix}, \\quad \\mathbf{X}_1 = \\begin{bmatrix}1\\\\2\\\\3\\\\4\\\\5\\end{bmatrix}, \\quad \\mathbf{X}_2 = \\begin{bmatrix}1\\\\1\\\\2\\\\2\\\\3\\end{bmatrix}\\]\na) Fit the full regression model \\(y = \\beta_0 + \\beta_1 x_1 + \\beta_2 x_2 + \\varepsilon\\) and report \\(\\hat{\\beta}_1\\).\nb) Now apply the FWL procedure: - Regress \\(y\\) on \\(x_2\\) (including an intercept) and save the residuals \\(\\tilde{y}\\) - Regress \\(x_1\\) on \\(x_2\\) (including an intercept) and save the residuals \\(\\tilde{x}_1\\) - Regress \\(\\tilde{y}\\) on \\(\\tilde{x}_1\\) (without an intercept)\nReport the coefficient from this final regression. Does it match \\(\\hat{\\beta}_1\\) from part (a)?",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Exercises",
-      "Exercise 10: FWL"
-    ]
-  },
-  {
-    "objectID": "ex/ex-10.html#problem-1",
-    "href": "ex/ex-10.html#problem-1",
-    "title": "Frisch-Waugh-Lovell Theorem",
-    "section": "",
-    "text": "Consider the following small dataset:\n\\[\\mathbf{y} = \\begin{bmatrix}2\\\\5\\\\8\\\\11\\\\14\\end{bmatrix}, \\quad \\mathbf{X}_1 = \\begin{bmatrix}1\\\\2\\\\3\\\\4\\\\5\\end{bmatrix}, \\quad \\mathbf{X}_2 = \\begin{bmatrix}1\\\\1\\\\2\\\\2\\\\3\\end{bmatrix}\\]\na) Fit the full regression model \\(y = \\beta_0 + \\beta_1 x_1 + \\beta_2 x_2 + \\varepsilon\\) and report \\(\\hat{\\beta}_1\\).\nb) Now apply the FWL procedure: - Regress \\(y\\) on \\(x_2\\) (including an intercept) and save the residuals \\(\\tilde{y}\\) - Regress \\(x_1\\) on \\(x_2\\) (including an intercept) and save the residuals \\(\\tilde{x}_1\\) - Regress \\(\\tilde{y}\\) on \\(\\tilde{x}_1\\) (without an intercept)\nReport the coefficient from this final regression. Does it match \\(\\hat{\\beta}_1\\) from part (a)?",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Exercises",
-      "Exercise 10: FWL"
-    ]
-  },
-  {
-    "objectID": "ex/ex-10.html#problem-2",
-    "href": "ex/ex-10.html#problem-2",
-    "title": "Frisch-Waugh-Lovell Theorem",
-    "section": "Problem 2",
-    "text": "Problem 2\nGenerate data with three predictors:\nset.seed(1)\nn &lt;- 100\nx1 &lt;- rnorm(n)\nx2 &lt;- rnorm(n)\nx3 &lt;- 0.6*x1 + 0.4*x2 + rnorm(n)\ny &lt;- 3 + 2*x1 + 1.5*x2 + 2.5*x3 + rnorm(n)\na) Fit the full model lm(y ~ x1 + x2 + x3) and report the coefficient on x3.\nb) Create an added variable plot for x3: - Regress y on x1 and x2, save residuals - Regress x3 on x1 and x2, save residuals - Plot these residuals against each other and add a regression line\nc) What is the slope of the line in your added variable plot? How does it compare to the coefficient from part (a)?\nd) Explain what this plot shows: what variation in y and x3 are we visualizing?",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Exercises",
-      "Exercise 10: FWL"
-    ]
-  },
-  {
-    "objectID": "ex/ex-10.html#problem-3",
-    "href": "ex/ex-10.html#problem-3",
-    "title": "Frisch-Waugh-Lovell Theorem",
-    "section": "Problem 3",
-    "text": "Problem 3\nFor a simple case with \\(\\mathbf{X}_2 = \\begin{bmatrix}1\\\\1\\\\1\\end{bmatrix}\\) (just an intercept):\na) Write out the \\(3 \\times 3\\) residual maker matrix \\(\\mathbf{M}_2 = \\mathbf{I} - \\mathbf{X}_2(\\mathbf{X}_2^T\\mathbf{X}_2)^{-1}\\mathbf{X}_2^T\\).\nb) Verify that \\(\\mathbf{M}_2\\) is symmetric: \\(\\mathbf{M}_2^T = \\mathbf{M}_2\\).\nc) Verify that \\(\\mathbf{M}_2\\) is idempotent: \\(\\mathbf{M}_2^2 = \\mathbf{M}_2\\).\nd) Apply \\(\\mathbf{M}_2\\) to the vector \\(\\mathbf{z} = \\begin{bmatrix}5\\\\8\\\\11\\end{bmatrix}\\). What operation does this perform? (Hint: what is the mean of the resulting vector?)",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Exercises",
-      "Exercise 10: FWL"
-    ]
-  },
-  {
-    "objectID": "ex/ex-10.html#problem-4",
-    "href": "ex/ex-10.html#problem-4",
-    "title": "Frisch-Waugh-Lovell Theorem",
-    "section": "Problem 4",
-    "text": "Problem 4\nGenerate data where an important variable is omitted:\nset.seed(1)\nn &lt;- 200\nx1 &lt;- rnorm(n)\nx2 &lt;- 0.8*x1 + rnorm(n) \ny &lt;- 2 + 3*x1 + 4*x2 + rnorm(n)\na) Fit the “short” regression lm(y ~ x1) that omits x2. Report \\(\\hat{\\beta}_1^{\\text{short}}\\).\nb) Fit the “full” regression lm(y ~ x1 + x2). Report \\(\\hat{\\beta}_1^{\\text{full}}\\).\nc) Calculate the auxiliary regression coefficient: fit lm(x2 ~ x1) and report the slope \\(\\hat{\\delta}\\).\nd) Verify the omitted variable bias formula: \\[\\hat{\\beta}_1^{\\text{short}} \\approx \\hat{\\beta}_1^{\\text{full}} + \\hat{\\delta} \\cdot \\hat{\\beta}_2^{\\text{full}}\\]\nExplain intuitively why the bias has this form using FWL reasoning.",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Exercises",
-      "Exercise 10: FWL"
-    ]
-  },
-  {
-    "objectID": "ex/ex-10.html#problem-5",
-    "href": "ex/ex-10.html#problem-5",
-    "title": "Frisch-Waugh-Lovell Theorem",
-    "section": "Problem 5",
-    "text": "Problem 5\nConsider panel data with individuals observed over time:\nset.seed(1)\nid &lt;- rep(1:10, each = 5)\ntime &lt;- rep(1:5, times = 10)\nalpha_i &lt;- rep(rnorm(10, mean = 5), each = 5)\nx &lt;- rnorm(50, mean = 10)\ny &lt;- alpha_i + 2.5*x + rnorm(50)\na) Fit a model with individual fixed effects using dummy variables:\nmodel_fe &lt;- lm(y ~ x + factor(id))\nReport the coefficient on x.\nb) Now use the FWL/demeaning approach: - Calculate within-individual means: \\(\\bar{y}_i\\) and \\(\\bar{x}_i\\) for each individual - Create demeaned variables: \\(\\tilde{y}_{it} = y_{it} - \\bar{y}_i\\) and \\(\\tilde{x}_{it} = x_{it} - \\bar{x}_i\\) - Regress the demeaned outcome on the demeaned predictor (no intercept)\nDoes this coefficient match part (a)?\nc) Explain why demeaning is equivalent to including fixed effects, using the FWL theorem.",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Exercises",
-      "Exercise 10: FWL"
-    ]
-  },
-  {
-    "objectID": "ex/ex-10.html#problem-6",
-    "href": "ex/ex-10.html#problem-6",
-    "title": "Frisch-Waugh-Lovell Theorem",
-    "section": "Problem 6",
-    "text": "Problem 6\nUsing the data from Problem 1:\na) Compare the standard errors for \\(\\hat{\\beta}_1\\) from: - The full regression lm(y ~ x1 + x2) - The FWL residualized regression lm(y_resid ~ x1_resid)\nWhy do they differ?\nb) How many degrees of freedom are used in each regression? Explain how this affects the standard error calculation.",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Exercises",
-      "Exercise 10: FWL"
+      "Exercise 4: It's Just a Linear Model!"
     ]
   },
   {
@@ -3008,207 +2552,723 @@
     ]
   },
   {
-    "objectID": "ex/ex-4.html",
-    "href": "ex/ex-4.html",
-    "title": "It’s Just a Linear Model",
+    "objectID": "ex/ex-10.html",
+    "href": "ex/ex-10.html",
+    "title": "Frisch-Waugh-Lovell Theorem",
     "section": "",
-    "text": "Background Reading: Lindeløv, J. K. “Common statistical tests are linear models”URL: https://lindeloev.github.io/tests-as-linear/",
+    "text": "Consider the following small dataset:\n\\[\\mathbf{y} = \\begin{bmatrix}2\\\\5\\\\8\\\\11\\\\14\\end{bmatrix}, \\quad \\mathbf{X}_1 = \\begin{bmatrix}1\\\\2\\\\3\\\\4\\\\5\\end{bmatrix}, \\quad \\mathbf{X}_2 = \\begin{bmatrix}1\\\\1\\\\2\\\\2\\\\3\\end{bmatrix}\\]\na) Fit the full regression model \\(y = \\beta_0 + \\beta_1 x_1 + \\beta_2 x_2 + \\varepsilon\\) and report \\(\\hat{\\beta}_1\\).\nb) Now apply the FWL procedure: - Regress \\(y\\) on \\(x_2\\) (including an intercept) and save the residuals \\(\\tilde{y}\\) - Regress \\(x_1\\) on \\(x_2\\) (including an intercept) and save the residuals \\(\\tilde{x}_1\\) - Regress \\(\\tilde{y}\\) on \\(\\tilde{x}_1\\) (without an intercept)\nReport the coefficient from this final regression. Does it match \\(\\hat{\\beta}_1\\) from part (a)?",
     "crumbs": [
       "{{< fa calendar >}} Schedule",
       "Exercises",
-      "Exercise 4: It's Just a Linear Model!"
+      "Exercise 10: FWL"
     ]
   },
   {
-    "objectID": "ex/ex-4.html#instructions",
-    "href": "ex/ex-4.html#instructions",
-    "title": "It’s Just a Linear Model",
-    "section": "Instructions",
-    "text": "Instructions\nRead through Lindeløv’s resource to understand how common statistical tests are special cases of linear models. Then complete the matrix-based exercises below using the provided data. I’ll do the first one (one-sample t-test) so you can see what I mean.\nQuestion 1: t-tests\na) One-sample t-test\nData: \\(\\mathbf{y} = \\begin{bmatrix} 2.1 \\\\ 1.8 \\\\ 2.3 \\\\ 1.9 \\\\ 2.0 \\end{bmatrix}\\)\n\nConstruct design matrix \\(\\mathbf{X}\\) and \\(\\mathbf{y}\\) such that \\(\\boldsymbol{\\beta}\\) gives the one-sample t-test result\n\nCompare your matrix setup to t.test(y) in R\n\n\nX &lt;- c(1, 1, 1, 1, 1)\ny &lt;- c(2.1, 1.8, 2.3, 1.9, 2.0)\n\n## these should give me the same answer\nsolve(crossprod(X)) %*% crossprod(X, y)\n\n     [,1]\n[1,] 2.02\n\nt.test(y)\n\n\n    One Sample t-test\n\ndata:  y\nt = 23.482, df = 4, p-value = 1.95e-05\nalternative hypothesis: true mean is not equal to 0\n95 percent confidence interval:\n 1.781161 2.258839\nsample estimates:\nmean of x \n     2.02 \n\n\nb) Independent two-sample t-test\n\nGroup 1: \\(\\begin{bmatrix} 1.2 \\\\ 1.5 \\\\ 1.1 \\\\ 1.4 \\end{bmatrix}\\)\n\nGroup 2: \\(\\begin{bmatrix} 2.1 \\\\ 2.3 \\\\ 2.0 \\end{bmatrix}\\)\n\n\nCombined: \\(\\mathbf{y} = \\begin{bmatrix} 1.2 \\\\ 1.5 \\\\ 1.1 \\\\ 1.4 \\\\ 2.1 \\\\ 2.3 \\\\ 2.0 \\end{bmatrix}\\)\n\nConstruct design matrix \\(\\mathbf{X}\\) (using dummy coding) and \\(\\mathbf{y}\\) such that \\(\\boldsymbol{\\beta}\\) gives the two-sample t-test result\n\nCompare to t.test(group1, group2, var.equal = TRUE) in R\n\nc) Paired t-test\n\nBefore: \\(\\begin{bmatrix} 3.2 \\\\ 2.8 \\\\ 3.1 \\\\ 2.9 \\end{bmatrix}\\), After: \\(\\begin{bmatrix} 3.0 \\\\ 2.5 \\\\ 2.8 \\\\ 2.6 \\end{bmatrix}\\)\n\n\nDifferences: \\(\\mathbf{y} = \\begin{bmatrix} -0.2 \\\\ -0.3 \\\\ -0.3 \\\\ -0.3 \\end{bmatrix}\\)\n\nConstruct design matrix \\(\\mathbf{X}\\) and \\(\\mathbf{y}\\) such that \\(\\boldsymbol{\\beta}\\) gives the paired t-test result\n\nCompare to t.test(before, after, paired = TRUE) in R\nQuestion 2: ANOVA\na) One-way ANOVA\n\nGroup A: \\(\\begin{bmatrix} 1.1 \\\\ 1.3 \\\\ 1.2 \\end{bmatrix}\\)\n\nGroup B: \\(\\begin{bmatrix} 2.0 \\\\ 2.2 \\\\ 1.9 \\\\ 2.1 \\end{bmatrix}\\)\n\nGroup C: \\(\\begin{bmatrix} 2.8 \\\\ 2.9 \\end{bmatrix}\\)\n\n\nCombined: \\(\\mathbf{y} = \\begin{bmatrix} 1.1 \\\\ 1.3 \\\\ 1.2 \\\\ 2.0 \\\\ 2.2 \\\\ 1.9 \\\\ 2.1 \\\\ 2.8 \\\\ 2.9 \\end{bmatrix}\\)\n\nConstruct design matrix \\(\\mathbf{X}\\) (using dummy coding) and \\(\\mathbf{y}\\) such that \\(\\boldsymbol{\\beta}\\) gives the one-way ANOVA result\nCompare to aov(y ~ group) in R\n\nb) Two-way ANOVA (2×2 design)\nFactors: A (Low/High), B (Control/Treatment)\n\nLow-Control: \\(\\begin{bmatrix} 1.0 \\\\ 1.2 \\end{bmatrix}\\)\n\nLow-Treatment: \\(\\begin{bmatrix} 1.5 \\\\ 1.7 \\end{bmatrix}\\)\n\nHigh-Control: \\(\\begin{bmatrix} 2.0 \\\\ 2.1 \\end{bmatrix}\\)\n\nHigh-Treatment: \\(\\begin{bmatrix} 3.0 \\\\ 3.2 \\end{bmatrix}\\)\n\n\nCombined: \\(\\mathbf{y} = \\begin{bmatrix} 1.0 \\\\ 1.2 \\\\ 1.5 \\\\ 1.7 \\\\ 2.0 \\\\ 2.1 \\\\ 3.0 \\\\ 3.2 \\end{bmatrix}\\)\n\nConstruct \\(\\mathbf{X}\\) with main effects and interaction and \\(\\mathbf{y}\\) such that \\(\\boldsymbol{\\beta}\\) gives the two-way ANOVA result\nCompare to aov(y ~ A * B) in R\nQuestion 3: Correlation/Regression\na) Simple linear regression\n\\(\\mathbf{x} = \\begin{bmatrix} 1 \\\\ 2 \\\\ 3 \\\\ 4 \\end{bmatrix}\\), \\(\\mathbf{y} = \\begin{bmatrix} 2.1 \\\\ 3.9 \\\\ 6.1 \\\\ 7.8 \\end{bmatrix}\\)\n\nConstruct design matrix \\(\\mathbf{X}\\) and \\(\\mathbf{y}\\) to calculate Pearson Correlation\n\nCompare to cor.test(x, y) in R\n\nb) Spearman correlation - Using same data as (a), construct \\(\\mathbf{X}\\) and \\(\\mathbf{y}\\) for rank-based analysis - Compare to cor.test(x, y, method = \"spearman\") in R",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Exercises",
-      "Exercise 4: It's Just a Linear Model!"
-    ]
-  },
-  {
-    "objectID": "ex/ex-6.html",
-    "href": "ex/ex-6.html",
-    "title": "Sums of Squares and Hypothesis Testing",
+    "objectID": "ex/ex-10.html#problem-1",
+    "href": "ex/ex-10.html#problem-1",
+    "title": "Frisch-Waugh-Lovell Theorem",
     "section": "",
-    "text": "Given the following data:\n\\[\\mathbf{y} = \\begin{bmatrix}10\\\\13\\\\14\\\\16\\\\18\\end{bmatrix}\\]\n\\[\\mathbf{X} = \\begin{bmatrix}1&1\\\\1&2\\\\1&3\\\\1&4\\\\1&5\\end{bmatrix}\\]\na) Calculate TSS by hand using both the definition and the matrix form.\nb) Fit the linear model and calculate the SSE and \\(\\textrm{SS}_\\textrm{Reg}\\). Verify that TSS = SSE + SS_Reg.\nc) Calculate R² and interpret its meaning in context.",
+    "text": "Consider the following small dataset:\n\\[\\mathbf{y} = \\begin{bmatrix}2\\\\5\\\\8\\\\11\\\\14\\end{bmatrix}, \\quad \\mathbf{X}_1 = \\begin{bmatrix}1\\\\2\\\\3\\\\4\\\\5\\end{bmatrix}, \\quad \\mathbf{X}_2 = \\begin{bmatrix}1\\\\1\\\\2\\\\2\\\\3\\end{bmatrix}\\]\na) Fit the full regression model \\(y = \\beta_0 + \\beta_1 x_1 + \\beta_2 x_2 + \\varepsilon\\) and report \\(\\hat{\\beta}_1\\).\nb) Now apply the FWL procedure: - Regress \\(y\\) on \\(x_2\\) (including an intercept) and save the residuals \\(\\tilde{y}\\) - Regress \\(x_1\\) on \\(x_2\\) (including an intercept) and save the residuals \\(\\tilde{x}_1\\) - Regress \\(\\tilde{y}\\) on \\(\\tilde{x}_1\\) (without an intercept)\nReport the coefficient from this final regression. Does it match \\(\\hat{\\beta}_1\\) from part (a)?",
     "crumbs": [
       "{{< fa calendar >}} Schedule",
       "Exercises",
-      "Exercise 6: Sums of Squares and Hypothesis Testing"
+      "Exercise 10: FWL"
     ]
   },
   {
-    "objectID": "ex/ex-6.html#problem-1-basic-sums-of-squares-calculation",
-    "href": "ex/ex-6.html#problem-1-basic-sums-of-squares-calculation",
-    "title": "Sums of Squares and Hypothesis Testing",
-    "section": "",
-    "text": "Given the following data:\n\\[\\mathbf{y} = \\begin{bmatrix}10\\\\13\\\\14\\\\16\\\\18\\end{bmatrix}\\]\n\\[\\mathbf{X} = \\begin{bmatrix}1&1\\\\1&2\\\\1&3\\\\1&4\\\\1&5\\end{bmatrix}\\]\na) Calculate TSS by hand using both the definition and the matrix form.\nb) Fit the linear model and calculate the SSE and \\(\\textrm{SS}_\\textrm{Reg}\\). Verify that TSS = SSE + SS_Reg.\nc) Calculate R² and interpret its meaning in context.",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Exercises",
-      "Exercise 6: Sums of Squares and Hypothesis Testing"
-    ]
-  },
-  {
-    "objectID": "ex/ex-6.html#problem-2-matrix-algebra-proof",
-    "href": "ex/ex-6.html#problem-2-matrix-algebra-proof",
-    "title": "Sums of Squares and Hypothesis Testing",
-    "section": "Problem 2: Matrix Algebra Proof",
-    "text": "Problem 2: Matrix Algebra Proof\nProve algebraically that the F-statistic can be written in terms of R² as:\n\\(F = \\frac{R^2/(p-1)}{(1-R^2)/(n-p)}\\)\nShow each algebraic step clearly.",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Exercises",
-      "Exercise 6: Sums of Squares and Hypothesis Testing"
-    ]
-  },
-  {
-    "objectID": "ex/ex-6.html#problem-3-simulation---t-distribution-of-coefficients",
-    "href": "ex/ex-6.html#problem-3-simulation---t-distribution-of-coefficients",
-    "title": "Sums of Squares and Hypothesis Testing",
-    "section": "Problem 3: Simulation - t-Distribution of Coefficients",
-    "text": "Problem 3: Simulation - t-Distribution of Coefficients\nIn this problem, you’ll verify through simulation that \\(\\frac{\\hat{\\beta}_j - \\beta_j}{\\text{se}(\\hat{\\beta}_j)} \\sim t_{n-p}\\).\nIntroduction to purrr\n\nBefore we start, we’ll use the purrr package, which provides tools for functional programming in R. The key function we’ll use is map_dbl(), which applies a function to each element of a list or vector and outputs a numeric vector. Think of map_dbl() as a more elegant alternative to writing loops when you expect a numeric output.\nFor example: - map_dbl(1:5, sqrt) applies the square root function to numbers 1 through 5 - map_dbl(1:1000, my_simulation_function) runs your simulation function 1000 times\nThis approach is cleaner than loops and encourages you to think about your simulation as a function that gets repeated many times.\nStep-by-step simulation guide:\nStep 1: Set up simulation parameters and load libraries\n\nlibrary(purrr)\nlibrary(ggplot2)\nset.seed(1)\n\n# Simulation parameters\nn &lt;- 50          # sample size\np &lt;- 3           # number of parameters (intercept + 2 predictors)\nn_sims &lt;- 10000  # number of simulations\nbeta_true &lt;- c(2, 1.5, -0.8)  # true coefficients [intercept, x1, x2]\nsigma_true &lt;- 2  # true error standard deviation\n\n# Create design matrix (stays fixed across simulations)\nX &lt;- cbind(1, rnorm(n, 0, 1), rnorm(n, 2, 1.5))\n\nStep 2: Create a simulation function\nFill in the function below. This function should: 1. Generate random errors 2. Create the response variable using the true model 3. Fit the linear model 4. Extract the coefficient and standard error for x1 (the second coefficient) 5. Calculate and return the t-statistic\n\nsimulate_t_stat &lt;- function(sim_number) {\n  # Generate random errors with a mean = 0 and sd = 1 \n  epsilon &lt;- rnorm(n, 0, 1)\n  \n  # Create response variable: y = X * beta_true + epsilon\n  y &lt;- # YOUR CODE HERE\n  \n  # Calculate coefficient and standard error for x1\n  beta_hat &lt;- # YOUR CODE HERE (coefficient for x1)\n  se_beta &lt;- # YOUR CODE HERE (standard error for x1)\n  \n  # Calculate t-statistic: (beta_hat - true_beta) / se_beta\n  t_stat &lt;- # YOUR CODE HERE\n  \n  return(t_stat)\n}\n\nStep 3: Run simulation using purrr::map_dbl()\n\n# Use map to run simulation n_sims times\nt_stats &lt;- map_dbl(1:n_sims, simulate_t_stat)\n\nStep 4: Analyze results\n\n# Calculate degrees of freedom\ndft &lt;- n - p\n\n# Create data frame for ggplot\nsim_data &lt;- data.frame(t_statistic = t_stats)\n\n# Create comparison plot\nggplot(sim_data, aes(x = t_statistic)) +\n  geom_histogram(aes(y = after_stat(density)), bins = 50, fill = \"lightblue\") +\n  stat_function(fun = dt, args = list(df = dft), color = \"red\", linewidth = 1.2) +\n  labs(title = \n         paste(\"Simulated t-statistics vs Theoretical t-distribution (df =\", dft, \")\"),\n       subtitle = paste(\"Based on\", n_sims, \"simulations\"),\n       x = \"t-statistic\", \n       y = \"Density\") +\n  theme_minimal()\n\nQuestions to answer:\n\nWhat are the degrees of freedom for this t-distribution?\n\nDo the simulated t-statistics follow the expected distribution?",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Exercises",
-      "Exercise 6: Sums of Squares and Hypothesis Testing"
-    ]
-  },
-  {
-    "objectID": "ex/ex-6.html#problem-4-simulation---f-distribution-of-f-statistic",
-    "href": "ex/ex-6.html#problem-4-simulation---f-distribution-of-f-statistic",
-    "title": "Sums of Squares and Hypothesis Testing",
-    "section": "Problem 4: Simulation - F-Distribution of F-Statistic",
-    "text": "Problem 4: Simulation - F-Distribution of F-Statistic\nNow verify that the overall F-statistic follows an F-distribution under the null hypothesis.\nSimulation setup:\nStep 1: Set up parameters for testing under the null\n\nset.seed(1)\n\n# Simulation parameters\nn &lt;- 30\np &lt;- 4  # intercept + 3 predictors\nn_sims &lt;- 5000\nsigma_true &lt;- 1.5\n\n# Under null hypothesis: all slope coefficients are 0\nbeta_null &lt;- c(5, 0, 0, 0)  # only intercept is non-zero\n\n# Create design matrix (fixed across simulations)\nX &lt;- cbind(1,\n           rnorm(n, 0, 1),\n           rnorm(n, 1, 2),\n           rnorm(n, -1, 1.2))\n\nStep 2: Create your F-statistic simulation function\nFill in the function below. This function should: 1. Generate random errors 2. Create response variable under the null hypothesis 3. Fit the linear model 4. Extract the overall F-statistic 5. Return the F-statistic\n\nsimulate_f_stat &lt;- function(sim_number) {\n  # Generate random errors\n  epsilon &lt;- # YOUR CODE HERE\n  \n  # Create response under null: y = X * beta_null + epsilon\n  y &lt;- # YOUR CODE HERE\n  \n  # Fit the model (be careful about how you specify the predictors)\n  fit &lt;- # YOUR CODE HERE\n  \n  # Extract overall F-statistic from model summary\n  # Hint: summary(fit)$fstatistic[1] gives the F-statistic\n  f_stat &lt;- # YOUR CODE HERE\n  \n  return(f_stat)\n}\n\nStep 3: Run simulation using purrr\n\n# Use map_dbl to get a numeric vector of F-statistics\nf_stats &lt;- # YOUR CODE HERE (use map_dbl and your function)\n\nStep 4: Compare to theoretical F-distribution with improved visualizations\n\n# Calculate degrees of freedom\ndf1 &lt;- p - 1  # numerator degrees of freedom (number of predictors excluding intercept)\ndf2 &lt;- n - p  # denominator degrees of freedom\n\n# Create data frame for ggplot\nsim_data_f &lt;- data.frame(f_statistic = f_stats)\n\n# Create comparison plot\nggplot(sim_data_f, aes(x = f_statistic)) +\n  geom_histogram(aes(y = after_stat(density)), bins = 50, fill = \"lightgreen\") +\n  stat_function(fun = df, args = list(df1 = df1, df2 = df2), color = \"red\", linewidth = 1.2) +\n  xlim(0, quantile(f_stats, 0.99)) +  # Trim extreme values \n  labs(title = paste(\"Simulated F-statistics vs Theoretical F-distribution\"),\n       subtitle = paste(\"df1 =\", df1, \", df2 =\", df2, \"| Based on\", n_sims, \"simulations\"),\n       x = \"F-statistic\", \n       y = \"Density\") +\n  theme_minimal()\n\nQuestions to answer: - What are the numerator and denominator degrees of freedom?\n- Do the simulated F-statistics match the theoretical distribution?\n- What would happen if the null hypothesis were false (i.e., if some slope coefficients were non-zero)?",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Exercises",
-      "Exercise 6: Sums of Squares and Hypothesis Testing"
-    ]
-  },
-  {
-    "objectID": "ex/ex-6.html#problem-5-general-linear-hypothesis-testing",
-    "href": "ex/ex-6.html#problem-5-general-linear-hypothesis-testing",
-    "title": "Sums of Squares and Hypothesis Testing",
-    "section": "Problem 5: General Linear Hypothesis Testing",
-    "text": "Problem 5: General Linear Hypothesis Testing\nConsider the model: \\(y = \\beta_0 + \\beta_1 x_1 + \\beta_2 x_2 + \\beta_3 x_3 + \\beta_4 x_4 + \\varepsilon\\)\na) Set up the contrast matrix \\(\\mathbf{C}\\) and vector \\(\\mathbf{d}\\) to test the hypothesis: \\(H_0: \\beta_1 + \\beta_2 = 0 \\text{ and } \\beta_3 = 2\\beta_4\\)\nb) How many degrees of freedom would the F-test have? Explain your reasoning.",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Exercises",
-      "Exercise 6: Sums of Squares and Hypothesis Testing"
-    ]
-  },
-  {
-    "objectID": "ex/ex-6.html#problem-6-anova-table-construction",
-    "href": "ex/ex-6.html#problem-6-anova-table-construction",
-    "title": "Sums of Squares and Hypothesis Testing",
-    "section": "Problem 6: ANOVA Table Construction",
-    "text": "Problem 6: ANOVA Table Construction\nYou are given the following information from a regression analysis:\n\nn = 25 (sample size)\n\np = 5 (number of parameters including intercept)\n\nTSS = 500\n\nR² = 0.72\n\nComplete the ANOVA table:\n\n\nSource\ndf\nSum of Squares\nMean Square\nF\n\n\n\nRegression\n\n\n\n\n\n\nError\n\n\n\n\n\n\nTotal",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Exercises",
-      "Exercise 6: Sums of Squares and Hypothesis Testing"
-    ]
-  },
-  {
-    "objectID": "ex/ex-8.html",
-    "href": "ex/ex-8.html",
-    "title": "Diagnostics and Transformations",
-    "section": "",
-    "text": "Given the following small dataset:\n\\[\\mathbf{y} = \\begin{bmatrix}5\\\\8\\\\12\\\\20\\\\30\\end{bmatrix}\\]\n\\[\\mathbf{X} = \\begin{bmatrix}1&1\\\\1&2\\\\1&3\\\\1&4\\\\1&5\\end{bmatrix}\\]\na) Fit the linear regression model \\(y = \\beta_0 + \\beta_1 x + \\varepsilon\\) and calculate the residuals \\(\\hat{\\varepsilon}_i\\) for each observation.\nb) Calculate the leverage \\(h_i\\) for each observation using the formula \\(h_i = H_{ii}\\) where \\(\\mathbf{H} = \\mathbf{X}(\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\). You may use R for the matrix calculations.\nc) Calculate the standardized residuals \\(r_i = \\frac{\\hat{\\varepsilon}_i}{\\hat{\\sigma}\\sqrt{1-h_i}}\\) for each observation.\nd) Calculate the studentized residuals \\(t_i = \\frac{\\hat{\\varepsilon}_i}{\\hat{\\sigma}_{(i)}\\sqrt{1-h_i}}\\) for each observation. For this, you’ll need to fit the model 5 times, each time leaving out one observation, to get \\(\\hat{\\sigma}_{(i)}\\).\ne) Which observation(s), if any, would you flag as potential outliers based on the studentized residuals?",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Exercises",
-      "Exercise 8: Diagnostics and Transformations"
-    ]
-  },
-  {
-    "objectID": "ex/ex-8.html#problem-1",
-    "href": "ex/ex-8.html#problem-1",
-    "title": "Diagnostics and Transformations",
-    "section": "",
-    "text": "Given the following small dataset:\n\\[\\mathbf{y} = \\begin{bmatrix}5\\\\8\\\\12\\\\20\\\\30\\end{bmatrix}\\]\n\\[\\mathbf{X} = \\begin{bmatrix}1&1\\\\1&2\\\\1&3\\\\1&4\\\\1&5\\end{bmatrix}\\]\na) Fit the linear regression model \\(y = \\beta_0 + \\beta_1 x + \\varepsilon\\) and calculate the residuals \\(\\hat{\\varepsilon}_i\\) for each observation.\nb) Calculate the leverage \\(h_i\\) for each observation using the formula \\(h_i = H_{ii}\\) where \\(\\mathbf{H} = \\mathbf{X}(\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\). You may use R for the matrix calculations.\nc) Calculate the standardized residuals \\(r_i = \\frac{\\hat{\\varepsilon}_i}{\\hat{\\sigma}\\sqrt{1-h_i}}\\) for each observation.\nd) Calculate the studentized residuals \\(t_i = \\frac{\\hat{\\varepsilon}_i}{\\hat{\\sigma}_{(i)}\\sqrt{1-h_i}}\\) for each observation. For this, you’ll need to fit the model 5 times, each time leaving out one observation, to get \\(\\hat{\\sigma}_{(i)}\\).\ne) Which observation(s), if any, would you flag as potential outliers based on the studentized residuals?",
-    "crumbs": [
-      "{{< fa calendar >}} Schedule",
-      "Exercises",
-      "Exercise 8: Diagnostics and Transformations"
-    ]
-  },
-  {
-    "objectID": "ex/ex-8.html#problem-2",
-    "href": "ex/ex-8.html#problem-2",
-    "title": "Diagnostics and Transformations",
+    "objectID": "ex/ex-10.html#problem-2",
+    "href": "ex/ex-10.html#problem-2",
+    "title": "Frisch-Waugh-Lovell Theorem",
     "section": "Problem 2",
-    "text": "Problem 2\nUsing the same data from Problem 1:\na) Calculate Cook’s distance for each observation using the formula: \\[D_i = \\frac{r_i^2}{p} \\cdot \\frac{h_i}{1-h_i}\\] where \\(p = 2\\) (number of parameters) and \\(r_i\\) are the standardized residuals from Problem 1.\nb) Would any observations be considered influential using the rule of thumb \\(D_i &gt; 4/n\\)?\nc) Refit the model excluding the most influential point. How much do \\(\\hat{\\beta}_0\\) and \\(\\hat{\\beta}_1\\) change? Does this confirm the Cook’s distance calculation?",
+    "text": "Problem 2\nGenerate data with three predictors:\nset.seed(1)\nn &lt;- 100\nx1 &lt;- rnorm(n)\nx2 &lt;- rnorm(n)\nx3 &lt;- 0.6*x1 + 0.4*x2 + rnorm(n)\ny &lt;- 3 + 2*x1 + 1.5*x2 + 2.5*x3 + rnorm(n)\na) Fit the full model lm(y ~ x1 + x2 + x3) and report the coefficient on x3.\nb) Create an added variable plot for x3: - Regress y on x1 and x2, save residuals - Regress x3 on x1 and x2, save residuals - Plot these residuals against each other and add a regression line\nc) What is the slope of the line in your added variable plot? How does it compare to the coefficient from part (a)?\nd) Explain what this plot shows: what variation in y and x3 are we visualizing?",
     "crumbs": [
       "{{< fa calendar >}} Schedule",
       "Exercises",
-      "Exercise 8: Diagnostics and Transformations"
+      "Exercise 10: FWL"
     ]
   },
   {
-    "objectID": "ex/ex-8.html#problem-3",
-    "href": "ex/ex-8.html#problem-3",
-    "title": "Diagnostics and Transformations",
+    "objectID": "ex/ex-10.html#problem-3",
+    "href": "ex/ex-10.html#problem-3",
+    "title": "Frisch-Waugh-Lovell Theorem",
     "section": "Problem 3",
-    "text": "Problem 3\nConsider a dataset where the relationship between y and x is quadratic: \\(y = 2 + 3x - x^2 + \\varepsilon\\) where \\(\\varepsilon \\sim N(0, 2)\\).\nGenerate data with n = 100 and x from a standard normal distribution (\\(N(0,1)\\)).\na) Fit a linear model lm(y ~ x) and create a partial regression plot. Since there’s only one predictor, this is just a scatterplot of y vs. x with the fitted line. Does the relationship look linear?\nb) Create a partial regression plot for x (here there are not any other predictors so you can just plot x on the x-axis and the residuals for the model on the y-axis). What pattern do you see? What does this suggest about the model specification?\nc) Now fit a quadratic model lm(y ~ x + I(x^2)). Create the partial regression plot for this model. How does it compare to part (b)?\nd) Calculate the IQR of x. Using the quadratic model, find:\n\nThe predicted y at the 25th percentile of x\n\nThe predicted y at the 75th percentile of x\n\nThe change in predicted y for an IQR increase in x\n\ne) Interpret this IQR change. Why is this more useful than trying to interpret individual coefficients in a polynomial model?",
+    "text": "Problem 3\nFor a simple case with \\(\\mathbf{X}_2 = \\begin{bmatrix}1\\\\1\\\\1\\end{bmatrix}\\) (just an intercept):\na) Write out the \\(3 \\times 3\\) residual maker matrix \\(\\mathbf{M}_2 = \\mathbf{I} - \\mathbf{X}_2(\\mathbf{X}_2^T\\mathbf{X}_2)^{-1}\\mathbf{X}_2^T\\).\nb) Verify that \\(\\mathbf{M}_2\\) is symmetric: \\(\\mathbf{M}_2^T = \\mathbf{M}_2\\).\nc) Verify that \\(\\mathbf{M}_2\\) is idempotent: \\(\\mathbf{M}_2^2 = \\mathbf{M}_2\\).\nd) Apply \\(\\mathbf{M}_2\\) to the vector \\(\\mathbf{z} = \\begin{bmatrix}5\\\\8\\\\11\\end{bmatrix}\\). What operation does this perform? (Hint: what is the mean of the resulting vector?)",
     "crumbs": [
       "{{< fa calendar >}} Schedule",
       "Exercises",
-      "Exercise 8: Diagnostics and Transformations"
+      "Exercise 10: FWL"
     ]
   },
   {
-    "objectID": "ex/ex-8.html#problem-4",
-    "href": "ex/ex-8.html#problem-4",
-    "title": "Diagnostics and Transformations",
+    "objectID": "ex/ex-10.html#problem-4",
+    "href": "ex/ex-10.html#problem-4",
+    "title": "Frisch-Waugh-Lovell Theorem",
     "section": "Problem 4",
-    "text": "Problem 4\nUsing the same data generation as Problem 3 (quadratic relationship):\na) Fit four models:\n\nLinear: lm(y ~ x)\n\nQuadratic: lm(y ~ x + I(x^2))\n\nNatural spline with 3 df: lm(y ~ ns(x, df = 3))\n\n10th order Polynomial: lm(y ~ poly(x, 10))\n\n\nCreate a plot showing:\n\nThe data points\n\nAll four fitted curves\n\nThe true relationship (generate a grid of x values and calculate the true y without error)\n\nWhich model comes closest to the true relationship?\nb) Calculate the \\(R^2\\) for all three models. Which has the highest \\(R^2\\)? Does this necessarily mean it’s the best model?\nc) For the natural spline model, what are the knot locations? (Hint: use attr(ns(x, df = 3), \"knots\"))",
+    "text": "Problem 4\nGenerate data where an important variable is omitted:\nset.seed(1)\nn &lt;- 200\nx1 &lt;- rnorm(n)\nx2 &lt;- 0.8*x1 + rnorm(n) \ny &lt;- 2 + 3*x1 + 4*x2 + rnorm(n)\na) Fit the “short” regression lm(y ~ x1) that omits x2. Report \\(\\hat{\\beta}_1^{\\text{short}}\\).\nb) Fit the “full” regression lm(y ~ x1 + x2). Report \\(\\hat{\\beta}_1^{\\text{full}}\\).\nc) Calculate the auxiliary regression coefficient: fit lm(x2 ~ x1) and report the slope \\(\\hat{\\delta}\\).\nd) Verify the omitted variable bias formula: \\[\\hat{\\beta}_1^{\\text{short}} \\approx \\hat{\\beta}_1^{\\text{full}} + \\hat{\\delta} \\cdot \\hat{\\beta}_2^{\\text{full}}\\]\nExplain intuitively why the bias has this form using FWL reasoning.",
     "crumbs": [
       "{{< fa calendar >}} Schedule",
       "Exercises",
-      "Exercise 8: Diagnostics and Transformations"
+      "Exercise 10: FWL"
     ]
   },
   {
-    "objectID": "ex/ex-8.html#problem-5",
-    "href": "ex/ex-8.html#problem-5",
-    "title": "Diagnostics and Transformations",
+    "objectID": "ex/ex-10.html#problem-5",
+    "href": "ex/ex-10.html#problem-5",
+    "title": "Frisch-Waugh-Lovell Theorem",
     "section": "Problem 5",
-    "text": "Problem 5\nSuppose we fit a linear regression on the log scale: log(y) ~ x, obtaining estimates \\(\\hat{\\beta}_0\\) and \\(\\hat{\\beta}_1\\).\na) Show that the naive back-transformation \\(\\hat{y} = \\exp(\\hat{\\beta}_0 + \\hat{\\beta}_1 x)\\) is a biased estimator of \\(E[y \\mid x]\\).\nHint: Start by writing \\(E[y \\mid x]\\) in terms of \\(\\beta_0\\), \\(\\beta_1\\), and \\(E[\\exp(\\varepsilon)]\\). What is \\(E[\\exp(\\varepsilon)]\\) when \\(\\varepsilon \\sim N(0, \\sigma^2)\\)?\nb) Derive the correct formula for \\(E[y \\mid x]\\) that includes the necessary correction factor.\nc) Write a simulation to verify your answer from part (b). We are going to generate data from the model \\(y = \\exp(2 + 1.5x + \\varepsilon)\\) where \\(x \\sim N(0,1)\\), \\(\\varepsilon \\sim N(0, 0.25)\\). First, let’s get the true \\(E[y \\mid x = 0]\\) by running:\n\nn &lt;- 10000\ne &lt;- rnorm(n, 0, 0.25)\ny &lt;- exp(2 + e)\ntrue_y &lt;- mean(y)\n\nNow let’s simulate multiple data sets. Let’s have \\(n = 200\\). For each simulated dataset:\n\nFit the model log(y) ~ x\n\nCompute a prediction at \\(x = 0\\) using the naive back-transformation (i.e. just exponentiate the predicted values)\n\nCompute a prediction at \\(x = 0\\) using the corrected back-transformation from part (b)\n\nRepeat this process 5000 times and compare the average of each prediction method to the true value of \\(E[y \\mid x = 0]\\). Which estimator is closer to the truth?\nd) Based on your simulation results, approximately what percentage bias does the naive approach have? How does this relate to \\(\\sigma^2\\)?\ne) Suppose \\(\\sigma^2\\) were much larger, say \\(\\sigma^2 = 1\\). Without running a new simulation, predict approximately what the percentage bias would be for the naive approach in this case.\nMathematical fact you may use: If \\(Z \\sim N(\\mu, \\sigma^2)\\), then \\(E[\\exp(Z)] = \\exp(\\mu + \\sigma^2/2)\\).",
+    "text": "Problem 5\nConsider panel data with individuals observed over time:\nset.seed(1)\nid &lt;- rep(1:10, each = 5)\ntime &lt;- rep(1:5, times = 10)\nalpha_i &lt;- rep(rnorm(10, mean = 5), each = 5)\nx &lt;- rnorm(50, mean = 10)\ny &lt;- alpha_i + 2.5*x + rnorm(50)\na) Fit a model with individual fixed effects using dummy variables:\nmodel_fe &lt;- lm(y ~ x + factor(id))\nReport the coefficient on x.\nb) Now use the FWL/demeaning approach: - Calculate within-individual means: \\(\\bar{y}_i\\) and \\(\\bar{x}_i\\) for each individual - Create demeaned variables: \\(\\tilde{y}_{it} = y_{it} - \\bar{y}_i\\) and \\(\\tilde{x}_{it} = x_{it} - \\bar{x}_i\\) - Regress the demeaned outcome on the demeaned predictor (no intercept)\nDoes this coefficient match part (a)?\nc) Explain why demeaning is equivalent to including fixed effects, using the FWL theorem.",
     "crumbs": [
       "{{< fa calendar >}} Schedule",
       "Exercises",
-      "Exercise 8: Diagnostics and Transformations"
+      "Exercise 10: FWL"
     ]
   },
   {
-    "objectID": "ex/ex-8.html#problem-6",
-    "href": "ex/ex-8.html#problem-6",
-    "title": "Diagnostics and Transformations",
+    "objectID": "ex/ex-10.html#problem-6",
+    "href": "ex/ex-10.html#problem-6",
+    "title": "Frisch-Waugh-Lovell Theorem",
     "section": "Problem 6",
-    "text": "Problem 6\nThis problem explores Type I error inflation when we test for non-linearity and add terms based on significance tests, compared to using flexible modeling from the start.\nSimulation setup:\n\nTrue model: \\(y = \\varepsilon\\) where \\(\\varepsilon \\sim N(0, 1)\\) (there is no relationship between \\(x\\) and \\(y\\))\nSample size: n = 50\nGenerate x from \\(N(0,1)\\)\n\nNumber of simulations: 5000\n\nStrategy 1: Test-then-add approach\n\nFit lm(y ~ x)\n\nTest if adding \\(x^2\\) is significant at \\(\\alpha = 0.05\\) by fitting lm(y ~ x + I(x^2)) and checking if the p-value for the \\(x^2\\) coefficient is &lt; 0.05\n\nIf significant, use the quadratic model; otherwise use the linear model\n\nPerform an F-test to test whether the model with the predictor(s) is better than the intercept only model. Use \\(\\alpha = 0.05\\).\n\nRecord if you reject \\(H_0\\)\n\n\nStrategy 2: Natural spline by default\n\nFit lm(y ~ ns(x, df = 3)) (always use this flexible model)\n\nPerform an F-test to test whether the model with the predictor(s) is better than the intercept only model. Use \\(\\alpha = 0.05\\).\nRecord whether you reject \\(H_0\\) at \\(\\alpha = 0.05\\)\n\n\nPlease try to code up this simulation on your own! Stuck on getting the p-value out? See if you can look at the help files or use Google to figure it out; learning how to code like this is a great exercise! If you are still feeling stuck, here is a blog post I wrote a few years ago that goes through this same exercise – I strongly encourage you to try it yourself first, though!\na) Implement Strategy 1. What proportion of the time do you:\n\nFind the quadratic term “significant” (even though the true model is linear)?\n\nReject \\(H_0\\) of your F-test (this is called a Type I error)?\n\nb) The nominal Type I error rate should be 5%. Is the Type I error rate from Strategy 1 close to 5%? If not, explain why testing for significance and then using that result to build your model inflates Type I error.\nc) Implement Strategy 2. What is the Type I error rate when testing \\(H_0\\) using this approach?\nd) Reflect on the trade-off: Strategy 1 (test-then-add) inflates Type I error when the relationship is truly linear, but Strategy 2 (always use splines) might be overly complex. What would you recommend to a researcher in practice?",
+    "text": "Problem 6\nUsing the data from Problem 1:\na) Compare the standard errors for \\(\\hat{\\beta}_1\\) from: - The full regression lm(y ~ x1 + x2) - The FWL residualized regression lm(y_resid ~ x1_resid)\nWhy do they differ?\nb) How many degrees of freedom are used in each regression? Explain how this affects the standard error calculation.",
     "crumbs": [
       "{{< fa calendar >}} Schedule",
       "Exercises",
-      "Exercise 8: Diagnostics and Transformations"
+      "Exercise 10: FWL"
     ]
   },
   {
-    "objectID": "ex/ex-8.html#problem-7",
-    "href": "ex/ex-8.html#problem-7",
-    "title": "Diagnostics and Transformations",
-    "section": "Problem 7",
-    "text": "Problem 7\nA cubic spline with knots at \\(k_1, k_2, \\ldots, k_K\\) can be represented using the following basis functions:\n\n\n\\(b_1(x) = 1\\) (intercept)\n\n\\(b_2(x) = x\\)\n\n\\(b_3(x) = x^2\\)\n\\(b_4(x) = x^3\\)\n\n\\(b_{4+j}(x) = (x - k_j)^3_+ = \\begin{cases} (x - k_j)^3 & \\text{if } x &gt; k_j \\\\ 0 & \\text{otherwise} \\end{cases}\\) for \\(j = 1, \\ldots, K\\)\n\n\nThe fitted model is: \\(\\hat{y} = \\beta_0 + \\beta_1 x + \\beta_2 x^2 + \\beta_3 x^3 + \\sum_{j=1}^K \\beta_{4+j}(x - k_j)^3_+\\)\nConsider the following dataset with n = 10:\n\nx &lt;- c(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)\ny &lt;- c(2, 2.5, 4, 5, 5.5, 6, 8, 11, 15, 20)\n\nWe’ll place knots at \\(k_1 = 3\\) and \\(k_2 = 6\\).\na) Manually construct the design matrix \\(\\mathbf{X}\\) for the cubic spline with these two knots. Your matrix should have 10 rows (one per observation) and 6 columns: \\([1, x, x^2, x^3, (x-3)^3_+, (x-6)^3_+]\\).\nShow the full \\(10 \\times 6\\) matrix with all values filled in.\nb) Fit the cubic spline model in R using your basis functions.\nReport the estimated coefficients \\(\\hat{\\beta}_0, \\hat{\\beta}_1, \\hat{\\beta}_2, \\hat{\\beta}_3, \\hat{\\beta}_4, \\hat{\\beta}_5\\).\nc) Using your fitted coefficients, manually calculate \\(\\hat{y}\\) for three observations: - At \\(x = 2\\) (before the first knot) - At \\(x = 4.5\\) (between the two knots)\n- At \\(x = 8\\) (after the second knot)\nFor each, show which basis functions are “active” (non-zero) and write out the prediction formula explicitly.\nd) Compare your manual cubic spline to R’s built-in bs() function:\n\nlibrary(splines)\nmodel_bs &lt;- lm(y ~ bs(x, knots = c(3, 6), degree = 3))\n\nPlot both fitted curves along with the data. They should be identical (or very close). Create a single plot showing:\n\nThe original data points\n\nYour manual cubic spline fit\nThe bs() function fit (use a different color/style)\n\nVertical lines at the knot locations\n\ne) Natural cubic splines add the additional constraint that the function is linear (not cubic) beyond the boundary knots. This means setting the second derivative to zero at the boundaries.\nFit a natural cubic spline using ns(x, knots = c(3, 6)) and compare it to your unconstrained cubic spline. Plot both curves. Do you notice any differences?",
+    "objectID": "demo/least-squares.html",
+    "href": "demo/least-squares.html",
+    "title": "Interactive Least Squares Visualization",
+    "section": "",
+    "text": "Adjust the red line using the sliders below to try to minimize the sum of squared errors. The blue squares show the squared residuals!\n\n\nIntercept \\(\\hat\\beta_0\\)\n\n1.5\n\n\nSlope \\(\\hat\\beta_1\\)\n\n1\n\n\nShow Optimal\n\n\n\n\n\n\nYour Line\ny = 1.50 + 1.00x\n\n\nOptimal Least Squares\ny = 1.50 + 1.00x\n\n\n\n\nYour SSE\n0.00\n\n\nOptimal SSE\n0.00",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Demos",
+      "Least Squares Solution"
+    ]
+  },
+  {
+    "objectID": "demo/least-squares.html#interactive-least-squares-learning-tool",
+    "href": "demo/least-squares.html#interactive-least-squares-learning-tool",
+    "title": "Interactive Least Squares Visualization",
+    "section": "",
+    "text": "Adjust the red line using the sliders below to try to minimize the sum of squared errors. The blue squares show the squared residuals!\n\n\nIntercept \\(\\hat\\beta_0\\)\n\n1.5\n\n\nSlope \\(\\hat\\beta_1\\)\n\n1\n\n\nShow Optimal\n\n\n\n\n\n\nYour Line\ny = 1.50 + 1.00x\n\n\nOptimal Least Squares\ny = 1.50 + 1.00x\n\n\n\n\nYour SSE\n0.00\n\n\nOptimal SSE\n0.00",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Demos",
+      "Least Squares Solution"
+    ]
+  },
+  {
+    "objectID": "demo/least-squares.html#key-concepts",
+    "href": "demo/least-squares.html#key-concepts",
+    "title": "Interactive Least Squares Visualization",
+    "section": "Key Concepts",
+    "text": "Key Concepts\nGoal: Find the line \\(\\hat{y} = \\hat\\beta_0 + \\hat\\beta_1x\\) that minimizes the Sum of Squared Errors (SSE)\nThe blue squares show the squared residuals - their total area equals the SSE!\nWhat to Try:\n\nAdjust the sliders to minimize the total area of blue squares\n\nTry to match the optimal (green) line\n\nNotice how the squares get smaller as you approach the optimal solution",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Demos",
+      "Least Squares Solution"
+    ]
+  },
+  {
+    "objectID": "demo/general-f-statistic.html",
+    "href": "demo/general-f-statistic.html",
+    "title": "Building Intuition for the F-Statistic Numerator",
+    "section": "",
+    "text": "The general form of the F-statistic with constraint matrix \\(C\\) is:\n\\[F = \\frac{(C\\hat{\\beta} - d)^T [C(X^TX)^{-1}C^T]^{-1} (C\\hat{\\beta} - d) / q}{\\text{MSE}}\\]\nFor all our purposes, \\(d = 0\\) (we’re testing if parameters equal zero), so we can drop it!\n\\[F = \\frac{(C\\hat{\\beta})^T [C(X^TX)^{-1}C^T]^{-1} (C\\hat{\\beta}) / q}{\\text{MSE}}\\]\n\nDenominator (MSE): This is always the same - our estimate of \\(\\sigma^2\\)\nThe division by \\(q\\): This just adjusts for the number of restrictions we’re testing\nWhat we need intuition for: \\((C\\hat{\\beta})^T [C(X^TX)^{-1}C^T]^{-1} (C\\hat{\\beta})\\)\n\nLet’s focus JUST on this “numerator of the numerator” and build some intuition!",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Demos",
+      "General F Statistic Intuition"
+    ]
+  },
+  {
+    "objectID": "demo/general-f-statistic.html#the-general-f-test-formula",
+    "href": "demo/general-f-statistic.html#the-general-f-test-formula",
+    "title": "Building Intuition for the F-Statistic Numerator",
+    "section": "",
+    "text": "The general form of the F-statistic with constraint matrix \\(C\\) is:\n\\[F = \\frac{(C\\hat{\\beta} - d)^T [C(X^TX)^{-1}C^T]^{-1} (C\\hat{\\beta} - d) / q}{\\text{MSE}}\\]\nFor all our purposes, \\(d = 0\\) (we’re testing if parameters equal zero), so we can drop it!\n\\[F = \\frac{(C\\hat{\\beta})^T [C(X^TX)^{-1}C^T]^{-1} (C\\hat{\\beta}) / q}{\\text{MSE}}\\]\n\nDenominator (MSE): This is always the same - our estimate of \\(\\sigma^2\\)\nThe division by \\(q\\): This just adjusts for the number of restrictions we’re testing\nWhat we need intuition for: \\((C\\hat{\\beta})^T [C(X^TX)^{-1}C^T]^{-1} (C\\hat{\\beta})\\)\n\nLet’s focus JUST on this “numerator of the numerator” and build some intuition!",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Demos",
+      "General F Statistic Intuition"
+    ]
+  },
+  {
+    "objectID": "demo/general-f-statistic.html#understanding-three-pieces",
+    "href": "demo/general-f-statistic.html#understanding-three-pieces",
+    "title": "Building Intuition for the F-Statistic Numerator",
+    "section": "Understanding Three Pieces",
+    "text": "Understanding Three Pieces\n\n\\(C\\hat{\\beta}\\) - How far are we from 0?\nThis is a vector. For example, if we’re testing \\(\\beta_1 = \\beta_2 = 0\\), then:\n\\[C\\hat{\\beta} = \\begin{bmatrix} \\hat{\\beta}_1 \\\\ \\hat{\\beta}_2 \\end{bmatrix}\\]\nThis vector tells us: “How far from zero are the parameters we’re testing?”\n\n\n\\(C(X^TX)^{-1}C^T\\) - The Variance-Covariance Matrix\nThis is a \\(q \\times q\\) matrix that captures the joint uncertainty. The \\(C\\) matrices “extract” the relevant parts of the full variance-covariance matrix:\n\\(\\text{Var}(C\\hat{\\beta}) = \\sigma^2 \\cdot C(X^TX)^{-1}C^T\\)\nFor our example where \\(C\\) selects \\(\\beta_1\\) and \\(\\beta_2\\), this multiplication gives us:\n\\[= \\sigma^2 \\begin{bmatrix} \\text{Var}(\\hat{\\beta}_1) & \\text{Cov}(\\hat{\\beta}_1, \\hat{\\beta}_2) \\\\ \\text{Cov}(\\hat{\\beta}_1, \\hat{\\beta}_2) & \\text{Var}(\\hat{\\beta}_2) \\end{bmatrix}\\]\n\nDiagonal = how uncertain we are about each parameter\nOff-diagonal = whether parameters move together\n\nThe \\(C\\) matrices do the work of pulling out just the rows and columns we care about from the full \\((X^TX)^{-1}\\) matrix.\n\n\nThe Quadratic Form - A Standardized Distance\n\\[(C\\hat{\\beta})^T [C(X^TX)^{-1}C^T]^{-1} (C\\hat{\\beta})\\]\nThis combines everything into a single number that answers:\n\n“How far from zero are we, accounting for uncertainty and correlation?”\n\nIt’s the squared distance, which is like a correlation-adjusted measure of how extreme our estimates are. It is actually known as a Malahanobis distance.",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Demos",
+      "General F Statistic Intuition"
+    ]
+  },
+  {
+    "objectID": "demo/general-f-statistic.html#why-not-just-use-hatbeta",
+    "href": "demo/general-f-statistic.html#why-not-just-use-hatbeta",
+    "title": "Building Intuition for the F-Statistic Numerator",
+    "section": "Why Not Just Use \\(||\\hat{\\beta}||\\)?",
+    "text": "Why Not Just Use \\(||\\hat{\\beta}||\\)?\nIf we just computed \\(\\sqrt{\\hat{\\beta}_1^2 + \\hat{\\beta}_2^2}\\) (without the middle, \\([C(X^TX)^{-1}C^T]^{-1}\\)), we’d be treating all coefficients equally. But:\n\n\\(\\hat{\\beta}_1\\) might be estimated very precisely (small variance)\n\\(\\hat{\\beta}_2\\) might be estimated poorly (large variance)\nThey might be correlated!\n\nThe quadratic form weights by precision giving more importance to coefficients we estimated well.",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Demos",
+      "General F Statistic Intuition"
+    ]
+  },
+  {
+    "objectID": "demo/general-f-statistic.html#the-bottom-line",
+    "href": "demo/general-f-statistic.html#the-bottom-line",
+    "title": "Building Intuition for the F-Statistic Numerator",
+    "section": "The Bottom Line",
+    "text": "The Bottom Line\nThe numerator \\((C\\hat{\\beta})^T [C(X^TX)^{-1}C^T]^{-1} (C\\hat{\\beta})\\) is just:\n“How far are our estimates from zero, measured in a way that accounts for their precision and correlation?”\nFor the overall F-test (testing all slopes = 0), this exactly equals \\(SS_{reg}\\), the explained sum of squares.",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Demos",
+      "General F Statistic Intuition"
+    ]
+  },
+  {
+    "objectID": "demo/hat-matrix-symmetry.html",
+    "href": "demo/hat-matrix-symmetry.html",
+    "title": "Hat Matrix Symmetry Visualization",
+    "section": "",
+    "text": "Point 1 X:  1.0\n\n\nPoint 2 X:  2.0\n\n\nPoint 3 X:  -1.0\n\n\nRandomize Points",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Demos",
+      "Hat Matrix Symmetry"
+    ]
+  },
+  {
+    "objectID": "demo/hat-matrix-symmetry.html#interactive-linear-regression-example",
+    "href": "demo/hat-matrix-symmetry.html#interactive-linear-regression-example",
+    "title": "Hat Matrix Symmetry Visualization",
+    "section": "",
+    "text": "Point 1 X:  1.0\n\n\nPoint 2 X:  2.0\n\n\nPoint 3 X:  -1.0\n\n\nRandomize Points",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Demos",
+      "Hat Matrix Symmetry"
+    ]
+  },
+  {
+    "objectID": "demo/hat-matrix-symmetry.html#hat-matrix-h",
+    "href": "demo/hat-matrix-symmetry.html#hat-matrix-h",
+    "title": "Hat Matrix Symmetry Visualization",
+    "section": "Hat Matrix H",
+    "text": "Hat Matrix H",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Demos",
+      "Hat Matrix Symmetry"
+    ]
+  },
+  {
+    "objectID": "demo/hat-matrix-symmetry.html#what-symmetry-means",
+    "href": "demo/hat-matrix-symmetry.html#what-symmetry-means",
+    "title": "Hat Matrix Symmetry Visualization",
+    "section": "What Symmetry Means:",
+    "text": "What Symmetry Means:\nHij = Hji means:\n\nHow much point i influences point j’s fitted value = How much point j influences point i’s fitted value\n\nThis reciprocal relationship holds for ALL pairs of points\nReciprocal influence is a geometric consequence of orthogonal projection",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Demos",
+      "Hat Matrix Symmetry"
+    ]
+  },
+  {
+    "objectID": "demo/hat-matrix-symmetry.html#key-observations",
+    "href": "demo/hat-matrix-symmetry.html#key-observations",
+    "title": "Hat Matrix Symmetry Visualization",
+    "section": "Key Observations",
+    "text": "Key Observations",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Demos",
+      "Hat Matrix Symmetry"
+    ]
+  },
+  {
+    "objectID": "ex/ex-1.html",
+    "href": "ex/ex-1.html",
+    "title": "Exercise 1",
+    "section": "",
+    "text": "Exercise 1: Login to RStudio Pro\n\nGo to course website → Computing → Using the RStudio Server\nFollow login instructions\nLog in with your credentials\n\nCheck: You should see the RStudio interface with 4 panes.\nExercise 2: Create RStudio Project\n\nFile → New Project → New Directory → New Project\nName: ex-1\n\nClick Create Project\n\nCheck: Project name appears in top-right corner.\nExercise 3: Create Quarto Document\n\nFile → New File → Quarto Document\nTitle: “My First Analysis”\nSave as analysis.qmd\n\n\nCheck: New .qmd file is open and saved.\nExercise 4: Install faraway Package and Load Data\nRun this code in the console ONCE:\n\ninstall.packages(\"faraway\")\n\nThen run this:\n\nlibrary(faraway)\nlibrary(ggplot2)\n\n# Test it works\ndata(teengamb)\nhead(teengamb)\n\n  sex status income verbal gamble\n1   1     51   2.00      8    0.0\n2   1     28   2.50      8    0.0\n3   1     37   2.00      6    0.0\n4   1     28   7.00      4    7.3\n5   1     65   2.00      8   19.6\n6   1     61   3.47      6    0.1\n\n\nCheck: You see the teengamb dataset.\nNow run this in the console:\n\n?teengamb\n\nQuestion: What is in this dataset?\nAction: Add the code below to your .qmd file along with a short description of the data.\n\nlibrary(faraway)\nlibrary(ggplot2)\ndata(teengamb)\n\nExercise 5: Linear Model and Plot\nAdd the following code to your .qmd file. Try running it.\n\n# Fit linear model\nmodel1 &lt;- lm(gamble ~ income, data = teengamb)\nsummary(model1)\n\n\nCall:\nlm(formula = gamble ~ income, data = teengamb)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-46.020 -11.874  -3.757  11.934 107.120 \n\nCoefficients:\n            Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)   -6.325      6.030  -1.049      0.3    \nincome         5.520      1.036   5.330 3.05e-06 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 24.95 on 45 degrees of freedom\nMultiple R-squared:  0.387, Adjusted R-squared:  0.3734 \nF-statistic: 28.41 on 1 and 45 DF,  p-value: 3.045e-06\n\n# Create plot\nggplot(teengamb, aes(x = income, y = gamble)) +\n  geom_point() +\n  geom_smooth(method = \"lm\", formula = \"y ~ x\") +\n  labs(title = \"Income vs Gambling\",\n       x = \"Income\", \n       y = \"Gambling\")\n\n\n\n\n\n\n\nCheck: You have model output and a scatter plot with trend line.\nFinish\nClick “Render” to create your HTML report. Upload your .html file in Canvas under Exercise 1",
     "crumbs": [
       "{{< fa calendar >}} Schedule",
       "Exercises",
-      "Exercise 8: Diagnostics and Transformations"
+      "Exercise 1"
+    ]
+  },
+  {
+    "objectID": "ex/ex-11.html",
+    "href": "ex/ex-11.html",
+    "title": "Causal Inference",
+    "section": "",
+    "text": "Consider a study of the effect of college tutoring programs (X) on final exam scores (Y). Students self-select into tutoring, and prior GPA (C) affects both whether students seek tutoring and their exam performance.\na) Generate data reflecting this structure:\n\nset.seed(1)\nn &lt;- 300\nprior_gpa &lt;- rnorm(n, mean = 3.0, sd = 0.5)\ntutoring &lt;- rbinom(n, 1, plogis(-2 + 1.5 * prior_gpa))\nexam_score &lt;- 65 + 8 * tutoring + 10 * prior_gpa + rnorm(n, sd = 5)\n\nDraw the DAG for this scenario. What is the true average treatment effect?\nb) Compute and compare two estimates: the naive comparison of means and a regression adjusting for prior GPA. Which is unbiased and why?\nc) Explain what “controlling for prior GPA” means. What would happen if prior GPA was actually caused by tutoring instead?",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 11: Causal Inference"
+    ]
+  },
+  {
+    "objectID": "ex/ex-11.html#problem-1",
+    "href": "ex/ex-11.html#problem-1",
+    "title": "Causal Inference",
+    "section": "",
+    "text": "Consider a study of the effect of college tutoring programs (X) on final exam scores (Y). Students self-select into tutoring, and prior GPA (C) affects both whether students seek tutoring and their exam performance.\na) Generate data reflecting this structure:\n\nset.seed(1)\nn &lt;- 300\nprior_gpa &lt;- rnorm(n, mean = 3.0, sd = 0.5)\ntutoring &lt;- rbinom(n, 1, plogis(-2 + 1.5 * prior_gpa))\nexam_score &lt;- 65 + 8 * tutoring + 10 * prior_gpa + rnorm(n, sd = 5)\n\nDraw the DAG for this scenario. What is the true average treatment effect?\nb) Compute and compare two estimates: the naive comparison of means and a regression adjusting for prior GPA. Which is unbiased and why?\nc) Explain what “controlling for prior GPA” means. What would happen if prior GPA was actually caused by tutoring instead?",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 11: Causal Inference"
+    ]
+  },
+  {
+    "objectID": "ex/ex-11.html#problem-2",
+    "href": "ex/ex-11.html#problem-2",
+    "title": "Causal Inference",
+    "section": "Problem 2",
+    "text": "Problem 2\nA tech company analyzes employee performance data. They want to understand if coding skills (X) and communication skills (Y) are related. However, they only have data on employees who were hired (M), and hiring depends on both skills.\na) Generate data where coding and communication skills are independent in the full applicant pool:\n\nset.seed(1)\nn &lt;- 1000\ncoding_skill &lt;- rnorm(n, mean = 70, sd = 15)\ncommunication_skill &lt;- rnorm(n, mean = 70, sd = 15)\nhire_score &lt;- 0.4 * coding_skill + 0.4 * communication_skill + rnorm(n)\nhired &lt;- as.numeric(hire_score &gt; quantile(hire_score, 0.6))\n\nDraw the DAG. What type of variable is hired?\nb) Analyze the relationship between coding and communication skills separately for all applicants and for hired employees only. Create two visualizations, one in the whole population and one in just the hired population.\nc) Explain the mechanism behind what you observe. What would happen if you ran a regression of communication on coding using only the hired sample?",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 11: Causal Inference"
+    ]
+  },
+  {
+    "objectID": "ex/ex-11.html#problem-3",
+    "href": "ex/ex-11.html#problem-3",
+    "title": "Causal Inference",
+    "section": "Problem 3",
+    "text": "Problem 3\nYou want to estimate the effect of online course format (X) on student satisfaction (Y):\n\nlibrary(ggdag)\n\n\nAttaching package: 'ggdag'\n\n\nThe following object is masked from 'package:stats':\n\n    filter\n\nlibrary(dagitty)\n\ncourse_dag &lt;- dagify(\n  X ~ instructor_experience + class_size,\n  Y ~ X + instructor_experience + engagement,\n  engagement ~ class_size,\n  exposure = \"X\",\n  outcome = \"Y\"\n)\n\na) Visualize this DAG and identify all paths from X to Y. Which paths must be blocked to estimate the causal effect?\nb) Determine all valid adjustment sets. Is there more than one? Which would you prefer and why?\nc) Generate data consistent with this DAG (choose your own coefficients, with true effect = 5). Verify that different valid adjustment sets give similar estimates of the causal effect.",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 11: Causal Inference"
+    ]
+  },
+  {
+    "objectID": "ex/ex-11.html#problem-4",
+    "href": "ex/ex-11.html#problem-4",
+    "title": "Causal Inference",
+    "section": "Problem 4",
+    "text": "Problem 4\nA software company tests whether code review requirements (exposure) improve code quality (outcome). The effect varies by developer experience level:\n\nset.seed(1)\nn &lt;- 500\nexperience_years &lt;- rnorm(n, mean = 5, sd = 3)\nexperience_years &lt;- pmax(experience_years, 0)\ncode_review &lt;- rbinom(n, 1, plogis(-1 + 0.2 * experience_years))\ncode_quality &lt;- 70 + 8 * code_review + 3 * experience_years + \n                0.6 * code_review * experience_years + rnorm(n, sd = 6)\n\na) Fit an appropriate model and interpret all coefficients. At what experience level is the treatment effect equal to 10?\nb) Implement g-computation to estimate the ATE.\nc) Why does g-computation give a different answer than the main effect coefficient? Create a visualization showing how the treatment effect varies with experience and how g-computation accounts for the distribution of experience in your sample.\nd) What would happen to your ATE estimate if you recruited more junior developers? More senior developers? Explain using your visualization.",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 11: Causal Inference"
+    ]
+  },
+  {
+    "objectID": "ex/ex-11.html#problem-5",
+    "href": "ex/ex-11.html#problem-5",
+    "title": "Causal Inference",
+    "section": "Problem 5",
+    "text": "Problem 5\nA university studies the effect of study group participation (X) on exam scores (Y). They measure high school GPA but fail to measure intrinsic motivation (U).\na) Generate data with an unmeasured confounder:\n\nset.seed(1)\nn &lt;- 400\nhigh_school_gpa &lt;- rnorm(n, mean = 3.2, sd = 0.5)\nmotivation &lt;- rnorm(n, mean = 50, sd = 10)\nstudy_group &lt;- rbinom(n, 1, plogis(-2 + 0.8 * high_school_gpa + 0.04 * motivation))\nexam_score &lt;- 50 + 6 * study_group + 8 * high_school_gpa + \n              0.3 * motivation + rnorm(n, sd = 5)\n\nDraw the complete DAG (including the unmeasured confounder).\nb) Estimate the effect of study groups three ways: (1) no controls, (2) controlling for high school GPA only, (3) controlling for both (pretend you could measure motivation). Which estimates are biased?\nc) Using the omitted variable bias formula, predict the bias in estimate (2). Verify your prediction matches the actual bias.",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 11: Causal Inference"
+    ]
+  },
+  {
+    "objectID": "ex/ex-11.html#problem-6",
+    "href": "ex/ex-11.html#problem-6",
+    "title": "Causal Inference",
+    "section": "Problem 6",
+    "text": "Problem 6\nA research team studies the effect of remote work policy (X) on employee productivity (Y). They have data on:\n\nset.seed(1)\nn &lt;- 600\njob_autonomy &lt;- rnorm(n, mean = 50, sd = 12)\nhome_environment &lt;- rnorm(n, mean = 60, sd = 15)\npersonality_fit &lt;- 0.3 * job_autonomy + 0.2 * home_environment + rnorm(n, sd = 10)\nremote_work &lt;- rbinom(n, 1, plogis(-2 + 0.04 * job_autonomy + 0.03 * home_environment + 0.02 * personality_fit))\nproductivity &lt;- 70 + 5 * remote_work + 0.3 * job_autonomy + 0.2 * home_environment + 0.25 * personality_fit + rnorm(n, sd = 8)\n\na) Draw the DAG for this data generating process. Identify all confounders of the relationship between remote work and productivity.\nb) List all backdoor paths from X to Y. For each path, explain whether it is open or closed by default.\nc) Find all valid adjustment sets using adjustmentSets(). Compare estimates using: (1) no controls, (2) each individual valid adjustment set, and (3) all variables. Do the valid adjustment sets give similar answers?\nd) Suppose personality_fit was actually unmeasured. Using the omitted variable bias formula, quantify how much bias this would introduce when adjusting only for job_autonomy and home_environment. Would your conclusions about remote work change?",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 11: Causal Inference"
+    ]
+  },
+  {
+    "objectID": "ex/ex-3.html",
+    "href": "ex/ex-3.html",
+    "title": "Linear Regression Fundamentals Problem Set",
+    "section": "",
+    "text": "This problem set covers the fundamental concepts of linear regression, including matrix formulations, geometric interpretations, and computational methods. Show all work and provide clear explanations for your reasoning.",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 3: Linear Regression Fundamentals"
+    ]
+  },
+  {
+    "objectID": "ex/ex-3.html#instructions",
+    "href": "ex/ex-3.html#instructions",
+    "title": "Linear Regression Fundamentals Problem Set",
+    "section": "",
+    "text": "This problem set covers the fundamental concepts of linear regression, including matrix formulations, geometric interpretations, and computational methods. Show all work and provide clear explanations for your reasoning.",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 3: Linear Regression Fundamentals"
+    ]
+  },
+  {
+    "objectID": "ex/ex-3.html#problem-1",
+    "href": "ex/ex-3.html#problem-1",
+    "title": "Linear Regression Fundamentals Problem Set",
+    "section": "Problem 1",
+    "text": "Problem 1\nConsider the following dataset with two predictors:\n\n\nObservation\nx1\nx2\ny\n\n\n\n1\n2\n1\n5.2\n\n\n2\n3\n4\n8.1\n\n\n3\n1\n2\n4.8\n\n\n4\n4\n3\n9.5\n\n\n\na) Write out the design matrix X for the multiple regression model with intercept term.\nb) Calculate \\(\\mathbf{X}^T\\mathbf{X}\\) and \\(\\mathbf{X}^T\\mathbf{y}\\) by hand. Show your matrix multiplication steps.\nc) Using your results from Part B, set up the normal equations \\(\\mathbf{X}^T\\mathbf{X}\\hat\\beta=\\mathbf{X}^T\\mathbf{y}\\) and solve for the coefficient vector \\(\\hat\\beta\\). (You can use R if you need to take an inverse).\nd) Verify your answer using R’s built-in functions.",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 3: Linear Regression Fundamentals"
+    ]
+  },
+  {
+    "objectID": "ex/ex-3.html#problem-2",
+    "href": "ex/ex-3.html#problem-2",
+    "title": "Linear Regression Fundamentals Problem Set",
+    "section": "Problem 2",
+    "text": "Problem 2\nUsing the data from Problem 1 and your estimated coefficients:\na) Calculate the predicted values \\(\\hat{y}_i\\) for each observation by hand.\nb) Calculate the residuals \\(\\hat\\varepsilon=y_i-\\hat{y}_i\\) for each observation.\nc) Compute the sum of squared errors (SSE) using both formulations:\n\nIndividual terms: SSE \\(= \\sum(y_i - \\hat{y}_i)^2\\)\n\nMatrix form: SSE \\(=  (\\mathbf{y}-\\mathbf{X}\\hat\\beta)^T(\\mathbf{y}-\\mathbf{X}\\hat\\beta)\\)\n\n\nd) Verify that your residuals sum to approximately zero and explain why this should be true geometrically.",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 3: Linear Regression Fundamentals"
+    ]
+  },
+  {
+    "objectID": "ex/ex-3.html#problem-3",
+    "href": "ex/ex-3.html#problem-3",
+    "title": "Linear Regression Fundamentals Problem Set",
+    "section": "Problem 3",
+    "text": "Problem 3\na) For simple linear regression with n = 3 observations and design matrix:\n\\[\\mathbf{X} = \\begin{bmatrix}1 & 2\\\\1 & 4\\\\1&6\\end{bmatrix}\\]\nCalculate the hat matrix (\\(\\mathbf{H}\\)) by hand (you can use R if you need to take an inverse).\nb) Verify that \\(\\mathbf{H}\\) is idempotent.\nc) Show that \\(\\mathbf{H}\\) is symmetric and interpret what this property means geometrically.",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 3: Linear Regression Fundamentals"
+    ]
+  },
+  {
+    "objectID": "ex/ex-3.html#problem-4",
+    "href": "ex/ex-3.html#problem-4",
+    "title": "Linear Regression Fundamentals Problem Set",
+    "section": "Problem 4",
+    "text": "Problem 4\nConsider the simple linear regression case with the design matrix from Problem 3.\na) Write out two specific vectors that lie in the column space of \\(\\mathbf{X}\\). Explain what these vectors represent in terms of the regression model.\nb) If the observed response vector is \\(\\mathbf{y} = \\begin{bmatrix}3\\\\7\\\\12\\end{bmatrix}\\), explain why this vector likely does NOT lie exactly in the column space of \\(\\mathbf{X}\\). What does this mean practically?\nc) Calculate the projection of \\(\\mathbf{y}\\) onto the column space (i.e., \\(\\mathbf{\\hat{y}} = \\mathbf{Hy}\\)) and show that the residual vector is orthogonal to the column space by verifying \\(\\mathbf{X}^T\\hat\\varepsilon=0\\).",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 3: Linear Regression Fundamentals"
+    ]
+  },
+  {
+    "objectID": "ex/ex-3.html#problem-5",
+    "href": "ex/ex-3.html#problem-5",
+    "title": "Linear Regression Fundamentals Problem Set",
+    "section": "Problem 5",
+    "text": "Problem 5\na) Starting from the geometric principle that residuals must be orthogonal to the column space of \\(\\mathbf{X}\\), derive the normal equations step by step. Begin with the condition \\(\\mathbf{X}^T\\hat\\varepsilon = 0\\) and show all algebraic steps to arrive at \\(\\mathbf{X}^T\\mathbf{X}\\hat\\beta=\\mathbf{X}^T\\mathbf{y}\\).\nb) Explain why we multiply both sides by \\((\\mathbf{X}^T\\mathbf{X})^{-1}\\) to solve for \\(\\hat\\beta\\), and under what conditions this inverse might not exist.\nc) Show that the least squares estimator \\(\\hat\\beta = (\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\mathbf{y}\\) minimizes the sum of squared errors by demonstrating that this solution satisfies the orthogonality condition.",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 3: Linear Regression Fundamentals"
+    ]
+  },
+  {
+    "objectID": "ex/ex-3.html#problem-6",
+    "href": "ex/ex-3.html#problem-6",
+    "title": "Linear Regression Fundamentals Problem Set",
+    "section": "Problem 6",
+    "text": "Problem 6\nYou are given the following dataset with 10 observations:\n\n\nx\ny\n\n\n\n1\n4.8\n\n\n2\n6.2\n\n\n3\n8.1\n\n\n4\n9.9\n\n\n5\n11.5\n\n\n6\n13.8\n\n\n7\n15.2\n\n\n8\n17.1\n\n\n9\n18.9\n\n\n10\n21.3\n\n\n\na) Implement the least squares solution in R using matrix operations. Calculate \\(\\hat\\beta\\) without using lm().\nb) Compare your results with R’s lm() function and verify they match.\nc) Using the grid below, hand-draw the following elements:\n\nPlot the 10 data points from the table above\n\nDraw the true regression line: y = 3.5 + 1.8x (shown as a dashed line)\nDraw your fitted regression line from Part A (shown as a solid line)\nLabel both lines clearly in your plot\n\n\n\n\n\n\n\n\n\n(You don’t have to upload this drawing on Canvas, but make sure you do it and understand it, we will do it during the board work portion in class.)\nd) Based on your plot, comment on how well the fitted line approximates the true relationship. What does this tell you about the effectiveness of least squares estimation?",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 3: Linear Regression Fundamentals"
+    ]
+  },
+  {
+    "objectID": "ex/ex-5.html",
+    "href": "ex/ex-5.html",
+    "title": "Random Vectors and Gauss-Markov Theorem Problem Set",
+    "section": "",
+    "text": "This problem set covers random vector properties, variance-covariance matrices, and the Gauss-Markov theorem. Show all work and provide clear explanations for your reasoning. For computational problems, you may verify your answers using R, but show the mathematical work first.",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 5: Gauss Markov Theorem"
+    ]
+  },
+  {
+    "objectID": "ex/ex-5.html#instructions",
+    "href": "ex/ex-5.html#instructions",
+    "title": "Random Vectors and Gauss-Markov Theorem Problem Set",
+    "section": "",
+    "text": "This problem set covers random vector properties, variance-covariance matrices, and the Gauss-Markov theorem. Show all work and provide clear explanations for your reasoning. For computational problems, you may verify your answers using R, but show the mathematical work first.",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 5: Gauss Markov Theorem"
+    ]
+  },
+  {
+    "objectID": "ex/ex-5.html#problem-1",
+    "href": "ex/ex-5.html#problem-1",
+    "title": "Random Vectors and Gauss-Markov Theorem Problem Set",
+    "section": "Problem 1",
+    "text": "Problem 1\nConsider the random vector \\(\\mathbf{Y} = \\begin{bmatrix} Y_1 \\\\ Y_2 \\\\ Y_3 \\end{bmatrix}\\) where \\(E[\\mathbf{Y}] = \\begin{bmatrix} 3 \\\\ -1 \\\\ 2 \\end{bmatrix}\\).\na) Let \\(\\mathbf{A} = \\begin{bmatrix} 2 & 0 & 1 \\\\ 1 & -1 & 3 \\end{bmatrix}\\). Calculate \\(E[\\mathbf{A}\\mathbf{Y}]\\) using the linearity property.\nb) What would \\(E[\\mathbf{A}\\mathbf{Y} + \\mathbf{c}]\\) be if \\(\\mathbf{c} = \\begin{bmatrix} 5 \\\\ -2 \\end{bmatrix}\\)?",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 5: Gauss Markov Theorem"
+    ]
+  },
+  {
+    "objectID": "ex/ex-5.html#problem-2",
+    "href": "ex/ex-5.html#problem-2",
+    "title": "Random Vectors and Gauss-Markov Theorem Problem Set",
+    "section": "Problem 2",
+    "text": "Problem 2\nGiven the random vector \\(\\mathbf{Z} = \\begin{bmatrix} Z_1 \\\\ Z_2 \\end{bmatrix}\\) with variance-covariance matrix:\n\\[\\text{Var}(\\mathbf{Z}) = \\begin{bmatrix} 9 & 2 \\\\ 2 & 4 \\end{bmatrix}\\]\na) What are \\(\\text{Var}(Z_1)\\), \\(\\text{Var}(Z_2)\\), and \\(\\text{Cov}(Z_1, Z_2)\\)?\nb) Calculate \\(\\text{Var}(3Z_1 - 2Z_2)\\) using the matrix formula \\(\\text{Var}(\\mathbf{A}\\mathbf{Z}) = \\mathbf{A}\\text{Var}(\\mathbf{Z})\\mathbf{A}^T\\).\nc) Find \\(\\text{Var}\\begin{bmatrix} Z_1 + Z_2 \\\\ 2Z_1 - Z_2 \\end{bmatrix}\\). Show your matrix multiplication steps.",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 5: Gauss Markov Theorem"
+    ]
+  },
+  {
+    "objectID": "ex/ex-5.html#problem-3",
+    "href": "ex/ex-5.html#problem-3",
+    "title": "Random Vectors and Gauss-Markov Theorem Problem Set",
+    "section": "Problem 3",
+    "text": "Problem 3\nConsider the linear regression model \\(\\mathbf{y} = \\mathbf{X}\\boldsymbol{\\beta} + \\boldsymbol{\\varepsilon}\\) where:\n\n\\(\\mathbf{y}\\) is \\(n \\times 1\\)\n\n\\(\\mathbf{X}\\) is \\(n \\times p\\) with full column rank\n\n\\(\\boldsymbol{\\beta}\\) is \\(p \\times 1\\)\n\n\\(\\boldsymbol{\\varepsilon}\\) is \\(n \\times 1\\)\n\na) State the Gauss-Markov assumptions clearly.\nb) Explain what \\(\\text{Var}(\\boldsymbol{\\varepsilon}) = \\sigma^2\\mathbf{I}\\) means in plain English. What two conditions does this impose on the error terms?\nc) If \\(\\text{Var}(\\varepsilon_1) = 4\\), \\(\\text{Var}(\\varepsilon_2) = 9\\), and \\(\\text{Cov}(\\varepsilon_1, \\varepsilon_2) = 1\\), do the errors satisfy the Gauss-Markov assumptions? Explain why or why not.",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 5: Gauss Markov Theorem"
+    ]
+  },
+  {
+    "objectID": "ex/ex-5.html#problem-4",
+    "href": "ex/ex-5.html#problem-4",
+    "title": "Random Vectors and Gauss-Markov Theorem Problem Set",
+    "section": "Problem 4",
+    "text": "Problem 4\nFor the OLS estimator \\(\\hat{\\boldsymbol{\\beta}} = (\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\mathbf{y}\\):\na) Starting from \\(E[\\hat{\\boldsymbol{\\beta}}] = E[(\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\mathbf{y}]\\), show step-by-step that OLS is unbiased. Clearly indicate where you use each Gauss-Markov assumption.\nb) In the proof, we treat \\(\\boldsymbol{\\beta}\\) as a constant rather than a random variable. Explain why this is appropriate in the classical regression framework.\nc) What would happen to your proof if \\(E[\\boldsymbol{\\varepsilon}] = \\mathbf{c}\\) for some non-zero constant vector \\(\\mathbf{c}\\) instead of \\(E[\\boldsymbol{\\varepsilon}] = \\mathbf{0}\\)?",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 5: Gauss Markov Theorem"
+    ]
+  },
+  {
+    "objectID": "ex/ex-5.html#problem-5",
+    "href": "ex/ex-5.html#problem-5",
+    "title": "Random Vectors and Gauss-Markov Theorem Problem Set",
+    "section": "Problem 5",
+    "text": "Problem 5\na) Derive \\(\\text{Var}(\\hat{\\boldsymbol{\\beta}})\\) starting from the result that \\(\\hat{\\boldsymbol{\\beta}} = \\boldsymbol{\\beta} + (\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\boldsymbol{\\varepsilon}\\). Show each step clearly.\nb) For the simple linear regression case with \\(\\mathbf{X} = \\begin{bmatrix} 1 & 1  \\\\ 2 & 4  \\end{bmatrix}\\), calculate \\((\\mathbf{X}^T\\mathbf{X})^{-1}\\) by hand.\nc) Using your result from part (b), what is \\(\\text{Var}(\\hat{\\boldsymbol{\\beta}})\\) in terms of \\(\\sigma^2\\)? What is the variance of \\(\\hat\\beta_0\\)? What is the variance of \\(\\hat\\beta_1\\)?",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 5: Gauss Markov Theorem"
+    ]
+  },
+  {
+    "objectID": "ex/ex-5.html#problem-6",
+    "href": "ex/ex-5.html#problem-6",
+    "title": "Random Vectors and Gauss-Markov Theorem Problem Set",
+    "section": "Problem 6",
+    "text": "Problem 6\nThe key step in proving OLS is BLUE involves writing any linear unbiased estimator as: \\[\\mathbf{C} = (\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T + \\mathbf{D}\\]\na) Explain in your own words why this decomposition is “clever” and what intuition it provides about comparing estimators.\nb) Show that if \\(\\mathbf{C}\\mathbf{X} = \\mathbf{I}\\) (the unbiasedness constraint), then \\(\\mathbf{D}\\mathbf{X} = \\mathbf{0}\\).\nc) In the final step of the proof, we use the fact that \\(\\mathbf{D}\\mathbf{D}^T\\) is positive semi-definite.\n\nDefine what “positive semi-definite” means\n\nExplain why any matrix of the form \\(\\mathbf{D}\\mathbf{D}^T\\) must be positive semi-definite\n\nHow does this property ensure that OLS has minimum variance?\n\nd) If \\(\\mathbf{D} = \\begin{bmatrix} 1 & 2 \\\\ 0 & -1 \\end{bmatrix}\\), calculate \\(\\mathbf{D}\\mathbf{D}^T\\) and verify that all eigenvalues are non-negative.",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 5: Gauss Markov Theorem"
+    ]
+  },
+  {
+    "objectID": "ex/ex-5.html#bonus",
+    "href": "ex/ex-5.html#bonus",
+    "title": "Random Vectors and Gauss-Markov Theorem Problem Set",
+    "section": "Bonus",
+    "text": "Bonus\nRead this post on Is OLS BLUE or BUE?",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 5: Gauss Markov Theorem"
+    ]
+  },
+  {
+    "objectID": "ex/ex-7.html",
+    "href": "ex/ex-7.html",
+    "title": "Confidence Intervals and Coverage",
+    "section": "",
+    "text": "Given the following data:\n\\[\\mathbf{y} = \\begin{bmatrix}12\\\\15\\\\18\\\\22\\\\25\\\\28\\end{bmatrix}\\]\n\\[\\mathbf{X} = \\begin{bmatrix}1&2\\\\1&4\\\\1&6\\\\1&8\\\\1&10\\\\1&12\\end{bmatrix}\\]\na) Fit the linear regression model \\(y = \\beta_0 + \\beta_1 x + \\varepsilon\\) and construct a 95% confidence interval for \\(\\beta_1\\) using the standard OLS approach.\nb) Interpret the confidence interval in context.\nc) Calculate a 90% confidence interval for \\(\\beta_1\\). How does it compare to the 95% interval?",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 7: Confidence Intervals and Coverage"
+    ]
+  },
+  {
+    "objectID": "ex/ex-7.html#problem-1",
+    "href": "ex/ex-7.html#problem-1",
+    "title": "Confidence Intervals and Coverage",
+    "section": "",
+    "text": "Given the following data:\n\\[\\mathbf{y} = \\begin{bmatrix}12\\\\15\\\\18\\\\22\\\\25\\\\28\\end{bmatrix}\\]\n\\[\\mathbf{X} = \\begin{bmatrix}1&2\\\\1&4\\\\1&6\\\\1&8\\\\1&10\\\\1&12\\end{bmatrix}\\]\na) Fit the linear regression model \\(y = \\beta_0 + \\beta_1 x + \\varepsilon\\) and construct a 95% confidence interval for \\(\\beta_1\\) using the standard OLS approach.\nb) Interpret the confidence interval in context.\nc) Calculate a 90% confidence interval for \\(\\beta_1\\). How does it compare to the 95% interval?",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 7: Confidence Intervals and Coverage"
+    ]
+  },
+  {
+    "objectID": "ex/ex-7.html#problem-2",
+    "href": "ex/ex-7.html#problem-2",
+    "title": "Confidence Intervals and Coverage",
+    "section": "Problem 2",
+    "text": "Problem 2\nUsing the same data from Problem 1:\na) Implement a bootstrap to construct a 95% confidence interval for \\(\\beta_1\\).\nb) Compare your bootstrap confidence interval to the parametric confidence interval from Problem 1. Are they similar? Why or why not?\nc) Create a histogram of your bootstrap distribution of \\(\\hat{\\beta}_1\\) and overlay the theoretical normal distribution.",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 7: Confidence Intervals and Coverage"
+    ]
+  },
+  {
+    "objectID": "ex/ex-7.html#problem-3",
+    "href": "ex/ex-7.html#problem-3",
+    "title": "Confidence Intervals and Coverage",
+    "section": "Problem 3",
+    "text": "Problem 3\nIn this problem, you’ll verify that under correct model assumptions, 95% confidence intervals actually contain the true parameter 95% of the time.\nSimulation setup:\n\nTrue model: \\(y = 2 + 1.5x + \\varepsilon\\) where \\(\\varepsilon \\sim N(0, 1)\\)\n\nSample size: n = 30\n\nGenerate x from \\(N(0, 1)\\)\n\nNumber of simulations: 5000\n\na) Write a simulation function that:\n\nGenerates data from the true model\n\nFits OLS regression\n\nConstructs a 95% confidence interval for \\(\\beta_1\\)\n\nChecks whether the true value (1.5) is contained in the interval\n\nReturns TRUE or FALSE.\n\nb) Run the simulation 5000 times and calculate the coverage probability (proportion of intervals containing the true value).\nc) What coverage probability did you obtain? Is it close to 95%? Explain why this makes sense given that all assumptions are satisfied.",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 7: Confidence Intervals and Coverage"
+    ]
+  },
+  {
+    "objectID": "ex/ex-7.html#problem-4",
+    "href": "ex/ex-7.html#problem-4",
+    "title": "Confidence Intervals and Coverage",
+    "section": "Problem 4",
+    "text": "Problem 4\nNow investigate what happens when errors are not normally distributed.\nInstead of \\(\\varepsilon \\sim N(0,1)\\), let’s try a skewed distribution. Use this for your epsilon generation to make it lognormally distributed:\n\nepsilon &lt;- exp(rnorm(n)) - exp(0.5)\n\nand then complete the same simulation as above, calculating the coverage probability for the interval for \\(\\beta_1\\).\na) What coverage probability did you obtain?\nb) Create a histogram of your simulated \\(\\varepsilon\\) and describe their distribution. How does this violate OLS assumptions?\nc) Despite the non-normal errors, does the CI coverage seem reasonably close to nominal? Why might this be the case?",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 7: Confidence Intervals and Coverage"
+    ]
+  },
+  {
+    "objectID": "ex/ex-7.html#problem-5",
+    "href": "ex/ex-7.html#problem-5",
+    "title": "Confidence Intervals and Coverage",
+    "section": "Problem 5",
+    "text": "Problem 5\nNow let’s investigate what happens with severe non-constant variance. Instead of generating your \\(\\varepsilon\\sim N(0,1)\\) let’s have it depend on \\(x\\) like this:\n\nsigma &lt;- exp(x / 2)  \nepsilon &lt;- rnorm(n, 0, sigma)\n\nSuch that the standard deviation of your errors increases expondentially with \\(x\\) and then complete the same simulation as above, calculating the coverage probability for the interval for \\(\\beta_1\\).\na) What coverage probability did you obtain? How does it compare to the nominal 95% level?\nb) Create a scatterplot showing one simulated dataset with x on the horizontal axis and y on the vertical axis. Add the true regression line. Describe how the variability changes across the range of x.\nc) Explain why heteroskedasticity affects confidence interval coverage. What aspect of the standard error calculation is violated?\nd) What could you do to obtain valid confidence intervals in the presence of heteroskedasticity?",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 7: Confidence Intervals and Coverage"
+    ]
+  },
+  {
+    "objectID": "ex/ex-7.html#problem-6",
+    "href": "ex/ex-7.html#problem-6",
+    "title": "Confidence Intervals and Coverage",
+    "section": "Problem 6",
+    "text": "Problem 6\nLet’s now investigate what happens when the model is misspecified due to an omitted variable.\nSimulation setup:\n\nTrue model: \\(y = 2 + 1.5x_1 + 2x_2+\\varepsilon\\) where \\(\\varepsilon \\sim N(0, 1)\\)\n\nSample size: n = 30\n\nGenerate \\(x_1\\) from \\(N(0, 1)\\)\n\nGenerate \\(x_2\\) from \\(N(0, 1)\\)\n\nNumber of simulations: 5000\n\nWrite a simulation function that fits a misspecified model, omitting \\(x_2\\) (i.e., the model should be lm(y ~ x1)) and then complete the same simulation as above, calculating the coverage probability for the interval for \\(\\beta_1\\).\na) What coverage probability did you obtain? How does it compare to 95%?\nb) In the simulation code, the true effect of \\(x_1\\) on y is 1.5. When we fit the model omitting \\(x_2\\), what happens to our estimate of \\(\\beta_1\\)? Is it biased?\nc) Calculate the average value of \\(\\hat{\\beta}_1\\) across all simulations and compare it to the true value of 1.5. This is the bias in the coefficient estimate.\nNow fit this model:\n- True model: \\(y = 2 + 1.5x_1 + 2x_2+\\varepsilon\\) where \\(\\varepsilon \\sim N(0, 1)\\)\n- Sample size: n = 30\n- Generate \\(x_2\\) from \\(N(0, 1)\\)\n- Generate \\(x_1 = x_2 + \\varepsilon_x\\) where \\(\\varepsilon_x\\sim N(0, 1)\\)\n- Number of simulations: 5000\nWrite a new simulation function using the above specifications that fits a misspecified model, omitting \\(x_2\\) (i.e., the model should be lm(y ~ x1)) and then complete the same simulation as above, calculating the coverage probability for the interval for \\(\\beta_1\\).\nd) Explain how omitted variable bias could affect confidence interval coverage. Even though the confidence intervals are correctly constructed for the model we fit, why might they not have the correct coverage for the true parameter?",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 7: Confidence Intervals and Coverage"
+    ]
+  },
+  {
+    "objectID": "ex/ex-7.html#bonus",
+    "href": "ex/ex-7.html#bonus",
+    "title": "Confidence Intervals and Coverage",
+    "section": "Bonus",
+    "text": "Bonus\nTry to come up with simulation scenarios that “break” 95% coverage. What assumptions did you make in these scenarios?",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 7: Confidence Intervals and Coverage"
+    ]
+  },
+  {
+    "objectID": "ex/ex-9.html",
+    "href": "ex/ex-9.html",
+    "title": "Prediction and Model Selection",
+    "section": "",
+    "text": "Given the following small dataset: \\[\\mathbf{y} = \\begin{bmatrix}3\\\\5\\\\7\\\\11\\\\13\\end{bmatrix}\\] \\[\\mathbf{X} = \\begin{bmatrix}1&1\\\\1&2\\\\1&3\\\\1&4\\\\1&5\\end{bmatrix}\\]\na) Fit the linear regression model \\(y = \\beta_0 + \\beta_1 x + \\varepsilon\\) and calculate the fitted values \\(\\hat{y}_i\\) and residuals \\(\\hat{\\varepsilon}_i\\) for each observation.\nb) Calculate the hat matrix \\(\\mathbf{H} = \\mathbf{X}(\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\) and extract the diagonal elements \\(h_{ii}\\) (the leverages) for each observation. You may use R for the matrix calculations.\nc) Calculate the LOOCV error using the shortcut formula: \\[\\text{CV} = \\frac{1}{n}\\sum_{i=1}^n \\left(\\frac{y_i - \\hat{y}_i}{1 - h_{ii}}\\right)^2\\]\nd) To verify your answer, fit the model 5 times, each time leaving out one observation. For each left-out observation \\(i\\):\n\nFit the model on the remaining \\(n-1\\) observations\n\nPredict the left-out observation to get \\(\\hat{y}_{-i}\\)\n\nCalculate \\((y_i - \\hat{y}_{-i})^2\\)\n\n\nCalculate the LOOCV error as \\(\\frac{1}{5}\\sum_{i=1}^5 (y_i - \\hat{y}_{-i})^2\\). Does this match your answer from part (c)?\ne) Why is the shortcut formula useful? When would computing LOOCV by actually refitting the model \\(n\\) times become computationally prohibitive?",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 9: Prediction"
+    ]
+  },
+  {
+    "objectID": "ex/ex-9.html#problem-1",
+    "href": "ex/ex-9.html#problem-1",
+    "title": "Prediction and Model Selection",
+    "section": "",
+    "text": "Given the following small dataset: \\[\\mathbf{y} = \\begin{bmatrix}3\\\\5\\\\7\\\\11\\\\13\\end{bmatrix}\\] \\[\\mathbf{X} = \\begin{bmatrix}1&1\\\\1&2\\\\1&3\\\\1&4\\\\1&5\\end{bmatrix}\\]\na) Fit the linear regression model \\(y = \\beta_0 + \\beta_1 x + \\varepsilon\\) and calculate the fitted values \\(\\hat{y}_i\\) and residuals \\(\\hat{\\varepsilon}_i\\) for each observation.\nb) Calculate the hat matrix \\(\\mathbf{H} = \\mathbf{X}(\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\) and extract the diagonal elements \\(h_{ii}\\) (the leverages) for each observation. You may use R for the matrix calculations.\nc) Calculate the LOOCV error using the shortcut formula: \\[\\text{CV} = \\frac{1}{n}\\sum_{i=1}^n \\left(\\frac{y_i - \\hat{y}_i}{1 - h_{ii}}\\right)^2\\]\nd) To verify your answer, fit the model 5 times, each time leaving out one observation. For each left-out observation \\(i\\):\n\nFit the model on the remaining \\(n-1\\) observations\n\nPredict the left-out observation to get \\(\\hat{y}_{-i}\\)\n\nCalculate \\((y_i - \\hat{y}_{-i})^2\\)\n\n\nCalculate the LOOCV error as \\(\\frac{1}{5}\\sum_{i=1}^5 (y_i - \\hat{y}_{-i})^2\\). Does this match your answer from part (c)?\ne) Why is the shortcut formula useful? When would computing LOOCV by actually refitting the model \\(n\\) times become computationally prohibitive?",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 9: Prediction"
+    ]
+  },
+  {
+    "objectID": "ex/ex-9.html#problem-2",
+    "href": "ex/ex-9.html#problem-2",
+    "title": "Prediction and Model Selection",
+    "section": "Problem 2",
+    "text": "Problem 2\nConsider a dataset where the true relationship is quadratic: \\(y = 1 + 2x - 0.5x^2 + \\varepsilon\\) where \\(\\varepsilon \\sim N(0, 1)\\).\nGenerate data with \\(n = 60\\) observations and \\(x\\) uniformly distributed between 0 and 5.\n\nset.seed(1)\nn &lt;- 60\nx &lt;- runif(n, 0, 5)\ny &lt;- 1 + 2*x - 0.5*x^2 + rnorm(n)\n\na) Fit polynomial models of degrees 1 through 6:\n\n\nmodel1 &lt;- lm(y ~ poly(x, 1))\n\n\nmodel2 &lt;- lm(y ~ poly(x, 2))\n\n… and so on through degree 6\n\nFor each model, calculate:\n\nAIC using AIC(model)\n\nLOOCV error using the shortcut formula\n\nAdjusted \\(R^2\\) from summary(model)$adj.r.squared\n\n\nCreate a table showing all three criteria for each polynomial degree.\nb) Which degree is selected by each criterion? Do they agree?\nc) Create 3 plots showing how each criterion changes with polynomial degree.\nd) The true model is quadratic (degree 2). Do the selection criteria correctly identify this? If any criterion selects a higher degree, explain why this might happen even when we know the true model.\ne) Generate a test dataset of 100 new observations from the same true model. Calculate the true prediction error (MSE on test data) for each of the 6 models. Which degree predicts best on new data? How does this compare to what the selection criteria chose?",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 9: Prediction"
+    ]
+  },
+  {
+    "objectID": "ex/ex-9.html#problem-3",
+    "href": "ex/ex-9.html#problem-3",
+    "title": "Prediction and Model Selection",
+    "section": "Problem 3",
+    "text": "Problem 3\nThe ridge regression objective function is:\n\\[\\min_{\\beta} (\\mathbf{y} - \\mathbf{X}\\beta)^T(\\mathbf{y} - \\mathbf{X}\\beta) + \\lambda\\beta^T\\beta\\]\na) To find the minimum, take the derivative with respect to \\(\\beta\\) and set it equal to zero. Solve for \\(\\hat{\\beta}_{\\text{ridge}}\\).\nb) Derive the variance for \\(\\hat{\\beta}_{\\text{ridge}}\\).",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 9: Prediction"
+    ]
+  },
+  {
+    "objectID": "ex/ex-9.html#problem-4",
+    "href": "ex/ex-9.html#problem-4",
+    "title": "Prediction and Model Selection",
+    "section": "Problem 4",
+    "text": "Problem 4\nGenerate data with highly correlated predictors:\n\nset.seed(1)\nn &lt;- 50\nx1 &lt;- rnorm(n)\nx2 &lt;- x1 + rnorm(n, sd = 0.01)  # Highly correlated with x1\nx3 &lt;- rnorm(n)  # Independent\nX &lt;- cbind(scale(x1), scale(x2), scale(x3))\nbeta_true &lt;- c(3, -2, 1.5)\ny &lt;- X %*% beta_true + rnorm(n, sd = 1)\n\na) Calculate \\(\\hat\\beta\\) using the OLS and examine the coefficients. Calculate the standard errors of the coefficient estimates. Do the coefficients have high standard errors? Why might this be?\nb) Calculate the correlation matrix of the predictors. Which predictors are highly correlated?\nc) Calculate the Variance Inflation Factor (VIF) for each predictor using:\n\\[\\text{VIF}_j = \\frac{1}{1 - R^2_j}\\]\nwhere \\(R^2_j\\) is from regressing \\(x_j\\) on all other predictors. Which predictor(s) have high VIF values?\nd) Using \\(\\lambda=1\\) fit a ridge regression model using the same data. Calculate the standard errors of the coefficients – how do they compare to the OLS errors calculated in part (a)?",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 9: Prediction"
+    ]
+  },
+  {
+    "objectID": "ex/ex-9.html#problem-5",
+    "href": "ex/ex-9.html#problem-5",
+    "title": "Prediction and Model Selection",
+    "section": "Problem 5",
+    "text": "Problem 5\nConsider a regression setting where we observe data \\((x_i, y_i)\\) for \\(i = 1, \\ldots, n\\) and the true relationship is:\n\\[y_i = f(x_i) + \\varepsilon_i\\]\nwhere \\(\\varepsilon_i \\sim N(0, \\sigma^2)\\) are independent errors and \\(f(x)\\) is the true regression function.\nSuppose we fit a model \\(\\hat{f}(x)\\) using our training data. For a new test point \\(x_0\\), the expected prediction error is:\n\\[\\text{EPE}(x_0) = E[(y_0 - \\hat{f}(x_0))^2]\\]\nwhere the expectation is over both the training data (which affects \\(\\hat{f}\\)) and the new observation \\(y_0\\).\na) Show that the expected prediction error can be decomposed as:\n\\[\\text{EPE}(x_0) = \\sigma^2 + \\text{Bias}^2[\\hat{f}(x_0)] + \\text{Var}[\\hat{f}(x_0)]\\]\nwhere:\n\n\n\\(\\text{Bias}[\\hat{f}(x_0)] = E[\\hat{f}(x_0)] - f(x_0)\\)\n\n\\(\\text{Var}[\\hat{f}(x_0)] = E[(\\hat{f}(x_0) - E[\\hat{f}(x_0)])^2]\\)\n\nHint: Start by adding and subtracting \\(E[\\hat{f}(x_0)]\\) and \\(f(x_0)\\) inside the squared term, then expand.\nb) Generate data to illustrate this decomposition empirically:\n\nset.seed(1)\n\n# Generate single test point\nx0 &lt;- 0.5\nsigma &lt;- 1\n\n# Simulate 1000 training datasets\nn_sims &lt;- 1000\nn_train &lt;- 20\ntrue_f &lt;- x0 + x0^2 + x0^3\n\npredictions &lt;- numeric(n_sims)\n\nfor(i in 1:n_sims) {\n  x_train &lt;- runif(n_train, 0, 1)\n  y_train &lt;- x_train + x_train^2 + x_train^3 + rnorm(n_train, sd = sigma)\n  \n  # Fit polynomial model of degree 9\n  model &lt;- lm(y_train ~ poly(x_train, 9))\n  predictions[i] &lt;- predict(model, newdata = data.frame(x_train = x0))\n}\n\nCalculate the three components at \\(x_0 = 0.5\\):\n\nIrreducible error: \\(\\sigma^2\\)\n\nSquared bias: \\((E[\\hat{f}(x_0)] - f(x_0))^2\\) (estimate \\(E[\\hat{f}(x_0)]\\) as mean(predictions))\n\nVariance: \\(\\text{Var}[\\hat{f}(x_0)]\\) (estimate as var(predictions))\n\nVerify that their sum approximately equals the mean squared error: \\(\\frac{1}{1000}\\sum_{i=1}^{1000}(y_0^{(i)} - \\hat{f}^{(i)}(x_0))^2\\) where you generate new test observations.\nc) Repeat part (b) for polynomial degrees 1, 2, 5, and 9 Create a plot showing how bias squared, variance, and total expected prediction error change with model complexity. Explain the bias-variance tradeoff you observe: why does bias decrease and variance increase as we add more polynomial terms? Which degree would you choose and why?",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 9: Prediction"
+    ]
+  },
+  {
+    "objectID": "ex/ex-9.html#problem-6",
+    "href": "ex/ex-9.html#problem-6",
+    "title": "Prediction and Model Selection",
+    "section": "Problem 6",
+    "text": "Problem 6\nGenerate data from a simple linear model:\n\nset.seed(1)\nn &lt;- 40\nx &lt;- runif(n, 0, 10)\ny &lt;- 5 + 2*x + rnorm(n)\nmodel &lt;- lm(y ~ x)\n\na) For a new observation at \\(x_{\\text{new}} = 6\\), calculate:\n\nThe point prediction \\(\\hat{y}_{\\text{new}}\\)\n\nA 95% confidence interval for \\(E[y \\mid x = 6]\\) (the mean response)\n\nA 95% prediction interval for a new observation \\(y_{\\text{new}}\\) at \\(x = 6\\).\n\nb) Explain the difference between these two intervals. Why is the prediction interval wider than the confidence interval?\nc) The variance of the prediction error is: \\[\\text{Var}(y_{\\text{new}}-\\hat{y}_{\\text{new}}) = \\sigma^2\\left(1 + x_{\\text{new}}^T(\\mathbf{X}^T\\mathbf{X})^{-1}x_{\\text{new}}\\right)\\]\nShow your work to derive why this is true.",
+    "crumbs": [
+      "{{< fa calendar >}} Schedule",
+      "Exercises",
+      "Exercise 9: Prediction"
     ]
   },
   {
